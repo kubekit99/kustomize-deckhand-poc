@@ -45,5 +45,7 @@ vars:
 #     apiVersion: apps/v1
 #   fieldref:
 #     fieldpath: spec.template.spec.restartPolicy
-resources:
+# resources:
+# - site-values.yaml
+patchesStrategicMerge:
 - site-values.yaml

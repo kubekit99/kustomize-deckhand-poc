@@ -8,3 +8,4 @@ resources:
 - configMap.yaml
 - deployment.yaml
 - secret.yaml
+- site-values.yaml

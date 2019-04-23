@@ -4,7 +4,7 @@ metadata:
   name: site-values
 type: Opaque
 data:
-  username: YWRtaW4=
-  password: MWYyZDFlMmU2N2Rm
+  username: c2l0ZTEtdXNlcm5hbWUK
+  password: c2l0ZTEtcGFzc3dvcmQK
 stringData:
   somevalue: site1-specific-value
