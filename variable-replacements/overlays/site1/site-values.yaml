@@ -6,4 +6,5 @@ type: Opaque
 data:
   username: YWRtaW4=
   password: MWYyZDFlMmU2N2Rm
+stringData:
   somevalue: site1-specific-value

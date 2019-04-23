@@ -25,7 +25,7 @@ vars:
     name: site-values
     apiVersion: v1
   fieldref:
-    fieldpath: data.somevalue
+    fieldpath: stringData.somevalue
 - name: SOME_SECRET_NAME
   objref:
     kind: Secret

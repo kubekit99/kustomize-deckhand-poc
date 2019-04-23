@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: the-configmap
 data:
-  item1: "$(SOME_SITEVALUE_3)"
+  item1: $(SOME_SITEVALUE_3)
   item2: "bla"
