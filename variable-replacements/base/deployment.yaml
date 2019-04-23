@@ -1,0 +1,29 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: the-deployment
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        deployment: hello
+    spec:
+      containers:
+      - name: the-container
+        image: monopole/hello:1
+        command: ["hello", "--port=8080", "$(MY_SERVICE_NAME)"]
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SECRET_TOKEN
+          value: $(SOME_SECRET_NAME)
+        - name: VALUE_1
+          value: $(SOME_SITEVALUE_1)
+        - name: VALUE_2
+          value: $(SOME_SITEVALUE_2)
+        - name: VALUE_3
+          value: $(SOME_SITEVALUE_3)
+---
+

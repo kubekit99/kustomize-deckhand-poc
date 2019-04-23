@@ -1,0 +1,49 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namePrefix: site1-
+bases:
+- ../../base
+vars:
+- name: SOME_SITEVALUE_1
+  objref:
+    kind: Secret
+    name: site-values
+    apiVersion: v1
+  fieldref:
+    fieldpath: data.username
+- name: SOME_SITEVALUE_2
+  objref:
+    kind: Secret
+    name: site-values
+    apiVersion: v1
+  fieldref:
+    fieldpath: data.password
+- name: SOME_SITEVALUE_3
+  objref:
+    kind: Secret
+    name: site-values
+    apiVersion: v1
+  fieldref:
+    fieldpath: data.somevalue
+- name: SOME_SECRET_NAME
+  objref:
+    kind: Secret
+    name: the-secret
+    apiVersion: v1
+- name: MY_SERVICE_NAME
+  objref:
+    kind: Deployment
+    name: the-deployment
+    apiVersion: apps/v1
+  fieldref:
+    fieldpath: metadata.name
+# - name: ANOTHER_DEPLOYMENTS_POD_RESTART_POLICY
+#   objref:
+#     kind: Deployment
+#     name: site1-deployment
+#     apiVersion: apps/v1
+#   fieldref:
+#     fieldpath: spec.template.spec.restartPolicy
+resources:
+- site-values.yaml
