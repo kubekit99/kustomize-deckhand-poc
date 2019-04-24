@@ -1,0 +1,8 @@
+apiVersion: airship/v1
+kind: armada.manifest.airship.io
+metadata:
+  name: full-site-global
+data:
+  chart_groups:
+  - replaced-by-patchmerge-1
+  - replaced-by-patchmerge-2

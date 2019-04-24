@@ -1,0 +1,5 @@
+- op: replace
+  path: /data/chart_groups
+  value:
+  - replaced-by-patchjson-1
+  - replaced-by-patchjson-2

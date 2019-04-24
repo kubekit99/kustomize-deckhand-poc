@@ -1,5 +1,0 @@
-- op: replace
-  path: /data/chart_groups
-  value:
-  - added-for-prod-1
-  - added-for-prod-2

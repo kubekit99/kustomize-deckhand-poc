@@ -1,8 +1,8 @@
 apiVersion: airship/v1
 data:
   chart_groups:
-  - replace-for-stage-1
-  - replace-for-stage-2
+  - replaced-by-patchjson-1
+  - replaced-by-patchjson-2
   release_prefix: clcp
 kind: armada.manifest.airship.io
 metadata:
@@ -12,7 +12,7 @@ metadata:
   layeringDefinition:
     abstract: true
     layer: global
-  name: staging-test-full-site-global
+  name: replacejson-test-full-site-global
   schema: metadata/Document/v1
   storagePolicy: cleartext
 schema: armada/Manifest/v1
