@@ -1,8 +1,8 @@
 apiVersion: airship/v1
 data:
   chart_groups:
-  - chartgroup1
-  - chartgroup2
+  - replace-for-stage-1
+  - replace-for-stage-2
   release_prefix: clcp
 kind: armada.manifest.airship.io
 metadata:

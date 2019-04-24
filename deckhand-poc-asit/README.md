@@ -1,4 +1,4 @@
-# Actual deckhand poc
+# Deckhand-Kustomize POC with minimal changes to deckhand documents
 
 ## json based replace patch
 

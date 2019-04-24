@@ -45,11 +45,11 @@ the deckhand functional test have been forked here.
 
 - resources are configured using structure as close as possible to existing deckhand.
   apiversion and kind are added to the original yaml file.
-- Currently contains armadamanifest and deckhand document
+- Currently contains manifest deckhand document
 - For more details, access associated [README](./deckhand-poc-asit/README.md)
 
 ## deckhand-poc-ascrd
 
-- resources are configured as a little more K8s compliant CRD
-- Currently contains armadamanifest and deckhand document
+- resources are configured as a little more compliant K8s CRDs
+- Currently uses an "ArmadaManifest" CRD.
 - For more details, access associated [README](./deckhand-poc-ascrd/README.md)

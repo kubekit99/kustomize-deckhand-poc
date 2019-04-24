@@ -1,5 +1,5 @@
-- op: add
-  path: /data/chart_groups_added
+- op: replace
+  path: /data/chart_groups
   value:
-  - chartgroup1
-  - chartgroup2
+  - added-for-prod-1
+  - added-for-prod-2

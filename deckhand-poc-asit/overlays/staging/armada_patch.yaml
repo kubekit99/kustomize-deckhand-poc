@@ -1,5 +1,5 @@
 - op: replace
   path: /data/chart_groups
   value:
-  - chartgroup1
-  - chartgroup2
+  - replace-for-stage-1
+  - replace-for-stage-2
