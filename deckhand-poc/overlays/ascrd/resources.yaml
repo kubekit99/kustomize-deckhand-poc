@@ -1,0 +1,7 @@
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaManifest
+metadata:
+  name: full-site-global
+spec:
+  chart_groups:
+    - foobar

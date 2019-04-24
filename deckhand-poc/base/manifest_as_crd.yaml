@@ -1,0 +1,52 @@
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaManifest
+metadata:
+  name: full-site-global
+spec:
+  release_prefix: clcp
+  chart_groups:
+    - podsecuritypolicy
+    - kubernetes-proxy
+    - kubernetes-container-networking
+    - kubernetes-dns
+    - kubernetes-etcd
+    - kubernetes-haproxy
+    - kubernetes-core
+    # - kubernetes-falco
+    - ingress-kube-system
+    - ucp-ceph-update
+    - ucp-ceph-config
+    - ucp-infra
+    - ucp-keystone
+    - ucp-armada
+    - ucp-services
+    - ucp-divingbell
+    - ucp-prometheus-openstack-exporter
+    - gstools-setup
+    - gstools-login
+    - gstools-services
+    - gstools-capacityplanning
+    - gstools-roles
+    - osh-infra-ingress-controller
+    - osh-infra-ceph-config
+    - osh-infra-radosgw
+    - osh-infra-logging
+    - osh-infra-monitoring
+    - osh-infra-mariadb
+    - osh-infra-dashboards
+    - openstack-ingress-controller
+    - openstack-ceph-config
+    - openstack-tenant-ceph
+    - openstack-mariadb
+    - openstack-memcached
+    - openstack-compute-services
+    - openstack-keystone
+    - openstack-radosgw
+    - openstack-glance
+    - openstack-cinder
+    - openstack-compute-kit
+    - openstack-heat
+    - osh-infra-prometheus-openstack-exporter
+    - openstack-horizon
+    - openstack-barbican
+    - sonobuoy

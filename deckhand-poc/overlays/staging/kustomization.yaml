@@ -1,12 +1,12 @@
 bases:
   - ../../base
 patchesStrategicMerge:
-  - deployment.yaml
+  - armada_patch.yaml
 patchesJson6902:
 - target:
-    group: airship  apiVersion from above
-    version: v1 <- apiVersion from above
-    kind: armada.manifest.airship.io <- kind from above
+    group: airship
+    version: v1
+    kind: armada.manifest.airship.io
     name: full-site-global
   path: armada_patch.yaml
 

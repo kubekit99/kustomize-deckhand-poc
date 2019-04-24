@@ -1,0 +1,7 @@
+resources:
+- resources.yaml
+
+namePrefix: test-
+
+commonLabels:
+  foo: bar

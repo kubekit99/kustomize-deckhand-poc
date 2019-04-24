@@ -19,7 +19,7 @@ the deckhand functional test have been forked here.
 ## variable-replacements
 
 - Simple usage of kustomize.
-- Mainly leverage mergePatch between K8s objects in [kustomization.yaml](./variable-replacements/overlays/site1/kustomization.yaml) 
+- Mainly leverage vars section in [kustomization.yaml](./variable-replacements/overlays/site1/kustomization.yaml) 
 - For more details, access associated [README](./variable-replacements/README.md)
 
 ## kustomize-patch-non-k8s
@@ -31,6 +31,7 @@ the deckhand functional test have been forked here.
 ## kustomize-crd
 
 - Built out of official README.md for handling CRD configtransformer
+- Mainly leverage configuration section in [kustomization.yaml](./kustomize-crd/base/kustomization.yaml) 
 - For more details, access associated [README](./kustomize-crd/README.md)
 
 ## new-kustomize-config
