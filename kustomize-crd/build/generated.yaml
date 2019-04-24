@@ -1,0 +1,37 @@
+apiVersion: v1
+data:
+  PATH: YmJiYmJiYmIK
+kind: Secret
+metadata:
+  labels:
+    foo: bar
+  name: test-crdsecret
+---
+apiVersion: jingfang.example.com/v1beta1
+kind: MyKind
+metadata:
+  labels:
+    foo: bar
+  name: test-mykind
+spec:
+  beeRef:
+    action: fly
+    name: test-bee
+  containers:
+  - command:
+    - echo
+    - fly
+    image: myapp
+  secretRef:
+    name: test-crdsecret
+  selectors:
+    foo: bar
+---
+apiVersion: v1beta1
+kind: Bee
+metadata:
+  labels:
+    foo: bar
+  name: test-bee
+spec:
+  action: fly

@@ -1,0 +1,16 @@
+apiVersion: v1beta1
+kind: Bee
+metadata:
+  name: wordpress
+spec:
+  template:
+    spec:
+      containers:
+      - image: wordpress:4.8-apache
+        name: wordpress
+        ports:
+        - containerPort: 80
+          name: wordpress
+      volumes:
+      - name: wordpress-persistent-storage
+        emptyDir: {}

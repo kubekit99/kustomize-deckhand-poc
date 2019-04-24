@@ -1,0 +1,20 @@
+commonLabels:
+- path: spec/selectors
+  create: true
+  kind: Workflow
+
+nameReference:
+- kind: Bee
+  fieldSpecs:
+  - path: spec/beeRef/name
+    kind: Workflow
+- kind: Secret
+  fieldSpecs:
+  - path: spec/secretRef/name
+    kind: Workflow
+
+varReference:
+- path: spec/containers/command
+  kind: Workflow
+- path: spec/beeRef/action
+  kind: Workflow

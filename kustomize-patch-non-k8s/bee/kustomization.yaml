@@ -1,0 +1,4 @@
+resources:
+- bee.yaml
+patchesStrategicMerge:
+- patch.yaml

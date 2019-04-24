@@ -1,0 +1,23 @@
+apiVersion: v1beta1
+kind: Bee
+metadata:
+  name: wordpress
+spec:
+  template:
+    spec:
+      containers:
+      - env:
+        - name: WORDPRESS_DB_HOST
+          value: $(MYSQL_SERVICE)
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: mysql-pass
+        name: wordpress
+      initContainers:
+      - image: debian
+        name: init-command
+      volumes:
+      - emptyDir: {}
+        name: wordpress-persistent-storage

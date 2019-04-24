@@ -1,0 +1,27 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: wordpress
+spec:
+  template:
+    spec:
+      containers:
+      - env:
+        - name: WORDPRESS_DB_HOST
+          value: $(MYSQL_SERVICE)
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: mysql-pass
+        image: wordpress:4.8-apache
+        name: wordpress
+        ports:
+        - containerPort: 80
+          name: wordpress
+      initContainers:
+      - image: debian
+        name: init-command
+      volumes:
+      - emptyDir: {}
+        name: wordpress-persistent-storage
