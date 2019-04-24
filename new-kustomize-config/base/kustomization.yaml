@@ -1,0 +1,16 @@
+resources:
+- resources.yaml
+
+namePrefix: test-
+
+commonLabels:
+  foo: bar
+
+configurations:
+- kustomizeconfig/commonannotations.yaml
+- kustomizeconfig/commonlabels.yaml
+- kustomizeconfig/images.yaml
+- kustomizeconfig/nameprefix.yaml
+- kustomizeconfig/namereference.yaml
+- kustomizeconfig/namespace.yaml
+- kustomizeconfig/varreference.yaml
