@@ -1,0 +1,5 @@
+- op: add
+  path: /data/chart_groups_added
+  value:
+  - chartgroup1
+  - chartgroup2

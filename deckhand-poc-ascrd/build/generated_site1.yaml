@@ -1,7 +1,10 @@
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaManifest
 metadata:
-  name: full-site-global
+  labels:
+    foo: bar
+  name: test-full-site-global
 spec:
   chart_groups:
-    - foobar
+  - chartgroup1
+  - chartgroup2

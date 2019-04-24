@@ -1,6 +1,5 @@
 resources:
 - manifest.yaml
-- manifest_as_crd.yaml
 
 namePrefix: test-
 

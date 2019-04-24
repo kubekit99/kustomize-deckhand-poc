@@ -1,0 +1,15 @@
+bases:
+  - ../../base
+patchesJson6902:
+- target:
+    group: airship
+    version: v1
+    kind: armada.manifest.airship.io
+    name: full-site-global
+  path: armada_patch.yaml
+
+nameprefix: staging-
+#configMapGenerator:
+#  - name: env-config
+#    files:
+#      - config.env

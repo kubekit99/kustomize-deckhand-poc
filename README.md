@@ -41,8 +41,15 @@ the deckhand functional test have been forked here.
 - Produced files can be referred in the `configurations` sections of the kustomization.yaml
 - For more details, access associated [README](./new-kustomize-config/README.md)
 
-## deckhand-poc
+## deckhand-poc-asit
 
-- WIP
+- resources are configured using structure as close as possible to existing deckhand.
+  apiversion and kind are added to the original yaml file.
 - Currently contains armadamanifest and deckhand document
-- For more details, access associated [README](./deckhand-poc/README.md)
+- For more details, access associated [README](./deckhand-poc-asit/README.md)
+
+## deckhand-poc-ascrd
+
+- resources are configured as a little more K8s compliant CRD
+- Currently contains armadamanifest and deckhand document
+- For more details, access associated [README](./deckhand-poc-ascrd/README.md)

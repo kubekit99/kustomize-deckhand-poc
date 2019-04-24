@@ -1,0 +1,18 @@
+apiVersion: airship/v1
+data:
+  chart_groups:
+  - chartgroup1
+  - chartgroup2
+  release_prefix: clcp
+kind: armada.manifest.airship.io
+metadata:
+  labels:
+    foo: bar
+    name: full-site-global
+  layeringDefinition:
+    abstract: true
+    layer: global
+  name: staging-test-full-site-global
+  schema: metadata/Document/v1
+  storagePolicy: cleartext
+schema: armada/Manifest/v1

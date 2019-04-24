@@ -1,0 +1,9 @@
+resources:
+- manifest.yaml
+
+namePrefix: test-
+
+commonLabels:
+  foo: bar
+
+vars:
