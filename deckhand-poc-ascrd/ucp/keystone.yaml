@@ -1,0 +1,184 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: keystone
+  labels:
+    name: keystone-global
+    component: keystone
+    configuration: ldap-backed
+spec:
+  chart_name: keystone
+  release: keystone
+  protected:
+    continue_processing: false
+  wait:
+    timeout: 1800
+    labels:
+      release_group: clcp-keystone
+  test:
+    enabled: true
+  install:
+    no_hooks: false
+  upgrade:
+    no_hooks: false
+    pre:
+      delete:
+        - type: job
+          labels:
+            release_group: clcp-keystone
+        - type: pod
+          labels:
+            release_group: clcp-keystone
+            component: test
+    post:
+      create: []
+  values:
+    bootstrap:
+      script: |
+        openstack role create --or-show admin_ucp
+        openstack role create --or-show admin_ucp_viewer
+        openstack role create --or-show admin_iam
+        openstack role create --or-show admin_iam_viewer
+    jobs:
+      fernet_rotate:
+        #NOTE(rk760n): the configuration based on AIC3.x security requirements statisfying formula max_active_keys = (token_expiration / rotation_frequency) + 2
+        # rotate keys every 12 hours
+        cron: "0 */10 * * *"
+    conf:
+      keystone:
+        DEFAULT:
+          max_token_size: 16384
+        oslo_middleware:
+          max_request_body_size: 344064
+        token:
+          revoke_by_id: False
+          #NOTE(rk760n): the configuration based on AIC3.x security requirements statisfying formula max_active_keys = (token_expiration / rotation_frequency) + 2
+          #30 hours
+          expiration: 108000
+        fernet_tokens:
+          #NOTE(rk760n): the configuration based on AIC3.x security requirements statisfying formula max_active_keys = (token_expiration / rotation_frequency) + 2
+          max_active_keys: 5
+        identity:
+           driver: sql
+           default_domain_id: default
+           domain_specific_drivers_enabled: True
+           domain_configurations_from_database: True
+           domain_config_dir: /etc/keystonedomains
+      logging:
+        loggers:
+          keys:
+            - root
+            - keystone
+        handlers:
+          keys:
+            - stdout
+            - stderr
+            - "null"
+            - fluent
+        formatters:
+          keys:
+            - context
+            - default
+            - fluent
+        logger_root:
+          level: WARNING
+          handlers: "null"
+        logger_keystone:
+          level: INFO
+          handlers:
+            - stdout
+            - stderr
+            - fluent
+          qualname: keystone
+        logger_amqp:
+          level: WARNING
+          handlers: stderr
+          qualname: amqp
+        logger_amqplib:
+          level: WARNING
+          handlers: stderr
+          qualname: amqplib
+        logger_eventletwsgi:
+          level: WARNING
+          handlers: stderr
+          qualname: eventlet.wsgi.server
+        logger_sqlalchemy:
+          level: WARNING
+          handlers: stderr
+          qualname: sqlalchemy
+        logger_boto:
+          level: WARNING
+          handlers: stderr
+          qualname: boto
+        handler_null:
+          class: logging.NullHandler
+          formatter: default
+          args: ()
+        handler_stdout:
+          class: StreamHandler
+          args: (sys.stdout,)
+          formatter: context
+        handler_stderr:
+          class: StreamHandler
+          args: (sys.stderr,)
+          formatter: context
+        handler_fluent:
+          class: fluent.handler.FluentHandler
+          args: ('ucp.keystone', 'fluentd-logging.osh-infra', 24224)
+          formatter: fluent
+        formatter_fluent:
+          class: oslo_log.formatters.FluentFormatter
+        formatter_context:
+          class: oslo_log.formatters.ContextFormatter
+        formatter_default:
+          format: "%(message)s"
+      ks_domains:
+        nc:
+          identity:
+            driver: ldap
+          ldap:
+            # Use LDAPS instead of STARTTLS
+            use_tls: false
+            tls_req_cert: allow
+            url: "ldaps://FQDN:636"
+            user_filter: "(memberof=CN=COMMON_NAME,OU=Application,OU=Groups,DC=SUBDOMAIN,DC=DOMAIN,DC=com)"
+            suffix: "DC=SUBDOMAIN,DC=DOMAIN,DC=com"
+            page_size: 250
+            alias_dereferencing: default
+            user_objectclass: user
+            user_id_attribute: cn
+            user_name_attribute: sAMAccountName
+            user_pass_attribute: userPassword
+            query_scope: sub
+            user_tree_dn: "DC=SUBDOMAIN,DC=DOMAIN,DC=com"
+            user_enabled_mask: 2
+            user_enabled_default: 512
+            user_enabled_attribute: userAccountControl
+            user_mail_attribute: mail
+            use_pool: true
+            pool_size: 10
+            pool_retry_max: 3
+            pool_retry_delay: 0.1
+            #timeout(in seconds) after which any LDAP API call will abort if not response is received (timeout for LDAP requests)
+            pool_connection_timeout: 5
+            pool_connection_lifetime: 600
+            use_auth_pool: true
+            auth_pool_size: 100
+            auth_pool_connection_lifetime: 600
+            #timeout(in seconds) after which pool/select following a connect returns in case of no activity(connecting to LDAP server)
+            connection_timeout: 1
+    pod:
+      replicas:
+        api: 1
+    labels:
+      api:
+        node_selector_key: control-plane
+        node_selector_value: enabled
+      job:
+        node_selector_key: control-plane
+        node_selector_value: enabled
+
+
+  dependencies: []
+...

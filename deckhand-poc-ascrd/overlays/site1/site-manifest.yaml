@@ -1,8 +1,6 @@
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaManifest
 metadata:
-  name: full-site-global
+  name: keystone-manifest
 spec:
-  chart_groups:
-    - chartgroup1
-    - chartgroup2
+  release_prefix: site1

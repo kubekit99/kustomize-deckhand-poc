@@ -1,0 +1,12 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChartGroup
+metadata:
+  name: keystone
+  labels:
+    name: chartgroup-keystone-global
+data:
+  description: UCP Keystone
+  chart_group:
+    - keystone
+...

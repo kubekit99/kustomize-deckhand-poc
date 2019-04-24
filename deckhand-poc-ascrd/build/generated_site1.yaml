@@ -1,10 +1,361 @@
 apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  labels:
+    site-label: site1
+    ucp-label: common
+  name: ucp-keystone-memcached
+  namespace: ucp
+spec:
+  chart_name: keystone-memcached
+  dependencies: []
+  install:
+    no_hooks: false
+  protected:
+    continue_processing: false
+  release: keystone-memcached
+  upgrade:
+    no_hooks: false
+    pre:
+      delete:
+      - labels:
+          release_group: clcp-keystone-memcached
+        type: job
+  values:
+    labels:
+      server:
+        node_selector_key: control-plane
+        node_selector_value: enabled
+  wait:
+    labels:
+      release_group: clcp-keystone-memcached
+    timeout: 600
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  labels:
+    component: keystone
+    configuration: ldap-backed
+    name: keystone-global
+    site-label: site1
+    ucp-label: common
+  name: ucp-keystone
+  namespace: ucp
+spec:
+  chart_name: keystone
+  dependencies: []
+  install:
+    no_hooks: false
+  protected:
+    continue_processing: false
+  release: keystone
+  test:
+    enabled: true
+  upgrade:
+    no_hooks: false
+    post:
+      create: []
+    pre:
+      delete:
+      - labels:
+          release_group: clcp-keystone
+        type: job
+      - labels:
+          component: test
+          release_group: clcp-keystone
+        type: pod
+  values:
+    bootstrap:
+      script: |
+        openstack role create --or-show admin_ucp
+        openstack role create --or-show admin_ucp_viewer
+        openstack role create --or-show admin_iam
+        openstack role create --or-show admin_iam_viewer
+    conf:
+      keystone:
+        DEFAULT:
+          max_token_size: 16384
+        fernet_tokens:
+          max_active_keys: 5
+        identity:
+          default_domain_id: default
+          domain_config_dir: /etc/keystonedomains
+          domain_configurations_from_database: true
+          domain_specific_drivers_enabled: true
+          driver: sql
+        oslo_middleware:
+          max_request_body_size: 344064
+        token:
+          expiration: 108000
+          revoke_by_id: false
+      ks_domains:
+        nc:
+          identity:
+            driver: ldap
+          ldap:
+            alias_dereferencing: default
+            auth_pool_connection_lifetime: 600
+            auth_pool_size: 100
+            connection_timeout: 1
+            page_size: 250
+            pool_connection_lifetime: 600
+            pool_connection_timeout: 5
+            pool_retry_delay: 0.1
+            pool_retry_max: 3
+            pool_size: 10
+            query_scope: sub
+            suffix: DC=SUBDOMAIN,DC=DOMAIN,DC=com
+            tls_req_cert: allow
+            url: ldaps://FQDN:636
+            use_auth_pool: true
+            use_pool: true
+            use_tls: false
+            user_enabled_attribute: userAccountControl
+            user_enabled_default: 512
+            user_enabled_mask: 2
+            user_filter: (memberof=CN=COMMON_NAME,OU=Application,OU=Groups,DC=SUBDOMAIN,DC=DOMAIN,DC=com)
+            user_id_attribute: cn
+            user_mail_attribute: mail
+            user_name_attribute: sAMAccountName
+            user_objectclass: user
+            user_pass_attribute: userPassword
+            user_tree_dn: DC=SUBDOMAIN,DC=DOMAIN,DC=com
+      logging:
+        formatter_context:
+          class: oslo_log.formatters.ContextFormatter
+        formatter_default:
+          format: '%(message)s'
+        formatter_fluent:
+          class: oslo_log.formatters.FluentFormatter
+        formatters:
+          keys:
+          - context
+          - default
+          - fluent
+        handler_fluent:
+          args: ('ucp.keystone', 'fluentd-logging.osh-infra', 24224)
+          class: fluent.handler.FluentHandler
+          formatter: fluent
+        handler_null:
+          args: ()
+          class: logging.NullHandler
+          formatter: default
+        handler_stderr:
+          args: (sys.stderr,)
+          class: StreamHandler
+          formatter: context
+        handler_stdout:
+          args: (sys.stdout,)
+          class: StreamHandler
+          formatter: context
+        handlers:
+          keys:
+          - stdout
+          - stderr
+          - "null"
+          - fluent
+        logger_amqp:
+          handlers: stderr
+          level: WARNING
+          qualname: amqp
+        logger_amqplib:
+          handlers: stderr
+          level: WARNING
+          qualname: amqplib
+        logger_boto:
+          handlers: stderr
+          level: WARNING
+          qualname: boto
+        logger_eventletwsgi:
+          handlers: stderr
+          level: WARNING
+          qualname: eventlet.wsgi.server
+        logger_keystone:
+          handlers:
+          - stdout
+          - stderr
+          - fluent
+          level: INFO
+          qualname: keystone
+        logger_root:
+          handlers: "null"
+          level: WARNING
+        logger_sqlalchemy:
+          handlers: stderr
+          level: WARNING
+          qualname: sqlalchemy
+        loggers:
+          keys:
+          - root
+          - keystone
+    jobs:
+      fernet_rotate:
+        cron: 0 */10 * * *
+    labels:
+      api:
+        node_selector_key: control-plane
+        node_selector_value: enabled
+      job:
+        node_selector_key: control-plane
+        node_selector_value: enabled
+    pod:
+      replicas:
+        api: 1
+  wait:
+    labels:
+      release_group: clcp-keystone
+    timeout: 1800
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  labels:
+    name: mariadb-global
+    site-label: site1
+    ucp-label: common
+  name: ucp-mariadb
+  namespace: ucp
+spec:
+  chart_name: mariadb
+  dependencies: []
+  install:
+    no_hooks: false
+  protected:
+    continue_processing: false
+  release: mariadb
+  upgrade:
+    no_hooks: false
+    options:
+      force: true
+    pre:
+      delete:
+      - labels:
+          release_group: clcp-mariadb
+        type: job
+  values:
+    labels:
+      error_server:
+        node_selector_key: control-plane
+        node_selector_value: enabled
+      ingress:
+        node_selector_key: control-plane
+        node_selector_value: enabled
+      prometheus_mysql_exporter:
+        node_selector_key: control-plane
+        node_selector_value: enabled
+      server:
+        node_selector_key: control-plane
+        node_selector_value: enabled
+    monitoring:
+      prometheus:
+        enabled: true
+    pod:
+      replicas:
+        server: 1
+    volume:
+      size: 30Gi
+  wait:
+    labels:
+      release_group: clcp-mariadb
+    timeout: 1800
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  labels:
+    name: rabbitmq-global
+    site-label: site1
+    ucp-label: common
+  name: ucp-rabbitmq
+  namespace: ucp
+spec:
+  chart_name: rabbitmq
+  dependencies: []
+  install:
+    no_hooks: false
+  protected:
+    continue_processing: false
+  release: rabbitmq
+  test:
+    enabled: true
+  upgrade:
+    no_hooks: false
+    options:
+      force: true
+    pre:
+      delete:
+      - labels:
+          release_group: clcp-rabbitmq
+        type: job
+      - labels:
+          component: test
+          release_group: clcp-rabbitmq
+        type: pod
+  values:
+    labels:
+      prometheus_rabbitmq_exporter:
+        node_selector_key: control-plane
+        node_selector_value: enabled
+      server:
+        node_selector_key: control-plane
+        node_selector_value: enabled
+      test:
+        node_selector_key: control-plane
+        node_selector_value: enabled
+    pod:
+      replicas:
+        server: 1
+    volume:
+      size: 5Gi
+  wait:
+    labels:
+      release_group: clcp-rabbitmq
+    resources:
+    - type: statefulset
+    timeout: 900
+---
+apiVersion: armada.airshipit.org/v1alpha1
+data:
+  chart_group:
+  - mariadb
+  - rabbitmq
+  - keystone-memcached
+  description: Common UCP Components
+kind: ArmadaChartGroup
+metadata:
+  labels:
+    site-label: site1
+    ucp-label: common
+  name: ucp-infra
+  namespace: ucp
+---
+apiVersion: armada.airshipit.org/v1alpha1
+data:
+  chart_group:
+  - keystone
+  description: UCP Keystone
+kind: ArmadaChartGroup
+metadata:
+  labels:
+    name: chartgroup-keystone-global
+    site-label: site1
+    ucp-label: common
+  name: ucp-keystone
+  namespace: ucp
+---
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaManifest
 metadata:
   labels:
-    foo: bar
-  name: test-full-site-global
+    site-label: site1
+    ucp-label: common
+  name: keystone-manifest
+  namespace: ucp
 spec:
   chart_groups:
-  - chartgroup1
-  - chartgroup2
+  - infra
+  - keystone
+  chartGroupRef:
+    name: ucp-infra
+  release_prefix: site1

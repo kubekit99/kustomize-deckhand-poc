@@ -1,0 +1,53 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: rabbitmq
+  labels:
+    name: rabbitmq-global
+spec:
+  chart_name: rabbitmq
+  release: rabbitmq
+  protected:
+    continue_processing: false
+  wait:
+    timeout: 900
+    labels:
+      release_group: clcp-rabbitmq
+    resources:
+      - type: statefulset
+  test:
+    enabled: true
+  install:
+    no_hooks: false
+  upgrade:
+    no_hooks: false
+    options:
+      force: true
+    pre:
+      delete:
+        - type: job
+          labels:
+            release_group: clcp-rabbitmq
+        - type: pod
+          labels:
+            release_group: clcp-rabbitmq
+            component: test
+  values:
+    volume:
+      size: 5Gi
+    pod:
+      replicas:
+        server: 1
+    labels:
+      server:
+        node_selector_key: control-plane
+        node_selector_value: enabled
+      prometheus_rabbitmq_exporter:
+        node_selector_key: control-plane
+        node_selector_value: enabled
+      test:
+        node_selector_key: control-plane
+        node_selector_value: enabled
+  dependencies: []
+...

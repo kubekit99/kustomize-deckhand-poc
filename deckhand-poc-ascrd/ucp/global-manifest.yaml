@@ -1,0 +1,12 @@
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaManifest
+metadata:
+  name: keystone-manifest
+spec:
+  release_prefix: clcp
+  chart_groups:
+    - infra
+    - keystone
+  # POC related to prefixing
+  chartGroupRef:
+    name: infra

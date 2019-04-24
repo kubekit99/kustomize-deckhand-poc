@@ -1,0 +1,51 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: mariadb
+  labels:
+    name: mariadb-global
+spec:
+  chart_name: mariadb
+  release: mariadb
+  protected:
+    continue_processing: false
+  wait:
+    timeout: 1800
+    labels:
+      release_group: clcp-mariadb
+  install:
+    no_hooks: false
+  upgrade:
+    no_hooks: false
+    options:
+      force: true
+    pre:
+      delete:
+        - type: job
+          labels:
+            release_group: clcp-mariadb
+  values:
+    volume:
+      size: 30Gi
+    monitoring:
+      prometheus:
+        enabled: true
+    labels:
+      server:
+        node_selector_key: control-plane
+        node_selector_value: enabled
+      prometheus_mysql_exporter:
+        node_selector_key: control-plane
+        node_selector_value: enabled
+      ingress:
+        node_selector_key: control-plane
+        node_selector_value: enabled
+      error_server:
+        node_selector_key: control-plane
+        node_selector_value: enabled
+    pod:
+      replicas:
+        server: 1
+  dependencies: []
+...

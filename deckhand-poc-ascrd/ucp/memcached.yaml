@@ -1,0 +1,30 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: keystone-memcached
+spec:
+  chart_name: keystone-memcached
+  release: keystone-memcached
+  protected:
+    continue_processing: false
+  wait:
+    timeout: 600
+    labels:
+      release_group: clcp-keystone-memcached
+  install:
+    no_hooks: false
+  upgrade:
+    no_hooks: false
+    pre:
+      delete:
+          - type: job
+            labels:
+              release_group: clcp-keystone-memcached
+  values:
+    labels:
+      server:
+        node_selector_key: control-plane
+        node_selector_value: enabled
+  dependencies: []
+...
