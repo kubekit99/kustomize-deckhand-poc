@@ -12,14 +12,22 @@ namespace: ucp
 commonLabels:
   ucp-label: common
 
-# vars:
-# - name: BEE_ACTION
-#   objref:
-#     kind: Bee
-#     name: bee
-#     apiVersion: v1beta1
-#   fieldref:
-#     fieldpath: spec.action
+vars:
+- name: THE_CERTIFICATE
+  objref:
+    kind: DeckhandCertificate
+    name: example-cert
+    apiVersion: deckhand.airshipit.org/v1alpha
+  fieldref:
+    fieldpath: spec
+- name: THE_CERTIFICATE_KEY
+  objref:
+    kind: DeckhandCertificateKey
+    name: example-key
+    apiVersion: deckhand.airshipit.org/v1alpha
+  fieldref:
+    fieldpath: spec
+
 
 configurations:
 - kustomizeconfig/armadachart.yaml

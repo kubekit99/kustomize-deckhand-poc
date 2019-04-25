@@ -1,0 +1,78 @@
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  labels:
+    name: parent-chart
+    ucp-label: common
+  layeringDefinition:
+    layer: region
+  name: ucp-example-chart-01
+  namespace: ucp
+spec:
+  chart:
+    details:
+      data: foo
+    values:
+      tls:
+        certificate: |
+          CERTIFICATE DATA
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  labels:
+    ucp-label: common
+  layeringDefinition:
+    actions:
+    - method: merge
+      path: .
+    layer: site
+    parentSelector:
+      name: parent-chart
+  name: ucp-example-chart-02
+  namespace: ucp
+  replacement: true
+spec:
+  chart:
+    details:
+      data: bar
+    values:
+      tls:
+        key: |
+          KEY DATA
+---
+apiVersion: deckhand.airshipit.org/v1alpha
+kind: DeckhandCertificate
+metadata:
+  labels:
+    ucp-label: common
+  layeringDefinition:
+    layer: site
+  name: ucp-example-cert
+  namespace: ucp
+spec: |
+  CERTIFICATE DATA
+---
+apiVersion: deckhand.airshipit.org/v1alpha
+kind: DeckhandCertificateKey
+metadata:
+  labels:
+    ucp-label: common
+  layeringDefinition:
+    layer: site
+  name: ucp-example-key
+  namespace: ucp
+spec: |
+  KEY DATA
+---
+apiVersion: deckhand.airshipit.org/v1alpha
+kind: DeckhandLayeringPolicy
+metadata:
+  labels:
+    ucp-label: common
+  name: ucp-layering-policy
+  namespace: ucp
+spec:
+  layerOrder:
+  - region
+  - site

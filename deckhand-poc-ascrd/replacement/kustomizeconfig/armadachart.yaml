@@ -2,19 +2,19 @@ namePrefix:
 - path: spec/release
   kind: ArmadaChart
 
-nameReference:
-- kind: DeckhandCertificate
-  fieldSpecs:
-  - path: spec/chart/values/tls/certificate
-    kind: ArmadaChart
-- kind: DeckhandCertificateKey
-  fieldSpecs:
-  - path: spec/chart/values/tls/key
-    kind: ArmadaChart
+# nameReference:
+# - kind: DeckhandCertificate
+#   fieldSpecs:
+#   - path: spec/chart/values/tls/certificate
+#     kind: ArmadaChart
+# - kind: DeckhandCertificateKey
+#   fieldSpecs:
+#   - path: spec/chart/values/tls/key
+#     kind: ArmadaChart
 
 
 varReference:
-- path: spec/containers/command
+- path: spec/chart/values/tls/certificate
   kind: ArmadaChart
-- path: spec/beeRef/action
+- path: spec/chart/values/tls/key
   kind: ArmadaChart

@@ -34,20 +34,14 @@ metadata:
     name: parent-chart
   layeringDefinition:
     layer: region
-  substitutions:
-    - dest:
-        path: .chart.values.tls.certificate
-      src:
-        kind: DeckhandCertificate
-        name: example-cert
-        path: .
 spec:
   chart:
     details:
       data: foo
     values:
       tls:
-         certificate: example-cert
+         # certificate: example-cert
+         certificate: $(THE_CERTIFICATE)
 ---
 apiVersion: armada.airshipit.org/v1alpha
 kind: ArmadaChart
@@ -61,18 +55,12 @@ metadata:
     actions:
       - method: merge
         path: .
-  substitutions:
-    - dest:
-        path: .chart.values.tls.key
-      src:
-        kind: DeckhandCertificateKey
-        name: example-key
-        path: .
 spec:
   chart:
     details:
       data: bar
     values:
       tls:
-         key: example-key
+         # key: example-key
+         key: $(THE_CERTIFICATE_KEY)
 ...
