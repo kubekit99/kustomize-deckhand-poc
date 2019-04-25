@@ -10,6 +10,6 @@ diff <(kustomize build overlays/site1) build/generated_site1.yaml
 ## Test variable replacement
 
 ```bash
-kustomize build overlays/replacement
-diff <(kustomize build overlays/replacement) build/generated_replacement.yaml
+kustomize build replacement
+diff <(kustomize build replacement) build/generated_replacement.yaml
 ```

@@ -2,12 +2,12 @@ apiVersion: armada.airshipit.org/v1alpha
 kind: ArmadaChart
 metadata:
   labels:
+    deckhand-poc-label: replacement
     name: parent-chart
-    ucp-label: common
   layeringDefinition:
     layer: region
-  name: ucp-example-chart-01
-  namespace: ucp
+  name: poc-example-chart-01
+  namespace: deckhand
 spec:
   chart:
     details:
@@ -21,7 +21,7 @@ apiVersion: armada.airshipit.org/v1alpha
 kind: ArmadaChart
 metadata:
   labels:
-    ucp-label: common
+    deckhand-poc-label: replacement
   layeringDefinition:
     actions:
     - method: merge
@@ -29,8 +29,8 @@ metadata:
     layer: site
     parentSelector:
       name: parent-chart
-  name: ucp-example-chart-02
-  namespace: ucp
+  name: poc-example-chart-02
+  namespace: deckhand
   replacement: true
 spec:
   chart:
@@ -45,11 +45,11 @@ apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandCertificate
 metadata:
   labels:
-    ucp-label: common
+    deckhand-poc-label: replacement
   layeringDefinition:
     layer: site
-  name: ucp-example-cert
-  namespace: ucp
+  name: poc-example-cert
+  namespace: deckhand
 spec: |
   CERTIFICATE DATA
 ---
@@ -57,11 +57,11 @@ apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandCertificateKey
 metadata:
   labels:
-    ucp-label: common
+    deckhand-poc-label: replacement
   layeringDefinition:
     layer: site
-  name: ucp-example-key
-  namespace: ucp
+  name: poc-example-key
+  namespace: deckhand
 spec: |
   KEY DATA
 ---
@@ -69,10 +69,54 @@ apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandLayeringPolicy
 metadata:
   labels:
-    ucp-label: common
-  name: ucp-layering-policy
-  namespace: ucp
+    deckhand-poc-label: replacement
+  name: poc-layering-policy
+  namespace: deckhand
 spec:
   layerOrder:
   - region
   - site
+---
+apiVersion: deckhand.airshipit.org/v1alpha
+kind: DeckhandPassphrase
+metadata:
+  labels:
+    deckhand-poc-label: replacement
+  layeringDefinition:
+    layer: site
+  name: poc-example-password
+  namespace: deckhand
+  storagePolicy: cleartext
+spec: my-secret-password
+---
+apiVersion: promenade.airshipit.org/v1alpha
+kind: PromenadeResourceType
+metadata:
+  labels:
+    component: apiserver
+    deckhand-poc-label: replacement
+    hostname: server0
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .path.to.merge.into.parent
+    - method: delete
+      path: .path.to.delete
+    layer: global
+    parentSelector:
+      required_key_a: required_label_a
+      required_key_b: required_label_b
+  name: poc-a-unique-config-name-12345
+  namespace: deckhand
+spec:
+  chart:
+    details:
+      data: here
+    values:
+      some_url: http://admin:my-secret-password@service-name:8080
+      tls:
+        certificate: |
+          CERTIFICATE DATA
+        key: |
+          KEY DATA

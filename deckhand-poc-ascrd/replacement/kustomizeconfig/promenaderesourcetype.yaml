@@ -1,0 +1,7 @@
+varReference:
+- path: spec/chart/values/tls/key
+  kind: PromenadeResourceType
+- path: spec/chart/values/tls/certificate
+  kind: PromenadeResourceType
+- path: spec/chart/values/some_url
+  kind: PromenadeResourceType
