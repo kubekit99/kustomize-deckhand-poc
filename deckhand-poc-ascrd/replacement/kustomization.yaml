@@ -1,0 +1,25 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- replacement.yaml
+
+namePrefix: ucp-
+
+namespace: ucp
+
+commonLabels:
+  ucp-label: common
+
+# vars:
+# - name: BEE_ACTION
+#   objref:
+#     kind: Bee
+#     name: bee
+#     apiVersion: v1beta1
+#   fieldref:
+#     fieldpath: spec.action
+
+configurations:
+- kustomizeconfig/armadachart.yaml

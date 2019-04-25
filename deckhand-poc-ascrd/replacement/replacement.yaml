@@ -1,0 +1,78 @@
+---
+apiVersion: deckhand.airshipit.org/v1alpha
+kind: DeckhandLayeringPolicy
+metadata:
+  name: layering-policy
+spec:
+  layerOrder:
+    - region
+    - site
+---
+apiVersion: deckhand.airshipit.org/v1alpha
+kind: DeckhandCertificate
+metadata:
+  name: example-cert
+  layeringDefinition:
+    layer: site
+spec: |
+  CERTIFICATE DATA
+---
+apiVersion: deckhand.airshipit.org/v1alpha
+kind: DeckhandCertificateKey
+metadata:
+  name: example-key
+  layeringDefinition:
+    layer: site
+spec: |
+  KEY DATA
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  name: example-chart-01
+  labels:
+    name: parent-chart
+  layeringDefinition:
+    layer: region
+  substitutions:
+    - dest:
+        path: .chart.values.tls.certificate
+      src:
+        kind: DeckhandCertificate
+        name: example-cert
+        path: .
+spec:
+  chart:
+    details:
+      data: foo
+    values:
+      tls:
+         certificate: example-cert
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  name: example-chart-02
+  replacement: true
+  layeringDefinition:
+    layer: site
+    parentSelector:
+      name: parent-chart
+    actions:
+      - method: merge
+        path: .
+  substitutions:
+    - dest:
+        path: .chart.values.tls.key
+      src:
+        kind: DeckhandCertificateKey
+        name: example-key
+        path: .
+spec:
+  chart:
+    details:
+      data: bar
+    values:
+      tls:
+         key: example-key
+...
