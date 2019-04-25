@@ -1,0 +1,8 @@
+secretGenerator:
+- name: mysecrets
+  kvSources:
+  - name: kvMaker
+    pluginType: go
+    args:
+    - FRUIT
+    - VEGETABLE

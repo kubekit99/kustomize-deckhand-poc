@@ -1,5 +1,20 @@
 # Deckhand-Kustomize POC with minimal changes to deckhand documents
 
+## json possible patch
+
+kustomize supports patches based on [JSONPatch](https://tools.ietf.org/html/rfc6902)
+
+```json
+   [
+     { "op": "test", "path": "/a/b/c", "value": "foo" },
+     { "op": "remove", "path": "/a/b/c" },
+     { "op": "add", "path": "/a/b/c", "value": [ "foo", "bar" ] },
+     { "op": "replace", "path": "/a/b/c", "value": 42 },
+     { "op": "move", "from": "/a/b/c", "path": "/a/b/d" },
+     { "op": "copy", "from": "/a/b/d", "path": "/a/b/e" }
+   ]
+```
+
 ## json based replace patch
 
 ```bash

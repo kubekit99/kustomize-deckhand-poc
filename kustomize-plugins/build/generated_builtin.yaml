@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  DB_PASSWORD: aWxvdmV5b3U=
+  FRUIT: YXBwbGU=
+  ROUTER_PASSWORD: YWRtaW4=
+  VEGETABLE: Y2Fycm90
+  longsecret.txt: TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsCmNvbnNlY3RldHVyIGFkaXBpc2NpbmcgZWxpdCwKc2VkIGRvIGVpdXNtb2QgdGVtcG9yIGluY2lkaWR1bnQKdXQgbGFib3JlIGV0IGRvbG9yZSBtYWduYSBhbGlxdWEuCg==
+kind: Secret
+metadata:
+  name: mysecrets-467mf7hg78
+type: Opaque

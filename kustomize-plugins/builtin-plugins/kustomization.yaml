@@ -1,0 +1,16 @@
+secretGenerator:
+- name: mysecrets
+  kvSources:
+  - name: envfiles
+    pluginType: builtin
+    args:
+    - foo.env
+  - name: files
+    pluginType: builtin
+    args:
+    - longsecret.txt
+  - name: literals
+    pluginType: builtin
+    args:
+    - FRUIT=apple
+    - VEGETABLE=carrot

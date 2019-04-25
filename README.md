@@ -41,6 +41,11 @@ the deckhand functional test have been forked here.
 - Produced files can be referred in the `configurations` sections of the kustomization.yaml
 - For more details, access associated [README](./new-kustomize-config/README.md)
 
+## kustomize-plugins
+
+- Test new go plugin feature of kustomize
+- For more details, access associated [README](./kustomize-plugins/README.md)
+
 ## deckhand-poc-asit
 
 - resources are configured using structure as close as possible to existing deckhand.
