@@ -11,6 +11,8 @@ data:
   - ingress-kube-system
   - ucp-ceph-update
   - ucp-ceph-config
+  - added-by-addjson-1
+  - added-by-addjson-2
   - ucp-infra
   - ucp-keystone
   - ucp-armada
@@ -45,9 +47,6 @@ data:
   - openstack-horizon
   - openstack-barbican
   - sonobuoy
-  chart_groups_added:
-  - added-by-addjson-1
-  - added-by-addjson-2
   release_prefix: clcp
 kind: armada.manifest.airship.io
 metadata:

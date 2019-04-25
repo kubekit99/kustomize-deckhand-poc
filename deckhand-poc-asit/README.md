@@ -15,18 +15,25 @@ kustomize supports patches based on [JSONPatch](https://tools.ietf.org/html/rfc6
    ]
 ```
 
-## json based replace patch
+## json based full replace
 
 ```bash
 kustomize build overlays/replacejson
-diff <(kustomize build overlay/replacejson) build/generated_replacejson.yml
+diff <(kustomize build overlays/replacejson) build/generated_replacejson.yml
 ```
 
-## json based replace add
+## json based add
 
 ```bash
 kustomize build overlays/addjson
 diff <(kustomize build overlays/addjson) build/generated_addjson.yaml 
+```
+
+## json based replace and remove
+
+```bash
+kustomize build overlays/replaceone
+diff <(kustomize build overlays/replaceone) build/generated_replaceone.yaml 
 ```
 
 ## standard patch merge
