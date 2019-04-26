@@ -1,20 +1,8 @@
 ---
 apiVersion: deckhand.airshipit.org/v1alpha
-kind: DeckhandLayeringPolicy
-metadata:
-  name: layering-policy
-spec:
-  layerOrder:
-    - global
-    - type
-    - site
-    - cicd  # overrides for pipeline automation
-...
----
-apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPublicKey
 metadata:
-  name: airship_ssh_public_key
+  name: airship-ssh-public-key
   layeringDefinition:
     abstract: false
     layer: global
@@ -24,7 +12,7 @@ spec: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyb6CDrai3VcFW1ew5ikf7IDSpqfFyrJNLI1
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: private_docker_key
+  name: private-docker-key
   layeringDefinition:
     abstract: false
     layer: global
@@ -104,7 +92,7 @@ metadata:
     - src:
         kind: DeckhandPassphrase
         path: .
-        name: private_docker_key
+        name: private-docker-key
       dest:
         path: .files[2].content
         pattern: DH_SUB_PRIVATE_DOCKER_KEY
@@ -1276,7 +1264,7 @@ spec:
 apiVersion: drydock.airshipit.org/v1alpha
 kind: DrydockHardwareProfile
 metadata:
-  name: DELL_HP_Generic
+  name: DELL-HP-Generic
   layeringDefinition:
     abstract: false
     layer: global
@@ -1305,7 +1293,7 @@ metadata:
         path: .oob.credential
       src:
         kind: DeckhandPassphrase
-        name: ipmi_admin_password
+        name: ipmi-admin-password
         path: .
 spec:
   oob:
@@ -1419,7 +1407,7 @@ metadata:
         path: .oob.credential
       src:
         kind: DeckhandPassphrase
-        name: ipmi_admin_password
+        name: ipmi-admin-password
         path: .
 spec:
   oob:
@@ -1498,14 +1486,14 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.postgresql
       dest:
         path: .values.endpoints.postgresql
     # Credentials
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.postgres.admin
       dest:
         path: .values.endpoints.postgresql.auth.admin
@@ -1515,7 +1503,7 @@ metadata:
         path: .values.endpoints.postgresql.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_postgres_admin_password
+        name: ucp-postgres-admin-password
         path: .
 spec:
   chart_name: ucp-postgresql
@@ -1621,7 +1609,7 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.oslo_messaging
       dest:
         path: .values.endpoints.oslo_messaging
@@ -1629,7 +1617,7 @@ metadata:
     # Credentials
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.oslo_messaging.admin
       dest:
         path: .values.endpoints.oslo_messaging.auth.user
@@ -1638,13 +1626,13 @@ metadata:
 
     - src:
         kind: DeckhandPassphrase
-        name: ucp_rabbitmq_erlang_cookie
+        name: ucp-rabbitmq-erlang-cookie
         path: .
       dest:
         path: .values.endpoints.oslo_messaging.auth.erlang_cookie
     - src:
         kind: DeckhandPassphrase
-        name: ucp_oslo_messaging_password
+        name: ucp-oslo-messaging-password
         path: .
       dest:
         path: .values.endpoints.oslo_messaging.auth.user.password
@@ -1816,14 +1804,14 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.oslo_db
       dest:
         path: .values.endpoints.oslo_db
     # Accounts
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.oslo_db.admin
       dest:
         path: .values.endpoints.oslo_db.auth.admin
@@ -1833,7 +1821,7 @@ metadata:
         path: .values.endpoints.oslo_db.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_oslo_db_admin_password
+        name: ucp-oslo-db-admin-password
         path: .
 
 spec:
@@ -1999,7 +1987,7 @@ metadata:
         path: .values.network.cluster
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ceph.ceph_mon
       dest:
         path: .values.endpoints.ceph_mon
@@ -2009,7 +1997,7 @@ metadata:
        path: .values.conf.ceph.global.fsid
       src:
         kind: DeckhandPassphrase
-        name: ceph_fsid
+        name: ceph-fsid
         path: .
 
 spec:
@@ -2054,7 +2042,7 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha
 kind: ArmadaChart
 metadata:
-  name: ucp-ceph-client-global
+  name: ucp-ceph-client
   layeringDefinition:
     abstract: true
     layer: global
@@ -2091,13 +2079,13 @@ metadata:
         path: .values.network.cluster
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ceph.ceph_mon
       dest:
         path: .values.endpoints.ceph_mon
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ceph.ceph_mgr
       dest:
         path: .values.endpoints.ceph_mgr
@@ -2107,7 +2095,7 @@ metadata:
        path: .values.conf.ceph.global.fsid
       src:
         kind: DeckhandPassphrase
-        name: ceph_fsid
+        name: ceph-fsid
         path: .
 
 spec:
@@ -2205,7 +2193,7 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha
 kind: ArmadaChart
 metadata:
-  name: ucp-ceph-osd-global
+  name: ucp-ceph-osd
   layeringDefinition:
     abstract: true
     layer: global
@@ -2243,7 +2231,7 @@ metadata:
         path: .values.network.cluster
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ceph.ceph_mon
       dest:
         path: .values.endpoints.ceph_mon
@@ -2253,7 +2241,7 @@ metadata:
        path: .values.conf.ceph.global.fsid
       src:
         kind: DeckhandPassphrase
-        name: ceph_fsid
+        name: ceph-fsid
         path: .
 
 spec:
@@ -2356,7 +2344,7 @@ metadata:
         path: .values.network.cluster
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ceph.ceph_mon
       dest:
         path: .values.endpoints.ceph_mon
@@ -2366,7 +2354,7 @@ metadata:
        path: .values.conf.ceph.global.fsid
       src:
         kind: DeckhandPassphrase
-        name: ceph_fsid
+        name: ceph-fsid
         path: .
 
 spec:
@@ -2483,7 +2471,7 @@ metadata:
         path: .values.network.cluster
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ceph.ceph_mon
       dest:
         path: .values.endpoints.ceph_mon
@@ -2493,7 +2481,7 @@ metadata:
        path: .values.conf.ceph.global.fsid
       src:
         kind: DeckhandPassphrase
-        name: ceph_fsid
+        name: ceph-fsid
         path: .
 
 spec:
@@ -2613,19 +2601,19 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.identity
       dest:
         path: .values.endpoints.identity
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ceph.object_store
       dest:
         path: .values.endpoints.object_store
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ceph.ceph_mon
       dest:
         path: .values.endpoints.ceph_mon
@@ -2633,13 +2621,13 @@ metadata:
     # Credentials
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.keystone.admin
       dest:
         path: .values.endpoints.identity.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.swift.keystone
       dest:
         path: .values.endpoints.identity.auth.swift
@@ -2649,13 +2637,13 @@ metadata:
         path: .values.endpoints.identity.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_keystone_admin_password
+        name: osh-keystone-admin-password
         path: .
     - dest:
         path: .values.endpoints.identity.auth.swift.password
       src:
         kind: DeckhandPassphrase
-        name: ceph_swift_keystone_password
+        name: ceph-swift-keystone-password
         path: .
 
 spec:
@@ -2803,13 +2791,13 @@ metadata:
     # Endpoint substitutions
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.postgresql
       dest:
         path: .values.endpoints.maas_db
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.maas_region_ui
       dest:
         path: .values.endpoints.maas_region_ui
@@ -2817,26 +2805,26 @@ metadata:
     # Account and credential substitutions
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.postgres.admin
       dest:
         path: .values.endpoints.maas_db.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.maas.postgres
       dest:
         path: .values.endpoints.maas_db.auth.user
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.maas.postgres.database
       dest:
         path: .values.endpoints.maas_db.path
         pattern: DB_NAME
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.maas.admin
       dest:
         path: .values.endpoints.maas_region_ui.auth.admin
@@ -2846,19 +2834,19 @@ metadata:
         path: .values.endpoints.maas_region_ui.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_maas_admin_password
+        name: ucp-maas-admin-password
         path: .
     - dest:
         path: .values.endpoints.maas_db.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_postgres_admin_password
+        name: ucp-postgres-admin-password
         path: .
     - dest:
         path: .values.endpoints.maas_db.auth.user.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_maas_postgres_password
+        name: ucp-maas-postgres-password
         path: .
 spec:
   chart_name: maas
@@ -2986,19 +2974,19 @@ metadata:
 
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.identity
       dest:
         path: .values.endpoints.identity
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.postgresql
       dest:
         path: .values.endpoints.postgresql
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.physicalprovisioner
       dest:
         path: .values.endpoints.physicalprovisioner
@@ -3037,32 +3025,32 @@ metadata:
 
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.postgres.admin
       dest:
         path: .values.endpoints.postgresql.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.drydock.postgres
       dest:
         path: .values.endpoints.postgresql.auth.user
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.drydock.postgres.database
       dest:
         path: .values.endpoints.postgresql.path
         pattern: DB_NAME
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.keystone.admin
       dest:
         path: .values.endpoints.identity.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.drydock.keystone
       dest:
         path: .values.endpoints.identity.auth.drydock
@@ -3072,25 +3060,25 @@ metadata:
         path: .values.endpoints.identity.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_keystone_admin_password
+        name: ucp-keystone-admin-password
         path: .
     - dest:
         path: .values.endpoints.postgresql.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_postgres_admin_password
+        name: ucp-postgres-admin-password
         path: .
     - dest:
         path: .values.endpoints.identity.auth.drydock.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_drydock_keystone_password
+        name: ucp-drydock-keystone-password
         path: .
     - dest:
         path: .values.endpoints.postgresql.auth.user.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_drydock_postgres_password
+        name: ucp-drydock-postgres-password
         path: .
 
 spec:
@@ -3266,43 +3254,43 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.identity
       dest:
         path: .values.endpoints.identity
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.postgresql
       dest:
         path: .values.endpoints.postgresql_shipyard_db
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.postgresql
       dest:
         path: .values.endpoints.postgresql_airflow_db
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.postgresql_airflow_celery
       dest:
         path: .values.endpoints.postgresql_airflow_celery_db
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.shipyard
       dest:
         path: .values.endpoints.shipyard
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.airflow_oslo_messaging
       dest:
         path: .values.endpoints.oslo_messaging
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.oslo_cache
       dest:
         path: .values.endpoints.oslo_cache
@@ -3310,21 +3298,21 @@ metadata:
     # Database path
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.shipyard.postgres.database
       dest:
         path: .values.endpoints.postgresql_shipyard_db.path
         pattern: 'DB_NAME'
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.airflow.postgres.database
       dest:
         path: .values.endpoints.postgresql_airflow_db.path
         pattern: 'DB_NAME'
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.airflow.postgres.database
       dest:
         path: .values.endpoints.postgresql_airflow_celery_db.path
@@ -3332,61 +3320,61 @@ metadata:
     # Credentials
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.postgres.admin
       dest:
         path: .values.endpoints.postgresql_shipyard_db.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.postgres.admin
       dest:
         path: .values.endpoints.postgresql_airflow_db.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.postgres.admin
       dest:
         path: .values.endpoints.postgresql_airflow_celery_db.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.shipyard.postgres
       dest:
         path: .values.endpoints.postgresql_shipyard_db.auth.user
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.airflow.postgres
       dest:
         path: .values.endpoints.postgresql_airflow_db.auth.user
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.airflow.postgres
       dest:
         path: .values.endpoints.postgresql_airflow_celery_db.auth.user
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.airflow.oslo_messaging.user
       dest:
         path: .values.endpoints.oslo_messaging.auth.user
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.airflow.oslo_messaging.admin
       dest:
         path: .values.endpoints.oslo_messaging.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.keystone.admin
       dest:
         path: .values.endpoints.identity.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.shipyard.keystone
       dest:
         path: .values.endpoints.identity.auth.shipyard
@@ -3396,59 +3384,59 @@ metadata:
         path: .values.endpoints.identity.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_keystone_admin_password
+        name: ucp-keystone-admin-password
         path: .
     - dest:
         path: .values.endpoints.postgresql_shipyard_db.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_postgres_admin_password
+        name: ucp-postgres-admin-password
         path: .
     - dest:
         path: .values.endpoints.postgresql_airflow_db.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_postgres_admin_password
+        name: ucp-postgres-admin-password
         path: .
     - dest:
         path: .values.endpoints.postgresql_airflow_celery_db.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_postgres_admin_password
+        name: ucp-postgres-admin-password
         path: .
     - dest:
         path: .values.endpoints.identity.auth.shipyard.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_shipyard_keystone_password
+        name: ucp-shipyard-keystone-password
         path: .
     - dest:
         path: .values.endpoints.postgresql_shipyard_db.auth.user.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_shipyard_postgres_password
+        name: ucp-shipyard-postgres-password
         path: .
     - dest:
         path: .values.endpoints.postgresql_airflow_db.auth.user.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_airflow_postgres_password
+        name: ucp-airflow-postgres-password
         path: .
     - dest:
         path: .values.endpoints.postgresql_airflow_celery_db.auth.user.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_airflow_postgres_password
+        name: ucp-airflow-postgres-password
         path: .
     - src:
         kind: DeckhandPassphrase
-        name: ucp_airflow_oslo_messaging_password
+        name: ucp-airflow-oslo-messaging-password
         path: .
       dest:
         path: .values.endpoints.oslo_messaging.auth.user.password
     - src:
         kind: DeckhandPassphrase
-        name: ucp_oslo_messaging_password
+        name: ucp-oslo-messaging-password
         path: .
       dest:
         path: .values.endpoints.oslo_messaging.auth.admin.password
@@ -3791,13 +3779,13 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.identity
       dest:
         path: .values.endpoints.identity
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.armada
       dest:
         path: .values.endpoints.armada
@@ -3805,13 +3793,13 @@ metadata:
     # Credentials
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.keystone.admin
       dest:
         path: .values.endpoints.identity.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.armada.keystone
       dest:
         path: .values.endpoints.identity.auth.user
@@ -3821,13 +3809,13 @@ metadata:
         path: .values.endpoints.identity.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_keystone_admin_password
+        name: ucp-keystone-admin-password
         path: .
     - dest:
         path: .values.endpoints.identity.auth.user.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_armada_keystone_password
+        name: ucp-armada-keystone-password
         path: .
 spec:
   chart_name: armada
@@ -3926,13 +3914,13 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.prometheus_openstack_exporter
       dest:
         path: .values.endpoints.prometheus_openstack_exporter
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.identity
       dest:
         path: .values.endpoints.identity
@@ -3940,13 +3928,13 @@ metadata:
     # Accounts
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.keystone.admin
       dest:
         path: .values.endpoints.identity.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.prometheus_openstack_exporter.user
       dest:
         path: .values.endpoints.identity.auth.user
@@ -3956,13 +3944,13 @@ metadata:
         path: .values.endpoints.identity.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_keystone_admin_password
+        name: ucp-keystone-admin-password
         path: .
     - dest:
         path: .values.endpoints.identity.auth.user.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_openstack_exporter_keystone_password
+        name: ucp-openstack-exporter-keystone-password
         path: .
 spec:
   chart_name: ucp-prometheus-openstack-exporter
@@ -4024,13 +4012,13 @@ metadata:
 
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.identity
       dest:
         path: .values.endpoints.identity
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.kubernetesprovisioner
       dest:
         path: .values.endpoints.kubernetesprovisioner
@@ -4039,13 +4027,13 @@ metadata:
 
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.keystone.admin
       dest:
         path: .values.endpoints.identity.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.promenade.keystone
       dest:
         path: .values.endpoints.identity.auth.user
@@ -4055,13 +4043,13 @@ metadata:
         path: .values.endpoints.identity.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_keystone_admin_password
+        name: ucp-keystone-admin-password
         path: .
     - dest:
         path: .values.endpoints.identity.auth.user.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_promenade_keystone_password
+        name: ucp-promenade-keystone-password
         path: .
 
 spec:
@@ -4169,63 +4157,63 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.identity
       dest:
         path: .values.endpoints.identity
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.postgresql
       dest:
         path: .values.endpoints.postgresql
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.deckhand
       dest:
         path: .values.endpoints.deckhand
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.key_manager
       dest:
         path: .values.endpoints.key_manager
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.oslo_cache
       dest:
         path: .values.endpoints.oslo_cache
     # Credentials
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.postgres.admin
       dest:
         path: .values.endpoints.postgresql.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.deckhand.postgres
       dest:
         path: .values.endpoints.postgresql.auth.user
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.deckhand.postgres.database
       dest:
         path: .values.endpoints.postgresql.path
         pattern: DB_NAME
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.deckhand.keystone
       dest:
         path: .values.endpoints.identity.auth.user
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.keystone.admin
       dest:
         path: .values.endpoints.identity.auth.admin
@@ -4235,25 +4223,25 @@ metadata:
         path: .values.endpoints.identity.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_keystone_admin_password
+        name: ucp-keystone-admin-password
         path: .
     - dest:
         path: .values.endpoints.postgresql.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_postgres_admin_password
+        name: ucp-postgres-admin-password
         path: .
     - dest:
         path: .values.endpoints.identity.auth.user.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_deckhand_keystone_password
+        name: ucp-deckhand-keystone-password
         path: .
     - dest:
         path: .values.endpoints.postgresql.auth.user.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_deckhand_postgres_password
+        name: ucp-deckhand-postgres-password
         path: .
 spec:
   chart_name: ucp-deckhand
@@ -4359,69 +4347,69 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.identity
       dest:
         path: .values.endpoints.identity
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.key_manager
       dest:
         path: .values.endpoints.key_manager
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.oslo_db
       dest:
         path: .values.endpoints.oslo_db
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.oslo_cache
       dest:
         path: .values.endpoints.oslo_cache
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.oslo_messaging
       dest:
         path: .values.endpoints.oslo_messaging
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.fluentd
       dest:
         path: .values.endpoints.fluentd
     # Credentials
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.barbican.keystone
       dest:
         path: .values.endpoints.identity.auth.barbican
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.keystone.admin
       dest:
         path: .values.endpoints.identity.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.barbican.oslo_db
       dest:
         path: .values.endpoints.oslo_db.auth.barbican
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.barbican.oslo_db.database
       dest:
         path: .values.endpoints.oslo_db.path
         pattern: DB_NAME
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.barbican.oslo_messaging
       dest:
         path: .values.endpoints.oslo_messaging.auth
@@ -4431,37 +4419,37 @@ metadata:
         path: .values.endpoints.identity.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_keystone_admin_password
+        name: ucp-keystone-admin-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_oslo_db_admin_password
+        name: ucp-oslo-db-admin-password
         path: .
     - dest:
         path: .values.endpoints.identity.auth.barbican.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_barbican_keystone_password
+        name: ucp-barbican-keystone-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db.auth.barbican.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_barbican_oslo_db_password
+        name: ucp-barbican-oslo-db-password
         path: .
     - dest:
         path: .values.endpoints.oslo_messaging.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_oslo_messaging_password
+        name: ucp-oslo-messaging-password
         path: .
     - dest:
         path: .values.endpoints.oslo_messaging.auth.barbican.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_oslo_messaging_password
+        name: ucp-oslo-messaging-password
         path: .
 spec:
   chart_name: ucp-barbican
@@ -4618,7 +4606,7 @@ metadata:
 
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.oslo_cache
       dest:
         path: .values.endpoints.oslo_cache
@@ -4700,55 +4688,55 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.identity
       dest:
         path: .values.endpoints.identity
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.oslo_db
       dest:
         path: .values.endpoints.oslo_db
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.oslo_messaging
       dest:
         path: .values.endpoints.oslo_messaging
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ucp.oslo_cache
       dest:
         path: .values.endpoints.oslo_cache
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.fluentd
       dest:
         path: .values.endpoints.fluentd
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.keystone.admin
       dest:
         path: .values.endpoints.identity.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.keystone.oslo_messaging
       dest:
         path: .values.endpoints.oslo_messaging.auth
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.keystone.oslo_db
       dest:
         path: .values.endpoints.oslo_db.auth.keystone
     - src:
         kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
+        name: ucp-service-accounts
         path: .ucp.keystone.oslo_db.database
       dest:
         path: .values.endpoints.oslo_db.path
@@ -4759,31 +4747,31 @@ metadata:
         path: .values.endpoints.identity.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_keystone_admin_password
+        name: ucp-keystone-admin-password
         path: .
     - dest:
         path: .values.endpoints.oslo_messaging.auth.keystone.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_oslo_messaging_password
+        name: ucp-oslo-messaging-password
         path: .
     - dest:
         path: .values.endpoints.oslo_messaging.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_oslo_messaging_password
+        name: ucp-oslo-messaging-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db.auth.keystone.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_keystone_oslo_db_password
+        name: ucp-keystone-oslo-db-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: ucp_oslo_db_admin_password
+        name: ucp-oslo-db-admin-password
         path: .
 spec:
   chart_name: ucp-keystone
@@ -4892,7 +4880,7 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha
 kind: ArmadaChart
 metadata:
-  name:  ucp-keystone-htk
+  name: ucp-keystone-htk
   layeringDefinition:
     abstract: false
     layer: global
@@ -4989,7 +4977,7 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ceph.ceph_mon
       dest:
         path: .values.endpoints.ceph_mon
@@ -5172,13 +5160,13 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.ceph_object_store
       dest:
         path: .values.endpoints.ceph_object_store
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ceph.ceph_mon
       dest:
         path: .values.endpoints.ceph_mon
@@ -5186,7 +5174,7 @@ metadata:
     # Credentials
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.ceph_object_store.admin
       dest:
         path: .values.endpoints.ceph_object_store.auth.admin
@@ -5196,13 +5184,13 @@ metadata:
         path: .values.endpoints.ceph_object_store.auth.admin.access_key
       src:
         kind: DeckhandPassphrase
-        name: osh_infra_rgw_s3_admin_access_key
+        name: osh-infra-rgw-s3-admin-access-key
         path: .
     - dest:
         path: .values.endpoints.ceph_object_store.auth.admin.secret_key
       src:
         kind: DeckhandPassphrase
-        name: osh_infra_rgw_s3_admin_secret_key
+        name: osh-infra-rgw-s3-admin-secret-key
         path: .
 
 spec:
@@ -5277,19 +5265,19 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.monitoring
       dest:
         path: .values.endpoints.monitoring
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.alerts
       dest:
         path: .values.endpoints.alerts
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.ldap
       dest:
         path: .values.endpoints.ldap
@@ -5297,7 +5285,7 @@ metadata:
     # Accounts
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.prometheus.admin
       dest:
         path: .values.endpoints.monitoring.auth.admin
@@ -5307,13 +5295,13 @@ metadata:
         path: .values.endpoints.monitoring.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_infra_prometheus_admin_password
+        name: osh-infra-prometheus-admin-password
         path: .
 
     # LDAP Details
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.ldap.admin
       dest:
         path: .values.endpoints.ldap.auth.admin
@@ -5321,7 +5309,7 @@ metadata:
         path: .values.endpoints.ldap.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_keystone_ldap_password
+        name: osh-keystone-ldap-password
         path: .
 
 spec:
@@ -6928,19 +6916,19 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.kube_state_metrics
       dest:
         path: .values.endpoints.kube_state_metrics
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.kube_scheduler
       dest:
         path: .values.endpoints.kube_scheduler
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.kube_controller_manager
       dest:
         path: .values.endpoints.kube_controller_manager
@@ -7004,7 +6992,7 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.node_metrics
       dest:
         path: .values.endpoints.node_metrics
@@ -7087,7 +7075,7 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.process_exporter_metrics
       dest:
         path: .values.endpoints.process_exporter_metrics
@@ -7151,25 +7139,25 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.nagios
       dest:
         path: .values.endpoints.nagios
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.monitoring
       dest:
         path: .values.endpoints.monitoring
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.elasticsearch
       dest:
         path: .values.endpoints.elasticsearch
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.ldap
       dest:
         path: .values.endpoints.ldap
@@ -7177,19 +7165,19 @@ metadata:
     # Accounts
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.nagios.admin
       dest:
         path: .values.endpoints.nagios.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.prometheus.admin
       dest:
         path: .values.endpoints.monitoring.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.elasticsearch.admin
       dest:
         path: .values.endpoints.elasticsearch.auth.admin
@@ -7199,25 +7187,25 @@ metadata:
         path: .values.endpoints.nagios.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_infra_nagios_admin_password
+        name: osh-infra-nagios-admin-password
         path: .
     - dest:
         path: .values.endpoints.elasticsearch.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_infra_elasticsearch_admin_password
+        name: osh-infra-elasticsearch-admin-password
         path: .
     - dest:
         path: .values.endpoints.monitoring.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_infra_prometheus_admin_password
+        name: osh-infra-prometheus-admin-password
         path: .
 
     # LDAP Details
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.ldap.admin
       dest:
         path: .values.endpoints.ldap.auth.admin
@@ -7225,7 +7213,7 @@ metadata:
         path: .values.endpoints.ldap.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_keystone_ldap_password
+        name: osh-keystone-ldap-password
         path: .
 
 spec:
@@ -7309,7 +7297,7 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.alerts
       dest:
         path: .values.endpoints.alerts
@@ -7403,7 +7391,7 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ceph.ceph_mon
       dest:
         path: .values.endpoints.ceph_mon
@@ -7492,13 +7480,13 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.oslo_db
       dest:
         path: .values.endpoints.oslo_db
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.prometheus_mysql_exporter
       dest:
         path: .values.endpoints.prometheus_mysql_exporter
@@ -7506,13 +7494,13 @@ metadata:
     # Accounts
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.oslo_db.admin
       dest:
         path: .values.endpoints.oslo_db.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.prometheus_mysql_exporter.user
       dest:
         path: .values.endpoints.prometheus_mysql_exporter.auth.user
@@ -7522,13 +7510,13 @@ metadata:
         path: .values.endpoints.oslo_db.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_infra_oslo_db_admin_password
+        name: osh-infra-oslo-db-admin-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db.auth.exporter.password
       src:
         kind: DeckhandPassphrase
-        name: osh_infra_oslo_db_exporter_password
+        name: osh-infra-oslo-db-exporter-password
         path: .
 spec:
   chart_name: osh-infra-mariadb
@@ -7580,7 +7568,7 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha
 kind: ArmadaChart
 metadata:
-  name: fluent-logging-global
+  name: fluent-logging
   layeringDefinition:
     abstract: true
     layer: global
@@ -7606,26 +7594,26 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.elasticsearch
       dest:
         path: .values.endpoints.elasticsearch
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.fluentd
       dest:
         path: .values.endpoints.fluentd
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.prometheus_fluentd_exporter
       dest:
         path: .values.endpoints.prometheus_fluentd_exporter
     # Accounts
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.elasticsearch.admin
       dest:
         path: .values.endpoints.elasticsearch.auth.admin
@@ -7635,7 +7623,7 @@ metadata:
         path: .values.endpoints.elasticsearch.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_infra_elasticsearch_admin_password
+        name: osh-infra-elasticsearch-admin-password
         path: .
 
 spec:
@@ -7998,7 +7986,7 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha
 kind: ArmadaChart
 metadata:
-  name: elasticsearch-global
+  name: elasticsearch
   labels:
     hosttype: elasticsearch-global
   layeringDefinition:
@@ -8024,20 +8012,20 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.elasticsearch
       dest:
         path: .values.endpoints.elasticsearch
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.prometheus_elasticsearch_exporter
       dest:
         path: .values.endpoints.prometheus_elasticsearch_exporter
 
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.ldap
       dest:
         path: .values.endpoints.ldap
@@ -8045,19 +8033,19 @@ metadata:
     # Accounts
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.elasticsearch.admin
       dest:
         path: .values.endpoints.elasticsearch.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.ceph_object_store.admin
       dest:
         path: .values.endpoints.ceph_object_store.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.ceph_object_store.elasticsearch
       dest:
         path: .values.endpoints.ceph_object_store.auth.elasticsearch
@@ -8067,37 +8055,37 @@ metadata:
         path: .values.endpoints.elasticsearch.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_infra_elasticsearch_admin_password
+        name: osh-infra-elasticsearch-admin-password
         path: .
     - dest:
         path: .values.endpoints.ceph_object_store.auth.admin.access_key
       src:
         kind: DeckhandPassphrase
-        name: osh_infra_rgw_s3_admin_access_key
+        name: osh-infra-rgw-s3-admin-access-key
         path: .
     - dest:
         path: .values.endpoints.ceph_object_store.auth.admin.secret_key
       src:
         kind: DeckhandPassphrase
-        name: osh_infra_rgw_s3_admin_secret_key
+        name: osh-infra-rgw-s3-admin-secret-key
         path: .
     - dest:
         path: .values.endpoints.ceph_object_store.auth.elasticsearch.access_key
       src:
         kind: DeckhandPassphrase
-        name: osh_infra_rgw_s3_elasticsearch_access_key
+        name: osh-infra-rgw-s3-elasticsearch-access-key
         path: .
     - dest:
         path: .values.endpoints.ceph_object_store.auth.elasticsearch.secret_key
       src:
         kind: DeckhandPassphrase
-        name: osh_infra_rgw_s3_elasticsearch_secret_key
+        name: osh-infra-rgw-s3-elasticsearch-secret-key
         path: .
 
     # LDAP Details
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.ldap.admin
       dest:
         path: .values.endpoints.ldap.auth.admin
@@ -8105,7 +8093,7 @@ metadata:
         path: .values.endpoints.ldap.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_keystone_ldap_password
+        name: osh-keystone-ldap-password
         path: .
 spec:
   chart_name: elasticsearch
@@ -8452,26 +8440,26 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.elasticsearch
       dest:
         path: .values.endpoints.elasticsearch
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.kibana
       dest:
         path: .values.endpoints.kibana
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.ldap
       dest:
         path: .values.endpoints.ldap
     # Accounts
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.elasticsearch.admin
       dest:
         path: .values.endpoints.elasticsearch.auth.admin
@@ -8481,13 +8469,13 @@ metadata:
         path: .values.endpoints.elasticsearch.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_infra_elasticsearch_admin_password
+        name: osh-infra-elasticsearch-admin-password
         path: .
 
     # LDAP Details
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.ldap.admin
       dest:
         path: .values.endpoints.ldap.auth.admin
@@ -8495,7 +8483,7 @@ metadata:
         path: .values.endpoints.ldap.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_keystone_ldap_password
+        name: osh-keystone-ldap-password
         path: .
 spec:
   chart_name: kibana
@@ -8593,70 +8581,70 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.oslo_db
       dest:
         path: .values.endpoints.oslo_db
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.oslo_db
       dest:
         path: .values.endpoints.oslo_db_session
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.grafana
       dest:
         path: .values.endpoints.grafana
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.monitoring
       dest:
         path: .values.endpoints.monitoring
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.ldap
       dest:
         path: .values.endpoints.ldap
     # Accounts
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.grafana.admin
       dest:
         path: .values.endpoints.grafana.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.grafana.oslo_db
       dest:
         path: .values.endpoints.oslo_db.auth.user
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.grafana.oslo_db.database
       dest:
         path: .values.endpoints.oslo_db.path
         pattern: DB_NAME
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.grafana.oslo_db_session
       dest:
         path: .values.endpoints.oslo_db_session.auth.user
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.grafana.oslo_db_session.database
       dest:
         path: .values.endpoints.oslo_db_session.path
         pattern: DB_NAME
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.prometheus.admin
       dest:
         path: .values.endpoints.monitoring.auth.user
@@ -8666,43 +8654,43 @@ metadata:
         path: .values.endpoints.grafana.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_infra_grafana_admin_password
+        name: osh-infra-grafana-admin-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db.auth.user.password
       src:
         kind: DeckhandPassphrase
-        name: osh_infra_grafana_oslo_db_password
+        name: osh-infra-grafana-oslo-db-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db_session.auth.user.password
       src:
         kind: DeckhandPassphrase
-        name: osh_infra_grafana_oslo_db_session_password
+        name: osh-infra-grafana-oslo-db-session-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_infra_oslo_db_admin_password
+        name: osh-infra-oslo-db-admin-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db_session.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_infra_oslo_db_admin_password
+        name: osh-infra-oslo-db-admin-password
         path: .
     - dest:
         path: .values.endpoints.monitoring.auth.user.password
       src:
         kind: DeckhandPassphrase
-        name: osh_infra_prometheus_admin_password
+        name: osh-infra-prometheus-admin-password
         path: .
 
     # LDAP Configuration Details
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.ldap.admin.bind
       dest:
         path: .values.endpoints.ldap.auth.admin.bind_dn
@@ -8710,7 +8698,7 @@ metadata:
         path: .values.endpoints.ldap.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_keystone_ldap_password
+        name: osh-keystone-ldap-password
         path: .
     - src:
         kind: PeglegCommonAddresses
@@ -8872,13 +8860,13 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.prometheus_openstack_exporter
       dest:
         path: .values.endpoints.prometheus_openstack_exporter
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.identity
       dest:
         path: .values.endpoints.identity
@@ -8886,13 +8874,13 @@ metadata:
     # Accounts
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.keystone.admin
       dest:
         path: .values.endpoints.identity.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
+        name: osh-infra-service-accounts
         path: .osh_infra.prometheus_openstack_exporter.user
       dest:
         path: .values.endpoints.identity.auth.user
@@ -8902,13 +8890,13 @@ metadata:
         path: .values.endpoints.identity.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_keystone_admin_password
+        name: osh-keystone-admin-password
         path: .
     - dest:
         path: .values.endpoints.identity.auth.user.password
       src:
         kind: DeckhandPassphrase
-        name: osh_infra_openstack_exporter_password
+        name: osh-infra-openstack-exporter-password
         path: .
 spec:
   chart_name: prometheus-openstack-exporter
@@ -8997,31 +8985,31 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.identity
       dest:
         path: .values.endpoints.identity
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.oslo_db
       dest:
         path: .values.endpoints.oslo_db
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.keystone_oslo_messaging
       dest:
         path: .values.endpoints.oslo_messaging
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.oslo_cache
       dest:
         path: .values.endpoints.oslo_cache
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.fluentd
       dest:
         path: .values.endpoints.fluentd
@@ -9029,31 +9017,31 @@ metadata:
     # Service Accounts
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.keystone.admin
       dest:
         path: .values.endpoints.identity.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.keystone.oslo_messaging.admin
       dest:
         path: .values.endpoints.oslo_messaging.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.keystone.oslo_messaging.keystone
       dest:
         path: .values.endpoints.oslo_messaging.auth.keystone
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.keystone.oslo_db
       dest:
         path: .values.endpoints.oslo_db.auth.keystone
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.keystone.oslo_db.database
       dest:
         path: .values.endpoints.oslo_db.path
@@ -9064,37 +9052,37 @@ metadata:
         path: .values.endpoints.identity.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_keystone_admin_password
+        name: osh-keystone-admin-password
         path: .
     - dest:
         path: .values.endpoints.oslo_messaging.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_keystone_oslo_messaging_admin_password
+        name: osh-keystone-oslo-messaging-admin-password
         path: .
     - dest:
         path: .values.endpoints.oslo_messaging.auth.keystone.password
       src:
         kind: DeckhandPassphrase
-        name: osh_keystone_oslo_messaging_password
+        name: osh-keystone-oslo-messaging-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db.auth.keystone.password
       src:
         kind: DeckhandPassphrase
-        name: osh_keystone_oslo_db_password
+        name: osh-keystone-oslo-db-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_oslo_db_admin_password
+        name: osh-oslo-db-admin-password
         path: .
     - dest:
         path: .values.endpoints.oslo_cache.auth.memcache_secret_key
       src:
         kind: DeckhandPassphrase
-        name: osh_oslo_cache_secret_key
+        name: osh-oslo-cache-secret-key
         path: .
 
 spec:
@@ -9271,20 +9259,20 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.keystone_oslo_messaging
       dest:
         path: .values.endpoints.oslo_messaging
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.keystone_rabbitmq_exporter
       dest:
         path: .values.endpoints.prometheus_rabbitmq_exporter
     # Credentials
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.keystone.oslo_messaging.admin
       dest:
         path: .values.endpoints.oslo_messaging.auth.user
@@ -9293,13 +9281,13 @@ metadata:
 
     - src:
         kind: DeckhandPassphrase
-        name: osh_keystone_rabbitmq_erlang_cookie
+        name: osh-keystone-rabbitmq-erlang-cookie
         path: .
       dest:
         path: .values.endpoints.oslo_messaging.auth.erlang_cookie
     - src:
         kind: DeckhandPassphrase
-        name: osh_keystone_oslo_messaging_admin_password
+        name: osh-keystone-oslo-messaging-admin-password
         path: .
       dest:
         path: .values.endpoints.oslo_messaging.auth.user.password
@@ -9366,7 +9354,7 @@ metadata:
 
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.oslo_cache
       dest:
         path: .values.endpoints.oslo_cache
@@ -9518,7 +9506,7 @@ metadata:
         path: .values.network.cluster
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ceph.tenant_ceph_mon
       dest:
         path: .values.endpoints.ceph_mon
@@ -9528,7 +9516,7 @@ metadata:
        path: .values.conf.ceph.global.fsid
       src:
         kind: DeckhandPassphrase
-        name: tenant_ceph_fsid
+        name: tenant-ceph-fsid
         path: .
 
 spec:
@@ -9625,13 +9613,13 @@ metadata:
         path: .values.network.cluster
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ceph.tenant_ceph_mon
       dest:
         path: .values.endpoints.ceph_mon
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ceph.tenant_ceph_mgr
       dest:
         path: .values.endpoints.ceph_mgr
@@ -9641,7 +9629,7 @@ metadata:
        path: .values.conf.ceph.global.fsid
       src:
         kind: DeckhandPassphrase
-        name: tenant_ceph_fsid
+        name: tenant-ceph-fsid
         path: .
 
 spec:
@@ -9818,7 +9806,7 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha
 kind: ArmadaChart
 metadata:
-  name: tenant-ceph-osd-global
+  name: tenant-ceph-osd
   layeringDefinition:
     abstract: true
     layer: global
@@ -9856,7 +9844,7 @@ metadata:
         path: .values.network.cluster
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ceph.tenant_ceph_mon
       dest:
         path: .values.endpoints.ceph_mon
@@ -9866,7 +9854,7 @@ metadata:
        path: .values.conf.ceph.global.fsid
       src:
         kind: DeckhandPassphrase
-        name: tenant_ceph_fsid
+        name: tenant-ceph-fsid
         path: .
 
 spec:
@@ -9988,7 +9976,7 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ceph.tenant_ceph_mon
       dest:
         path: .values.endpoints.ceph_mon
@@ -10068,20 +10056,20 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.neutron_oslo_messaging
       dest:
         path: .values.endpoints.oslo_messaging
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.neutron_rabbitmq_exporter
       dest:
         path: .values.endpoints.prometheus_rabbitmq_exporter
     # Credentials
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.neutron.oslo_messaging.admin
       dest:
         path: .values.endpoints.oslo_messaging.auth.user
@@ -10090,13 +10078,13 @@ metadata:
 
     - src:
         kind: DeckhandPassphrase
-        name: osh_neutron_rabbitmq_erlang_cookie
+        name: osh-neutron-rabbitmq-erlang-cookie
         path: .
       dest:
         path: .values.endpoints.oslo_messaging.auth.erlang_cookie
     - src:
         kind: DeckhandPassphrase
-        name: osh_neutron_oslo_messaging_admin_password
+        name: osh-neutron-oslo-messaging-admin-password
         path: .
       dest:
         path: .values.endpoints.oslo_messaging.auth.user.password
@@ -10265,91 +10253,91 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.identity
       dest:
         path: .values.endpoints.identity
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.compute
       dest:
         path: .values.endpoints.compute
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.compute_metadata
       dest:
         path: .values.endpoints.image_registry
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.oslo_db
       dest:
         path: .values.endpoints.oslo_db
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.neutron_oslo_messaging
       dest:
         path: .values.endpoints.oslo_messaging
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.oslo_cache
       dest:
         path: .values.endpoints.oslo_cache
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.network
       dest:
         path: .values.endpoints.network
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.fluentd
       dest:
         path: .values.endpoints.fluentd
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.keystone.admin
       dest:
         path: .values.endpoints.identity.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.neutron.neutron
       dest:
         path: .values.endpoints.identity.auth.neutron
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.nova.nova
       dest:
         path: .values.endpoints.identity.auth.nova
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.neutron.oslo_messaging.admin
       dest:
         path: .values.endpoints.oslo_messaging.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.neutron.oslo_messaging.neutron
       dest:
         path: .values.endpoints.oslo_messaging.auth.neutron
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.neutron.oslo_db
       dest:
         path: .values.endpoints.oslo_db.auth.neutron
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.neutron.oslo_db.database
       dest:
         path: .values.endpoints.oslo_db.path
@@ -10360,49 +10348,49 @@ metadata:
         path: .values.endpoints.identity.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_keystone_admin_password
+        name: osh-keystone-admin-password
         path: .
     - dest:
         path: .values.endpoints.identity.auth.neutron.password
       src:
         kind: DeckhandPassphrase
-        name: osh_neutron_password
+        name: osh-neutron-password
         path: .
     - dest:
         path: .values.endpoints.identity.auth.nova.password
       src:
         kind: DeckhandPassphrase
-        name: osh_nova_password
+        name: osh-nova-password
         path: .
     - dest:
         path: .values.endpoints.oslo_messaging.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_neutron_oslo_messaging_admin_password
+        name: osh-neutron-oslo-messaging-admin-password
         path: .
     - dest:
         path: .values.endpoints.oslo_messaging.auth.neutron.password
       src:
         kind: DeckhandPassphrase
-        name: osh_neutron_oslo_messaging_password
+        name: osh-neutron-oslo-messaging-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db.auth.neutron.password
       src:
         kind: DeckhandPassphrase
-        name: osh_neutron_oslo_db_password
+        name: osh-neutron-oslo-db-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_oslo_db_admin_password
+        name: osh-oslo-db-admin-password
         path: .
     - dest:
         path: .values.endpoints.oslo_cache.auth.memcache_secret_key
       src:
         kind: DeckhandPassphrase
-        name: osh_oslo_cache_secret_key
+        name: osh-oslo-cache-secret-key
         path: .
 
     # Interfaces for neutron configuration
@@ -10590,7 +10578,7 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha
 kind: ArmadaChart
 metadata:
-  name: nova-global
+  name: nova
   labels:
     name: nova-global
     component: nova
@@ -10617,85 +10605,85 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.identity
       dest:
         path: .values.endpoints.identity
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.oslo_db
       dest:
         path: .values.endpoints.oslo_db
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.oslo_db
       dest:
         path: .values.endpoints.oslo_db_api
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.oslo_db
       dest:
         path: .values.endpoints.oslo_db_cell0
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.nova_oslo_messaging
       dest:
         path: .values.endpoints.oslo_messaging
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.oslo_cache
       dest:
         path: .values.endpoints.oslo_cache
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.image
       dest:
         path: .values.endpoints.image
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.compute
       dest:
         path: .values.endpoints.compute
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.compute_metadata
       dest:
         path: .values.endpoints.compute_metadata
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.compute_novnc_proxy
       dest:
         path: .values.endpoints.compute_novnc_proxy
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.compute_spice_proxy
       dest:
         path: .values.endpoints.compute_spice_proxy
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.placement
       dest:
         path: .values.endpoints.placement
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.network
       dest:
         path: .values.endpoints.network
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.fluentd
       dest:
         path: .values.endpoints.fluentd
@@ -10703,75 +10691,75 @@ metadata:
     # Service Accounts
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.keystone.admin
       dest:
         path: .values.endpoints.identity.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.nova.nova
       dest:
         path: .values.endpoints.identity.auth.nova
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.neutron.neutron
       dest:
         path: .values.endpoints.identity.auth.neutron
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.nova.placement
       dest:
         path: .values.endpoints.identity.auth.placement
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.nova.oslo_messaging.admin
       dest:
         path: .values.endpoints.oslo_messaging.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.nova.oslo_messaging.nova
       dest:
         path: .values.endpoints.oslo_messaging.auth.nova
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.nova.oslo_db.username
       dest:
         path: .values.endpoints.oslo_db.auth.nova.username
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.nova.oslo_db.database
       dest:
         path: .values.endpoints.oslo_db.path
         pattern: DB_NAME
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.nova.oslo_db_api
       dest:
         path: .values.endpoints.oslo_db_api.auth.nova
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.nova.oslo_db_api.database
       dest:
         path: .values.endpoints.oslo_db_api.path
         pattern: DB_NAME
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.nova.oslo_db_cell0
       dest:
         path: .values.endpoints.oslo_db_cell0.auth.nova
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.nova.oslo_db_cell0.database
       dest:
         path: .values.endpoints.oslo_db_cell0.path
@@ -10782,79 +10770,79 @@ metadata:
         path: .values.endpoints.identity.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_keystone_admin_password
+        name: osh-keystone-admin-password
         path: .
     - dest:
         path: .values.endpoints.identity.auth.nova.password
       src:
         kind: DeckhandPassphrase
-        name: osh_nova_password
+        name: osh-nova-password
         path: .
     - dest:
         path: .values.endpoints.identity.auth.neutron.password
       src:
         kind: DeckhandPassphrase
-        name: osh_neutron_password
+        name: osh-neutron-password
         path: .
     - dest:
         path: .values.endpoints.identity.auth.placement.password
       src:
         kind: DeckhandPassphrase
-        name: osh_placement_password
+        name: osh-placement-password
         path: .
     - dest:
         path: .values.endpoints.oslo_messaging.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_nova_oslo_messaging_admin_password
+        name: osh-nova-oslo-messaging-admin-password
         path: .
     - dest:
         path: .values.endpoints.oslo_messaging.auth.nova.password
       src:
         kind: DeckhandPassphrase
-        name: osh_nova_oslo_messaging_password
+        name: osh-nova-oslo-messaging-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db.auth.nova.password
       src:
         kind: DeckhandPassphrase
-        name: osh_nova_oslo_db_password
+        name: osh-nova-oslo-db-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db_api.auth.nova.password
       src:
         kind: DeckhandPassphrase
-        name: osh_nova_oslo_db_password
+        name: osh-nova-oslo-db-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db_cell0.auth.nova.password
       src:
         kind: DeckhandPassphrase
-        name: osh_nova_oslo_db_password
+        name: osh-nova-oslo-db-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_oslo_db_admin_password
+        name: osh-oslo-db-admin-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db_api.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_oslo_db_admin_password
+        name: osh-oslo-db-admin-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db_cell0.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_oslo_db_admin_password
+        name: osh-oslo-db-admin-password
         path: .
     - dest:
         path: .values.endpoints.oslo_cache.auth.memcache_secret_key
       src:
         kind: DeckhandPassphrase
-        name: osh_oslo_cache_secret_key
+        name: osh-oslo-cache-secret-key
         path: .
 spec:
   chart_name: nova
@@ -11025,20 +11013,20 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.nova_oslo_messaging
       dest:
         path: .values.endpoints.oslo_messaging
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.nova_rabbitmq_exporter
       dest:
         path: .values.endpoints.prometheus_rabbitmq_exporter
     # Credentials
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.nova.oslo_messaging.admin
       dest:
         path: .values.endpoints.oslo_messaging.auth.user
@@ -11047,13 +11035,13 @@ metadata:
 
     - src:
         kind: DeckhandPassphrase
-        name: osh_nova_rabbitmq_erlang_cookie
+        name: osh-nova-rabbitmq-erlang-cookie
         path: .
       dest:
         path: .values.endpoints.oslo_messaging.auth.erlang_cookie
     - src:
         kind: DeckhandPassphrase
-        name: osh_nova_oslo_messaging_admin_password
+        name: osh-nova-oslo-messaging-admin-password
         path: .
       dest:
         path: .values.endpoints.oslo_messaging.auth.user.password
@@ -11151,7 +11139,7 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ceph.ceph_mon
       dest:
         path: .values.endpoints.ceph_mon
@@ -11243,13 +11231,13 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.oslo_db
       dest:
         path: .values.endpoints.oslo_db
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.prometheus_mysql_exporter
       dest:
         path: .values.endpoints.prometheus_mysql_exporter
@@ -11257,13 +11245,13 @@ metadata:
     # Accounts
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.oslo_db.admin
       dest:
         path: .values.endpoints.oslo_db.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.prometheus_mysql_exporter.user
       dest:
         path: .values.endpoints.prometheus_mysql_exporter.auth.user
@@ -11273,13 +11261,13 @@ metadata:
         path: .values.endpoints.oslo_db.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_oslo_db_admin_password
+        name: osh-oslo-db-admin-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db.auth.exporter.password
       src:
         kind: DeckhandPassphrase
-        name: osh_oslo_db_exporter_password
+        name: osh-oslo-db-exporter-password
         path: .
 
 spec:
@@ -11344,25 +11332,25 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.identity
       dest:
         path: .values.endpoints.identity
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.dashboard
       dest:
         path: .values.endpoints.dashboard
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.oslo_db
       dest:
         path: .values.endpoints.oslo_db
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.oslo_cache
       dest:
         path: .values.endpoints.oslo_cache
@@ -11370,13 +11358,13 @@ metadata:
     # Service Accounts
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.horizon.oslo_db
       dest:
         path: .values.endpoints.oslo_db.auth.horizon
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.horizon.oslo_db.database
       dest:
         path: .values.endpoints.oslo_db.path
@@ -11387,19 +11375,19 @@ metadata:
         path: .values.endpoints.oslo_db.auth.keystone.password
       src:
         kind: DeckhandPassphrase
-        name: osh_horizon_oslo_db_password
+        name: osh-horizon-oslo-db-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_oslo_db_admin_password
+        name: osh-oslo-db-admin-password
         path: .
     - dest:
         path: .values.endpoints.oslo_cache.auth.memcache_secret_key
       src:
         kind: DeckhandPassphrase
-        name: osh_oslo_cache_secret_key
+        name: osh-oslo-cache-secret-key
         path: .
 spec:
   chart_name: horizon
@@ -11477,97 +11465,97 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.identity
       dest:
         path: .values.endpoints.identity
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.image
       dest:
         path: .values.endpoints.image
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.image_registry
       dest:
         path: .values.endpoints.image_registry
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.volume
       dest:
         path: .values.endpoints.volume
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.volumev2
       dest:
         path: .values.endpoints.volumev2
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.volumev3
       dest:
         path: .values.endpoints.volumev3
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.oslo_db
       dest:
         path: .values.endpoints.oslo_db
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.cinder_oslo_messaging
       dest:
         path: .values.endpoints.oslo_messaging
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.oslo_cache
       dest:
         path: .values.endpoints.oslo_cache
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.fluentd
       dest:
         path: .values.endpoints.fluentd
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.keystone.admin
       dest:
         path: .values.endpoints.identity.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.cinder.cinder
       dest:
         path: .values.endpoints.identity.auth.cinder
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.cinder.oslo_messaging.admin
       dest:
         path: .values.endpoints.oslo_messaging.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.cinder.oslo_messaging.cinder
       dest:
         path: .values.endpoints.oslo_messaging.auth.cinder
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.cinder.oslo_db
       dest:
         path: .values.endpoints.oslo_db.auth.cinder
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.cinder.oslo_db.database
       dest:
         path: .values.endpoints.oslo_db.path
@@ -11578,43 +11566,43 @@ metadata:
         path: .values.endpoints.identity.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_keystone_admin_password
+        name: osh-keystone-admin-password
         path: .
     - dest:
         path: .values.endpoints.identity.auth.cinder.password
       src:
         kind: DeckhandPassphrase
-        name: osh_cinder_password
+        name: osh-cinder-password
         path: .
     - dest:
         path: .values.endpoints.oslo_messaging.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_cinder_oslo_messaging_admin_password
+        name: osh-cinder-oslo-messaging-admin-password
         path: .
     - dest:
         path: .values.endpoints.oslo_messaging.auth.cinder.password
       src:
         kind: DeckhandPassphrase
-        name: osh_cinder_oslo_messaging_password
+        name: osh-cinder-oslo-messaging-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db.auth.cinder.password
       src:
         kind: DeckhandPassphrase
-        name: osh_cinder_oslo_db_password
+        name: osh-cinder-oslo-db-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_oslo_db_admin_password
+        name: osh-oslo-db-admin-password
         path: .
     - dest:
         path: .values.endpoints.oslo_cache.auth.memcache_secret_key
       src:
         kind: DeckhandPassphrase
-        name: osh_oslo_cache_secret_key
+        name: osh-oslo-cache-secret-key
         path: .
 spec:
   chart_name: cinder
@@ -11783,20 +11771,20 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.cinder_oslo_messaging
       dest:
         path: .values.endpoints.oslo_messaging
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.cinder_rabbitmq_exporter
       dest:
         path: .values.endpoints.prometheus_rabbitmq_exporter
     # Credentials
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.cinder.oslo_messaging.admin
       dest:
         path: .values.endpoints.oslo_messaging.auth.user
@@ -11805,13 +11793,13 @@ metadata:
 
     - src:
         kind: DeckhandPassphrase
-        name: osh_cinder_rabbitmq_erlang_cookie
+        name: osh-cinder-rabbitmq-erlang-cookie
         path: .
       dest:
         path: .values.endpoints.oslo_messaging.auth.erlang_cookie
     - src:
         kind: DeckhandPassphrase
-        name: osh_cinder_oslo_messaging_admin_password
+        name: osh-cinder-oslo-messaging-admin-password
         path: .
       dest:
         path: .values.endpoints.oslo_messaging.auth.user.password
@@ -11903,19 +11891,19 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.identity
       dest:
         path: .values.endpoints.identity
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.object_store
       dest:
         path: .values.endpoints.object_store
     - src:
         kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
+        name: ucp-endpoints
         path: .ceph.tenant_ceph_mon
       dest:
         path: .values.endpoints.ceph_mon
@@ -11923,13 +11911,13 @@ metadata:
     # Credentials
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.keystone.admin
       dest:
         path: .values.endpoints.identity.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.swift.keystone
       dest:
         path: .values.endpoints.identity.auth.swift
@@ -11939,13 +11927,13 @@ metadata:
         path: .values.endpoints.identity.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_keystone_admin_password
+        name: osh-keystone-admin-password
         path: .
     - dest:
         path: .values.endpoints.identity.auth.swift.password
       src:
         kind: DeckhandPassphrase
-        name: ceph_swift_keystone_password
+        name: ceph-swift-keystone-password
         path: .
 
 spec:
@@ -12036,97 +12024,97 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.identity
       dest:
         path: .values.endpoints.identity
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.orchestration
       dest:
         path: .values.endpoints.orchestration
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.cloudformation
       dest:
         path: .values.endpoints.cloudformation
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.cloudwatch
       dest:
         path: .values.endpoints.cloudwatch
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.oslo_db
       dest:
         path: .values.endpoints.oslo_db
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.heat_oslo_messaging
       dest:
         path: .values.endpoints.oslo_messaging
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.oslo_cache
       dest:
         path: .values.endpoints.oslo_cache
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.fluentd
       dest:
         path: .values.endpoints.fluentd
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.keystone.admin
       dest:
         path: .values.endpoints.identity.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.heat.heat
       dest:
         path: .values.endpoints.identity.auth.heat
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.heat.heat_trustee
       dest:
         path: .values.endpoints.identity.auth.heat_trustee
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.heat.heat_stack_user
       dest:
         path: .values.endpoints.identity.auth.heat_stack_user
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.heat.oslo_messaging.admin
       dest:
         path: .values.endpoints.oslo_messaging.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.heat.oslo_messaging.heat
       dest:
         path: .values.endpoints.oslo_messaging.auth.heat
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.heat.oslo_db
       dest:
         path: .values.endpoints.oslo_db.auth.heat
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.heat.oslo_db.database
       dest:
         path: .values.endpoints.oslo_db.path
@@ -12137,55 +12125,55 @@ metadata:
         path: .values.endpoints.identity.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_keystone_admin_password
+        name: osh-keystone-admin-password
         path: .
     - dest:
         path: .values.endpoints.identity.auth.heat.password
       src:
         kind: DeckhandPassphrase
-        name: osh_heat_password
+        name: osh-heat-password
         path: .
     - dest:
         path: .values.endpoints.identity.auth.heat_trustee.password
       src:
         kind: DeckhandPassphrase
-        name: osh_heat_trustee_password
+        name: osh-heat-trustee-password
         path: .
     - dest:
         path: .values.endpoints.identity.auth.heat_stack_user.password
       src:
         kind: DeckhandPassphrase
-        name: osh_heat_stack_user_password
+        name: osh-heat-stack-user-password
         path: .
     - dest:
         path: .values.endpoints.oslo_messaging.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_heat_oslo_messaging_admin_password
+        name: osh-heat-oslo-messaging-admin-password
         path: .
     - dest:
         path: .values.endpoints.oslo_messaging.auth.heat.password
       src:
         kind: DeckhandPassphrase
-        name: osh_heat_oslo_messaging_password
+        name: osh-heat-oslo-messaging-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db.auth.heat.password
       src:
         kind: DeckhandPassphrase
-        name: osh_heat_oslo_db_password
+        name: osh-heat-oslo-db-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_oslo_db_admin_password
+        name: osh-oslo-db-admin-password
         path: .
     - dest:
         path: .values.endpoints.oslo_cache.auth.memcache_secret_key
       src:
         kind: DeckhandPassphrase
-        name: osh_oslo_cache_secret_key
+        name: osh-oslo-cache-secret-key
         path: .
 spec:
   chart_name: heat
@@ -12348,20 +12336,20 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.heat_oslo_messaging
       dest:
         path: .values.endpoints.oslo_messaging
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.heat_rabbitmq_exporter
       dest:
         path: .values.endpoints.prometheus_rabbitmq_exporter
     # Credentials
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.heat.oslo_messaging.admin
       dest:
         path: .values.endpoints.oslo_messaging.auth.user
@@ -12370,13 +12358,13 @@ metadata:
 
     - src:
         kind: DeckhandPassphrase
-        name: osh_heat_rabbitmq_erlang_cookie
+        name: osh-heat-rabbitmq-erlang-cookie
         path: .
       dest:
         path: .values.endpoints.oslo_messaging.auth.erlang_cookie
     - src:
         kind: DeckhandPassphrase
-        name: osh_heat_oslo_messaging_admin_password
+        name: osh-heat-oslo-messaging-admin-password
         path: .
       dest:
         path: .values.endpoints.oslo_messaging.auth.user.password
@@ -12444,98 +12432,98 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.identity
       dest:
         path: .values.endpoints.identity
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.image
       dest:
         path: .values.endpoints.image
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.image_registry
       dest:
         path: .values.endpoints.image_registry
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.oslo_db
       dest:
         path: .values.endpoints.oslo_db
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.glance_oslo_messaging
       dest:
         path: .values.endpoints.oslo_messaging
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.oslo_cache
       dest:
         path: .values.endpoints.oslo_cache
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.ceph_object_store
       dest:
         path: .values.endpoints.ceph_object_store
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.object_store
       dest:
         path: .values.endpoints.object_store
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
+        name: osh-infra-endpoints
         path: .osh_infra.fluentd
       dest:
         path: .values.endpoints.fluentd
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.keystone.admin
       dest:
         path: .values.endpoints.identity.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.glance.glance
       dest:
         path: .values.endpoints.identity.auth.glance
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.glance.oslo_messaging.admin
       dest:
         path: .values.endpoints.oslo_messaging.auth.admin
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.glance.oslo_messaging.glance
       dest:
         path: .values.endpoints.oslo_messaging.auth.glance
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.glance.oslo_db
       dest:
         path: .values.endpoints.oslo_db.auth.glance
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.glance.oslo_db.database
       dest:
         path: .values.endpoints.oslo_db.path
         pattern: DB_NAME
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.glance.ceph_object_store
       dest:
         path: .values.endpoints.ceph_object_store.auth.glance
@@ -12545,61 +12533,61 @@ metadata:
         path: .values.endpoints.identity.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_keystone_admin_password
+        name: osh-keystone-admin-password
         path: .
     - dest:
         path: .values.endpoints.identity.auth.glance.password
       src:
         kind: DeckhandPassphrase
-        name: osh_glance_password
+        name: osh-glance-password
         path: .
     - dest:
         path: .values.endpoints.oslo_messaging.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_glance_oslo_messaging_admin_password
+        name: osh-glance-oslo-messaging-admin-password
         path: .
     - dest:
         path: .values.endpoints.oslo_messaging.auth.glance.password
       src:
         kind: DeckhandPassphrase
-        name: osh_glance_oslo_messaging_password
+        name: osh-glance-oslo-messaging-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db.auth.glance.password
       src:
         kind: DeckhandPassphrase
-        name: osh_glance_oslo_db_password
+        name: osh-glance-oslo-db-password
         path: .
     - dest:
         path: .values.endpoints.oslo_db.auth.admin.password
       src:
         kind: DeckhandPassphrase
-        name: osh_oslo_db_admin_password
+        name: osh-oslo-db-admin-password
         path: .
     - dest:
         path: .values.endpoints.oslo_cache.auth.memcache_secret_key
       src:
         kind: DeckhandPassphrase
-        name: osh_oslo_cache_secret_key
+        name: osh-oslo-cache-secret-key
         path: .
     - dest:
         path: .values.endpoints.object_store.auth.glance.tmpurlkey
       src:
         kind: DeckhandPassphrase
-        name: ceph_swift_keystone_password
+        name: ceph-swift-keystone-password
         path: .
     - dest:
         path: .values.endpoints.ceph_object_store.auth.glance.tmpurlkey
       src:
         kind: DeckhandPassphrase
-        name: ceph_swift_keystone_password
+        name: ceph-swift-keystone-password
         path: .
     - dest:
         path: .values.endpoints.ceph_object_store.auth.glance.password
       src:
         kind: DeckhandPassphrase
-        name: osh_glance_password
+        name: osh-glance-password
         path: .
 spec:
   chart_name: glance
@@ -12757,20 +12745,20 @@ metadata:
     # Endpoints
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.glance_oslo_messaging
       dest:
         path: .values.endpoints.oslo_messaging
     - src:
         kind: PeglegEndpointCatalogue
-        name: osh_endpoints
+        name: osh-endpoints
         path: .osh.glance_rabbitmq_exporter
       dest:
         path: .values.endpoints.prometheus_rabbitmq_exporter
     # Credentials
     - src:
         kind: PeglegAccountCatalogue
-        name: osh_service_accounts
+        name: osh-service-accounts
         path: .osh.glance.oslo_messaging.admin
       dest:
         path: .values.endpoints.oslo_messaging.auth.user
@@ -12779,13 +12767,13 @@ metadata:
 
     - src:
         kind: DeckhandPassphrase
-        name: osh_glance_rabbitmq_erlang_cookie
+        name: osh-glance-rabbitmq-erlang-cookie
         path: .
       dest:
         path: .values.endpoints.oslo_messaging.auth.erlang_cookie
     - src:
         kind: DeckhandPassphrase
-        name: osh_glance_oslo_messaging_admin_password
+        name: osh-glance-oslo-messaging-admin-password
         path: .
       dest:
         path: .values.endpoints.oslo_messaging.auth.user.password
@@ -13405,11 +13393,11 @@ spec:
       name: kubernetes-etcd
     network:
       service_client:
-        name: service_client
+        name: service-client
         port: 2379
         target_port: 2379
       service_peer:
-        name: service_peer
+        name: service-peer
         port: 2380
         target_port: 2380
   dependencies:
@@ -13780,11 +13768,11 @@ spec:
       name: calico-etcd
     network:
       service_client:
-        name: service_client
+        name: service-client
         port: 6666
         target_port: 6666
       service_peer:
-        name: service_peer
+        name: service-peer
         port: 6667
         target_port: 6667
   dependencies:
@@ -14014,7 +14002,7 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha
 kind: ArmadaChart
 metadata:
-  name: global-ingress-kube-system
+  name: ingress-kube-system
   labels:
     ingress: kube-system
     name: ingress-kube-system-global
@@ -15357,244 +15345,6 @@ spec:
         percent_successful_nodes: 60
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: ucp-rabbitmq
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: ucp-rabbitmq-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        server: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: ucp-ingress
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: ucp-ingress-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        ingress: 1
-        error_page: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: ucp-mariadb
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: ucp-mariadb-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        server: 1
-        ingress: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: ucp-ceph-ingress
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: ucp-ceph-ingress-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        ingress: 1
-        error_page: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  name: ucp-ceph-client
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: ucp-ceph-client-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    conf:
-      pool:
-        target:
-          osd: 1
-        spec:
-          # RBD pool
-          - name: rbd
-            application: rbd
-            replication: 1
-            percent_total_data: 40
-          - name: cephfs_metadata
-            application: cephfs
-            replication: 1
-            percent_total_data: 5
-          - name: cephfs_data
-            application: cephfs
-            replication: 1
-            percent_total_data: 10
-          # RadosGW pools
-          - name: .rgw.root
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.control
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.data.root
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.gc
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.log
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.intent-log
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.meta
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.usage
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.users.keys
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.users.email
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.users.swift
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.users.uid
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.buckets.extra
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.buckets.index
-            application: rgw
-            replication: 1
-            percent_total_data: 3
-          - name: default.rgw.buckets.data
-            application: rgw
-            replication: 1
-            percent_total_data: 34.8
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  name: ucp-ceph-osd
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: ucp-ceph-osd-global
-    actions:
-      - method: merge
-        path: .
-spec: {}
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: ucp-ceph-provisioners
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: ucp-ceph-provisioners
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        cephfs_provisioner: 1
-        rbd_provisioner: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: ucp-shipyard
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: ucp-shipyard-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        shipyard:
-          api: 1
-        airflow:
-          worker: 1
-          scheduler: 1
-...
----
 # The purpose of this file is to provide site-specific parameters for the ucp-
 # promenade chart.
 apiVersion: armada.airshipit.org/v1alpha
@@ -15667,806 +15417,6 @@ spec:
           default_os: 'ubuntu'
           default_image: 'xenial'
           default_kernel: 'ga-16.04'
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: ucp-deckhand
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: ucp-deckhand-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        deckhand: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: ucp-keystone
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: ucp-keystone-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        api: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: ucp-armada
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: ucp-armada-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        api: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: ucp-barbican
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: ucp-barbican-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        api: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: ucp-drydock
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: ucp-drydock-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    replicas:
-      drydock: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: prometheus
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: prometheus-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        prometheus: 1
-      resources:
-        enabled: true
-        prometheus:
-          limits:
-            memory: "4Gi"
-            cpu: "2000m"
-          requests:
-            memory: "2Gi"
-            cpu: "1000m"
-    storage:
-      requests:
-        storage: 50Gi
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  name: fluent-logging
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      hosttype: fluent-logging-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        fluentd: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: osh-infra-ingress-controller
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: osh-infra-ingress-controller-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        ingress: 1
-        error_page: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: osh-infra-mariadb
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: osh-infra-mariadb-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        server: 1
-        ingress: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: grafana
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: grafana-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        grafana: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  name: elasticsearch
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      hosttype: elasticsearch-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        master: 2
-        data: 1
-        client: 2
-    storage:
-      requests:
-        storage: 50Gi
-    conf:
-      elasticsearch:
-        env:
-          java_opts: "-Xms768m -Xmx768m"
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: tenant-ceph-ingress
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: tenant-ceph-ingress-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        ingress: 1
-        error_page: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  name: tenant-ceph-client
-  labels:
-    name: tenant-ceph-client-type
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: tenant-ceph-client-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        mds: 1
-        mgr: 1
-    conf:
-      ceph:
-        global:
-          osd_pool_default_size: 1
-      pool:
-        default:
-          crush_rule: same_host
-        spec:
-          # RBD pool
-          - name: rbd
-            application: rbd
-            replication: 1
-            percent_total_data: 10
-          # Cinder volumes  pool
-          - name: cinder.volumes
-            application: cinder-volume
-            replication: 1
-            percent_total_data: 40
-          # RadosGW pools
-          - name: .rgw.root
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.control
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.data.root
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.gc
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.log
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.intent-log
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.meta
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.usage
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.users.keys
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.users.email
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.users.swift
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.users.uid
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.buckets.extra
-            application: rgw
-            replication: 1
-            percent_total_data: 0.1
-          - name: default.rgw.buckets.index
-            application: rgw
-            replication: 1
-            percent_total_data: 3
-          - name: default.rgw.buckets.data
-            application: rgw
-            replication: 1
-            percent_total_data: 30
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  name: tenant-ceph-osd
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: tenant-ceph-osd-global
-    actions:
-      - method: merge
-        path: .
-spec: {}
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: heat-rabbitmq
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: heat-rabbitmq-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        server: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: horizon
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: horizon-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        server: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: neutron-rabbitmq
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: neutron-rabbitmq-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        server: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: glance-rabbitmq
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: glance-rabbitmq-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        server: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: keystone
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: keystone-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        api: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  name: neutron-fixme
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: neutron-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        server: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: glance
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: glance-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        api: 1
-        registry: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: heat
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: heat-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        api: 1
-        cfn: 1
-        cloudwatch: 1
-        engine: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: cinder
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: cinder-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        api: 1
-        volume: 1
-        scheduler: 1
-        backup: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: cinder-rabbitmq
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: cinder-rabbitmq-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        server: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: openstack-ingress-controller
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: openstack-ingress-controller-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        ingress: 1
-        error_page: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  name: nova
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: nova-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        api_metadata: 1
-        compute_ironic: 1
-        placement: 1
-        osapi: 1
-        conductor: 1
-        consoleauth: 1
-        scheduler: 1
-        novncproxy: 1
-        spiceproxy: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: openstack-mariadb
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: openstack-mariadb-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        server: 1
-        ingress: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: nova-rabbitmq
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: nova-rabbitmq-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        server: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  replacement: true
-  name: keystone-rabbitmq
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: keystone-rabbitmq-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  values:
-    pod:
-      replicas:
-        server: 1
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaChart
-metadata:
-  name: ingress-kube-system
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      ingress: kube-system
-    actions:
-      - method: merge
-        path: .
-spec: {}
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaManifest
-metadata:
-  replacement: true
-  name: cluster-bootstrap
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: cluster-bootstrap-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  release_prefix: airship
-  chart_groups:
-    - podsecuritypolicy
-    - kubernetes-proxy
-    - kubernetes-container-networking
-    - kubernetes-dns
-    - kubernetes-etcd
-    - kubernetes-haproxy
-    - kubernetes-core
-    - ingress-kube-system
-    - ucp-ceph
-    - ucp-ceph-config
-    - ucp-core
-    - ucp-keystone
-    - ucp-divingbell
-    - ucp-armada
-    - ucp-deckhand
-    - ucp-drydock
-    - ucp-promenade
-    - ucp-shipyard
-...
----
-apiVersion: armada.airshipit.org/v1alpha
-kind: ArmadaManifest
-metadata:
-  replacement: true
-  name: full-site
-  layeringDefinition:
-    abstract: false
-    layer: type
-    parentSelector:
-      name: full-site-global
-    actions:
-      - method: merge
-        path: .
-spec:
-  release_prefix: airship
-  chart_groups:
-    - podsecuritypolicy
-    - kubernetes-proxy
-    - kubernetes-container-networking
-    - kubernetes-dns
-    - kubernetes-etcd
-    - kubernetes-haproxy
-    - kubernetes-core
-    - ingress-kube-system
-    - ucp-ceph
-    - ucp-ceph-config
-    - ucp-core
-    - ucp-keystone
-    - ucp-divingbell
-    - ucp-armada
-    - ucp-deckhand
-    - ucp-drydock
-    - ucp-promenade
-    - ucp-shipyard
-    - ucp-prometheus-openstack-exporter
-    - osh-infra-ingress-controller
-    - osh-infra-ceph-config
-    - osh-infra-radosgw
-    - osh-infra-logging
-    - osh-infra-monitoring
-    - osh-infra-mariadb
-    - osh-infra-dashboards
-    - openstack-ingress-controller
-    - openstack-ceph-config
-    - openstack-tenant-ceph
-    - openstack-mariadb
-    - openstack-memcached
-    - openstack-keystone
-    - openstack-radosgw
-    - openstack-glance
-    - openstack-cinder
-    - openstack-compute-kit
-    - openstack-heat
-    - osh-infra-prometheus-openstack-exporter
-    - openstack-horizon
 ...
 ---
 apiVersion: promenade.airshipit.org/v1alpha
@@ -16571,7 +15521,7 @@ spec:
 apiVersion: pegleg.airshipit.org/v1alpha
 kind: PeglegEndpointCatalogue
 metadata:
-  name: ucp_endpoints
+  name: ucp-endpoints
   layeringDefinition:
     abstract: false
     layer: type
@@ -16631,7 +15581,7 @@ spec:
       host_fqdn_override:
         default: null
     postgresql_airflow_celery:
-      name: postgresql_airflow_celery_db
+      name: postgresql-airflow-celery-db
       hosts:
         default: postgresql
       path: /DB_NAME
@@ -16857,7 +15807,7 @@ spec:
 apiVersion: pegleg.airshipit.org/v1alpha
 kind: PeglegEndpointCatalogue
 metadata:
-  name: osh_endpoints
+  name: osh-endpoints
   layeringDefinition:
     abstract: false
     layer: type
@@ -17344,7 +16294,7 @@ spec:
 apiVersion: pegleg.airshipit.org/v1alpha
 kind: PeglegEndpointCatalogue
 metadata:
-  name: osh_infra_endpoints
+  name: osh-infra-endpoints
   layeringDefinition:
     abstract: false
     layer: type
@@ -17640,7 +16590,7 @@ spec:
 apiVersion: pegleg.airshipit.org/v1alpha
 kind: PeglegAccountCatalogue
 metadata:
-  name: ucp_service_accounts
+  name: ucp-service-accounts
   layeringDefinition:
     abstract: false
     layer: type
@@ -17782,7 +16732,7 @@ spec:
 apiVersion: pegleg.airshipit.org/v1alpha
 kind: PeglegAccountCatalogue
 metadata:
-  name: osh_service_accounts
+  name: osh-service-accounts
   layeringDefinition:
     abstract: false
     layer: type
@@ -18010,7 +16960,7 @@ spec:
 apiVersion: pegleg.airshipit.org/v1alpha
 kind: PeglegAccountCatalogue
 metadata:
-  name: osh_infra_service_accounts
+  name: osh-infra-service-accounts
   layeringDefinition:
     abstract: false
     layer: type
@@ -18085,7 +17035,7 @@ spec:
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPublicKey
 metadata:
-  name: airsloop_ssh_public_key
+  name: airsloop-ssh-public-key
   layeringDefinition:
     abstract: false
     layer: site
@@ -20413,7 +19363,7 @@ kind: DeckhandPrivateKey
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_placement_password
+  name: osh-placement-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20423,7 +19373,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_oslo_db_admin_password
+  name: osh-oslo-db-admin-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20433,7 +19383,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_infra_elasticsearch_admin_password
+  name: osh-infra-elasticsearch-admin-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20443,7 +19393,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_infra_oslo_db_admin_password
+  name: osh-infra-oslo-db-admin-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20453,7 +19403,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ucp_airflow_oslo_messaging_password
+  name: ucp-airflow-oslo-messaging-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20463,7 +19413,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_infra_openstack_exporter_password
+  name: osh-infra-openstack-exporter-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20473,7 +19423,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_barbican_oslo_messaging_password
+  name: osh-barbican-oslo-messaging-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20483,7 +19433,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_keystone_ldap_password
+  name: osh-keystone-ldap-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20493,7 +19443,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ucp_keystone_oslo_db_password
+  name: ucp-keystone-oslo-db-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20503,7 +19453,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_neutron_password
+  name: osh-neutron-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20513,7 +19463,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ucp_postgres_admin_password
+  name: ucp-postgres-admin-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20523,7 +19473,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_keystone_rabbitmq_erlang_cookie
+  name: osh-keystone-rabbitmq-erlang-cookie
   layeringDefinition:
     abstract: false
     layer: site
@@ -20533,7 +19483,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_infra_rgw_s3_elasticsearch_secret_key
+  name: osh-infra-rgw-s3-elasticsearch-secret-key
   layeringDefinition:
     abstract: false
     layer: site
@@ -20543,7 +19493,7 @@ spec: elastic_secret_key
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_keystone_oslo_db_password
+  name: osh-keystone-oslo-db-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20553,7 +19503,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ceph_fsid
+  name: ceph-fsid
   layeringDefinition:
     abstract: false
     layer: site
@@ -20564,7 +19514,7 @@ spec: d52a9d00-64b9-45f0-b564-08dffe95f847
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_heat_oslo_messaging_password
+  name: osh-heat-oslo-messaging-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20574,7 +19524,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_heat_oslo_db_password
+  name: osh-heat-oslo-db-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20584,7 +19534,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_heat_password
+  name: osh-heat-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20594,7 +19544,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_infra_grafana_admin_password
+  name: osh-infra-grafana-admin-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20604,7 +19554,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ucp_barbican_keystone_password
+  name: ucp-barbican-keystone-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20614,7 +19564,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_cinder_password
+  name: osh-cinder-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20624,7 +19574,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_barbican_oslo_db_password
+  name: osh-barbican-oslo-db-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20634,7 +19584,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ucp_oslo_db_admin_password
+  name: ucp-oslo-db-admin-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20644,7 +19594,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_oslo_cache_secret_key
+  name: osh-oslo-cache-secret-key
   layeringDefinition:
     abstract: false
     layer: site
@@ -20654,7 +19604,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_cinder_rabbitmq_erlang_cookie
+  name: osh-cinder-rabbitmq-erlang-cookie
   layeringDefinition:
     abstract: false
     layer: site
@@ -20664,7 +19614,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_glance_oslo_messaging_password
+  name: osh-glance-oslo-messaging-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20674,7 +19624,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_heat_oslo_messaging_admin_password
+  name: osh-heat-oslo-messaging-admin-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20684,7 +19634,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_neutron_rabbitmq_erlang_cookie
+  name: osh-neutron-rabbitmq-erlang-cookie
   layeringDefinition:
     abstract: false
     layer: site
@@ -20694,7 +19644,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_glance_password
+  name: osh-glance-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20704,7 +19654,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ucp_airflow_postgres_password
+  name: ucp-airflow-postgres-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20714,7 +19664,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ucp_deckhand_postgres_password
+  name: ucp-deckhand-postgres-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20724,7 +19674,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_infra_rgw_s3_elasticsearch_access_key
+  name: osh-infra-rgw-s3-elasticsearch-access-key
   layeringDefinition:
     abstract: false
     layer: site
@@ -20734,7 +19684,7 @@ spec: elastic_access_key
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ucp_openstack_exporter_keystone_password
+  name: ucp-openstack-exporter-keystone-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20744,7 +19694,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_neutron_oslo_messaging_admin_password
+  name: osh-neutron-oslo-messaging-admin-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20754,7 +19704,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_infra_rgw_s3_admin_access_key
+  name: osh-infra-rgw-s3-admin-access-key
   layeringDefinition:
     abstract: false
     layer: site
@@ -20764,7 +19714,7 @@ spec: admin_access_key
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ucp_barbican_oslo_db_password
+  name: ucp-barbican-oslo-db-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20774,7 +19724,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_keystone_oslo_messaging_admin_password
+  name: osh-keystone-oslo-messaging-admin-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20784,7 +19734,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ucp_maas_postgres_password
+  name: ucp-maas-postgres-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20794,7 +19744,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_glance_rabbitmq_erlang_cookie
+  name: osh-glance-rabbitmq-erlang-cookie
   layeringDefinition:
     abstract: false
     layer: site
@@ -20804,7 +19754,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_infra_oslo_db_exporter_password
+  name: osh-infra-oslo-db-exporter-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20814,7 +19764,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_nova_password
+  name: osh-nova-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20824,7 +19774,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ucp_maas_admin_password
+  name: ucp-maas-admin-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20834,7 +19784,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_glance_oslo_db_password
+  name: osh-glance-oslo-db-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20844,7 +19794,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_neutron_oslo_messaging_password
+  name: osh-neutron-oslo-messaging-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20854,7 +19804,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ucp_rabbitmq_erlang_cookie
+  name: ucp-rabbitmq-erlang-cookie
   layeringDefinition:
     abstract: false
     layer: site
@@ -20864,7 +19814,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ipmi_admin_password
+  name: ipmi-admin-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20876,7 +19826,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ucp_drydock_keystone_password
+  name: ucp-drydock-keystone-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20886,7 +19836,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ucp_oslo_messaging_password
+  name: ucp-oslo-messaging-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20896,7 +19846,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_keystone_oslo_messaging_password
+  name: osh-keystone-oslo-messaging-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20906,7 +19856,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_nova_oslo_db_password
+  name: osh-nova-oslo-db-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20916,7 +19866,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_nova_rabbitmq_erlang_cookie
+  name: osh-nova-rabbitmq-erlang-cookie
   layeringDefinition:
     abstract: false
     layer: site
@@ -20926,7 +19876,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ucp_deckhand_keystone_password
+  name: ucp-deckhand-keystone-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20936,7 +19886,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_nova_oslo_messaging_password
+  name: osh-nova-oslo-messaging-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20946,7 +19896,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_nova_oslo_messaging_admin_password
+  name: osh-nova-oslo-messaging-admin-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20956,7 +19906,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_keystone_admin_password
+  name: osh-keystone-admin-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20966,7 +19916,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_barbican_rabbitmq_erlang_cookie
+  name: osh-barbican-rabbitmq-erlang-cookie
   layeringDefinition:
     abstract: false
     layer: site
@@ -20976,7 +19926,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_glance_oslo_messaging_admin_password
+  name: osh-glance-oslo-messaging-admin-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20986,7 +19936,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_infra_prometheus_admin_password
+  name: osh-infra-prometheus-admin-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -20996,7 +19946,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_heat_stack_user_password
+  name: osh-heat-stack-user-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -21006,7 +19956,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_infra_rgw_s3_admin_secret_key
+  name: osh-infra-rgw-s3-admin-secret-key
   layeringDefinition:
     abstract: false
     layer: site
@@ -21016,7 +19966,7 @@ spec: admin_secret_key
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_horizon_oslo_db_password
+  name: osh-horizon-oslo-db-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -21026,7 +19976,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ucp_shipyard_postgres_password
+  name: ucp-shipyard-postgres-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -21047,7 +19997,7 @@ spec: e12330cfe038735aee32
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_oslo_db_exporter_password
+  name: osh-oslo-db-exporter-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -21057,7 +20007,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ucp_keystone_admin_password
+  name: ucp-keystone-admin-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -21067,7 +20017,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_neutron_oslo_db_password
+  name: osh-neutron-oslo-db-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -21077,7 +20027,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ucp_drydock_postgres_password
+  name: ucp-drydock-postgres-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -21087,7 +20037,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: airsloop_crypt_password
+  name: airsloop-crypt-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -21098,7 +20048,7 @@ spec: $6$AVL7yH1sLYlKqvcK$ngUiLKYZQhhj07Lb3ngWa4qVwDgUP9pCGfGFG7JIpF.6iStnfEMeyS
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_barbican_oslo_messaging_admin_password
+  name: osh-barbican-oslo-messaging-admin-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -21108,7 +20058,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_cinder_oslo_messaging_password
+  name: osh-cinder-oslo-messaging-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -21118,7 +20068,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ucp_promenade_keystone_password
+  name: ucp-promenade-keystone-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -21128,7 +20078,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_infra_grafana_oslo_db_password
+  name: osh-infra-grafana-oslo-db-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -21138,7 +20088,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_heat_trustee_password
+  name: osh-heat-trustee-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -21148,7 +20098,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ucp_armada_keystone_password
+  name: ucp-armada-keystone-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -21158,7 +20108,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_infra_nagios_admin_password
+  name: osh-infra-nagios-admin-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -21168,7 +20118,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_cinder_oslo_db_password
+  name: osh-cinder-oslo-db-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -21178,7 +20128,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_heat_rabbitmq_erlang_cookie
+  name: osh-heat-rabbitmq-erlang-cookie
   layeringDefinition:
     abstract: false
     layer: site
@@ -21188,7 +20138,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ceph_swift_keystone_password
+  name: ceph-swift-keystone-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -21198,7 +20148,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: ucp_shipyard_keystone_password
+  name: ucp-shipyard-keystone-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -21208,7 +20158,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_infra_grafana_oslo_db_session_password
+  name: osh-infra-grafana-oslo-db-session-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -21218,7 +20168,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: tenant_ceph_fsid
+  name: tenant-ceph-fsid
   layeringDefinition:
     abstract: false
     layer: site
@@ -21229,7 +20179,7 @@ spec: 9e45aa5f-9d75-4fa7-bde5-c99e4a7db7a1
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_cinder_oslo_messaging_admin_password
+  name: osh-cinder-oslo-messaging-admin-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -21239,7 +20189,7 @@ spec: airsloop123
 apiVersion: deckhand.airshipit.org/v1alpha
 kind: DeckhandPassphrase
 metadata:
-  name: osh_barbican_password
+  name: osh-barbican-password
   layeringDefinition:
     abstract: false
     layer: site
@@ -21270,7 +20220,7 @@ metadata:
         kind: DeckhandPublicKey
         # This should match the "name" metadata of the SSH key which will be
         # substituted, located in site/airsloop/secrets folder.
-        name: airsloop_ssh_public_key
+        name: airsloop-ssh-public-key
         path: .
     - dest:
         path: .repositories.main_archive
@@ -21285,7 +20235,7 @@ metadata:
     #  src:
     #    kind: DeckhandPublicKey
     #    # your ssh key
-    #    name: MY_USER_ssh_public_key
+    #    name: MY-USER-ssh-public-key
     #    path: .
 spec:
   tag_definitions: []
@@ -21349,7 +20299,7 @@ spec:
 apiVersion: drydock.airshipit.org/v1alpha
 kind: DrydockHardwareProfile
 metadata:
-  name: dell_r720xd
+  name: dell-r720xd
   layeringDefinition:
     abstract: false
     layer: site
@@ -21400,7 +20350,7 @@ spec:
 apiVersion: drydock.airshipit.org/v1alpha
 kind: DrydockHostProfile
 metadata:
-  name: compute_r720xd
+  name: compute-r720xd
   layeringDefinition:
     abstract: false
     layer: site
@@ -21926,13 +20876,13 @@ metadata:
         path: .values.conf.uamlite.users[0].user_sshkeys[0]
       src:
         kind: DeckhandPublicKey
-        name: airsloop_ssh_public_key
+        name: airsloop-ssh-public-key
         path: .
     - dest:
         path: .values.conf.uamlite.users[0].user_crypt_passwd
       src:
         kind: DeckhandPassphrase
-        name: airsloop_crypt_password
+        name: airsloop-crypt-password
         path: .
 spec:
   values:

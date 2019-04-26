@@ -1,0 +1,1038 @@
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: ucp-rabbitmq
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: ucp-rabbitmq-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        server: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: ucp-ingress
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: ucp-ingress-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        ingress: 1
+        error_page: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: ucp-mariadb
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: ucp-mariadb-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        server: 1
+        ingress: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: ucp-ceph-ingress
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: ucp-ceph-ingress-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        ingress: 1
+        error_page: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  name: ucp-ceph-client
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: ucp-ceph-client-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    conf:
+      pool:
+        target:
+          osd: 1
+        spec:
+          # RBD pool
+          - name: rbd
+            application: rbd
+            replication: 1
+            percent_total_data: 40
+          - name: cephfs_metadata
+            application: cephfs
+            replication: 1
+            percent_total_data: 5
+          - name: cephfs_data
+            application: cephfs
+            replication: 1
+            percent_total_data: 10
+          # RadosGW pools
+          - name: .rgw.root
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.control
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.data.root
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.gc
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.log
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.intent-log
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.meta
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.usage
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.users.keys
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.users.email
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.users.swift
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.users.uid
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.buckets.extra
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.buckets.index
+            application: rgw
+            replication: 1
+            percent_total_data: 3
+          - name: default.rgw.buckets.data
+            application: rgw
+            replication: 1
+            percent_total_data: 34.8
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  name: ucp-ceph-osd
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: ucp-ceph-osd-global
+    actions:
+      - method: merge
+        path: .
+spec: {}
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: ucp-ceph-provisioners
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: ucp-ceph-provisioners
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        cephfs_provisioner: 1
+        rbd_provisioner: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: ucp-shipyard
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: ucp-shipyard-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        shipyard:
+          api: 1
+        airflow:
+          worker: 1
+          scheduler: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: ucp-deckhand
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: ucp-deckhand-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        deckhand: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: ucp-keystone
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: ucp-keystone-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        api: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: ucp-armada
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: ucp-armada-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        api: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: ucp-barbican
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: ucp-barbican-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        api: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: ucp-drydock
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: ucp-drydock-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    replicas:
+      drydock: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: prometheus
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: prometheus-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        prometheus: 1
+      resources:
+        enabled: true
+        prometheus:
+          limits:
+            memory: "4Gi"
+            cpu: "2000m"
+          requests:
+            memory: "2Gi"
+            cpu: "1000m"
+    storage:
+      requests:
+        storage: 50Gi
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  name: fluent-logging
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      hosttype: fluent-logging-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        fluentd: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: osh-infra-ingress-controller
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: osh-infra-ingress-controller-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        ingress: 1
+        error_page: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: osh-infra-mariadb
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: osh-infra-mariadb-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        server: 1
+        ingress: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: grafana
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: grafana-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        grafana: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  name: elasticsearch
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      hosttype: elasticsearch-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        master: 2
+        data: 1
+        client: 2
+    storage:
+      requests:
+        storage: 50Gi
+    conf:
+      elasticsearch:
+        env:
+          java_opts: "-Xms768m -Xmx768m"
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: tenant-ceph-ingress
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: tenant-ceph-ingress-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        ingress: 1
+        error_page: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  name: tenant-ceph-client
+  labels:
+    name: tenant-ceph-client-type
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: tenant-ceph-client-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        mds: 1
+        mgr: 1
+    conf:
+      ceph:
+        global:
+          osd_pool_default_size: 1
+      pool:
+        default:
+          crush_rule: same_host
+        spec:
+          # RBD pool
+          - name: rbd
+            application: rbd
+            replication: 1
+            percent_total_data: 10
+          # Cinder volumes  pool
+          - name: cinder.volumes
+            application: cinder-volume
+            replication: 1
+            percent_total_data: 40
+          # RadosGW pools
+          - name: .rgw.root
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.control
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.data.root
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.gc
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.log
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.intent-log
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.meta
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.usage
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.users.keys
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.users.email
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.users.swift
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.users.uid
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.buckets.extra
+            application: rgw
+            replication: 1
+            percent_total_data: 0.1
+          - name: default.rgw.buckets.index
+            application: rgw
+            replication: 1
+            percent_total_data: 3
+          - name: default.rgw.buckets.data
+            application: rgw
+            replication: 1
+            percent_total_data: 30
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  name: tenant-ceph-osd
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: tenant-ceph-osd-global
+    actions:
+      - method: merge
+        path: .
+spec: {}
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: heat-rabbitmq
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: heat-rabbitmq-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        server: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: horizon
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: horizon-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        server: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: neutron-rabbitmq
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: neutron-rabbitmq-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        server: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: glance-rabbitmq
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: glance-rabbitmq-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        server: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: keystone
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: keystone-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        api: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  name: neutron
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: neutron-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        server: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: glance
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: glance-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        api: 1
+        registry: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: heat
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: heat-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        api: 1
+        cfn: 1
+        cloudwatch: 1
+        engine: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: cinder
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: cinder-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        api: 1
+        volume: 1
+        scheduler: 1
+        backup: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: cinder-rabbitmq
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: cinder-rabbitmq-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        server: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: openstack-ingress-controller
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: openstack-ingress-controller-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        ingress: 1
+        error_page: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  name: nova
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: nova-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        api_metadata: 1
+        compute_ironic: 1
+        placement: 1
+        osapi: 1
+        conductor: 1
+        consoleauth: 1
+        scheduler: 1
+        novncproxy: 1
+        spiceproxy: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: openstack-mariadb
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: openstack-mariadb-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        server: 1
+        ingress: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: nova-rabbitmq
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: nova-rabbitmq-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        server: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: keystone-rabbitmq
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: keystone-rabbitmq-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        server: 1
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaChart
+metadata:
+  name: ingress-kube-system
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      ingress: kube-system
+    actions:
+      - method: merge
+        path: .
+spec: {}
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaManifest
+metadata:
+  replacement: true
+  name: cluster-bootstrap
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: cluster-bootstrap-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  release_prefix: airship
+  chart_groups:
+    - podsecuritypolicy
+    - kubernetes-proxy
+    - kubernetes-container-networking
+    - kubernetes-dns
+    - kubernetes-etcd
+    - kubernetes-haproxy
+    - kubernetes-core
+    - ingress-kube-system
+    - ucp-ceph
+    - ucp-ceph-config
+    - ucp-core
+    - ucp-keystone
+    - ucp-divingbell
+    - ucp-armada
+    - ucp-deckhand
+    - ucp-drydock
+    - ucp-promenade
+    - ucp-shipyard
+...
+---
+apiVersion: armada.airshipit.org/v1alpha
+kind: ArmadaManifest
+metadata:
+  replacement: true
+  name: full-site
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: full-site-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  release_prefix: airship
+  chart_groups:
+    - podsecuritypolicy
+    - kubernetes-proxy
+    - kubernetes-container-networking
+    - kubernetes-dns
+    - kubernetes-etcd
+    - kubernetes-haproxy
+    - kubernetes-core
+    - ingress-kube-system
+    - ucp-ceph
+    - ucp-ceph-config
+    - ucp-core
+    - ucp-keystone
+    - ucp-divingbell
+    - ucp-armada
+    - ucp-deckhand
+    - ucp-drydock
+    - ucp-promenade
+    - ucp-shipyard
+    - ucp-prometheus-openstack-exporter
+    - osh-infra-ingress-controller
+    - osh-infra-ceph-config
+    - osh-infra-radosgw
+    - osh-infra-logging
+    - osh-infra-monitoring
+    - osh-infra-mariadb
+    - osh-infra-dashboards
+    - openstack-ingress-controller
+    - openstack-ceph-config
+    - openstack-tenant-ceph
+    - openstack-mariadb
+    - openstack-memcached
+    - openstack-keystone
+    - openstack-radosgw
+    - openstack-glance
+    - openstack-cinder
+    - openstack-compute-kit
+    - openstack-heat
+    - osh-infra-prometheus-openstack-exporter
+    - openstack-horizon
+...
