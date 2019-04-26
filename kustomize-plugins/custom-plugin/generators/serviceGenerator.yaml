@@ -1,0 +1,6 @@
+apiVersion: deckhand.airshipit.org/v1
+kind: ServiceGenerator
+metadata:
+  name: myServiceGenerator
+service: my-service
+port: "12345"

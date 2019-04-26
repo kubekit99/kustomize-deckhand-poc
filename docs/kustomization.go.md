@@ -1,5 +1,5 @@
 
-// TypeMeta copies apimachinery/pkg/apis/meta/v1.TypeMeta
+```go
 type TypeMeta struct {
 	// Kind copies apimachinery/pkg/apis/meta/v1.Typemeta.Kind
 	Kind string `json:"kind,omitempty" protobuf:"bytes,1,opt,name=kind"`
@@ -7,8 +7,9 @@ type TypeMeta struct {
 	// APIVersion copies apimachinery/pkg/apis/meta/v1.Typemeta.APIVersion
 	APIVersion string `json:"apiVersion,omitempty" protobuf:"bytes,2,opt,name=apiVersion"`
 }
+```
 
-// Kustomization holds the information needed to generate customized k8s api resources.
+```go
 type Kustomization struct {
 	TypeMeta `json:",inline" yaml:",inline"`
 
@@ -111,7 +112,9 @@ type Kustomization struct {
 	// of all other objects, which can be used in apply, prune and delete
 	Inventory *Inventory `json:"inventory,omitempty" yaml:"inventory:omitempty"`
 }
-// GeneratorArgs contains arguments common to generators.
+```
+
+```go
 type GeneratorArgs struct {
 	// Namespace for the configmap, optional
 	Namespace string `json:"namespace,omitempty" yaml:"namespace,omitempty"`
@@ -133,14 +136,15 @@ type GeneratorArgs struct {
 	// KVSources for the generator.
 	KVSources []KVSource `json:",inline,omitempty" yaml:",inline,omitempty"`
 }
+```
 
-// GeneratorMetaArgs contains arguments common to generators
-// that come from somewhere other than a kustomization file.
+```go
 type GeneratorMetaArgs struct {
 	PluginConfig *PluginConfig
 }
+```
 
-// PluginConfig holds plugin configuration.
+```go
 type PluginConfig struct {
 	// DirectoryPath is an absolute path to a
 	// directory containing kustomize plugins.
@@ -152,14 +156,16 @@ type PluginConfig struct {
 	// See https://golang.org/pkg/plugin
 	GoEnabled bool
 }
+```
 
-// ConfigMapArgs contains the metadata of how to generate a configmap.
+```go
 type ConfigMapArgs struct {
 	// GeneratorArgs for the configmap.
 	GeneratorArgs `json:",inline,omitempty" yaml:",inline,omitempty"`
 }
+```
 
-// SecretArgs contains the metadata of how to generate a secret.
+```go
 type SecretArgs struct {
 	// GeneratorArgs for the secret.
 	GeneratorArgs `json:",inline,omitempty" yaml:",inline,omitempty"`
@@ -173,8 +179,9 @@ type SecretArgs struct {
 	// keys: "tls.key" and "tls.crt"
 	Type string `json:"type,omitempty" yaml:"type,omitempty"`
 }
+```
 
-// DataSources contains some generic sources for configmaps.
+```go
 type DataSources struct {
 	// LiteralSources is a list of literal sources.
 	// Each literal source should be a key and literal value,
@@ -196,8 +203,9 @@ type DataSources struct {
 	// i.e. a Docker .env file or a .ini file.
 	EnvSource string `json:"env,omitempty" yaml:"env,omitempty"`
 }
+```
 
-// GeneratorOptions modify behavior of all ConfigMap and Secret generators.
+```go
 type GeneratorOptions struct {
 	// Labels to add to all generated resources.
 	Labels map[string]string `json:"labels,omitempty" yaml:"labels,omitempty"`
@@ -210,26 +218,30 @@ type GeneratorOptions struct {
 	// resource contents.
 	DisableNameSuffixHash bool `json:"disableNameSuffixHash,omitempty" yaml:"disableNameSuffixHash,omitempty"`
 }
+```
 
+```go
 type PluginType string
+```
 
-func (p PluginType) IsUndefined() bool {
-	return p == PluginType("")
-}
-
-// KVSource represents a KV plugin backend.
+```go
 type KVSource struct {
 	PluginType PluginType `json:"pluginType,omitempty" yaml:"pluginType,omitempty"`
 	Name       string     `json:"name,omitempty" yaml:"name,omitempty"`
 	Args       []string   `json:"args,omitempty" yaml:"args,omitempty"`
 }
+```
 
+```go
 type Inventory struct {
 	Type      string   `json:"type,omitempty" yaml:"type,omitempty"`
 	ConfigMap NameArgs `json:"configMap,omitempty" yaml:"configMap,omitempty"`
 }
+```
 
+```go
 type NameArgs struct {
 	Name      string `json:"name,omitempty" yaml:"name,omitempty"`
 	Namespace string `json:"namespace,omitempty" yaml:"namespace,omitempty"`
 }
+```

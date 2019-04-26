@@ -1,0 +1,4 @@
+apiVersion: deckhand.airshipit.org/v1
+kind: DatePrefixer
+metadata:
+  name: apple
