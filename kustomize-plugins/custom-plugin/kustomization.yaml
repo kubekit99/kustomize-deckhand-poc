@@ -15,7 +15,7 @@ secretGenerator:
     - VEGETABLE
 
 generators:
-# - generators/serviceGenerator.yaml
+- generators/serviceGenerator.yaml
 
 transformers:
 - transformers/datePrefixer.yaml

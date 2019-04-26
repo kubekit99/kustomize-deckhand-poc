@@ -4,13 +4,25 @@ data:
   VEGETABLE: Y2Fycm90
 kind: Secret
 metadata:
-  name: apple-2018-05-11-mysecrets-4d9t6h6m67
+  name: 2018-05-11-apple-mysecrets-6547m47f8h
 type: Opaque
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: dev
+  name: 2018-05-11-apple-my-service
+spec:
+  ports:
+  - port: 12345
+  selector:
+    app: dev
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: apple-2018-05-11-apple-myDeployment
+  name: 2018-05-11-apple-apple-myDeployment
 spec:
   template:
     metadata:
