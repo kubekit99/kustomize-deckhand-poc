@@ -1,0 +1,3616 @@
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: pegleg/CommonAddresses
+spec:
+  type: object
+  properties:
+    calico:
+      type: object
+      properties:
+        ip_autodetection_method:
+          type: string
+        etcd:
+          type: object
+          properties:
+            service_ip:
+              type: string
+    dns:
+      type: object
+      properties:
+        cluster_domain:
+          type: string
+        service_ip:
+          type: string
+        upstream_servers:
+          type: array
+          items:
+            type: string
+        upstream_servers_joined:
+          type: string
+    genesis:
+      type: object
+      properties:
+        hostname:
+          type: string
+        ip:
+          type: string
+    bootstrap:
+      type: object
+      properties:
+        ip:
+          type: string
+    kubernetes:
+      type: object
+      properties:
+        api_service_ip:
+          type: string
+        etcd_service_ip:
+          type: string
+        pod_cidr:
+          type: string
+        service_cidr:
+          type: string
+        apiserver_port:
+          type: number
+        haproxy_port:
+          type: number
+        service_node_port_range:
+          type: string
+    etcd:
+      type: object
+      properties:
+        container_port:
+          type: number
+        haproxy_port:
+          type: number
+    masters:
+      type: array
+      items:
+        type: object
+        properties:
+          hostname:
+            type: string
+    node_ports:
+      type: object
+      properties:
+        drydock_api:
+          type: number
+        maas_api:
+          type: number
+        maas_proxy:
+          type: number
+        shipyard_api:
+          type: number
+        airflow_web:
+          type: number
+    ntp:
+      type: object
+      properties:
+        servers_joined:
+          type: string
+    storage:
+      type: object
+      properties:
+        ceph:
+          type: object
+          properties:
+            public_cidr:
+              type: string
+            cluster_cidr:
+              type: string
+    openvswitch:
+      type: object
+      properties:
+        external_iface:
+          type: string
+    neutron:
+      type: object
+      properties:
+        tunnel_device:
+          type: string
+        external_iface:
+          type: string
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: pegleg/SiteDefinition
+spec:
+  type: object
+  properties:
+    repositories:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          revision:
+            type: string
+          url:
+            type: string
+        required:
+          - revision
+          - url
+
+    site_type:
+      type: string
+  required:
+    - site_type
+  additionalProperties: false
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: pegleg/CommonSoftwareConfig
+spec:
+  type: object
+  properties:
+    osh:
+      type: object
+      properties:
+        region_name:
+          type: string
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: pegleg/AppArmorProfile
+  labels:
+    application: pegleg
+spec:
+  type: 'object'
+  additionalProperties: false
+  properties:
+    savePath:
+      type: 'string'
+    content:
+      type: 'string'
+  required: ['savePath', 'content']
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: pegleg/Script
+spec:
+  type: string
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: pegleg/SoftwareVersions
+spec:
+  type: object
+  properties:
+    charts:
+      type: object
+      properties:
+        kubernetes:
+          type: object
+          properties:
+            calico:
+              type: object
+              properties:
+                etcd:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                    location:
+                      type: string
+                    subpath:
+                      type: string
+                    reference:
+                      type: string
+                etcd-htk:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                    location:
+                      type: string
+                    subpath:
+                      type: string
+                    reference:
+                      type: string
+                calico:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                    location:
+                      type: string
+                    subpath:
+                      type: string
+                    reference:
+                      type: string
+            apiserver:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            apiserver-htk:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            controller-manager:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            controller-manager-htk:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            coredns:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            coredns-htk:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            haroxy:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+            haroxy-htk:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+            etcd:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            etcd-htk:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            ingress:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            ingress-htk:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            proxy:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            proxy-htk:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            scheduler:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            scheduler-htk:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+        osh_infra:
+          type: object
+          properties:
+            elasticsearch:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            fluent_logging:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            kibana:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            prometheus:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            prometheus_node_exporter:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            prometheus_kube_state_metrics:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            prometheus_alertmanager:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            grafana:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            prometheus_openstack_exporter:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            nagios:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+        osh:
+          type: object
+          properties:
+            barbican:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            cinder:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            glance:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            heat:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            horizon:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            ingress:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            keystone:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            libvirt:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            mariadb:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            memcached:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            neutron:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            nova:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            openvswitch:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            rabbitmq:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+        ucp:
+          type: object
+          properties:
+            armada:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            barbican:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            ceph-mon:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            ceph-osd:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            ceph-client:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            ceph-provisioners:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            ceph-rgw:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            tenant-ceph-mon:
+              type: object
+              properties:
+                fluentbit:
+                  type: string
+                ceph_bootstrap:
+                  type: string
+                dep_check:
+                  type: string
+                ceph_mon:
+                  type: string
+                ceph_config_helper:
+                  type: string
+                ceph_mon_check:
+                  type: string
+                image_repo_sync:
+                  type: string
+            tenant-ceph-osd:
+              type: object
+              properties:
+                fluentbit:
+                  type: string
+                ceph_bootstrap:
+                  type: string
+                dep_check:
+                  type: string
+                ceph_osd:
+                  type: string
+                image_repo_sync:
+                  type: string
+            tenant-ceph-client:
+              type: object
+              properties:
+                ceph_bootstrap:
+                  type: string
+                dep_check:
+                  type: string
+                ceph_mds:
+                  type: string
+                ceph_mgr:
+                  type: string
+                ceph_config_helper:
+                  type: string
+                ceph_rbd_pool:
+                  type: string
+                image_repo_sync:
+                  type: string
+            tenant-ceph-provisioners:
+              type: object
+              properties:
+                ceph_bootstrap:
+                  type: string
+                ceph_cephfs_provisioner:
+                  type: string
+                ceph_config_helper:
+                  type: string
+                ceph_rbd_provisioner:
+                  type: string
+                dep_check:
+                  type: string
+                image_repo_sync:
+                  type: string
+            tenant-ceph-rgw:
+              type: object
+              properties:
+                ceph_config_helper:
+                  type: string
+                ceph_rgw:
+                  type: string
+                dep_check:
+                  type: string
+                image_repo_sync:
+                  type: string
+                rgw_s3_admin:
+                  type: string
+                ks_endpoints:
+                  type: string
+                ks_service:
+                  type: string
+                ks_user:
+                  type: string
+            deckhand:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            drydock:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            ingress:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            postgresql:
+              type: object
+
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            promenade:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            keystone:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            maas:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            mariadb:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            memcached:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            rabbitmq:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            rabbitmq-etcd:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            shipyard:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+            tiller:
+              type: object
+              properties:
+                type:
+                  type: string
+                location:
+                  type: string
+                subpath:
+                  type: string
+                reference:
+                  type: string
+    files:
+      type: object
+      properties:
+        kubelet:
+          type: string
+    images:
+      type: object
+      properties:
+        ucp:
+          type: object
+          properties:
+            armada:
+              type: object
+              properties:
+                api:
+                  type: string
+                dep_check:
+                  type: string
+                ks_endpoints:
+                  type: string
+                ks_service:
+                  type: string
+                ks_user:
+                  type: string
+                helm:
+                  type: string
+                tiller:
+                  type: string
+            promenade:
+              type: object
+              properties:
+                dep_check:
+                  type: string
+                promenade:
+                  type: string
+                ks_user:
+                  type: string
+                ks_service:
+                  type: string
+                ks_endpoints:
+                  type: string
+            deckhand:
+              type: object
+              properties:
+                deckhand:
+                  type: string
+                dep_check:
+                  type: string
+                db_init:
+                  type: string
+                db_sync:
+                  type: string
+                ks_endpoints:
+                  type: string
+                ks_service:
+                  type: string
+                ks_user:
+                  type: string
+            barbican:
+              type: object
+              properties:
+                bootstrap:
+                  type: string
+                dep_check:
+                  type: string
+                scripted_test:
+                  type: string
+                db_init:
+                  type: string
+                barbican_db_sync:
+                  type: string
+                db_drop:
+                  type: string
+                ks_endpoints:
+                  type: string
+                ks_service:
+                  type: string
+                ks_user:
+                  type: string
+                barbican_api:
+                  type: string
+            drydock:
+              type: object
+              properties:
+                drydock:
+                  type: string
+                dep_check:
+                  type: string
+                ks_endpoints:
+                  type: string
+                ks_service:
+                  type: string
+                ks_user:
+                  type: string
+                drydock_db_init:
+                  type: string
+                drydock_db_sync:
+                  type: string
+            shipyard:
+              type: object
+              properties:
+                airflow:
+                  type: string
+                shipyard:
+                  type: string
+                dep_check:
+                  type: string
+                shipyard_db_init:
+                  type: string
+                shipyard_db_sync:
+                  type: string
+                airflow_db_init:
+                  type: string
+                airflow_db_sync:
+                  type: string
+                ks_user:
+                  type: string
+                ks_service:
+                  type: string
+                ks_endpoints:
+                  type: string
+            maas:
+              type: object
+              properties:
+                db_init:
+                  type: string
+                db_sync:
+                  type: string
+                maas_rack:
+                  type: string
+                maas_region:
+                  type: string
+                bootstrap:
+                  type: string
+                export_api_key:
+                  type: string
+                maas_cache:
+                  type: string
+                dep_check:
+                  type: string
+            keystone:
+              type: object
+              properties:
+                keystone_bootstrap:
+                  type: string
+                test:
+                  type: string
+                db_init:
+                  type: string
+                keystone_db_sync:
+                  type: string
+                db_drop:
+                  type: string
+                keystone_fernet_setup:
+                  type: string
+                keystone_fernet_rotate:
+                  type: string
+                keystone_credential_setup:
+                  type: string
+                keystone_credential_rotate:
+                  type: string
+                keystone_api:
+                  type: string
+                dep_check:
+                  type: string
+            tiller:
+              type: object
+              properties:
+                tiller:
+                  type: string
+            mariadb:
+              type: object
+              properties:
+                mariadb:
+                  type: string
+                dep_check:
+                  type: string
+            postgresql:
+              type: object
+              properties:
+                postgresql:
+                  type: string
+                dep_check:
+                  type: string
+            memcached:
+              type: object
+              properties:
+                memcached:
+                  type: string
+                dep_check:
+                  type: string
+            rabbitmq:
+              type: object
+              properties:
+                rabbitmq:
+                  type: string
+                dep_check:
+                  type: string
+        ceph:
+          type: object
+          properties:
+            ceph-mon:
+              type: object
+              properties:
+                fluentbit:
+                  type: string
+                ceph_bootstrap:
+                  type: string
+                dep_check:
+                  type: string
+                ceph_mon:
+                  type: string
+                ceph_config_helper:
+                  type: string
+                ceph_mon_check:
+                  type: string
+                image_repo_sync:
+                  type: string
+            ceph-osd:
+              type: object
+              properties:
+                fluentbit:
+                  type: string
+                ceph_bootstrap:
+                  type: string
+                dep_check:
+                  type: string
+                ceph_osd:
+                  type: string
+                image_repo_sync:
+                  type: string
+            ceph-client:
+              type: object
+              properties:
+                ks_endpoints:
+                  type: string
+                ks_service:
+                  type: string
+                ks_user:
+                  type: string
+                ceph_bootstrap:
+                  type: string
+                dep_check:
+                  type: string
+                ceph_mds:
+                  type: string
+                ceph_mgr:
+                  type: string
+                ceph_rgw:
+                  type: string
+                ceph_config_helper:
+                  type: string
+                ceph_rbd_pool:
+                  type: string
+                ceph_rbd_provisioner:
+                  type: string
+                ceph_cephfs_provisioner:
+                  type: string
+                image_repo_sync:
+                  type: string
+            ceph-provisioners:
+              type: object
+              properties:
+                ceph_bootstrap:
+                  type: string
+                ceph_cephfs_provisioner:
+                  type: string
+                ceph_config_helper:
+                  type: string
+                ceph_rbd_provisioner:
+                  type: string
+                dep_check:
+                  type: string
+                  type: string
+                image_repo_sync:
+                  type: string
+            ceph-rgw:
+              type: object
+              properties:
+                ceph_config_helper:
+                  type: string
+                ceph_rgw:
+                  type: string
+                dep_check:
+                  type: string
+                image_repo_sync:
+                  type: string
+                rgw_s3_admin:
+                  type: string
+                ks_endpoints:
+                  type: string
+                ks_service:
+                  type: string
+                ks_user:
+                  type: string
+        kubernetes:
+          type: object
+          properties:
+            apiserver:
+              type: object
+              properties:
+                anchor:
+                  type: string
+                apiserver:
+                  type: string
+                dep_check:
+                  type: string
+            controller-manager:
+              type: object
+              properties:
+                anchor:
+                  type: string
+                controller_manager:
+                  type: string
+                dep_check:
+                  type: string
+            coredns:
+              type: object
+              properties:
+                coredns:
+                  type: string
+            haproxy:
+              type: object
+              properties:
+                haproxy:
+                  type: string
+                anchor:
+                  type: string
+            etcd:
+              type: object
+              properties:
+                etcd:
+                  type: string
+                etcdctl:
+                  type: string
+            kubectl:
+              type: string
+            pause:
+              type: string
+            scheduler:
+              type: object
+              properties:
+                anchor:
+                  type: string
+                scheduler:
+                  type: string
+            proxy:
+              type: object
+              properties:
+                proxy:
+                  type: string
+        calico:
+          type: object
+          properties:
+            etcd:
+              type: object
+              properties:
+                etcd:
+                  type: string
+                etcdctl:
+                  type: string
+            calico:
+              type: object
+              properties:
+                cni:
+                  type: string
+                ctl:
+                  type: string
+                node:
+                  type: string
+                policy_controller:
+                  type: string
+    packages:
+      type: object
+      properties:
+        repositories:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              name:
+                type: string
+              url:
+                type: string
+              distributions:
+                type: array
+                items:
+                  type: string
+              components:
+                type: array
+                items:
+                  type: string
+              gpgkey:
+                type: string
+        named:
+          type: object
+          properties:
+            docker:
+              type: string
+            socat:
+              type: string
+        unnamed:
+          type: array
+          items:
+            type: string
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: pegleg/AccountCatalogue
+spec:
+  type: object
+  properties:
+    ucp:
+      type: object
+      properties:
+        postgres:
+          type: object
+          properties:
+            admin:
+              type: object
+              properties:
+                username:
+                  type: string
+        oslo_db:
+          type: object
+          properties:
+            admin:
+              type: object
+              properties:
+                username:
+                  type: string
+        oslo_messaging:
+          type: object
+          properties:
+            admin:
+              type: object
+              properties:
+                username:
+                  type: string
+        keystone:
+          type: object
+          properties:
+            admin:
+              type: object
+              properties:
+                region_name:
+                  type: string
+                username:
+                  type: string
+                project_name:
+                  type: string
+                user_domain_name:
+                  type: string
+                project_domain_name:
+                  type: string
+            oslo_messaging:
+              type: object
+              properties:
+                username:
+                  type: string
+            oslo_db:
+              type: object
+              properties:
+                username:
+                  type: string
+                database:
+                  type: string
+        promenade:
+          type: object
+          properties:
+            keystone:
+              type: object
+              properties:
+                region_name:
+                  type: string
+                role:
+                  type: string
+                project_name:
+                  type: string
+                project_domain_name:
+                  type: string
+                user_domain_name:
+                  type: string
+                username:
+                  type: string
+        drydock:
+          type: object
+          properties:
+            keystone:
+              type: object
+              properties:
+                region_name:
+                  type: string
+                role:
+                  type: string
+                project_name:
+                  type: string
+                project_domain_name:
+                  type: string
+                user_domain_name:
+                  type: string
+                username:
+                  type: string
+            postgres:
+              type: object
+              properties:
+                username:
+                  type: string
+                database:
+                  type: string
+        shipyard:
+          type: object
+          properties:
+            keystone:
+              type: object
+              properties:
+                region_name:
+                  type: string
+                role:
+                  type: string
+                project_name:
+                  type: string
+                project_domain_name:
+                  type: string
+                user_domain_name:
+                  type: string
+                username:
+                  type: string
+            postgres:
+              type: object
+              properties:
+                username:
+                  type: string
+                database:
+                  type: string
+        airflow:
+          type: object
+          properties:
+            postgres:
+              type: object
+              properties:
+                username:
+                  type: string
+                database:
+                  type: string
+            oslo_messaging:
+              type: object
+              properties:
+                username:
+                  type: string
+        maas:
+          type: object
+          properties:
+            admin:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+            postgres:
+              type: object
+              properties:
+                username:
+                  type: string
+                database:
+                  type: string
+        barbican:
+          type: object
+          properties:
+            keystone:
+              type: object
+              properties:
+                region_name:
+                  type: string
+                role:
+                  type: string
+                project_name:
+                  type: string
+                project_domain_name:
+                  type: string
+                user_domain_name:
+                  type: string
+                username:
+                  type: string
+            oslo_db:
+              type: object
+              properties:
+                username:
+                  type: string
+                database:
+                  type: string
+            oslo_messaging:
+              type: object
+              properties:
+                username:
+                  type: string
+        armada:
+          type: object
+          properties:
+            keystone:
+              type: object
+              properties:
+                project_domain_name:
+                  type: string
+                project_name:
+                  type: string
+                region_name:
+                  type: string
+                role:
+                  type: string
+                user_domain_name:
+                  type: string
+                username:
+                  type: string
+        deckhand:
+          type: object
+          properties:
+            keystone:
+              type: object
+              properties:
+                region_name:
+                  type: string
+                role:
+                  type: string
+                project_name:
+                  type: string
+                project_domain_name:
+                  type: string
+                user_domain_name:
+                  type: string
+                username:
+                  type: string
+            postgres:
+              type: object
+              properties:
+                username:
+                  type: string
+                database:
+                  type: string
+    ceph:
+      type: object
+      properties:
+        swift:
+          type: object
+          properties:
+            keystone:
+              type: object
+              properties:
+                role:
+                  type: string
+                region_name:
+                  type: string
+                username:
+                  type: string
+                project_name:
+                  type: string
+                user_domain_name:
+                  type: string
+                project_domain_name:
+                  type: string
+    osh:
+      type: object
+      properties:
+        keystone:
+          type: object
+          properties:
+            admin:
+              type: object
+              properties:
+                region_name:
+                  type: string
+                username:
+                  type: string
+                project_name:
+                  type: string
+                user_domain_name:
+                  type: string
+                project_domain_name:
+                  type: string
+            oslo_messaging:
+              type: object
+              properties:
+                admin:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                keystone:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+            oslo_db:
+              type: object
+              properties:
+                username:
+                  type: string
+                database:
+                  type: string
+        cinder:
+          type: object
+          properties:
+            cinder:
+              type: object
+              properties:
+                role:
+                  type: string
+                region_name:
+                  type: string
+                username:
+                  type: string
+                project_name:
+                  type: string
+                user_domain_name:
+                  type: string
+                project_domain_name:
+                  type: string
+            oslo_messaging:
+              type: object
+              properties:
+                admin:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                cinder:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+            oslo_db:
+              type: object
+              properties:
+                username:
+                  type: string
+                database:
+                  type: string
+        glance:
+          type: object
+          properties:
+            glance:
+              type: object
+              properties:
+                role:
+                  type: string
+                region_name:
+                  type: string
+                username:
+                  type: string
+                project_name:
+                  type: string
+                user_domain_name:
+                  type: string
+                project_domain_name:
+                  type: string
+            oslo_messaging:
+              type: object
+              properties:
+                admin:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                glance:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+            oslo_db:
+              type: object
+              properties:
+                username:
+                  type: string
+                database:
+                  type: string
+            ceph_object_store:
+              type: object
+              properties:
+                username:
+                  type: string
+        heat:
+          type: object
+          properties:
+            heat:
+              type: object
+              properties:
+                role:
+                  type: string
+                region_name:
+                  type: string
+                username:
+                  type: string
+                project_name:
+                  type: string
+                user_domain_name:
+                  type: string
+                project_domain_name:
+                  type: string
+            heat_trustee:
+              type: object
+              properties:
+                role:
+                  type: string
+                region_name:
+                  type: string
+                username:
+                  type: string
+                project_name:
+                  type: string
+                user_domain_name:
+                  type: string
+                project_domain_name:
+                  type: string
+            heat_stack_user:
+              type: object
+              properties:
+                role:
+                  type: string
+                region_name:
+                  type: string
+                username:
+                  type: string
+                project_name:
+                  type: string
+                user_domain_name:
+                  type: string
+                project_domain_name:
+                  type: string
+            oslo_db:
+              type: object
+              properties:
+                username:
+                  type: string
+                database:
+                  type: string
+            oslo_messaging:
+              type: object
+              properties:
+                admin:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                heat:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+        swift:
+          type: object
+          properties:
+            swift:
+              type: object
+              properties:
+                role:
+                  type: string
+                region_name:
+                  type: string
+                username:
+                  type: string
+                project_name:
+                  type: string
+                user_domain_name:
+                  type: string
+                project_domain_name:
+                  type: string
+        oslo_db:
+          type: object
+          properties:
+            admin:
+              type: object
+              properties:
+                username:
+                  type: string
+        neutron:
+          type: object
+          properties:
+            neutron:
+              type: object
+              properties:
+                role:
+                  type: string
+                region_name:
+                  type: string
+                username:
+                  type: string
+                project_name:
+                  type: string
+                user_domain_name:
+                  type: string
+                project_domain_name:
+                  type: string
+            oslo_messaging:
+              type: object
+              properties:
+                admin:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                neutron:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+            oslo_db:
+              type: object
+              properties:
+                username:
+                  type: string
+                database:
+                  type: string
+        nova:
+          type: object
+          properties:
+            nova:
+              type: object
+              properties:
+                role:
+                  type: string
+                region_name:
+                  type: string
+                username:
+                  type: string
+                project_name:
+                  type: string
+                user_domain_name:
+                  type: string
+                project_domain_name:
+                  type: string
+            placement:
+              type: object
+              properties:
+                role:
+                  type: string
+                region_name:
+                  type: string
+                username:
+                  type: string
+                project_name:
+                  type: string
+                user_domain_name:
+                  type: string
+                project_domain_name:
+                  type: string
+            oslo_messaging:
+              type: object
+              properties:
+                admin:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                nova:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+            oslo_db:
+              type: object
+              properties:
+                username:
+                  type: string
+                database:
+                  type: string
+            oslo_db_api:
+              type: object
+              properties:
+                username:
+                  type: string
+                database:
+                  type: string
+            oslo_db_cell0:
+              type: object
+              properties:
+                username:
+                  type: string
+                database:
+                  type: string
+        horizon:
+          type: object
+          properties:
+            oslo_db:
+              type: object
+              properties:
+                username:
+                  type: string
+                database:
+                  type: string
+    osh_infra:
+      type: object
+      properties:
+        grafana:
+          type: object
+          properties:
+            admin:
+              type: object
+              properties:
+                username:
+                  type: string
+            oslo_db:
+              type: object
+              properties:
+                username:
+                  type: string
+                database:
+                  type: string
+            oslo_db_session:
+              type: object
+              properties:
+                username:
+                  type: string
+                database:
+                  type: string
+        elasticsearch:
+          type: object
+          properties:
+            admin:
+              type: object
+              properties:
+                username:
+                  type: string
+        oslo_db:
+          type: object
+          properties:
+            admin:
+              type: object
+              properties:
+                username:
+                  type: string
+        prometheus_openstack_exporter:
+          type: object
+          properties:
+            user:
+              type: object
+              properties:
+                username:
+                  type: string
+        nagios:
+          type: object
+          properties:
+            admin:
+              type: object
+              properties:
+                username:
+                  type: string
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: pegleg/EndpointCatalogue
+spec:
+  type: 'object'
+  # Namespace the list of endpoints
+  additionalProperties:
+    type: 'object'
+    additionalProperties:
+      type: 'object'
+      properties:
+        namespace:
+          oneOf:
+            - type: string
+            - type: "null"
+        name:
+          type: string
+        auth:
+          type: object
+        hosts:
+          type: object
+          properties:
+            data:
+              type: string
+            default:
+              type: string
+            discovery:
+              type: string
+            public:
+              type: string
+            internal:
+              type: string
+          additionalProperties:
+            type: string
+        host_fqdn_override:
+          oneOf:
+            - type: object
+              properties:
+                default:
+                  oneOf:
+                    - type: string
+                    - type: "null"
+                    - type: object
+                      properties:
+                        host:
+                          type: string
+                        tls:
+                          type: object
+                          properties:
+                            crt:
+                              type: string
+                            ca:
+                              type: string
+                            key:
+                              type: string
+                      additionalProperties:
+                        type: string
+                public:
+                  oneOf:
+                    - type: string
+                    - type: "null"
+                    - type: object
+                      properties:
+                        host:
+                          type: string
+                        tls:
+                          type: object
+                          properties:
+                            crt:
+                              type: string
+                            ca:
+                              type: string
+                            key:
+                              type: string
+                      additionalProperties:
+                        type: string
+                admin:
+                  oneOf:
+                    - type: string
+                    - type: "null"
+                    - type: object
+                      properties:
+                        host:
+                          type: string
+                        tls:
+                          type: object
+                          properties:
+                            crt:
+                              type: string
+                            ca:
+                              type: string
+                            key:
+                              type: string
+                      additionalProperties:
+                        type: string
+                internal:
+                  oneOf:
+                    - type: string
+                    - type: "null"
+                    - type: object
+                      properties:
+                        host:
+                          type: string
+                        tls:
+                          type: object
+                          properties:
+                            crt:
+                              type: string
+                            ca:
+                              type: string
+                            key:
+                              type: string
+                      additionalProperties:
+                        type: string
+              additionalProperties:
+                type: string
+            - type: "null"
+        path:
+          oneOf:
+            - type: object
+              properties:
+                default:
+                  oneOf:
+                    - type: string
+                    - type: "null"
+                public:
+                  type: string
+                internal:
+                  type: string
+              additionalProperties:
+                type: string
+            - type: string
+        scheme:
+          oneOf:
+            - type: object
+              properties:
+                default:
+                  type: string
+                public:
+                  type: string
+                internal:
+                  type: string
+              additionalProperties:
+                type: string
+            - type: string
+        port:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              default:
+                type: number
+              public:
+                type: number
+              internal:
+                type: number
+            additionalProperties:
+              type: number
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: pegleg/SeccompProfile
+  labels:
+    application: pegleg
+spec:
+  type: 'object'
+  additionalProperties: false
+  properties:
+    seccompDirPath:
+      type: 'string'
+    savePath:
+      type: 'string'
+    content:
+      type: 'string'
+  required: ['seccompDirPath', 'savePath', 'content']
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: drydock/HardwareProfile
+  labels:
+    application: drydock
+spec:
+  type: 'object'
+  properties:
+    vendor:
+      type: 'string'
+    generation:
+      type: 'string'
+    hw_version:
+      type: 'string'
+    bios_version:
+      type: 'string'
+    boot_mode:
+      type: 'string'
+      enum:
+        - 'bios'
+        - 'uefi'
+    bootstrap_protocol:
+      type: 'string'
+      enum:
+        - 'pxe'
+        - 'usb'
+        - 'hdd'
+    pxe_interface:
+      type: 'number'
+    device_aliases:
+      type: 'object'
+      additionalProperties: true
+    cpu_sets:
+      type: 'object'
+      additionalProperties:
+        type: 'string'
+    hugepages:
+      type: 'object'
+      additionalProperties:
+        type: 'object'
+        propertes:
+          size:
+            type: 'string'
+          count:
+            type: 'number'
+  additionalProperties: false
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: drydock/Rack
+  labels:
+    application: drydock
+spec:
+  type: 'object'
+  properties:
+    tor_switches:
+      type: 'object'
+      properties:
+        mgmt_ip:
+          type: 'string'
+          format: 'ipv4'
+        sdn_api_uri:
+          type: 'string'
+          format: 'uri'
+    location:
+      type: 'object'
+      properties:
+        clli:
+          type: 'string'
+        grid:
+          type: 'string'
+    local_networks:
+      type: 'array'
+      items:
+        type: 'string'
+    labels:
+      type: 'object'
+      additionalProperties: true
+  additionalProperties: false
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: drydock/BaremetalNode
+  labels:
+    application: drydock
+spec:
+  type: 'object'
+  properties:
+    addressing:
+      type: 'array'
+      items:
+        type: 'object'
+        properties:
+          address:
+            type: 'string'
+          network:
+            type: 'string'
+    oob:
+      type: 'object'
+      properties:
+        type:
+          type: 'string'
+        network:
+          type: 'string'
+        account:
+          type: 'string'
+        credetial:
+          type: 'string'
+      additionalProperties: true
+    storage:
+      type: 'object'
+      properties:
+        physical_devices:
+          type: 'object'
+          additionalProperties:
+            type: 'object'
+            properties:
+              labels:
+                type: 'object'
+                additionalProperties:
+                  type: 'string'
+              volume_group:
+                type: 'string'
+              partitions:
+                type: 'array'
+                items:
+                  type: 'object'
+                  properties:
+                    name:
+                      type: 'string'
+                    size:
+                      type: 'string'
+                    part_uuid:
+                      type: 'string'
+                    volume_group:
+                      type: 'string'
+                    labels:
+                      type: 'object'
+                      additionalProperties:
+                        type: 'string'
+                    bootable:
+                      type: 'boolean'
+                    volume_group:
+                      type: 'string'
+                    filesystem:
+                      type: 'object'
+                      properties:
+                        mountpoint:
+                          type: 'string'
+                        fstype:
+                          type: 'string'
+                        mount_options:
+                          type: 'string'
+                        fs_uuid:
+                          type: 'string'
+                        fs_label:
+                          type: 'string'
+                      additionalProperties: false
+                  additionalProperties: false
+        volume_groups:
+          type: 'object'
+          additionalProperties:
+            type: 'object'
+            properties:
+              vg_uuid:
+                type: 'string'
+              logical_volumes:
+                type: 'array'
+                items:
+                  type: 'object'
+                  properties:
+                    name:
+                      type: 'string'
+                    lv_uuid:
+                      type: 'string'
+                    size:
+                      type: 'string'
+                    filesystem:
+                      type: 'object'
+                      properties:
+                        mountpoint:
+                          type: 'string'
+                        fstype:
+                          type: 'string'
+                        mount_options:
+                          type: 'string'
+                        fs_uuid:
+                          type: 'string'
+                        fs_label:
+                          type: 'string'
+    platform:
+      type: 'object'
+      properties:
+        image:
+          type: 'string'
+        kernel:
+          type: 'string'
+        kernel_params:
+          type: 'object'
+          additionalProperties: true
+      additionalProperties: false
+    metadata:
+      type: 'object'
+      properties:
+        tags:
+          type: 'array'
+          items:
+            type: 'string'
+        owner_data:
+          type: 'object'
+          additionalProperties:
+            type: 'string'
+        rack:
+          type: 'string'
+        boot_mac:
+          type: 'string'
+      additionalProperties: false
+    host_profile:
+      type: 'string'
+    hardware_profile:
+      type: 'string'
+    primary_network:
+      type: 'string'
+    interfaces:
+      type: 'object'
+      additionalProperties:
+        type: 'object'
+        properties:
+          device_link:
+           type: 'string'
+          slaves:
+            type: 'array'
+            items:
+              type: 'string'
+          networks:
+            type: 'array'
+            items:
+              type: 'string'
+  additionalProperties: false
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: drydock/BootAction
+  labels:
+    application: drydock
+spec:
+  type: 'object'
+  additionalProperties: false
+  properties:
+    signaling:
+      type: 'boolean'
+    assets:
+      type: 'array'
+      items:
+        type: 'object'
+        additionalProperties: false
+        properties:
+          path:
+            type: 'string'
+            pattern: '^/.+'
+          location:
+            type: 'string'
+          type:
+            type: 'string'
+            enum:
+              - 'unit'
+              - 'file'
+              - 'pkg_list'
+          data:
+            type: 'string'
+          location_pipeline:
+            type: 'array'
+            items:
+              type: 'string'
+              enum:
+                - 'template'
+          data_pipeline:
+            type: 'array'
+            items:
+              type: 'string'
+              enum:
+                - 'base64_encode'
+                - 'template'
+                - 'base64_decode'
+                - 'utf8_encode'
+                - 'utf8_decode'
+          permissions:
+            type: 'string'
+            pattern: '\d{3}'
+        required:
+          - 'type'
+    node_filter:
+      type: 'object'
+      additionalProperties: false
+      properties:
+        filter_set_type:
+          type: 'string'
+          enum:
+            - 'intersection'
+            - 'union'
+        filter_set:
+          type: 'array'
+          items:
+            type: 'object'
+            additionalProperties: false
+            properties:
+              filter_type:
+                type: 'string'
+                enum:
+                  - 'intersection'
+                  - 'union'
+              node_names:
+                type: 'array'
+                items:
+                  type: 'string'
+              node_tags:
+                type: 'array'
+                items:
+                  type: 'string'
+              node_labels:
+                type: 'object'
+                additionalProperties: true
+              rack_names:
+                type: 'array'
+                items:
+                  type: 'string'
+              rack_labels:
+                type: 'object'
+                additionalProperties: true
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: drydock/NetworkLink
+  labels:
+    application: drydock
+spec:
+  type: 'object'
+  properties:
+    bonding:
+      type: 'object'
+      properties:
+        mode:
+          type: 'string'
+        hash:
+          type: 'string'
+        peer_rate:
+          type: 'string'
+        mon_rate:
+          type: 'number'
+        up_delay:
+          type: 'number'
+        down_delay:
+          type: 'number'
+      additionalProperties: false
+    mtu:
+      type: 'number'
+    linkspeed:
+      type: 'string'
+    trunking:
+      type: 'object'
+      properties:
+        mode:
+          type: 'string'
+        default_network:
+          type: 'string'
+      additionalProperties: false
+    allowed_networks:
+      type: 'array'
+      items:
+        type: 'string'
+    labels:
+      type: 'object'
+      additionalProperties: true
+  additionalProperties: false
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: drydock/Network
+  labels:
+    application: drydock
+spec:
+  type: 'object'
+  properties:
+    cidr:
+      type: 'string'
+    ranges:
+      type: 'array'
+      items:
+        type: 'object'
+        properties:
+          type:
+            type: 'string'
+          start:
+            type: 'string'
+            format: 'ipv4'
+          end:
+            type: 'string'
+            format: 'ipv4'
+        additionalProperties: false
+    dns:
+      type: 'object'
+      properties:
+        domain:
+          type: 'string'
+        servers:
+          type: 'string'
+      additionalProperties: false
+    dhcp_relay:
+      type: 'object'
+      properties:
+        self_ip:
+          type: 'string'
+          format: 'ipv4'
+        upstream_target:
+          type: 'string'
+          format: 'ipv4'
+      additionalProperties: false
+    mtu:
+      type: 'number'
+    vlan:
+      type: 'string'
+    routedomain:
+      type: 'string'
+    routes:
+      type: 'array'
+      items:
+        type: 'object'
+        properties:
+          subnet:
+            type: 'string'
+          gateway:
+            type: 'string'
+            format: 'ipv4'
+          metric:
+            type: 'number'
+          routedomain:
+            type: 'string'
+        additionalProperties: false
+    labels:
+      type: 'object'
+      additionalProperties: true
+  additionalProperties: false
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: drydock/HostProfile
+  labels:
+    application: drydock
+spec:
+  type: 'object'
+  properties:
+    oob:
+      type: 'object'
+      properties:
+        type:
+          type: 'string'
+        network:
+          type: 'string'
+        account:
+          type: 'string'
+        credetial:
+          type: 'string'
+      additionalProperties: true
+    storage:
+      type: 'object'
+      properties:
+        physical_devices:
+          type: 'object'
+          additionalProperties:
+            type: 'object'
+            properties:
+              labels:
+                type: 'object'
+                additionalProperties:
+                  type: 'string'
+              volume_group:
+                type: 'string'
+              partitions:
+                type: 'array'
+                items:
+                  type: 'object'
+                  properties:
+                    name:
+                      type: 'string'
+                    size:
+                      type: 'string'
+                    part_uuid:
+                      type: 'string'
+                    volume_group:
+                      type: 'string'
+                    labels:
+                      type: 'object'
+                      additionalProperties:
+                        type: 'string'
+                    bootable:
+                      type: 'boolean'
+                    volume_group:
+                      type: 'string'
+                    filesystem:
+                      type: 'object'
+                      properties:
+                        mountpoint:
+                          type: 'string'
+                        fstype:
+                          type: 'string'
+                        mount_options:
+                          type: 'string'
+                        fs_uuid:
+                          type: 'string'
+                        fs_label:
+                          type: 'string'
+                      additionalProperties: false
+                  additionalProperties: false
+        volume_groups:
+          type: 'object'
+          additionalProperties:
+            type: 'object'
+            properties:
+              vg_uuid:
+                type: 'string'
+              logical_volumes:
+                type: 'array'
+                items:
+                  type: 'object'
+                  properties:
+                    name:
+                      type: 'string'
+                    lv_uuid:
+                      type: 'string'
+                    size:
+                      type: 'string'
+                    filesystem:
+                      type: 'object'
+                      properties:
+                        mountpoint:
+                          type: 'string'
+                        fstype:
+                          type: 'string'
+                        mount_options:
+                          type: 'string'
+                        fs_uuid:
+                          type: 'string'
+                        fs_label:
+                          type: 'string'
+    platform:
+      type: 'object'
+      properties:
+        image:
+          type: 'string'
+        kernel:
+          type: 'string'
+        kernel_params:
+          type: 'object'
+          additionalProperties: true
+      additionalProperties: false
+    metadata:
+      type: 'object'
+      properties:
+        tags:
+          type: 'array'
+          items:
+            type: 'string'
+        owner_data:
+          type: 'object'
+          additionalProperties:
+            type: 'string'
+        rack:
+          type: 'string'
+        boot_mac:
+          type: 'string'
+      additionalProperties: false
+    host_profile:
+      type: 'string'
+    hardware_profile:
+      type: 'string'
+    primary_network:
+      type: 'string'
+    interfaces:
+      type: 'object'
+      additionalProperties:
+        type: 'object'
+        properties:
+          device_link:
+           type: 'string'
+          slaves:
+            type: 'array'
+            items:
+              type: 'string'
+          networks:
+            type: 'array'
+            items:
+              type: 'string'
+          sriov:
+            type: 'object'
+            properties:
+              vf_count:
+                type: 'number'
+              trustmode:
+                type: 'boolean'
+  additionalProperties: false
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: drydock/Region
+  labels:
+    application: drydock
+spec:
+  type: 'object'
+  properties:
+    tag_definitions:
+      type: 'array'
+      items:
+        type: 'object'
+        properties:
+          tag:
+            type: 'string'
+          definition_type:
+            type: 'string'
+            enum:
+              - 'lshw_xpath'
+          definition:
+            type: 'string'
+        additionalProperties: false
+    authorized_keys:
+      type: 'array'
+      items:
+        type: 'string'
+    repositories:
+      # top level is class (e.g. apt, rpm)
+      type: 'object'
+      properties:
+        remove_unlisted:
+          type: 'boolean'
+      additionalPropties:
+        type: 'object'
+        properties:
+          repo_type:
+            type: 'string'
+            pattern: 'apt|rpm'
+          url:
+            type: 'string'
+          distributions:
+            type: 'array'
+            items:
+              type: 'string'
+          subrepos:
+            type: 'array'
+            items:
+              type: 'string'
+          components:
+            type: 'array'
+            items:
+              type: 'string'
+          gpgkey:
+            type: 'string'
+          arches:
+            type: 'array'
+            items:
+              type: 'string'
+          options:
+            type: 'object'
+            additionalProperties:
+              type: 'string'
+        additionalProperties: false
+        required:
+          - 'repo_type'
+          - 'url'
+          - 'arches'
+  additionalProperties: false
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: shipyard/DeploymentStrategy
+  labels:
+    application: shipyard
+spec:
+  type: 'object'
+  required:
+    - groups
+  properties:
+    groups:
+      type: 'array'
+      minItems: 0
+      items:
+        type: 'object'
+        required:
+          - name
+          - critical
+          - depends_on
+          - selectors
+        properties:
+          name:
+            type: 'string'
+            minLength: 1
+          critical:
+            type: 'boolean'
+          depends_on:
+            type: 'array'
+            minItems: 0
+            items:
+              type: 'string'
+          selectors:
+            type: 'array'
+            minItems: 0
+            items:
+              type: 'object'
+              minProperties: 1
+              properties:
+                node_names:
+                  type: 'array'
+                  items:
+                    type: 'string'
+                node_labels:
+                  type: 'array'
+                  items:
+                    type: 'string'
+                node_tags:
+                  type: 'array'
+                  items:
+                    type: 'string'
+                rack_names:
+                  type: 'array'
+                  items:
+                    type: 'string'
+              additionalProperties: false
+          success_criteria:
+            type: 'object'
+            minProperties: 1
+            properties:
+              percent_successful_nodes:
+                type: 'integer'
+                minimum: 0
+                maximum: 100
+              minimum_successful_nodes:
+                type: 'integer'
+                minimum: 0
+              maximum_failed_nodes:
+                type: 'integer'
+                minimum: 0
+            additionalProperties: false
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: shipyard/DeploymentConfiguration
+  labels:
+    application: shipyard
+spec:
+  type: 'object'
+  properties:
+    physical_provisioner:
+      type: 'object'
+      properties:
+        deployment_strategy:
+          type: 'string'
+        deploy_interval:
+          type: 'integer'
+        deploy_timeout:
+          type: 'integer'
+        destroy_interval:
+          type: 'integer'
+        destroy_timeout:
+          type: 'integer'
+        join_wait:
+          type: 'integer'
+        prepare_node_interval:
+          type: 'integer'
+        prepare_node_timeout:
+          type: 'integer'
+        prepare_site_interval:
+          type: 'integer'
+        prepare_site_timeout:
+          type: 'integer'
+        verify_interval:
+          type: 'integer'
+        verify_timeout:
+          type: 'integer'
+      additionalProperties: false
+    kubernetes:
+      type: 'object'
+      properties:
+        node_status_interval:
+          type: 'integer'
+        node_status_timeout:
+          type: 'integer'
+      additionalProperties: false
+    kubernetes_provisioner:
+      type: 'object'
+      properties:
+        drain_timeout:
+          type: 'integer'
+        drain_grace_period:
+          type: 'integer'
+        clear_labels_timeout:
+          type: 'integer'
+        remove_etcd_timeout:
+          type: 'integer'
+        etcd_ready_timeout:
+          type: 'integer'
+      additionalProperties: false
+    armada:
+      type: 'object'
+      properties:
+        get_releases_timeout:
+          type: 'integer'
+        get_status_timeout:
+          type: 'integer'
+        manifest:
+          type: 'string'
+        post_apply_timeout:
+          type: 'integer'
+        validate_design_timeout:
+          type: 'integer'
+      additionalProperties: false
+      required:
+        - manifest
+  additionalProperties: false
+  required:
+    - armada
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: armada/ChartGroup
+  labels:
+    application: armada
+spec:
+  type: 'object'
+  additionalProperties: true
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: armada/Manifest
+  labels:
+    application: armada
+spec:
+  type: 'object'
+  additionalProperties: true
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: armada/Chart
+  labels:
+    application: armada
+spec:
+  type: 'object'
+  additionalProperties: true
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: promenade/KubernetesNetwork
+  labels:
+    application: promenade
+spec:
+  definitions:
+    cidr:
+      type: string
+      pattern: '^(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\/([0-9]|[1-2][0-9]|3[0-2])$'
+    domain_name:
+      type: string
+      format: hostname
+    domain_suffix:
+      type: string
+      pattern: '^\.[a-z0-9][a-z0-9-\.]*$'
+    hostname:
+      type: string
+      format: hostname
+    hostname_or_ip_address:
+      anyOf:
+        - $ref: '#/definitions/hostname'
+        - $ref: '#/definitions/ip_address'
+        - $ref: '#/definitions/domain_suffix'
+    ip_address:
+      type: string
+      format: ipv4
+    url:
+      type: string
+      format: uri
+
+  type: object
+  properties:
+    dns:
+      type: object
+      properties:
+        bootstrap_validation_checks:
+          type: array
+          items:
+            $ref: '#/definitions/domain_name'
+        cluster_domain:
+          $ref: '#/definitions/domain_name'
+        service_ip:
+          $ref: '#/definitions/ip_address'
+        upstream_servers:
+          type: array
+          items:
+            $ref: '#/definitions/ip_address'
+      required:
+        - cluster_domain
+        - service_ip
+      additionalProperties: false
+
+    etcd:
+      type: object
+      properties:
+        container_port:
+          type: integer
+        haproxy_port:
+          type: integer
+        # NOTE(mark-burnett): No longer used.
+        service_ip:
+          $ref: '#/definitions/ip_address'
+      required:
+        - container_port
+        - haproxy_port
+      additionalProperties: false
+
+    kubernetes:
+      type: object
+      properties:
+        pod_cidr:
+          $ref: '#/definitions/cidr'
+        service_ip:
+          $ref: '#/definitions/ip_address'
+        service_cidr:
+          $ref: '#/definitions/cidr'
+        apiserver_port:
+          type: integer
+        haproxy_port:
+          type: integer
+      required:
+        - pod_cidr
+        - service_cidr
+        - service_ip
+        - apiserver_port
+        - haproxy_port
+      additionalProperties: false
+    hosts_entries:
+      type: array
+      items:
+        type: object
+        properties:
+          ip:
+            $ref: '#/definitions/ip_address'
+          names:
+            type: array
+            items:
+              $ref: '#/definitions/hostname'
+
+    proxy:
+      type: object
+      properties:
+        additional_no_proxy:
+          type: array
+          items:
+            $ref: '#/definitions/hostname_or_ip_address'
+        url:
+          $ref: '#/definitions/url'
+      required:
+        - url
+      additionalFields: false
+
+  required:
+    - dns
+    - kubernetes
+  additionalProperties: false
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: promenade/HostSystem
+  labels:
+    application: promenade
+spec:
+  definitions:
+    abs_path:
+      type: string
+      pattern: '^/.+$'
+    apt_source_line:
+      type: string
+      # XXX add regex
+    file:
+      properties:
+        path:
+          $ref: '#/definitions/abs_path'
+        content:
+          type: string
+        mode:
+          type: integer
+          minimum: 0
+        tar_url:
+          $ref: '#/definitions/url'
+        tar_path:
+          $ref: '#/definitions/rel_path'
+
+      required:
+        - mode
+        - path
+      oneOf:
+        - type: object
+          required:
+            - content
+        - type: object
+          allOf:
+            - type: object
+              required:
+                - tar_url
+                - tar_path
+      additionalProperties: false
+
+    image:
+      type: string
+      # XXX add regex
+    package:
+      type: string
+      # XXX add regex
+    public_key:
+      type: string
+      # XXX add regex
+    rel_path:
+      type: string
+      # XXX add regex
+    url:
+      type: string
+      # XXX add regex
+
+  type: object
+
+  properties:
+    files:
+      type: array
+      items:
+        type: object
+        items:
+          $ref: '#/definitions/file'
+    images:
+      type: object
+      properties:
+        haproxy:
+          $ref: '#/definitions/image'
+        coredns:
+          $ref: '#/definitions/image'
+        helm:
+          type: object
+          properties:
+            helm:
+              $ref: '#/definitions/image'
+          required:
+            - helm
+          additionalProperties: false
+        kubernetes:
+          type: object
+          properties:
+            kubectl:
+              $ref: '#/definitions/image'
+          required:
+            - kubectl
+          additionalProperties: false
+      required:
+        - haproxy
+        - coredns
+        - helm
+        - kubernetes
+      additionalProperties: false
+
+    packages:
+      type: object
+      properties:
+        additional:
+          type: array
+          items:
+            $ref: '#/definitions/package'
+        keys:
+          type: array
+          items:
+            $ref: '#/definitions/public_key'
+
+        required:
+          type: object
+          properties:
+            docker:
+              $ref: '#/definitions/package'
+            socat:
+              $ref: '#/definitions/package'
+          required:
+            - docker
+            - socat
+          additionalProperties: false
+
+        repositories:
+          type: array
+          items:
+            $ref: '#/definitions/apt_source_line'
+
+      required:
+        - required
+      additionalProperties: false
+
+  required:
+    - images
+    - packages
+  additionalProperties: false
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: promenade/Genesis
+  labels:
+    application: promenade
+spec:
+  definitions:
+    abs_path:
+      type: string
+      pattern: '^/.+$'
+    hostname:
+      type: string
+      pattern: '^[a-z][a-z0-9-]+$'
+    file:
+      properties:
+        path:
+          $ref: '#/definitions/abs_path'
+        content:
+          type: string
+        mode:
+          type: integer
+          minimum: 0
+        tar_url:
+          $ref: '#/definitions/url'
+        tar_path:
+          $ref: '#/definitions/rel_path'
+
+      required:
+        - mode
+        - path
+      oneOf:
+        - type: object
+          required:
+            - content
+        - type: object
+          allOf:
+            - type: object
+              required:
+                - tar_url
+                - tar_path
+      additionalProperties: false
+    image:
+      type: string
+      # XXX add regex
+    ip_address:
+      type: string
+      pattern: '^(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))$'
+    kubernetes_label:
+      type: string
+      # XXX add regex
+    rel_path:
+      type: string
+      # XXX add regex
+
+  type: object
+  properties:
+    armada:
+      type: object
+      properties:
+        target_manifest:
+          type: string
+      additionalProperties: false
+
+    apiserver:
+      type: object
+      properties:
+        command_prefix:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
+
+    files:
+      type: array
+      items:
+        $ref: '#/definitions/file'
+
+    hostname:
+      $ref: '#/definitions/hostname'
+
+    domain:
+      type: string
+
+    ip:
+      $ref: '#/definitions/ip_address'
+
+    labels:
+      properties:
+        static:
+          type: array
+          items:
+            $ref: '#/definitions/kubernetes_label'
+        dynamic:
+          type: array
+          items:
+            $ref: '#/definitions/kubernetes_label'
+      additionalProperties: false
+
+    images:
+      type: object
+      properties:
+        armada:
+          $ref: '#/definitions/image'
+        helm:
+          type: object
+          properties:
+            tiller:
+              $ref: '#/definitions/image'
+          required:
+            - tiller
+          additionalProperties: false
+        kubernetes:
+          type: object
+          properties:
+            apiserver:
+              $ref: '#/definitions/image'
+            controller-manager:
+              $ref: '#/definitions/image'
+            etcd:
+              $ref: '#/definitions/image'
+            scheduler:
+              $ref: '#/definitions/image'
+          required:
+            - apiserver
+            - controller-manager
+            - etcd
+            - scheduler
+          additionalProperties: false
+      required:
+        - armada
+        - helm
+        - kubernetes
+      additionalProperties: false
+
+  required:
+    - hostname
+    - ip
+    - images
+    - labels
+  additionalProperties: false
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: promenade/PKICatalog
+  labels:
+    application: promenade
+spec:
+  certificate_authorities:
+    type: array
+    items:
+      type: object
+      properties:
+        description:
+          type: string
+        certificates:
+          type: array
+          items:
+            type: object
+            properties:
+              document_name:
+                type: string
+              description:
+                type: string
+              common_name:
+                type: string
+              hosts:
+                type: array
+                items: string
+              groups:
+                type: array
+                items: string
+  keypairs:
+    type: array
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: promenade/Docker
+  labels:
+    application: promenade
+spec:
+  type: object
+  properties:
+    config:
+      type: object
+  required:
+    - config
+  additionalProperties: false
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: promenade/KubernetesNode
+  labels:
+    application: promenade
+spec:
+  definitions:
+    hostname:
+      type: string
+      pattern: '^[a-z][a-z0-9-]+$'
+    ip_address:
+      type: string
+      pattern: '^(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))$'
+    kubernetes_label:
+      type: string
+      # XXX add regex
+
+  type: object
+  properties:
+    hostname:
+      $ref: '#/definitions/hostname'
+
+    ip:
+      $ref: '#/definitions/ip_address'
+
+    join_ip:
+      $ref: '#/definitions/ip_address'
+
+    labels:
+      properties:
+        static:
+          type: array
+          items:
+            $ref: '#/definitions/kubernetes_label'
+        dynamic:
+          type: array
+          items:
+            $ref: '#/definitions/kubernetes_label'
+      additionalProperties: false
+
+  required:
+    - ip
+    - join_ip
+  additionalProperties: false
+...
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: promenade/Kubelet
+  labels:
+    application: promenade
+spec:
+  type: object
+  definitions:
+    image:
+      type: string
+      # XXX add regex
+
+  properties:
+    images:
+      type: object
+      properties:
+        pause:
+          $ref: '#/definitions/image'
+      required:
+        - pause
+      additionalProperties: false
+    arguments:
+      type: array
+      items:
+        type: string
+  required:
+    - images
+  additionalProperties: false
+...
