@@ -61,3 +61,10 @@ Error: failed to find an object with armada.airshipit.org_v1alpha_ArmadaChart|fl
 kustomize build overlays/airsloop
 diff <(kustomize build overlays/airsloop) build/generated_airsloop.yaml
 ```
+
+## Processing CRDs
+
+```bash
+csplit crds.yaml '/^---$/' '{*}'
+```
+
