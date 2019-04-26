@@ -2,10 +2,23 @@
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
-  name: PromenadeGenesis
+  name: PromenadeGenesis.promenade.airship.org
   labels:
     application: promenade
 spec:
+  additionalPrinterColumns:
+  group: promenade.airshipit.org
+  version: v1alpha1
+  names:
+    kind: PromenadeGenesis
+    plural: PromenadeGenesiss
+    shortNames:
+    - PromenadeGenesis
+  scope: Namespaced
+  subresources:
+    status: {}
+  # validation:
+  #   openAPIV3Schema:
   definitions:
     abs_path:
       type: string
@@ -140,4 +153,10 @@ spec:
     - images
     - labels
   additionalProperties: false
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
 ...

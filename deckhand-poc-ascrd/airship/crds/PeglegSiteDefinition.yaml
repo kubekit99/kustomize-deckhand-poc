@@ -2,8 +2,21 @@
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
-  name: PeglegSiteDefinition
+  name: PeglegSiteDefinition.pegleg.airship.org
 spec:
+  additionalPrinterColumns:
+  group: pegleg.airshipit.org
+  version: v1alpha1
+  names:
+    kind: PeglegSiteDefinition
+    plural: PeglegSiteDefinitions
+    shortNames:
+    - PeglegSiteDefinition
+  scope: Namespaced
+  subresources:
+    status: {}
+  # validation:
+  #   openAPIV3Schema:
   type: object
   properties:
     repositories:
@@ -24,4 +37,10 @@ spec:
   required:
     - site_type
   additionalProperties: false
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
 ...
