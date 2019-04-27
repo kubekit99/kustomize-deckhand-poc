@@ -1,5 +1,5 @@
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -19,7 +19,7 @@ spec:
         server: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -40,7 +40,7 @@ spec:
         error_page: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -61,7 +61,7 @@ spec:
         ingress: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -82,7 +82,7 @@ spec:
         error_page: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   name: ucp-ceph-client
@@ -177,7 +177,7 @@ spec:
             percent_total_data: 34.8
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   name: ucp-ceph-osd
@@ -192,7 +192,7 @@ metadata:
 spec: {}
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -213,7 +213,7 @@ spec:
         rbd_provisioner: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -237,7 +237,7 @@ spec:
           scheduler: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -257,7 +257,7 @@ spec:
         deckhand: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -277,7 +277,7 @@ spec:
         api: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -297,7 +297,7 @@ spec:
         api: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -317,7 +317,7 @@ spec:
         api: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -336,7 +336,7 @@ spec:
       drydock: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -368,7 +368,7 @@ spec:
         storage: 50Gi
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   name: fluent-logging
@@ -387,7 +387,7 @@ spec:
         fluentd: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -408,7 +408,7 @@ spec:
         error_page: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -429,7 +429,7 @@ spec:
         ingress: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -449,7 +449,7 @@ spec:
         grafana: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   name: elasticsearch
@@ -477,7 +477,7 @@ spec:
           java_opts: "-Xms768m -Xmx768m"
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -498,7 +498,7 @@ spec:
         error_page: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   name: tenant-ceph-client
@@ -599,7 +599,7 @@ spec:
             percent_total_data: 30
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   name: tenant-ceph-osd
@@ -614,7 +614,7 @@ metadata:
 spec: {}
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -634,7 +634,7 @@ spec:
         server: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -654,7 +654,7 @@ spec:
         server: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -674,7 +674,7 @@ spec:
         server: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -694,7 +694,7 @@ spec:
         server: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -714,7 +714,7 @@ spec:
         api: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   name: neutron
@@ -733,7 +733,7 @@ spec:
         server: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -754,7 +754,7 @@ spec:
         registry: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -777,7 +777,7 @@ spec:
         engine: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -800,7 +800,7 @@ spec:
         backup: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -820,7 +820,7 @@ spec:
         server: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -841,7 +841,7 @@ spec:
         error_page: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   name: nova
@@ -868,7 +868,7 @@ spec:
         spiceproxy: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -889,7 +889,7 @@ spec:
         ingress: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -909,7 +909,7 @@ spec:
         server: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   replacement: true
@@ -929,7 +929,7 @@ spec:
         server: 1
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   name: ingress-kube-system
@@ -944,7 +944,7 @@ metadata:
 spec: {}
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaManifest
 metadata:
   replacement: true
@@ -980,7 +980,7 @@ spec:
     - ucp-shipyard
 ...
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaManifest
 metadata:
   replacement: true

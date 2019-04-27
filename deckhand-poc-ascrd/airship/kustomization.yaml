@@ -5,12 +5,50 @@ kind: Kustomization
 resources:
 - airship.yaml
 
-namePrefix: poc-
+namePrefix: pref1-
 
 namespace: airship
 
 commonLabels:
   deckhand-poc-label: airship
+
+crds:
+# - crds/ArmadaChartGroup.yaml
+# - crds/ArmadaChart.yaml
+# - crds/ArmadaManifest.yaml
+# - crds/DeckhandCertificateAuthorityKey.yaml
+# - crds/DeckhandCertificateAuthority.yaml
+# - crds/DeckhandCertificateKey.yaml
+# - crds/DeckhandCertificate.yaml
+# - crds/DeckhandPassphrase.yaml
+# - crds/DeckhandPrivateKey.yaml
+# - crds/DeckhandPublicKey.yaml
+# - crds/DrydockBaremetalNode.yaml
+# - crds/DrydockBootAction.yaml
+# - crds/DrydockHardwareProfile.yaml
+# - crds/DrydockHostProfile.yaml
+# - crds/DrydockNetworkLink.yaml
+# - crds/DrydockNetwork.yaml
+# - crds/DrydockRack.yaml
+# - crds/DrydockRegion.yaml
+# - crds/PeglegAccountCatalogue.yaml
+# - crds/PeglegAppArmorProfile.yaml
+# - crds/PeglegCommonAddresses.yaml
+# - crds/PeglegCommonSoftwareConfig.yaml
+# - crds/PeglegEndpointCatalogue.yaml
+# - crds/PeglegScript.yaml
+# - crds/PeglegSeccompProfile.yaml
+# - crds/PeglegSiteDefinition.yaml
+# - crds/PeglegSoftwareVersions.yaml
+# - crds/PromenadeDocker.yaml
+# - crds/PromenadeGenesis.yaml
+# - crds/PromenadeHostSystem.yaml
+# - crds/PromenadeKubelet.yaml
+# - crds/PromenadeKubernetesNetwork.yaml
+# - crds/PromenadeKubernetesNode.yaml
+# - crds/PromenadePKICatalog.yaml
+# - crds/ShipyardDeploymentConfiguration.yaml
+# - crds/ShipyardDeploymentStrategy.yaml
 
 configurations:
 - kustomizeconfig/ArmadaChartGroup.yaml

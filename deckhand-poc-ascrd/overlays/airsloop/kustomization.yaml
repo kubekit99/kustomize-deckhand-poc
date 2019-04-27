@@ -8,7 +8,7 @@ bases:
 # resources:
 # - airsloop.yaml
 
-namePrefix: poc-
+namePrefix: pref2-
 
 namespace: airsloop
 
