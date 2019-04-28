@@ -68,17 +68,18 @@ diff <(kustomize build overlays/airsloop) build/generated_airsloop.yaml
 
 Here are the following issues that still need to be addresed:
 
-- Added "#jeb" in some "required" fields in validation. Since the substitution plugin is not implemented
+- Added "jeb" or "JEB" in some "required" fields in validation. Since the substitution plugin is not implemented
   yet, some required fields are not part of the CRD hence the syntax is incorrect.
-- Need to implement a plugin to automatize the usage of variables as in [replacement](https://github.com/kubekit99/kustomize-deckhand-poc/blob/master/deckhand-poc-ascrd/replacement/sample-doc.yaml#L34). 
+- Need to implement a plugin to automatize the usage of variables as in [replacement](https://github.com/kubekit99/kustomize-deckhand-poc/blob/master/deckhand-poc-ascrd/replacement/sample-doc.yaml). 
   This most likely means converting/moving/leveraging the substitution section of the CRDs.
 - Need to implement a script to convert the layering section of the CRDs into Kustomize override.
 - Need to improve the airship/kustomizeconfig to improve the "prefix" mechanism and the refs object.
 - Need to understand how to leverage the crds section of airship/kustomization.yaml
 - kubectl apply -k xxx is leveraging the validation of the CRDs.
 - kubectl get act -n airship give the list of charts deployed.
-- kubectl describe <object> -n airship gives a pretty user frendly view of the object
+- kubectl describe object -n airship gives a pretty user frendly view of the object
 - Need to figure out how to replace the DechkhandXXX objects by secrets and get the other objects to point to those.
+
 
 Will use this section to add additional notes
 
