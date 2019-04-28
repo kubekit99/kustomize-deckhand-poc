@@ -1,14 +1,25 @@
----
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
-  name: armadacharts.armada.airshipit.org
+  creationTimestamp: null
   labels:
-    application: armada
+    controller-tools.k8s.io: "1.0"
+  name: armadacharts.armada.airshipit.org
 spec:
   additionalPrinterColumns:
+  - JSONPath: .status.actual_state
+    description: State
+    name: State
+    type: string
+  - JSONPath: .spec.target_state
+    description: Target State
+    name: Target State
+    type: string
+  - JSONPath: .status.satisfied
+    description: Satisfied
+    name: Satisfied
+    type: boolean
   group: armada.airshipit.org
-  version: v1alpha1
   names:
     kind: ArmadaChart
     plural: armadacharts
@@ -33,12 +44,229 @@ spec:
         metadata:
           type: object
         spec:
-          type: 'object'
-          additionalProperties: true
+          properties:
+            delete:
+              description: See Delete_.
+              properties:
+                timeout:
+                  description: time (in seconds) to wait for chart to be deleted
+                  format: int64
+                  type: integer
+              type: object
+            dependencies:
+              description: reference any chart dependencies before install
+              items:
+                type: string
+              type: array
+            namespace:
+              description: namespace of your chart
+              type: string
+            protected:
+              description: 'do not delete FAILED releases when encountered from previous
+                run (provide the ''continue_processing'' bool to continue or halt
+                execution (default: halt))'
+              type: object
+            release:
+              description: name of the release (Armada will prepend with ``release-prefix``
+                during processing)
+              type: string
+            revisionHistoryLimit:
+              description: revisionHistoryLimit is the maximum number of revisions
+                that will be maintained in the ArmadaChart's revision history. The
+                revision history consists of all revisions not represented by a currently
+                applied ArmadaChartSpec version. The default value is 10.
+              format: int32
+              type: integer
+            source:
+              description: provide a path to a ``git repo``, ``local dir``, or ``tarball
+                url`` chart
+              properties:
+                location:
+                  description: '``url`` or ``path`` to the chart''s parent directory'
+                  type: string
+                reference:
+                  description: (optional) branch, commit, or reference in the repo
+                    (``master`` if not specified)
+                  type: string
+                subpath:
+                  description: (optional) relative path to target chart from parent
+                    (``.`` if not specified)
+                  type: string
+                type:
+                  description: 'source to build the chart: ``git``, ``local``, or
+                    ``tar``'
+                  type: string
+              required:
+              - location
+              - subpath
+              - type
+              type: object
+            test:
+              description: See Test_.
+              type: object
+            timeout:
+              description: time (in seconds) allotted for chart to deploy when 'wait'
+                flag is set (DEPRECATED)
+              format: int64
+              type: integer
+            upgrade:
+              description: upgrade the chart managed by the armada yaml
+              properties:
+                options:
+                  properties:
+                    force:
+                      type: boolean
+                  type: object
+                post:
+                  properties:
+                    create:
+                      items:
+                        properties:
+                          labels:
+                            type: object
+                          name:
+                            type: string
+                          type:
+                            type: string
+                        required:
+                        - type
+                        type: object
+                      type: array
+                  type: object
+                pre:
+                  properties:
+                    create:
+                      description: '| pre         | object   | actions performed prior
+                        to updating a release                 |'
+                      items:
+                        properties:
+                          labels:
+                            type: object
+                          name:
+                            type: string
+                          type:
+                            type: string
+                        required:
+                        - type
+                        type: object
+                      type: array
+                    delete:
+                      items:
+                        properties:
+                          labels:
+                            type: object
+                          name:
+                            type: string
+                          type:
+                            type: string
+                        required:
+                        - type
+                        type: object
+                      type: array
+                    update:
+                      items:
+                        properties:
+                          labels:
+                            type: object
+                          name:
+                            type: string
+                          type:
+                            type: string
+                        required:
+                        - type
+                        type: object
+                      type: array
+                  type: object
+              type: object
+            values:
+              description: override any default values in the charts
+              type: object
+            wait:
+              description: See `ArmwadaWait`.
+              properties:
+                labels:
+                  description: Base mapping of labels to wait on. They are added to
+                    any labels in each item in the ``resources`` array.
+                  type: object
+                native:
+                  description: See `Wait Native`_.
+                  properties:
+                    enabled:
+                      description: Config for the native ``helm (install|upgrade)
+                        --wait`` flag. defaults to true
+                      type: boolean
+                  type: object
+                resources:
+                  description: Array of `Wait Resource`_ to wait on, with ``labels``
+                    added to each item. Defaults to pods and jobs (if any exist) matching
+                    ``labels``.
+                  items:
+                    properties:
+                      labels:
+                        description: mapping of kubernetes resource labels
+                        type: object
+                      type:
+                        description: 'k8s resource type, supports: controllers (''deployment'',
+                          ''daemonset'', ''statefulset'', ''pod'', ''job'')'
+                        type: string
+                    required:
+                    - type
+                    type: object
+                  type: array
+                timeout:
+                  description: time (in seconds) to wait for chart to deploy
+                  format: int64
+                  type: integer
+              type: object
+          # JEB: To Fix
+          # required:
+          # - namespace
+          # - release
+          # - source
+          # - dependencies
+          type: object
+        status:
+          properties:
+            conditions:
+              description: 'List of conditions and states related to the resource.
+                JEB: Feature kind of overlap with event recorder'
+              items:
+                properties:
+                  lastTransitionTime:
+                    format: date-time
+                    type: string
+                  message:
+                    type: string
+                  reason:
+                    type: string
+                  resourceName:
+                    type: string
+                  resourceVersion:
+                    format: int32
+                    type: integer
+                  status:
+                    type: string
+                  type:
+                    type: string
+                required:
+                - type
+                - status
+                type: object
+              type: array
+            reason:
+              description: Reason indicates the reason for any related failures.
+              type: string
+            satisfied:
+              description: Satisfied indicates if the release's ActualState satisfies
+                its target state
+              type: boolean
+          required:
+          - satisfied
+          type: object
+  version: v1alpha1
 status:
   acceptedNames:
     kind: ""
     plural: ""
   conditions: []
   storedVersions: []
-...

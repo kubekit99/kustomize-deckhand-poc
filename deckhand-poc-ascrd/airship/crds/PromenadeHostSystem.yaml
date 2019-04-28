@@ -195,13 +195,13 @@ spec:
                     # $ref: '#/definitions/apt_source_line'
                     type: string
         
-              required:
-                - required
+              #JEB required:
+              #JEB   - required
               # additionalProperties: false
         
-          required:
-            - images
-            - packages
+          #JEB required:
+          #JEB   - images
+          #JEB   - packages
           # additionalProperties: false
 status:
   acceptedNames:

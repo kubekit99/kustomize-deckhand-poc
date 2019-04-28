@@ -39,6 +39,8 @@ spec:
               items:
                 type: object
                 properties:
+                  looks_like_a_bug:
+                    type: string
                   description:
                     type: string
                   certificates:

@@ -68,11 +68,11 @@ spec:
                   items:
                     # $ref: '#/definitions/domain_name'
                     type: string
-                    pattern: '^\.[a-z0-9][a-z0-9-\.]*$'
+                    format: hostname
                 cluster_domain:
                   # $ref: '#/definitions/domain_name'
                   type: string
-                  pattern: '^\.[a-z0-9][a-z0-9-\.]*$'
+                  format: hostname
                 service_ip:
                   # $ref: '#/definitions/ip_address'
                   type: string
@@ -83,9 +83,9 @@ spec:
                     # $ref: '#/definitions/ip_address'
                     type: string
                     format: ipv4
-              required:
-                - cluster_domain
-                - service_ip
+              #JEB required:
+              #JEB   - cluster_domain
+              #JEB   - service_ip
               # additionalProperties: false
         
             etcd:
@@ -165,9 +165,9 @@ spec:
                 - url
               # additionalProperties: false
         
-          required:
-            - dns
-            - kubernetes
+          #JEB required:
+          #JEB   - dns
+          #JEB   - kubernetes
           # additionalProperties: false
 status:
   acceptedNames:

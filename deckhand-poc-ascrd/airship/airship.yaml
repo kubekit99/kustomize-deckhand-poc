@@ -102,6 +102,7 @@ spec:
     - path: /opt/kubernetes/bin/kubelet
       tar_path: kubernetes/node/bin/kubelet
       mode: 0555
+      tar_url: jeb_needs_substitution_to_work
     - path: /etc/logrotate.d/json-logrotate
       mode: 0444
       content: |-
@@ -20244,8 +20245,8 @@ spec:
   # substitution, so the same SSH keys do not need to be repeated in multiple
   # manifests.
   authorized_keys: []
-  repositories:
-    remove_unlisted: true
+  #JEB repositories:
+  #JEB  remove_unlisted: true
 ...
 ---
 # The purpose of this file is to apply proper labels to Genesis node so the
@@ -21195,7 +21196,7 @@ metadata:
     layer: site
 spec:
   certificate_authorities:
-    kubernetes:
+    - looks_like_a_bug: kubernetes
       description: CA for Kubernetes components
       certificates:
         - document_name: apiserver
@@ -21275,7 +21276,7 @@ spec:
           common_name: armada
           groups:
             - system:masters
-    kubernetes-etcd:
+    - looks_like_a_bug: kubernetes-etcd
       description: Certificates for Kubernetes's etcd servers
       certificates:
         - document_name: apiserver-etcd
@@ -21341,7 +21342,7 @@ spec:
             - kubernetes-etcd.kube-system.svc.cluster.local
             - 10.96.0.2
         # End node list
-    kubernetes-etcd-peer:
+    - looks_like_a_bug: kubernetes-etcd-peer
       certificates:
         # NEWSITE-CHANGEME: This list should be identical to the previous list,
         # except that `-peer` has been appended to the document/common names.
@@ -21382,7 +21383,7 @@ spec:
             - kubernetes-etcd.kube-system.svc.cluster.local
             - 10.96.0.2
         # End node list
-    calico-etcd:
+    - looks_like_a_bug: calico-etcd
       description: Certificates for Calico etcd client traffic
       certificates:
         - document_name: calico-etcd-anchor
@@ -21428,7 +21429,7 @@ spec:
         - document_name: calico-node
           common_name: calcico-node
         # End node list
-    calico-etcd-peer:
+    - looks_like_a_bug: calico-etcd-peer
       description: Certificates for Calico etcd clients
       certificates:
         # NEWSITE-CHANGEME: This list should be identical to the previous list,

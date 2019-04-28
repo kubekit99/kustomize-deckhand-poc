@@ -208,11 +208,11 @@ spec:
                 - kubernetes
               # additionalProperties: false
         
-          required:
-            - hostname
-            - ip
-            - images
-            - labels
+          #JEB required:
+          #JEB   - hostname
+          #JEB   - ip
+          #JEB   - images
+          #JEB   - labels
           # additionalProperties: false
 status:
   acceptedNames:
