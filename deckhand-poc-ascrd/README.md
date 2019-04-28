@@ -80,6 +80,7 @@ Here are the following issues that still need to be addresed:
 - kubectl describe <object> -n airship gives a pretty user frendly view of the object
 - Need to figure out how to replace the DechkhandXXX objects by secrets and get the other objects to point to those.
 
+Will use this section to add additional notes
 
 ### Convertion into CRDs
 
