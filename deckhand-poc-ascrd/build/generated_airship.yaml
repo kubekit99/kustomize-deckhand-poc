@@ -15,6 +15,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.armada-htk
+space:
+  namespace: airship
 spec:
   chart_name: armada-htk
   dependencies: []
@@ -39,6 +41,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.kubernetes.calico.calico-htk
+space:
+  namespace: airship
 spec:
   chart_name: calico-htk
   dependencies: []
@@ -63,6 +67,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.ceph-htk
+space:
+  namespace: airship
 spec:
   chart_name: ceph-htk
   dependencies: []
@@ -125,6 +131,8 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-cinder-oslo-messaging-admin-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: cinder-rabbitmq
   dependencies:
@@ -322,6 +330,8 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-oslo-cache-secret-key
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: cinder
   dependencies:
@@ -458,6 +468,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.kubernetes.coredns-htk
+space:
+  namespace: airship
 spec:
   chart_name: coredns-htk
   dependencies: []
@@ -537,6 +549,8 @@ metadata:
       kind: PeglegCommonAddresses
       name: common-addresses
       path: .dns.upstream_servers[2]
+space:
+  namespace: airship
 spec:
   chart_name: coredns
   dependencies:
@@ -595,6 +609,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.deckhand-htk
+space:
+  namespace: airship
 spec:
   chart_name: deckhand-htk
   dependencies: []
@@ -619,6 +635,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.drydock-htk
+space:
+  namespace: airship
 spec:
   chart_name: drydock-htk
   dependencies: []
@@ -728,6 +746,8 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-keystone-ldap-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: elasticsearch
   dependencies:
@@ -1021,6 +1041,8 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-infra-elasticsearch-admin-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: fluent-logging
   dependencies:
@@ -1428,6 +1450,8 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-glance-oslo-messaging-admin-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: glance-rabbitmq
   dependencies:
@@ -1643,6 +1667,8 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-glance-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: glance
   dependencies:
@@ -1940,6 +1966,8 @@ metadata:
       kind: PeglegCommonAddresses
       name: common-addresses
       path: .ldap.domain
+space:
+  namespace: airship
 spec:
   chart_name: grafana
   dependencies:
@@ -2027,6 +2055,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.kubernetes.haproxy-htk
+space:
+  namespace: airship
 spec:
   chart_name: haproxy-htk
   dependencies: []
@@ -2065,6 +2095,8 @@ metadata:
       kind: PeglegCommonAddresses
       name: common-addresses
       path: .kubernetes.api_service_ip
+space:
+  namespace: airship
 spec:
   chart_name: haproxy
   dependencies:
@@ -2171,6 +2203,8 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-heat-oslo-messaging-admin-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: heat-rabbitmq
   dependencies:
@@ -2380,6 +2414,8 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-oslo-cache-secret-key
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: heat
   dependencies:
@@ -2573,6 +2609,8 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-oslo-cache-secret-key
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: horizon
   dependencies:
@@ -2619,6 +2657,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.kubernetes.ingress-htk
+space:
+  namespace: airship
 spec:
   chart_name: ingress-kube-system-htk
   dependencies: []
@@ -2651,6 +2691,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .images.kubernetes.ingress
+space:
+  namespace: airship
 spec:
   chart_name: ingress-kube-system
   dependencies:
@@ -2745,6 +2787,8 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-keystone-oslo-messaging-admin-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: keystone-rabbitmq
   dependencies:
@@ -2900,6 +2944,8 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-oslo-cache-secret-key
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: keystone
   dependencies:
@@ -3091,6 +3137,8 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-keystone-ldap-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: kibana
   dependencies:
@@ -3160,6 +3208,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.kubernetes.apiserver-htk
+space:
+  namespace: airship
 spec:
   chart_name: kubernetes-apiserver-htk
   dependencies: []
@@ -3259,6 +3309,8 @@ metadata:
       kind: DeckhandPublicKey
       name: service-account
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: apiserver
   dependencies:
@@ -3354,6 +3406,8 @@ metadata:
       kind: DeckhandCertificateKey
       name: calico-etcd-anchor
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: etcd
   dependencies:
@@ -3414,6 +3468,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.kubernetes.calico.etcd-htk
+space:
+  namespace: airship
 spec:
   chart_name: kubernetes-calico-etcd-htk
   dependencies: []
@@ -3527,6 +3583,8 @@ metadata:
       kind: DeckhandCertificateKey
       name: calico-etcd-airsloop-control-3-peer
       path: .
+space:
+  namespace: airship
 spec: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -3596,6 +3654,8 @@ metadata:
       kind: DeckhandCertificateKey
       name: calico-node
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: calico
   dependencies:
@@ -3684,6 +3744,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.kubernetes.controller-manager-htk
+space:
+  namespace: airship
 spec:
   chart_name: kubernetes-controller-manager-htk
   dependencies: []
@@ -3765,6 +3827,8 @@ metadata:
       kind: DeckhandPrivateKey
       name: service-account
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: controller-manager
   dependencies:
@@ -3855,6 +3919,8 @@ metadata:
       kind: DeckhandCertificateKey
       name: kubernetes-etcd-anchor
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: etcd
   dependencies:
@@ -3911,6 +3977,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.kubernetes.etcd-htk
+space:
+  namespace: airship
 spec:
   chart_name: kubernetes-etcd-htk
   dependencies: []
@@ -4024,6 +4092,8 @@ metadata:
       kind: DeckhandCertificateKey
       name: kubernetes-etcd-airsloop-control-3-peer
       path: $
+space:
+  namespace: airship
 spec: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -4043,6 +4113,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.kubernetes.proxy-htk
+space:
+  namespace: airship
 spec:
   chart_name: kubernetes-proxy-htk
   dependencies: []
@@ -4086,6 +4158,8 @@ metadata:
       kind: DeckhandCertificateAuthority
       name: kubernetes
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: proxy
   dependencies:
@@ -4132,6 +4206,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.kubernetes.scheduler-htk
+space:
+  namespace: airship
 spec:
   chart_name: kubernetes-scheduler-htk
   dependencies: []
@@ -4181,6 +4257,8 @@ metadata:
       kind: DeckhandCertificateKey
       name: scheduler
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: scheduler
   dependencies:
@@ -4229,6 +4307,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .images.osh.libvirt
+space:
+  namespace: airship
 spec:
   chart_name: libvirt
   dependencies:
@@ -4271,6 +4351,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.maas-htk
+space:
+  namespace: airship
 spec:
   chart_name: maas-htk
   dependencies: []
@@ -4295,6 +4377,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.mariadb-htk
+space:
+  namespace: airship
 spec:
   chart_name: mariadb-htk
   dependencies: []
@@ -4397,6 +4481,8 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-keystone-ldap-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: nagios
   dependencies:
@@ -4505,6 +4591,8 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-neutron-oslo-messaging-admin-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: neutron-rabbitmq
   dependencies:
@@ -4716,6 +4804,8 @@ metadata:
       kind: PeglegCommonAddresses
       name: common-addresses
       path: .neutron.external_iface
+space:
+  namespace: airship
 spec:
   chart_name: neutron
   dependencies:
@@ -4882,6 +4972,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .images.osh_infra.nfs_provisioner
+space:
+  namespace: airship
 spec:
   chart_name: nfs-provisioner
   dependencies:
@@ -4951,6 +5043,8 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-nova-oslo-messaging-admin-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: nova-rabbitmq
   dependencies:
@@ -5246,6 +5340,8 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-oslo-cache-secret-key
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: nova
   dependencies:
@@ -5427,6 +5523,8 @@ metadata:
       kind: PeglegEndpointCatalogue
       name: ucp-endpoints
       path: .ceph.ceph_mon
+space:
+  namespace: airship
 spec:
   chart_name: openstack-ceph-config
   dependencies:
@@ -5492,6 +5590,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .images.osh.ingress
+space:
+  namespace: airship
 spec:
   chart_name: openstack-ingress-controller
   dependencies:
@@ -5585,6 +5685,8 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-oslo-db-exporter-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: openstack-mariadb
   dependencies:
@@ -5647,6 +5749,8 @@ metadata:
       kind: PeglegEndpointCatalogue
       name: osh-endpoints
       path: .osh.oslo_cache
+space:
+  namespace: airship
 spec:
   chart_name: openstack-memcached
   dependencies:
@@ -5696,6 +5800,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .images.osh.openvswitch
+space:
+  namespace: airship
 spec:
   chart_name: openvswitch
   dependencies:
@@ -5738,6 +5844,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.osh.helm_toolkit
+space:
+  namespace: airship
 spec:
   chart_name: helm-toolkit
   dependencies: []
@@ -5792,6 +5900,8 @@ metadata:
       kind: PeglegEndpointCatalogue
       name: ucp-endpoints
       path: .ceph.ceph_mon
+space:
+  namespace: airship
 spec:
   chart_name: osh-infra-ceph-config
   dependencies:
@@ -5849,6 +5959,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.osh_infra.helm_toolkit
+space:
+  namespace: airship
 spec:
   chart_name: helm-toolkit
   dependencies: []
@@ -5886,6 +5998,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .images.osh.ingress
+space:
+  namespace: airship
 spec:
   chart_name: osh-infra-ingress-controller
   dependencies:
@@ -5978,6 +6092,8 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-infra-oslo-db-exporter-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: osh-infra-mariadb
   dependencies:
@@ -6074,6 +6190,8 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-infra-rgw-s3-admin-secret-key
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: osh-infra-radosgw
   dependencies:
@@ -6134,6 +6252,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.osh_infra.podsecuritypolicy
+space:
+  namespace: airship
 spec:
   chart_name: podsecuritypolicy
   dependencies:
@@ -6192,6 +6312,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.postgresql-htk
+space:
+  namespace: airship
 spec:
   chart_name: postgres-htk
   dependencies: []
@@ -6216,6 +6338,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.promenade-htk
+space:
+  namespace: airship
 spec:
   chart_name: promenade-htk
   dependencies: []
@@ -6252,6 +6376,8 @@ metadata:
       kind: PeglegEndpointCatalogue
       name: osh-infra-endpoints
       path: .osh_infra.alerts
+space:
+  namespace: airship
 spec:
   chart_name: prometheus-alertmanager
   dependencies:
@@ -6327,6 +6453,8 @@ metadata:
       kind: PeglegEndpointCatalogue
       name: osh-infra-endpoints
       path: .osh_infra.kube_controller_manager
+space:
+  namespace: airship
 spec:
   chart_name: prometheus-kube-state-metrics
   dependencies:
@@ -6387,6 +6515,8 @@ metadata:
       kind: PeglegEndpointCatalogue
       name: osh-infra-endpoints
       path: .osh_infra.node_metrics
+space:
+  namespace: airship
 spec:
   chart_name: prometheus-node-exporter
   dependencies:
@@ -6477,6 +6607,8 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-infra-openstack-exporter-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: prometheus-openstack-exporter
   dependencies:
@@ -6534,6 +6666,8 @@ metadata:
       kind: PeglegEndpointCatalogue
       name: osh-infra-endpoints
       path: .osh_infra.process_exporter_metrics
+space:
+  namespace: airship
 spec:
   chart_name: prometheus-process-exporter
   dependencies:
@@ -6631,6 +6765,8 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-keystone-ldap-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: prometheus
   dependencies:
@@ -8350,6 +8486,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.shipyard-htk
+space:
+  namespace: airship
 spec:
   chart_name: shipyard-htk
   dependencies: []
@@ -8411,6 +8549,8 @@ metadata:
       kind: DeckhandPassphrase
       name: tenant-ceph-fsid
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: tenant-ceph-client
   dependencies:
@@ -8562,6 +8702,8 @@ metadata:
   name: pref1-tenant-ceph-client
   namespace: airship
   replacement: true
+space:
+  namespace: airship
 spec:
   values:
     conf:
@@ -8610,6 +8752,8 @@ metadata:
       kind: PeglegEndpointCatalogue
       name: ucp-endpoints
       path: .ceph.tenant_ceph_mon
+space:
+  namespace: airship
 spec:
   chart_name: tenant-ceph-config
   dependencies:
@@ -8671,6 +8815,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.tenant-ceph-htk
+space:
+  namespace: airship
 spec:
   chart_name: tenant-ceph-htk
   dependencies: []
@@ -8702,6 +8848,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .images.ucp.ingress
+space:
+  namespace: airship
 spec:
   chart_name: tenant-ceph-ingress
   dependencies:
@@ -8790,6 +8938,8 @@ metadata:
       kind: DeckhandPassphrase
       name: tenant-ceph-fsid
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: tenant-ceph-mon
   dependencies:
@@ -8891,6 +9041,8 @@ metadata:
       kind: DeckhandPassphrase
       name: tenant-ceph-fsid
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: tenant-ceph-osd
   dependencies:
@@ -9020,6 +9172,8 @@ metadata:
       kind: DeckhandPassphrase
       name: ceph-swift-keystone-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: tenant-ceph-rgw
   dependencies:
@@ -9093,6 +9247,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.tiller-htk
+space:
+  namespace: airship
 spec:
   chart_name: tiller-htk
   dependencies: []
@@ -9160,6 +9316,8 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-armada-keystone-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: armada
   dependencies:
@@ -9209,6 +9367,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.barbican-htk
+space:
+  namespace: airship
 spec:
   chart_name: ucp-barbican-htk
   dependencies: []
@@ -9343,6 +9503,8 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-oslo-messaging-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: ucp-barbican
   dependencies:
@@ -9495,6 +9657,8 @@ metadata:
       kind: DeckhandPassphrase
       name: ceph-fsid
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: ucp-ceph-client
   dependencies:
@@ -9606,6 +9770,8 @@ metadata:
       kind: DeckhandPassphrase
       name: ceph-fsid
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: ucp-ceph-client
   dependencies:
@@ -9706,6 +9872,8 @@ metadata:
       kind: PeglegEndpointCatalogue
       name: ucp-endpoints
       path: .ceph.ceph_mon
+space:
+  namespace: airship
 spec:
   chart_name: ucp-ceph-config
   dependencies:
@@ -9773,6 +9941,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .images.ucp.ingress
+space:
+  namespace: airship
 spec:
   chart_name: ucp-ceph-ingress
   dependencies:
@@ -9861,6 +10031,8 @@ metadata:
       kind: DeckhandPassphrase
       name: ceph-fsid
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: ucp-ceph-mon
   dependencies:
@@ -9947,6 +10119,8 @@ metadata:
       kind: DeckhandPassphrase
       name: ceph-fsid
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: ucp-ceph-osd
   dependencies:
@@ -10033,6 +10207,8 @@ metadata:
       kind: DeckhandPassphrase
       name: ceph-fsid
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: ucp-ceph-provisioners
   dependencies:
@@ -10162,6 +10338,8 @@ metadata:
       kind: DeckhandPassphrase
       name: ceph-swift-keystone-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: ucp-ceph-rgw
   dependencies:
@@ -10321,6 +10499,8 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-deckhand-postgres-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: ucp-deckhand
   dependencies:
@@ -10379,6 +10559,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .images.ucp.divingbell
+space:
+  namespace: airship
 spec:
   chart_name: ucp-divingbell
   dependencies:
@@ -10435,6 +10617,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.divingbell-htk
+space:
+  namespace: airship
 spec:
   chart_name: ucp-divingbell-htk
   dependencies: []
@@ -10471,6 +10655,8 @@ metadata:
       kind: DeckhandPassphrase
       name: airsloop-crypt-password
       path: .
+space:
+  namespace: airship
 spec:
   values:
     conf:
@@ -10613,6 +10799,8 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-drydock-postgres-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: drydock
   dependencies:
@@ -10666,6 +10854,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.ingress-htk
+space:
+  namespace: airship
 spec:
   chart_name: ucp-ingress-htk
   dependencies: []
@@ -10697,6 +10887,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .images.ucp.ingress
+space:
+  namespace: airship
 spec:
   chart_name: ingress
   dependencies:
@@ -10754,6 +10946,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.keystone-htk
+space:
+  namespace: airship
 spec:
   chart_name: ucp-keystone-htk
   dependencies: []
@@ -10791,6 +10985,8 @@ metadata:
       kind: PeglegEndpointCatalogue
       name: ucp-endpoints
       path: .ucp.oslo_cache
+space:
+  namespace: airship
 spec:
   chart_name: ucp-keystone-memcached
   dependencies:
@@ -10926,6 +11122,8 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-oslo-db-admin-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: ucp-keystone
   dependencies:
@@ -11164,6 +11362,8 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-maas-postgres-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: maas
   dependencies:
@@ -11233,6 +11433,8 @@ metadata:
       name: ucp-maas-global
   name: pref1-ucp-maas
   namespace: airship
+space:
+  namespace: airship
 spec:
   values:
     conf:
@@ -11284,6 +11486,8 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-oslo-db-admin-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: ucp-mariadb
   dependencies:
@@ -11335,6 +11539,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.memcached-htk
+space:
+  namespace: airship
 spec:
   chart_name: ucp-memcached-htk
   dependencies: []
@@ -11384,6 +11590,8 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-postgres-admin-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: ucp-postgresql
   dependencies:
@@ -11478,6 +11686,8 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-promenade-keystone-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: promenade
   dependencies:
@@ -11529,6 +11739,8 @@ metadata:
     parentSelector:
       name: ucp-promenade-global
   name: pref1-ucp-promenade
+  namespace: airship
+space:
   namespace: airship
 spec:
   values:
@@ -11598,6 +11810,8 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-openstack-exporter-keystone-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: ucp-prometheus-openstack-exporter
   dependencies:
@@ -11643,6 +11857,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.rabbitmq-htk
+space:
+  namespace: airship
 spec:
   chart_name: ucp-rabbitmq-htk
   dependencies: []
@@ -11698,6 +11914,8 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-oslo-messaging-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: ucp-rabbitmq
   dependencies:
@@ -11935,6 +12153,8 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-oslo-messaging-password
       path: .
+space:
+  namespace: airship
 spec:
   chart_name: shipyard
   dependencies:
@@ -12019,6 +12239,8 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .images.ucp.tiller
+space:
+  namespace: airship
 spec:
   chart_name: tiller
   dependencies:
@@ -17111,8 +17333,6 @@ metadata:
       path: .packages.repositories.main_archive
 spec:
   authorized_keys: []
-  repositories:
-    remove_unlisted: true
   tag_definitions: []
 ---
 apiVersion: pegleg.airshipit.org/v1alpha1
@@ -20682,6 +20902,7 @@ spec:
   - mode: 365
     path: /opt/kubernetes/bin/kubelet
     tar_path: kubernetes/node/bin/kubelet
+    tar_url: jeb_needs_substitution_to_work
   - content: |-
       /var/lib/docker/containers/*/*-json.log
       {
@@ -20915,211 +21136,211 @@ metadata:
   namespace: airship
 spec:
   certificate_authorities:
-    calico-etcd:
-      certificates:
-      - common_name: anchor
-        description: anchor
-        document_name: calico-etcd-anchor
-      - common_name: calico-etcd-airsloop-control-1
-        document_name: calico-etcd-airsloop-control-1
-        hosts:
-        - airsloop-control-1
-        - 10.22.72.21
-        - 127.0.0.1
-        - localhost
-        - 10.96.232.136
-      - common_name: calico-etcd-airsloop-control-2
-        document_name: calico-etcd-airsloop-control-2
-        hosts:
-        - airsloop-control-2
-        - 10.23.22.12
-        - 127.0.0.1
-        - localhost
-        - 10.96.232.136
-      - common_name: calico-etcd-airsloop-control-3
-        document_name: calico-etcd-airsloop-control-3
-        hosts:
-        - airsloop-control-3
-        - 10.23.22.13
-        - 127.0.0.1
-        - localhost
-        - 10.96.232.136
-      - common_name: calcico-node
-        document_name: calico-node
-      description: Certificates for Calico etcd client traffic
-    calico-etcd-peer:
-      certificates:
-      - common_name: calico-etcd-airsloop-control-1-peer
-        document_name: calico-etcd-airsloop-control-1-peer
-        hosts:
-        - airsloop-control-1
-        - 10.22.72.21
-        - 127.0.0.1
-        - localhost
-        - 10.96.232.136
-      - common_name: calico-etcd-airsloop-control-2-peer
-        document_name: calico-etcd-airsloop-control-2-peer
-        hosts:
-        - airsloop-control-2
-        - 10.23.22.12
-        - 127.0.0.1
-        - localhost
-        - 10.96.232.136
-      - common_name: calico-etcd-airsloop-control-3-peer
-        document_name: calico-etcd-airsloop-control-3-peer
-        hosts:
-        - airsloop-control-3
-        - 10.23.22.13
-        - 127.0.0.1
-        - localhost
-        - 10.96.232.136
-      - common_name: calcico-node-peer
-        document_name: calico-node-peer
-      description: Certificates for Calico etcd clients
-    kubernetes:
-      certificates:
-      - common_name: apiserver
-        description: Service certificate for Kubernetes apiserver
-        document_name: apiserver
-        hosts:
-        - localhost
-        - 127.0.0.1
-        - 10.96.0.1
-        kubernetes_service_names:
-        - kubernetes.default.svc.cluster.local
-      - common_name: system:node:airsloop-control-1
-        document_name: kubelet-genesis
-        groups:
-        - system:nodes
-        hosts:
-        - airsloop-control-1
-        - 10.22.72.21
-      - common_name: system:node:airsloop-control-1
-        document_name: kubelet-airsloop-control-1
-        groups:
-        - system:nodes
-        hosts:
-        - airsloop-control-1
-        - 10.22.72.21
-      - common_name: system:node:airsloop-control-2
-        document_name: kubelet-airsloop-control-2
-        groups:
-        - system:nodes
-        hosts:
-        - airsloop-control-2
-        - 10.23.22.12
-      - common_name: system:node:airsloop-control-3
-        document_name: kubelet-airsloop-control-3
-        groups:
-        - system:nodes
-        hosts:
-        - airsloop-control-3
-        - 10.23.22.13
-      - common_name: system:node:airsloop-compute-1
-        document_name: kubelet-airsloop-compute-1
-        groups:
-        - system:nodes
-        hosts:
-        - airsloop-compute-1
-        - 10.23.22.14
-      - common_name: system:kube-scheduler
-        description: Service certificate for Kubernetes scheduler
-        document_name: scheduler
-      - common_name: system:kube-controller-manager
-        description: certificate for controller-manager
-        document_name: controller-manager
-      - common_name: admin
-        document_name: admin
-        groups:
-        - system:masters
-      - common_name: armada
-        document_name: armada
-        groups:
-        - system:masters
-      description: CA for Kubernetes components
-    kubernetes-etcd:
-      certificates:
-      - common_name: apiserver
-        description: etcd client certificate for use by Kubernetes apiserver
-        document_name: apiserver-etcd
-      - common_name: anchor
-        description: anchor
-        document_name: kubernetes-etcd-anchor
-      - common_name: kubernetes-etcd-genesis
-        document_name: kubernetes-etcd-genesis
-        hosts:
-        - airsloop-control-1
-        - 10.22.72.21
-        - 127.0.0.1
-        - localhost
-        - kubernetes-etcd.kube-system.svc.cluster.local
-        - 10.96.0.2
-      - common_name: kubernetes-etcd-airsloop-control-1
-        document_name: kubernetes-etcd-airsloop-control-1
-        hosts:
-        - airsloop-control-1
-        - 10.22.72.21
-        - 127.0.0.1
-        - localhost
-        - kubernetes-etcd.kube-system.svc.cluster.local
-        - 10.96.0.2
-      - common_name: kubernetes-etcd-airsloop-control-2
-        document_name: kubernetes-etcd-airsloop-control-2
-        hosts:
-        - airsloop-control-2
-        - 10.23.22.12
-        - 127.0.0.1
-        - localhost
-        - kubernetes-etcd.kube-system.svc.cluster.local
-        - 10.96.0.2
-      - common_name: kubernetes-etcd-airsloop-control-3
-        document_name: kubernetes-etcd-airsloop-control-3
-        hosts:
-        - airsloop-control-3
-        - 10.23.22.13
-        - 127.0.0.1
-        - localhost
-        - kubernetes-etcd.kube-system.svc.cluster.local
-        - 10.96.0.2
-      description: Certificates for Kubernetes's etcd servers
-    kubernetes-etcd-peer:
-      certificates:
-      - common_name: kubernetes-etcd-genesis-peer
-        document_name: kubernetes-etcd-genesis-peer
-        hosts:
-        - airsloop-control-1
-        - 10.22.72.21
-        - 127.0.0.1
-        - localhost
-        - kubernetes-etcd.kube-system.svc.cluster.local
-        - 10.96.0.2
-      - common_name: kubernetes-etcd-airsloop-control-1-peer
-        document_name: kubernetes-etcd-airsloop-control-1-peer
-        hosts:
-        - airsloop-control-1
-        - 10.22.72.21
-        - 127.0.0.1
-        - localhost
-        - kubernetes-etcd.kube-system.svc.cluster.local
-        - 10.96.0.2
-      - common_name: kubernetes-etcd-airsloop-control-2-peer
-        document_name: kubernetes-etcd-airsloop-control-2-peer
-        hosts:
-        - airsloop-control-2
-        - 10.23.22.12
-        - 127.0.0.1
-        - localhost
-        - kubernetes-etcd.kube-system.svc.cluster.local
-        - 10.96.0.2
-      - common_name: kubernetes-etcd-airsloop-control-3-peer
-        document_name: kubernetes-etcd-airsloop-control-3-peer
-        hosts:
-        - airsloop-control-3
-        - 10.23.22.13
-        - 127.0.0.1
-        - localhost
-        - kubernetes-etcd.kube-system.svc.cluster.local
-        - 10.96.0.2
+  - certificates:
+    - common_name: apiserver
+      description: Service certificate for Kubernetes apiserver
+      document_name: apiserver
+      hosts:
+      - localhost
+      - 127.0.0.1
+      - 10.96.0.1
+      kubernetes_service_names:
+      - kubernetes.default.svc.cluster.local
+    - common_name: system:node:airsloop-control-1
+      document_name: kubelet-genesis
+      groups:
+      - system:nodes
+      hosts:
+      - airsloop-control-1
+      - 10.22.72.21
+    - common_name: system:node:airsloop-control-1
+      document_name: kubelet-airsloop-control-1
+      groups:
+      - system:nodes
+      hosts:
+      - airsloop-control-1
+      - 10.22.72.21
+    - common_name: system:node:airsloop-control-2
+      document_name: kubelet-airsloop-control-2
+      groups:
+      - system:nodes
+      hosts:
+      - airsloop-control-2
+      - 10.23.22.12
+    - common_name: system:node:airsloop-control-3
+      document_name: kubelet-airsloop-control-3
+      groups:
+      - system:nodes
+      hosts:
+      - airsloop-control-3
+      - 10.23.22.13
+    - common_name: system:node:airsloop-compute-1
+      document_name: kubelet-airsloop-compute-1
+      groups:
+      - system:nodes
+      hosts:
+      - airsloop-compute-1
+      - 10.23.22.14
+    - common_name: system:kube-scheduler
+      description: Service certificate for Kubernetes scheduler
+      document_name: scheduler
+    - common_name: system:kube-controller-manager
+      description: certificate for controller-manager
+      document_name: controller-manager
+    - common_name: admin
+      document_name: admin
+      groups:
+      - system:masters
+    - common_name: armada
+      document_name: armada
+      groups:
+      - system:masters
+    description: CA for Kubernetes components
+    looks_like_a_bug: kubernetes
+  - certificates:
+    - common_name: apiserver
+      description: etcd client certificate for use by Kubernetes apiserver
+      document_name: apiserver-etcd
+    - common_name: anchor
+      description: anchor
+      document_name: kubernetes-etcd-anchor
+    - common_name: kubernetes-etcd-genesis
+      document_name: kubernetes-etcd-genesis
+      hosts:
+      - airsloop-control-1
+      - 10.22.72.21
+      - 127.0.0.1
+      - localhost
+      - kubernetes-etcd.kube-system.svc.cluster.local
+      - 10.96.0.2
+    - common_name: kubernetes-etcd-airsloop-control-1
+      document_name: kubernetes-etcd-airsloop-control-1
+      hosts:
+      - airsloop-control-1
+      - 10.22.72.21
+      - 127.0.0.1
+      - localhost
+      - kubernetes-etcd.kube-system.svc.cluster.local
+      - 10.96.0.2
+    - common_name: kubernetes-etcd-airsloop-control-2
+      document_name: kubernetes-etcd-airsloop-control-2
+      hosts:
+      - airsloop-control-2
+      - 10.23.22.12
+      - 127.0.0.1
+      - localhost
+      - kubernetes-etcd.kube-system.svc.cluster.local
+      - 10.96.0.2
+    - common_name: kubernetes-etcd-airsloop-control-3
+      document_name: kubernetes-etcd-airsloop-control-3
+      hosts:
+      - airsloop-control-3
+      - 10.23.22.13
+      - 127.0.0.1
+      - localhost
+      - kubernetes-etcd.kube-system.svc.cluster.local
+      - 10.96.0.2
+    description: Certificates for Kubernetes's etcd servers
+    looks_like_a_bug: kubernetes-etcd
+  - certificates:
+    - common_name: kubernetes-etcd-genesis-peer
+      document_name: kubernetes-etcd-genesis-peer
+      hosts:
+      - airsloop-control-1
+      - 10.22.72.21
+      - 127.0.0.1
+      - localhost
+      - kubernetes-etcd.kube-system.svc.cluster.local
+      - 10.96.0.2
+    - common_name: kubernetes-etcd-airsloop-control-1-peer
+      document_name: kubernetes-etcd-airsloop-control-1-peer
+      hosts:
+      - airsloop-control-1
+      - 10.22.72.21
+      - 127.0.0.1
+      - localhost
+      - kubernetes-etcd.kube-system.svc.cluster.local
+      - 10.96.0.2
+    - common_name: kubernetes-etcd-airsloop-control-2-peer
+      document_name: kubernetes-etcd-airsloop-control-2-peer
+      hosts:
+      - airsloop-control-2
+      - 10.23.22.12
+      - 127.0.0.1
+      - localhost
+      - kubernetes-etcd.kube-system.svc.cluster.local
+      - 10.96.0.2
+    - common_name: kubernetes-etcd-airsloop-control-3-peer
+      document_name: kubernetes-etcd-airsloop-control-3-peer
+      hosts:
+      - airsloop-control-3
+      - 10.23.22.13
+      - 127.0.0.1
+      - localhost
+      - kubernetes-etcd.kube-system.svc.cluster.local
+      - 10.96.0.2
+    looks_like_a_bug: kubernetes-etcd-peer
+  - certificates:
+    - common_name: anchor
+      description: anchor
+      document_name: calico-etcd-anchor
+    - common_name: calico-etcd-airsloop-control-1
+      document_name: calico-etcd-airsloop-control-1
+      hosts:
+      - airsloop-control-1
+      - 10.22.72.21
+      - 127.0.0.1
+      - localhost
+      - 10.96.232.136
+    - common_name: calico-etcd-airsloop-control-2
+      document_name: calico-etcd-airsloop-control-2
+      hosts:
+      - airsloop-control-2
+      - 10.23.22.12
+      - 127.0.0.1
+      - localhost
+      - 10.96.232.136
+    - common_name: calico-etcd-airsloop-control-3
+      document_name: calico-etcd-airsloop-control-3
+      hosts:
+      - airsloop-control-3
+      - 10.23.22.13
+      - 127.0.0.1
+      - localhost
+      - 10.96.232.136
+    - common_name: calcico-node
+      document_name: calico-node
+    description: Certificates for Calico etcd client traffic
+    looks_like_a_bug: calico-etcd
+  - certificates:
+    - common_name: calico-etcd-airsloop-control-1-peer
+      document_name: calico-etcd-airsloop-control-1-peer
+      hosts:
+      - airsloop-control-1
+      - 10.22.72.21
+      - 127.0.0.1
+      - localhost
+      - 10.96.232.136
+    - common_name: calico-etcd-airsloop-control-2-peer
+      document_name: calico-etcd-airsloop-control-2-peer
+      hosts:
+      - airsloop-control-2
+      - 10.23.22.12
+      - 127.0.0.1
+      - localhost
+      - 10.96.232.136
+    - common_name: calico-etcd-airsloop-control-3-peer
+      document_name: calico-etcd-airsloop-control-3-peer
+      hosts:
+      - airsloop-control-3
+      - 10.23.22.13
+      - 127.0.0.1
+      - localhost
+      - 10.96.232.136
+    - common_name: calcico-node-peer
+      document_name: calico-node-peer
+    description: Certificates for Calico etcd clients
+    looks_like_a_bug: calico-etcd-peer
   keypairs:
   - description: Service account signing key for use by Kubernetes controller-manager.
     name: service-account
