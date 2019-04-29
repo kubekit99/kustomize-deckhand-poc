@@ -1,3 +1,0 @@
-namePrefix:
-- path: spec/release
-  kind: ArmadaChart

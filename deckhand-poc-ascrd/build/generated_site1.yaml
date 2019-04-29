@@ -13,7 +13,7 @@ spec:
     no_hooks: false
   protected:
     continue_processing: false
-  release: keystone-memcached
+  release: ucp-keystone-memcached
   upgrade:
     no_hooks: false
     pre:
@@ -49,7 +49,7 @@ spec:
     no_hooks: false
   protected:
     continue_processing: false
-  release: keystone
+  release: ucp-keystone
   test:
     enabled: true
   upgrade:
@@ -223,7 +223,7 @@ spec:
     no_hooks: false
   protected:
     continue_processing: false
-  release: mariadb
+  release: ucp-mariadb
   upgrade:
     no_hooks: false
     options:
@@ -276,7 +276,7 @@ spec:
     no_hooks: false
   protected:
     continue_processing: false
-  release: rabbitmq
+  release: ucp-rabbitmq
   test:
     enabled: true
   upgrade:
