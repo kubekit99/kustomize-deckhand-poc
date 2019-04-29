@@ -5,7 +5,7 @@ metadata:
   name: keystone
   labels:
     name: chartgroup-keystone-global
-data:
+spec:
   description: UCP Keystone
   chart_group:
     - keystone

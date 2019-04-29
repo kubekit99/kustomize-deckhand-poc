@@ -3,7 +3,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
   name: infra
-data:
+spec:
   description: Common UCP Components
   chart_group:
     - mariadb

@@ -316,12 +316,6 @@ spec:
     timeout: 900
 ---
 apiVersion: armada.airshipit.org/v1alpha1
-data:
-  chart_group:
-  - mariadb
-  - rabbitmq
-  - keystone-memcached
-  description: Common UCP Components
 kind: ArmadaChartGroup
 metadata:
   labels:
@@ -329,12 +323,14 @@ metadata:
     ucp-label: common
   name: ucp-infra
   namespace: ucp
+spec:
+  chart_group:
+  - mariadb
+  - rabbitmq
+  - keystone-memcached
+  description: Common UCP Components
 ---
 apiVersion: armada.airshipit.org/v1alpha1
-data:
-  chart_group:
-  - keystone
-  description: UCP Keystone
 kind: ArmadaChartGroup
 metadata:
   labels:
@@ -343,6 +339,10 @@ metadata:
     ucp-label: common
   name: ucp-keystone
   namespace: ucp
+spec:
+  chart_group:
+  - keystone
+  description: UCP Keystone
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaManifest

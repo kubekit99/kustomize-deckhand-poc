@@ -1,6 +1,8 @@
-namePrefix:
-# - path: spec/chart_group/0
-#  kind: ArmadaChartGroup
+nameReference:
+- kind: ArmadaChart
+  fieldSpecs:
+  - path: spec/chart_group[0]
+    kind: ArmadaChartGroup
 
 varReference:
 - path: spec
