@@ -2,6 +2,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
+bases:
+- ../base
+
 resources:
 - replacement.yaml
 - sample-doc.yaml
@@ -18,24 +21,23 @@ vars:
   objref:
     kind: DeckhandCertificate
     name: example-cert
-    apiVersion: deckhand.airshipit.org/v1alpha
+    apiVersion: deckhand.airshipit.org/v1alpha1
   fieldref:
     fieldpath: spec
 - name: THE_CERTIFICATE_KEY
   objref:
     kind: DeckhandCertificateKey
     name: example-key
-    apiVersion: deckhand.airshipit.org/v1alpha
+    apiVersion: deckhand.airshipit.org/v1alpha1
   fieldref:
     fieldpath: spec
 - name: INSERT_PASSWORD_HERE
   objref:
     kind: DeckhandPassphrase
     name: example-password
-    apiVersion: deckhand.airshipit.org/v1alpha
+    apiVersion: deckhand.airshipit.org/v1alpha1
   fieldref:
     fieldpath: spec
 
 configurations:
-- kustomizeconfig/armadachart.yaml
 - kustomizeconfig/promenaderesourcetype.yaml

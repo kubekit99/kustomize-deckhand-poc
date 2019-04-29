@@ -1,5 +1,5 @@
 ---
-apiVersion: deckhand.airshipit.org/v1alpha
+apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
   name: example-password
@@ -8,7 +8,7 @@ metadata:
   storagePolicy: cleartext
 spec: my-secret-password
 ---
-apiVersion: promenade.airshipit.org/v1alpha
+apiVersion: promenade.airshipit.org/v1alpha1
 kind: PromenadeResourceType
 metadata:
   name: a-unique-config-name-12345

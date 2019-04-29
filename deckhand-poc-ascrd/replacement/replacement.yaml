@@ -1,5 +1,5 @@
 ---
-apiVersion: deckhand.airshipit.org/v1alpha
+apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandLayeringPolicy
 metadata:
   name: layering-policy
@@ -8,7 +8,7 @@ spec:
     - region
     - site
 ---
-apiVersion: deckhand.airshipit.org/v1alpha
+apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
   name: example-cert
@@ -17,7 +17,7 @@ metadata:
 spec: |
   CERTIFICATE DATA
 ---
-apiVersion: deckhand.airshipit.org/v1alpha
+apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
   name: example-key
@@ -26,7 +26,7 @@ metadata:
 spec: |
   KEY DATA
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   name: example-chart-01
@@ -43,7 +43,7 @@ spec:
          # certificate: example-cert
          certificate: $(THE_CERTIFICATE)
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   name: example-chart-02

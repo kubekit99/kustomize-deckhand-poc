@@ -15,13 +15,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.armada-htk
-space:
-  namespace: airship
 spec:
   chart_name: armada-htk
   dependencies: []
   namespace: armada-htk
-  release: armada-htk
+  release: pref1-armada-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -41,13 +39,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.kubernetes.calico.calico-htk
-space:
-  namespace: airship
 spec:
   chart_name: calico-htk
   dependencies: []
   namespace: calico-htk
-  release: calico-htk
+  release: pref1-calico-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -67,13 +63,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.ceph-htk
-space:
-  namespace: airship
 spec:
   chart_name: ceph-htk
   dependencies: []
   namespace: ceph-htk
-  release: ceph-htk
+  release: pref1-ceph-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -131,8 +125,6 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-cinder-oslo-messaging-admin-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: cinder-rabbitmq
   dependencies:
@@ -140,7 +132,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: cinder-rabbitmq
+  release: pref1-cinder-rabbitmq
   upgrade:
     no_hooks: false
     pre:
@@ -330,8 +322,6 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-oslo-cache-secret-key
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: cinder
   dependencies:
@@ -339,7 +329,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: cinder
+  release: pref1-cinder
   upgrade:
     no_hooks: false
     post:
@@ -468,13 +458,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.kubernetes.coredns-htk
-space:
-  namespace: airship
 spec:
   chart_name: coredns-htk
   dependencies: []
   namespace: coredns-htk
-  release: coredns-htk
+  release: pref1-coredns-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -549,14 +537,12 @@ metadata:
       kind: PeglegCommonAddresses
       name: common-addresses
       path: .dns.upstream_servers[2]
-space:
-  namespace: airship
 spec:
   chart_name: coredns
   dependencies:
   - coredns-htk
   namespace: kube-system
-  release: coredns
+  release: pref1-coredns
   upgrade:
     no_hooks: false
     pre:
@@ -609,13 +595,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.deckhand-htk
-space:
-  namespace: airship
 spec:
   chart_name: deckhand-htk
   dependencies: []
   namespace: deckhand-htk
-  release: deckhand-htk
+  release: pref1-deckhand-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -635,13 +619,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.drydock-htk
-space:
-  namespace: airship
 spec:
   chart_name: drydock-htk
   dependencies: []
   namespace: drydock-htk
-  release: drydock-htk
+  release: pref1-drydock-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -746,8 +728,6 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-keystone-ldap-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: elasticsearch
   dependencies:
@@ -755,7 +735,7 @@ spec:
   install:
     no_hooks: false
   namespace: osh-infra
-  release: elasticsearch
+  release: pref1-elasticsearch
   upgrade:
     no_hooks: false
     post:
@@ -1041,8 +1021,6 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-infra-elasticsearch-admin-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: fluent-logging
   dependencies:
@@ -1050,7 +1028,7 @@ spec:
   install:
     no_hooks: false
   namespace: osh-infra
-  release: fluent-logging
+  release: pref1-fluent-logging
   upgrade:
     no_hooks: false
     post:
@@ -1450,8 +1428,6 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-glance-oslo-messaging-admin-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: glance-rabbitmq
   dependencies:
@@ -1459,7 +1435,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: glance-rabbitmq
+  release: pref1-glance-rabbitmq
   upgrade:
     no_hooks: false
     pre:
@@ -1667,8 +1643,6 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-glance-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: glance
   dependencies:
@@ -1676,7 +1650,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: glance
+  release: pref1-glance
   upgrade:
     no_hooks: false
     post:
@@ -1966,8 +1940,6 @@ metadata:
       kind: PeglegCommonAddresses
       name: common-addresses
       path: .ldap.domain
-space:
-  namespace: airship
 spec:
   chart_name: grafana
   dependencies:
@@ -1975,7 +1947,7 @@ spec:
   install:
     no_hooks: false
   namespace: osh-infra
-  release: grafana
+  release: pref1-grafana
   upgrade:
     no_hooks: false
     post:
@@ -2055,13 +2027,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.kubernetes.haproxy-htk
-space:
-  namespace: airship
 spec:
   chart_name: haproxy-htk
   dependencies: []
   namespace: haproxy-htk
-  release: haproxy-htk
+  release: pref1-haproxy-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -2095,8 +2065,6 @@ metadata:
       kind: PeglegCommonAddresses
       name: common-addresses
       path: .kubernetes.api_service_ip
-space:
-  namespace: airship
 spec:
   chart_name: haproxy
   dependencies:
@@ -2104,7 +2072,7 @@ spec:
   namespace: kube-system
   protected:
     continue_processing: true
-  release: haproxy
+  release: pref1-haproxy
   upgrade:
     no_hooks: false
     pre:
@@ -2203,8 +2171,6 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-heat-oslo-messaging-admin-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: heat-rabbitmq
   dependencies:
@@ -2212,7 +2178,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: heat-rabbitmq
+  release: pref1-heat-rabbitmq
   upgrade:
     no_hooks: false
     pre:
@@ -2414,8 +2380,6 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-oslo-cache-secret-key
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: heat
   dependencies:
@@ -2423,7 +2387,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: heat
+  release: pref1-heat
   upgrade:
     no_hooks: false
     post:
@@ -2609,8 +2573,6 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-oslo-cache-secret-key
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: horizon
   dependencies:
@@ -2618,7 +2580,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: horizon
+  release: pref1-horizon
   upgrade:
     no_hooks: false
     post:
@@ -2657,13 +2619,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.kubernetes.ingress-htk
-space:
-  namespace: airship
 spec:
   chart_name: ingress-kube-system-htk
   dependencies: []
   namespace: ingress-kube-system-htk
-  release: ingress-kube-system-htk
+  release: pref1-ingress-kube-system-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -2691,8 +2651,6 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .images.kubernetes.ingress
-space:
-  namespace: airship
 spec:
   chart_name: ingress-kube-system
   dependencies:
@@ -2700,7 +2658,7 @@ spec:
   install:
     no_hooks: false
   namespace: kube-system
-  release: ingress-kube-system
+  release: pref1-ingress-kube-system
   upgrade:
     no_hooks: false
     pre:
@@ -2787,8 +2745,6 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-keystone-oslo-messaging-admin-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: keystone-rabbitmq
   dependencies:
@@ -2796,7 +2752,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: keystone-rabbitmq
+  release: pref1-keystone-rabbitmq
   upgrade:
     no_hooks: false
     pre:
@@ -2944,8 +2900,6 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-oslo-cache-secret-key
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: keystone
   dependencies:
@@ -2953,7 +2907,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: keystone
+  release: pref1-keystone
   upgrade:
     no_hooks: false
     post:
@@ -3137,8 +3091,6 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-keystone-ldap-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: kibana
   dependencies:
@@ -3146,7 +3098,7 @@ spec:
   install:
     no_hooks: false
   namespace: osh-infra
-  release: kibana
+  release: pref1-kibana
   upgrade:
     no_hooks: false
     post:
@@ -3208,13 +3160,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.kubernetes.apiserver-htk
-space:
-  namespace: airship
 spec:
   chart_name: kubernetes-apiserver-htk
   dependencies: []
   namespace: kubernetes-apiserver-htk
-  release: kubernetes-apiserver-htk
+  release: pref1-kubernetes-apiserver-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -3309,8 +3259,6 @@ metadata:
       kind: DeckhandPublicKey
       name: service-account
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: apiserver
   dependencies:
@@ -3318,7 +3266,7 @@ spec:
   namespace: kube-system
   protected:
     continue_processing: true
-  release: kubernetes-apiserver
+  release: pref1-kubernetes-apiserver
   upgrade:
     no_hooks: false
     pre:
@@ -3406,8 +3354,6 @@ metadata:
       kind: DeckhandCertificateKey
       name: calico-etcd-anchor
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: etcd
   dependencies:
@@ -3415,7 +3361,7 @@ spec:
   namespace: kube-system
   protected:
     continue_processing: true
-  release: kubernetes-calico-etcd
+  release: pref1-kubernetes-calico-etcd
   upgrade:
     no_hooks: false
     pre:
@@ -3468,13 +3414,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.kubernetes.calico.etcd-htk
-space:
-  namespace: airship
 spec:
   chart_name: kubernetes-calico-etcd-htk
   dependencies: []
   namespace: kubernetes-calico-etcd-htk
-  release: kubernetes-calico-etcd-htk
+  release: pref1-kubernetes-calico-etcd-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -3583,8 +3527,6 @@ metadata:
       kind: DeckhandCertificateKey
       name: calico-etcd-airsloop-control-3-peer
       path: .
-space:
-  namespace: airship
 spec: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -3654,8 +3596,6 @@ metadata:
       kind: DeckhandCertificateKey
       name: calico-node
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: calico
   dependencies:
@@ -3663,7 +3603,7 @@ spec:
   namespace: kube-system
   protected:
     continue_processing: true
-  release: kubernetes-calico
+  release: pref1-kubernetes-calico
   upgrade:
     no_hooks: false
     pre:
@@ -3744,13 +3684,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.kubernetes.controller-manager-htk
-space:
-  namespace: airship
 spec:
   chart_name: kubernetes-controller-manager-htk
   dependencies: []
   namespace: kubernetes-controller-manager-htk
-  release: kubernetes-controller-manager-htk
+  release: pref1-kubernetes-controller-manager-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -3827,8 +3765,6 @@ metadata:
       kind: DeckhandPrivateKey
       name: service-account
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: controller-manager
   dependencies:
@@ -3836,7 +3772,7 @@ spec:
   namespace: kube-system
   protected:
     continue_processing: true
-  release: kubernetes-controller-manager
+  release: pref1-kubernetes-controller-manager
   upgrade:
     no_hooks: false
     pre:
@@ -3919,8 +3855,6 @@ metadata:
       kind: DeckhandCertificateKey
       name: kubernetes-etcd-anchor
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: etcd
   dependencies:
@@ -3928,7 +3862,7 @@ spec:
   namespace: kube-system
   protected:
     continue_processing: true
-  release: kubernetes-etcd
+  release: pref1-kubernetes-etcd
   upgrade:
     no_hooks: false
     pre:
@@ -3977,13 +3911,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.kubernetes.etcd-htk
-space:
-  namespace: airship
 spec:
   chart_name: kubernetes-etcd-htk
   dependencies: []
   namespace: kubernetes-etcd-htk
-  release: kubernetes-etcd-htk
+  release: pref1-kubernetes-etcd-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -4092,8 +4024,6 @@ metadata:
       kind: DeckhandCertificateKey
       name: kubernetes-etcd-airsloop-control-3-peer
       path: $
-space:
-  namespace: airship
 spec: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -4113,13 +4043,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.kubernetes.proxy-htk
-space:
-  namespace: airship
 spec:
   chart_name: kubernetes-proxy-htk
   dependencies: []
   namespace: kubernetes-proxy-htk
-  release: kubernetes-proxy-htk
+  release: pref1-kubernetes-proxy-htk
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
@@ -4158,14 +4086,12 @@ metadata:
       kind: DeckhandCertificateAuthority
       name: kubernetes
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: proxy
   dependencies:
   - kubernetes-proxy-htk
   namespace: kube-system
-  release: kubernetes-proxy
+  release: pref1-kubernetes-proxy
   upgrade:
     no_hooks: false
     pre:
@@ -4206,13 +4132,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.kubernetes.scheduler-htk
-space:
-  namespace: airship
 spec:
   chart_name: kubernetes-scheduler-htk
   dependencies: []
   namespace: kubernetes-scheduler-htk
-  release: kubernetes-scheduler-htk
+  release: pref1-kubernetes-scheduler-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -4257,8 +4181,6 @@ metadata:
       kind: DeckhandCertificateKey
       name: scheduler
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: scheduler
   dependencies:
@@ -4266,7 +4188,7 @@ spec:
   namespace: kube-system
   protected:
     continue_processing: true
-  release: kubernetes-scheduler
+  release: pref1-kubernetes-scheduler
   upgrade:
     no_hooks: false
     pre:
@@ -4307,8 +4229,6 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .images.osh.libvirt
-space:
-  namespace: airship
 spec:
   chart_name: libvirt
   dependencies:
@@ -4316,7 +4236,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: libvirt
+  release: pref1-libvirt
   upgrade:
     no_hooks: false
     pre:
@@ -4351,13 +4271,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.maas-htk
-space:
-  namespace: airship
 spec:
   chart_name: maas-htk
   dependencies: []
   namespace: maas-htk
-  release: maas-htk
+  release: pref1-maas-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -4377,13 +4295,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.mariadb-htk
-space:
-  namespace: airship
 spec:
   chart_name: mariadb-htk
   dependencies: []
   namespace: mariadb-htk
-  release: mariadb-htk
+  release: pref1-mariadb-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -4481,8 +4397,6 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-keystone-ldap-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: nagios
   dependencies:
@@ -4490,7 +4404,7 @@ spec:
   install:
     no_hooks: false
   namespace: osh-infra
-  release: nagios
+  release: pref1-nagios
   upgrade:
     no_hooks: false
     post:
@@ -4591,8 +4505,6 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-neutron-oslo-messaging-admin-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: neutron-rabbitmq
   dependencies:
@@ -4600,7 +4512,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: neutron-rabbitmq
+  release: pref1-neutron-rabbitmq
   upgrade:
     no_hooks: false
     pre:
@@ -4804,8 +4716,6 @@ metadata:
       kind: PeglegCommonAddresses
       name: common-addresses
       path: .neutron.external_iface
-space:
-  namespace: airship
 spec:
   chart_name: neutron
   dependencies:
@@ -4813,7 +4723,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: neutron
+  release: pref1-neutron
   test:
     timeout: 500
   upgrade:
@@ -4972,14 +4882,12 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .images.osh_infra.nfs_provisioner
-space:
-  namespace: airship
 spec:
   chart_name: nfs-provisioner
   dependencies:
   - osh-infra-helm-toolkit
   namespace: nfs
-  release: nfs-provisioner
+  release: pref1-nfs-provisioner
   values:
     storageclass:
       name: general
@@ -5043,8 +4951,6 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-nova-oslo-messaging-admin-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: nova-rabbitmq
   dependencies:
@@ -5052,7 +4958,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: nova-rabbitmq
+  release: pref1-nova-rabbitmq
   upgrade:
     no_hooks: false
     pre:
@@ -5340,8 +5246,6 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-oslo-cache-secret-key
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: nova
   dependencies:
@@ -5349,7 +5253,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: nova
+  release: pref1-nova
   upgrade:
     no_hooks: false
     post:
@@ -5523,8 +5427,6 @@ metadata:
       kind: PeglegEndpointCatalogue
       name: ucp-endpoints
       path: .ceph.ceph_mon
-space:
-  namespace: airship
 spec:
   chart_name: openstack-ceph-config
   dependencies:
@@ -5532,7 +5434,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: openstack-ceph-config
+  release: pref1-openstack-ceph-config
   upgrade:
     no_hooks: false
     pre:
@@ -5590,8 +5492,6 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .images.osh.ingress
-space:
-  namespace: airship
 spec:
   chart_name: openstack-ingress-controller
   dependencies:
@@ -5599,7 +5499,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: openstack-ingress-controller
+  release: pref1-openstack-ingress-controller
   upgrade:
     no_hooks: false
     pre:
@@ -5685,8 +5585,6 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-oslo-db-exporter-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: openstack-mariadb
   dependencies:
@@ -5694,7 +5592,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: openstack-mariadb
+  release: pref1-openstack-mariadb
   upgrade:
     no_hooks: false
     pre:
@@ -5749,8 +5647,6 @@ metadata:
       kind: PeglegEndpointCatalogue
       name: osh-endpoints
       path: .osh.oslo_cache
-space:
-  namespace: airship
 spec:
   chart_name: openstack-memcached
   dependencies:
@@ -5758,7 +5654,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: openstack-memcached
+  release: pref1-openstack-memcached
   upgrade:
     no_hooks: false
     pre:
@@ -5800,8 +5696,6 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .images.osh.openvswitch
-space:
-  namespace: airship
 spec:
   chart_name: openvswitch
   dependencies:
@@ -5809,7 +5703,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: openvswitch
+  release: pref1-openvswitch
   upgrade:
     no_hooks: false
     pre:
@@ -5844,13 +5738,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.osh.helm_toolkit
-space:
-  namespace: airship
 spec:
   chart_name: helm-toolkit
   dependencies: []
   namespace: osh-helm-toolkit
-  release: osh-helm-toolkit
+  release: pref1-osh-helm-toolkit
   upgrade:
     no_hooks: true
   values: {}
@@ -5900,8 +5792,6 @@ metadata:
       kind: PeglegEndpointCatalogue
       name: ucp-endpoints
       path: .ceph.ceph_mon
-space:
-  namespace: airship
 spec:
   chart_name: osh-infra-ceph-config
   dependencies:
@@ -5909,7 +5799,7 @@ spec:
   install:
     no_hooks: false
   namespace: osh-infra
-  release: osh-infra-ceph-config
+  release: pref1-osh-infra-ceph-config
   upgrade:
     no_hooks: false
     pre:
@@ -5959,13 +5849,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.osh_infra.helm_toolkit
-space:
-  namespace: airship
 spec:
   chart_name: helm-toolkit
   dependencies: []
   namespace: osh-infra-helm-toolkit
-  release: osh-infra-helm-toolkit
+  release: pref1-osh-infra-helm-toolkit
   upgrade:
     no_hooks: true
   values: {}
@@ -5998,8 +5886,6 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .images.osh.ingress
-space:
-  namespace: airship
 spec:
   chart_name: osh-infra-ingress-controller
   dependencies:
@@ -6007,7 +5893,7 @@ spec:
   install:
     no_hooks: false
   namespace: osh-infra
-  release: osh-infra-ingress-controller
+  release: pref1-osh-infra-ingress-controller
   upgrade:
     no_hooks: false
     pre:
@@ -6092,8 +5978,6 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-infra-oslo-db-exporter-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: osh-infra-mariadb
   dependencies:
@@ -6101,7 +5985,7 @@ spec:
   install:
     no_hooks: false
   namespace: osh-infra
-  release: osh-infra-mariadb
+  release: pref1-osh-infra-mariadb
   upgrade:
     no_hooks: false
     pre:
@@ -6190,8 +6074,6 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-infra-rgw-s3-admin-secret-key
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: osh-infra-radosgw
   dependencies:
@@ -6199,7 +6081,7 @@ spec:
   install:
     no_hooks: false
   namespace: osh-infra
-  release: osh-infra-radosgw
+  release: pref1-osh-infra-radosgw
   upgrade:
     no_hooks: false
     pre:
@@ -6252,8 +6134,6 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.osh_infra.podsecuritypolicy
-space:
-  namespace: airship
 spec:
   chart_name: podsecuritypolicy
   dependencies:
@@ -6261,7 +6141,7 @@ spec:
   install:
     no_hooks: true
   namespace: ucp
-  release: podsecuritypolicy
+  release: pref1-podsecuritypolicy
   upgrade:
     no_hooks: true
   values:
@@ -6312,13 +6192,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.postgresql-htk
-space:
-  namespace: airship
 spec:
   chart_name: postgres-htk
   dependencies: []
   namespace: postgres-htk
-  release: postgres-htk
+  release: pref1-postgres-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -6338,13 +6216,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.promenade-htk
-space:
-  namespace: airship
 spec:
   chart_name: promenade-htk
   dependencies: []
   namespace: promenade-htk
-  release: promenade-htk
+  release: pref1-promenade-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -6376,8 +6252,6 @@ metadata:
       kind: PeglegEndpointCatalogue
       name: osh-infra-endpoints
       path: .osh_infra.alerts
-space:
-  namespace: airship
 spec:
   chart_name: prometheus-alertmanager
   dependencies:
@@ -6385,7 +6259,7 @@ spec:
   install:
     no_hooks: false
   namespace: osh-infra
-  release: prometheus-alertmanager
+  release: pref1-prometheus-alertmanager
   upgrade:
     no_hooks: false
     post:
@@ -6453,8 +6327,6 @@ metadata:
       kind: PeglegEndpointCatalogue
       name: osh-infra-endpoints
       path: .osh_infra.kube_controller_manager
-space:
-  namespace: airship
 spec:
   chart_name: prometheus-kube-state-metrics
   dependencies:
@@ -6462,7 +6334,7 @@ spec:
   install:
     no_hooks: false
   namespace: kube-system
-  release: prometheus-kube-state-metrics
+  release: pref1-prometheus-kube-state-metrics
   upgrade:
     no_hooks: false
     post:
@@ -6515,8 +6387,6 @@ metadata:
       kind: PeglegEndpointCatalogue
       name: osh-infra-endpoints
       path: .osh_infra.node_metrics
-space:
-  namespace: airship
 spec:
   chart_name: prometheus-node-exporter
   dependencies:
@@ -6524,7 +6394,7 @@ spec:
   install:
     no_hooks: false
   namespace: kube-system
-  release: prometheus-node-exporter
+  release: pref1-prometheus-node-exporter
   upgrade:
     no_hooks: false
     post:
@@ -6607,8 +6477,6 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-infra-openstack-exporter-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: prometheus-openstack-exporter
   dependencies:
@@ -6616,7 +6484,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: prometheus-openstack-exporter
+  release: pref1-prometheus-openstack-exporter
   upgrade:
     no_hooks: false
     pre:
@@ -6666,8 +6534,6 @@ metadata:
       kind: PeglegEndpointCatalogue
       name: osh-infra-endpoints
       path: .osh_infra.process_exporter_metrics
-space:
-  namespace: airship
 spec:
   chart_name: prometheus-process-exporter
   dependencies:
@@ -6675,7 +6541,7 @@ spec:
   install:
     no_hooks: false
   namespace: kube-system
-  release: prometheus-process-exporter
+  release: pref1-prometheus-process-exporter
   upgrade:
     no_hooks: false
     post:
@@ -6765,8 +6631,6 @@ metadata:
       kind: DeckhandPassphrase
       name: osh-keystone-ldap-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: prometheus
   dependencies:
@@ -6774,7 +6638,7 @@ spec:
   install:
     no_hooks: false
   namespace: osh-infra
-  release: prometheus
+  release: pref1-prometheus
   upgrade:
     no_hooks: false
     post:
@@ -8486,13 +8350,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.shipyard-htk
-space:
-  namespace: airship
 spec:
   chart_name: shipyard-htk
   dependencies: []
   namespace: shipyard-htk
-  release: shipyard-htk
+  release: pref1-shipyard-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -8549,8 +8411,6 @@ metadata:
       kind: DeckhandPassphrase
       name: tenant-ceph-fsid
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: tenant-ceph-client
   dependencies:
@@ -8560,7 +8420,7 @@ spec:
   namespace: tenant-ceph
   protected:
     continue_processing: true
-  release: tenant-ceph-client
+  release: pref1-tenant-ceph-client
   upgrade:
     no_hooks: false
     pre:
@@ -8702,8 +8562,6 @@ metadata:
   name: pref1-tenant-ceph-client
   namespace: airship
   replacement: true
-space:
-  namespace: airship
 spec:
   values:
     conf:
@@ -8752,8 +8610,6 @@ metadata:
       kind: PeglegEndpointCatalogue
       name: ucp-endpoints
       path: .ceph.tenant_ceph_mon
-space:
-  namespace: airship
 spec:
   chart_name: tenant-ceph-config
   dependencies:
@@ -8761,7 +8617,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: tenant-ceph-config
+  release: pref1-tenant-ceph-config
   upgrade:
     no_hooks: false
     pre:
@@ -8815,13 +8671,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.tenant-ceph-htk
-space:
-  namespace: airship
 spec:
   chart_name: tenant-ceph-htk
   dependencies: []
   namespace: tenant-ceph-htk
-  release: tenant-ceph-htk
+  release: pref1-tenant-ceph-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -8848,8 +8702,6 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .images.ucp.ingress
-space:
-  namespace: airship
 spec:
   chart_name: tenant-ceph-ingress
   dependencies:
@@ -8857,7 +8709,7 @@ spec:
   install:
     no_hooks: false
   namespace: tenant-ceph
-  release: tenant-ceph-ingress
+  release: pref1-tenant-ceph-ingress
   upgrade:
     no_hooks: false
     pre:
@@ -8938,8 +8790,6 @@ metadata:
       kind: DeckhandPassphrase
       name: tenant-ceph-fsid
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: tenant-ceph-mon
   dependencies:
@@ -8949,7 +8799,7 @@ spec:
   namespace: tenant-ceph
   protected:
     continue_processing: true
-  release: tenant-ceph-mon
+  release: pref1-tenant-ceph-mon
   upgrade:
     no_hooks: false
     pre:
@@ -9041,8 +8891,6 @@ metadata:
       kind: DeckhandPassphrase
       name: tenant-ceph-fsid
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: tenant-ceph-osd
   dependencies:
@@ -9052,7 +8900,7 @@ spec:
   namespace: tenant-ceph
   protected:
     continue_processing: true
-  release: tenant-ceph-osd
+  release: pref1-tenant-ceph-osd
   upgrade:
     no_hooks: false
   values:
@@ -9172,8 +9020,6 @@ metadata:
       kind: DeckhandPassphrase
       name: ceph-swift-keystone-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: tenant-ceph-rgw
   dependencies:
@@ -9181,7 +9027,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: tenant-ceph-rgw
+  release: pref1-tenant-ceph-rgw
   upgrade:
     no_hooks: false
     pre:
@@ -9247,13 +9093,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.tiller-htk
-space:
-  namespace: airship
 spec:
   chart_name: tiller-htk
   dependencies: []
   namespace: tiller-htk
-  release: tiller-htk
+  release: pref1-tiller-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -9316,8 +9160,6 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-armada-keystone-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: armada
   dependencies:
@@ -9325,7 +9167,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: ucp-armada
+  release: pref1-ucp-armada
   upgrade:
     no_hooks: false
     pre:
@@ -9367,13 +9209,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.barbican-htk
-space:
-  namespace: airship
 spec:
   chart_name: ucp-barbican-htk
   dependencies: []
   namespace: ucp-barbican-htk
-  release: ucp-barbican-htk
+  release: pref1-ucp-barbican-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -9503,8 +9343,6 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-oslo-messaging-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: ucp-barbican
   dependencies:
@@ -9512,7 +9350,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: ucp-barbican
+  release: pref1-ucp-barbican
   upgrade:
     no_hooks: false
     post:
@@ -9657,8 +9495,6 @@ metadata:
       kind: DeckhandPassphrase
       name: ceph-fsid
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: ucp-ceph-client
   dependencies:
@@ -9668,7 +9504,7 @@ spec:
   namespace: ceph
   protected:
     continue_processing: true
-  release: ucp-ceph-client
+  release: pref1-ucp-ceph-client
   upgrade:
     no_hooks: false
     pre:
@@ -9770,8 +9606,6 @@ metadata:
       kind: DeckhandPassphrase
       name: ceph-fsid
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: ucp-ceph-client
   dependencies:
@@ -9781,7 +9615,7 @@ spec:
   namespace: ceph
   protected:
     continue_processing: true
-  release: ucp-ceph-client
+  release: pref1-ucp-ceph-client
   upgrade:
     no_hooks: false
     pre:
@@ -9872,8 +9706,6 @@ metadata:
       kind: PeglegEndpointCatalogue
       name: ucp-endpoints
       path: .ceph.ceph_mon
-space:
-  namespace: airship
 spec:
   chart_name: ucp-ceph-config
   dependencies:
@@ -9881,7 +9713,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: ucp-ceph-config
+  release: pref1-ucp-ceph-config
   upgrade:
     no_hooks: false
     pre:
@@ -9941,8 +9773,6 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .images.ucp.ingress
-space:
-  namespace: airship
 spec:
   chart_name: ucp-ceph-ingress
   dependencies:
@@ -9950,7 +9780,7 @@ spec:
   install:
     no_hooks: false
   namespace: ceph
-  release: ucp-ceph-ingress
+  release: pref1-ucp-ceph-ingress
   upgrade:
     no_hooks: false
     pre:
@@ -10031,8 +9861,6 @@ metadata:
       kind: DeckhandPassphrase
       name: ceph-fsid
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: ucp-ceph-mon
   dependencies:
@@ -10042,7 +9870,7 @@ spec:
   namespace: ceph
   protected:
     continue_processing: true
-  release: ucp-ceph-mon
+  release: pref1-ucp-ceph-mon
   upgrade:
     no_hooks: false
     pre:
@@ -10119,8 +9947,6 @@ metadata:
       kind: DeckhandPassphrase
       name: ceph-fsid
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: ucp-ceph-osd
   dependencies:
@@ -10130,7 +9956,7 @@ spec:
   namespace: ceph
   protected:
     continue_processing: true
-  release: ucp-ceph-osd
+  release: pref1-ucp-ceph-osd
   upgrade:
     no_hooks: false
   values:
@@ -10207,8 +10033,6 @@ metadata:
       kind: DeckhandPassphrase
       name: ceph-fsid
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: ucp-ceph-provisioners
   dependencies:
@@ -10218,7 +10042,7 @@ spec:
   namespace: ceph
   protected:
     continue_processing: true
-  release: ucp-ceph-provisioners
+  release: pref1-ucp-ceph-provisioners
   upgrade:
     no_hooks: false
     pre:
@@ -10338,8 +10162,6 @@ metadata:
       kind: DeckhandPassphrase
       name: ceph-swift-keystone-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: ucp-ceph-rgw
   dependencies:
@@ -10347,7 +10169,7 @@ spec:
   install:
     no_hooks: false
   namespace: ceph
-  release: ucp-ceph-rgw
+  release: pref1-ucp-ceph-rgw
   upgrade:
     no_hooks: false
     pre:
@@ -10499,8 +10321,6 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-deckhand-postgres-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: ucp-deckhand
   dependencies:
@@ -10508,7 +10328,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: ucp-deckhand
+  release: pref1-ucp-deckhand
   upgrade:
     no_hooks: false
     post:
@@ -10559,8 +10379,6 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .images.ucp.divingbell
-space:
-  namespace: airship
 spec:
   chart_name: ucp-divingbell
   dependencies:
@@ -10568,7 +10386,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: ucp-divingbell
+  release: pref1-ucp-divingbell
   upgrade:
     no_hooks: false
     pre:
@@ -10617,13 +10435,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.divingbell-htk
-space:
-  namespace: airship
 spec:
   chart_name: ucp-divingbell-htk
   dependencies: []
   namespace: ucp-divingbell-htk
-  release: ucp-divingbell-htk
+  release: pref1-ucp-divingbell-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -10655,8 +10471,6 @@ metadata:
       kind: DeckhandPassphrase
       name: airsloop-crypt-password
       path: .
-space:
-  namespace: airship
 spec:
   values:
     conf:
@@ -10799,8 +10613,6 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-drydock-postgres-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: drydock
   dependencies:
@@ -10808,7 +10620,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: drydock
+  release: pref1-drydock
   upgrade:
     no_hooks: false
     pre:
@@ -10854,13 +10666,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.ingress-htk
-space:
-  namespace: airship
 spec:
   chart_name: ucp-ingress-htk
   dependencies: []
   namespace: ucp-ingress-htk
-  release: ucp-ingress-htk
+  release: pref1-ucp-ingress-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -10887,8 +10697,6 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .images.ucp.ingress
-space:
-  namespace: airship
 spec:
   chart_name: ingress
   dependencies:
@@ -10896,7 +10704,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: ingress
+  release: pref1-ingress
   upgrade:
     no_hooks: false
     pre:
@@ -10946,13 +10754,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.keystone-htk
-space:
-  namespace: airship
 spec:
   chart_name: ucp-keystone-htk
   dependencies: []
   namespace: ucp-keystone-htk
-  release: ucp-keystone-htk
+  release: pref1-ucp-keystone-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -10985,8 +10791,6 @@ metadata:
       kind: PeglegEndpointCatalogue
       name: ucp-endpoints
       path: .ucp.oslo_cache
-space:
-  namespace: airship
 spec:
   chart_name: ucp-keystone-memcached
   dependencies:
@@ -10994,7 +10798,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: ucp-keystone-memcached
+  release: pref1-ucp-keystone-memcached
   upgrade:
     no_hooks: false
     pre:
@@ -11122,8 +10926,6 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-oslo-db-admin-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: ucp-keystone
   dependencies:
@@ -11131,7 +10933,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: ucp-keystone
+  release: pref1-ucp-keystone
   upgrade:
     no_hooks: false
     post:
@@ -11362,8 +11164,6 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-maas-postgres-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: maas
   dependencies:
@@ -11371,7 +11171,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: maas
+  release: pref1-maas
   upgrade:
     no_hooks: false
     pre:
@@ -11433,8 +11233,6 @@ metadata:
       name: ucp-maas-global
   name: pref1-ucp-maas
   namespace: airship
-space:
-  namespace: airship
 spec:
   values:
     conf:
@@ -11486,8 +11284,6 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-oslo-db-admin-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: ucp-mariadb
   dependencies:
@@ -11495,7 +11291,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: ucp-mariadb
+  release: pref1-ucp-mariadb
   upgrade:
     no_hooks: false
     pre:
@@ -11539,13 +11335,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.memcached-htk
-space:
-  namespace: airship
 spec:
   chart_name: ucp-memcached-htk
   dependencies: []
   namespace: ucp-memcached-htk
-  release: ucp-memcached-htk
+  release: pref1-ucp-memcached-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -11590,8 +11384,6 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-postgres-admin-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: ucp-postgresql
   dependencies:
@@ -11599,7 +11391,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: ucp-postgresql
+  release: pref1-ucp-postgresql
   upgrade:
     no_hooks: false
     post:
@@ -11686,8 +11478,6 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-promenade-keystone-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: promenade
   dependencies:
@@ -11695,7 +11485,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: ucp-promenade
+  release: pref1-ucp-promenade
   upgrade:
     no_hooks: false
     pre:
@@ -11739,8 +11529,6 @@ metadata:
     parentSelector:
       name: ucp-promenade-global
   name: pref1-ucp-promenade
-  namespace: airship
-space:
   namespace: airship
 spec:
   values:
@@ -11810,8 +11598,6 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-openstack-exporter-keystone-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: ucp-prometheus-openstack-exporter
   dependencies:
@@ -11819,7 +11605,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: ucp-prometheus-openstack-exporter
+  release: pref1-ucp-prometheus-openstack-exporter
   upgrade:
     no_hooks: false
     pre:
@@ -11857,13 +11643,11 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .charts.ucp.rabbitmq-htk
-space:
-  namespace: airship
 spec:
   chart_name: ucp-rabbitmq-htk
   dependencies: []
   namespace: ucp-rabbitmq-htk
-  release: ucp-rabbitmq-htk
+  release: pref1-ucp-rabbitmq-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -11914,8 +11698,6 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-oslo-messaging-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: ucp-rabbitmq
   dependencies:
@@ -11923,7 +11705,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: ucp-rabbitmq
+  release: pref1-ucp-rabbitmq
   upgrade:
     no_hooks: false
     pre:
@@ -12153,8 +11935,6 @@ metadata:
       kind: DeckhandPassphrase
       name: ucp-oslo-messaging-password
       path: .
-space:
-  namespace: airship
 spec:
   chart_name: shipyard
   dependencies:
@@ -12162,7 +11942,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: ucp-shipyard
+  release: pref1-ucp-shipyard
   upgrade:
     no_hooks: false
     pre:
@@ -12239,8 +12019,6 @@ metadata:
       kind: PeglegSoftwareVersions
       name: software-versions
       path: .images.ucp.tiller
-space:
-  namespace: airship
 spec:
   chart_name: tiller
   dependencies:
@@ -12248,7 +12026,7 @@ spec:
   install:
     no_hooks: false
   namespace: kube-system
-  release: ucp-tiller
+  release: pref1-ucp-tiller
   upgrade:
     no_hooks: false
     pre:

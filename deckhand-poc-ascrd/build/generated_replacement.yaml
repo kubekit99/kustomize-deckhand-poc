@@ -1,4 +1,4 @@
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
@@ -17,7 +17,7 @@ spec:
         certificate: |
           CERTIFICATE DATA
 ---
-apiVersion: armada.airshipit.org/v1alpha
+apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
@@ -41,7 +41,7 @@ spec:
         key: |
           KEY DATA
 ---
-apiVersion: deckhand.airshipit.org/v1alpha
+apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
   labels:
@@ -53,7 +53,7 @@ metadata:
 spec: |
   CERTIFICATE DATA
 ---
-apiVersion: deckhand.airshipit.org/v1alpha
+apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
   labels:
@@ -65,7 +65,7 @@ metadata:
 spec: |
   KEY DATA
 ---
-apiVersion: deckhand.airshipit.org/v1alpha
+apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandLayeringPolicy
 metadata:
   labels:
@@ -77,7 +77,7 @@ spec:
   - region
   - site
 ---
-apiVersion: deckhand.airshipit.org/v1alpha
+apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
   labels:
@@ -89,7 +89,7 @@ metadata:
   storagePolicy: cleartext
 spec: my-secret-password
 ---
-apiVersion: promenade.airshipit.org/v1alpha
+apiVersion: promenade.airshipit.org/v1alpha1
 kind: PromenadeResourceType
 metadata:
   labels:

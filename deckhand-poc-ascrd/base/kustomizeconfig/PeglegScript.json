@@ -31,17 +31,9 @@
   "github.com/kubekit99/kustomize-deckhand-poc/pkg/apis/pegleg/v1alpha1.PeglegScriptSpec": {
     "Schema": {
       "description": "PeglegScriptSpec defines the desired state of PeglegScript",
-      "properties": {
-        "beeRef": {
-          "x-kubernetes-object-ref-api-version": "v1beta1",
-          "x-kubernetes-object-ref-kind": "Bee",
-          "$ref": "github.com/kubekit99/kustomize-deckhand-poc/pkg/apis/pegleg/v1alpha1.Bee"
-        }
-      }
+      "type": "string"
     },
-    "Dependencies": [
-      "github.com/kubekit99/kustomize-deckhand-poc/pkg/apis/pegleg/v1alpha1.Bee"
-    ]
+    "Dependencies": []
   },
   "github.com/kubekit99/kustomize-deckhand-poc/pkg/apis/pegleg/v1alpha1.PeglegScriptStatus": {
     "Schema": {

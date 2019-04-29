@@ -1,8 +1,0 @@
-varReference:
-- path: spec
-  kind: ArmadaChart
-
-namespace:
-- path: space/namespace
-  create: true
-  kind: ArmadaChart
