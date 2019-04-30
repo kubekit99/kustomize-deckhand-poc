@@ -357,33 +357,7 @@ metadata:
       kind: DeckhandCertificateKey
       name: calico-etcd-airsloop-control-3-peer
       path: .
-spec:
-  values:
-    nodes:
-    - name: $(PeglegCommonAddresses.common-addresses.spec.genesis.hostname)
-      tls:
-        client:
-          cert: $(DeckhandCertificate.calico-etcd-airsloop-control-1.spec)
-          key: $(DeckhandCertificateKey.calico-etcd-airsloop-control-1.spec)
-        peer:
-          cert: $(DeckhandCertificate.calico-etcd-airsloop-control-1-peer.spec)
-          key: $(DeckhandCertificateKey.calico-etcd-airsloop-control-1-peer.spec)
-    - name: $(PeglegCommonAddresses.common-addresses.spec.masters._0_.hostname)
-      tls:
-        client:
-          cert: $(DeckhandCertificate.calico-etcd-airsloop-control-2.spec)
-          key: $(DeckhandCertificateKey.calico-etcd-airsloop-control-2.spec)
-        peer:
-          cert: $(DeckhandCertificate.calico-etcd-airsloop-control-2-peer.spec)
-          key: $(DeckhandCertificateKey.calico-etcd-airsloop-control-2-peer.spec)
-    - name: $(PeglegCommonAddresses.common-addresses.spec.masters._1_.hostname)
-      tls:
-        client:
-          cert: $(DeckhandCertificate.calico-etcd-airsloop-control-3.spec)
-          key: $(DeckhandCertificateKey.calico-etcd-airsloop-control-3.spec)
-        peer:
-          cert: $(DeckhandCertificate.calico-etcd-airsloop-control-3-peer.spec)
-          key: $(DeckhandCertificateKey.calico-etcd-airsloop-control-3-peer.spec)
+spec: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
@@ -488,33 +462,7 @@ metadata:
       kind: DeckhandCertificateKey
       name: kubernetes-etcd-airsloop-control-3-peer
       path: $
-spec:
-  values:
-    nodes:
-    - name: $(PeglegCommonAddresses.common-addresses.spec.genesis.hostname)
-      tls:
-        client:
-          cert: $(DeckhandCertificate.kubernetes-etcd-genesis.spec)
-          key: $(DeckhandCertificateKey.kubernetes-etcd-genesis.spec)
-        peer:
-          cert: $(DeckhandCertificate.kubernetes-etcd-genesis-peer.spec)
-          key: $(DeckhandCertificateKey.kubernetes-etcd-genesis-peer.spec)
-    - name: $(PeglegCommonAddresses.common-addresses.spec.masters._0_.hostname)
-      tls:
-        client:
-          cert: $(DeckhandCertificate.kubernetes-etcd-airsloop-control-2.spec)
-          key: $(DeckhandCertificateKey.kubernetes-etcd-airsloop-control-2.spec)
-        peer:
-          cert: $(DeckhandCertificate.kubernetes-etcd-airsloop-control-2-peer.spec)
-          key: $(DeckhandCertificateKey.kubernetes-etcd-airsloop-control-2-peer.spec)
-    - name: $(PeglegCommonAddresses.common-addresses.spec.masters._1_.hostname)
-      tls:
-        client:
-          cert: $(DeckhandCertificate.kubernetes-etcd-airsloop-control-3.spec)
-          key: $(DeckhandCertificateKey.kubernetes-etcd-airsloop-control-3.spec)
-        peer:
-          cert: $(DeckhandCertificate.kubernetes-etcd-airsloop-control-3-peer.spec)
-          key: $(DeckhandCertificateKey.kubernetes-etcd-airsloop-control-3-peer.spec$)
+spec: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
@@ -1077,10 +1025,8 @@ spec:
     conf:
       uamlite:
         users:
-        - user_crypt_passwd: $(DeckhandPassphrase.airsloop-crypt-password.spec)
-          user_name: ubuntu
-          user_sshkeys:
-          - $(DeckhandPublicKey.airsloop-ssh-public-key.spec)
+        - user_name: ubuntu
+          user_sshkeys: []
           user_sudo: true
     manifests:
       daemonset_apparmor: false

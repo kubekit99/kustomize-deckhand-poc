@@ -6,7 +6,3293 @@ bases:
 - ../base
 
 resources:
-- airship.yaml
+- airship-novars.yaml
+# - airship.yaml
+
+vars:
+# - fieldref:
+#     fieldpath: spec/osh/volumev3
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.volumev3
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/osh/keystone/oslo_messaging/admin
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.oslo_messaging.admin
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/charts/osh/glance
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh.glance
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/prometheus_mysql_exporter
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.prometheus_mysql_exporter
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/osh/cinder/oslo_db/database
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.cinder.oslo_db.database
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/osh/cinder_rabbitmq_exporter
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.cinder_rabbitmq_exporter
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/charts/kubernetes/scheduler-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.scheduler-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh_infra/node_metrics
+#   name: PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.node_metrics
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-infra-endpoints
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-glance-oslo-messaging-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-glance-oslo-messaging-password
+# - fieldref:
+#     fieldpath: spec/charts/osh_infra/prometheus_kube_state_metrics
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.prometheus_kube_state_metrics
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/osh_infra/prometheus_openstack_exporter
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh_infra.prometheus_openstack_exporter
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/ucp/oslo_messaging/admin
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.oslo_messaging.admin
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec/charts/ucp/barbican-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.barbican-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/heat/heat_trustee
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.heat.heat_trustee
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/images/ceph/tenant-ceph-rgw
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ceph.tenant-ceph-rgw
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/kubernetes/haproxy/haproxy
+#   name: PeglegSoftwareVersions.software-versions.spec.images.kubernetes.haproxy.haproxy
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/osh/horizon
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh.horizon
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-cinder-oslo-messaging-admin-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-cinder-oslo-messaging-admin-password
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-keystone-rabbitmq-erlang-cookie.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-keystone-rabbitmq-erlang-cookie
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-infra-rgw-s3-elasticsearch-access-key.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-infra-rgw-s3-elasticsearch-access-key
+# - fieldref:
+#     fieldpath: spec/charts/ucp/tiller
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.tiller
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/ucp/prometheus_openstack_exporter
+#   name: PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.prometheus_openstack_exporter
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: ucp-endpoints
+# - fieldref:
+#     fieldpath: spec/osh/nova/oslo_db_cell0/database
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.oslo_db_cell0.database
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/charts/ucp/deckhand
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.deckhand
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/ucp/mariadb
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.mariadb
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh_infra/prometheus_fluentd_exporter
+#   name: PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.prometheus_fluentd_exporter
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-infra-endpoints
+# - fieldref:
+#     fieldpath: spec/charts/osh/rabbitmq
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh.rabbitmq
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/kubernetes/etcd_service_ip
+#   name: PeglegCommonAddresses.common-addresses.spec.kubernetes.etcd_service_ip
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/images/kubernetes/pause
+#   name: PeglegSoftwareVersions.software-versions.spec.images.kubernetes.pause
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/heat/oslo_messaging/heat
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.heat.oslo_messaging.heat
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPublicKey.airsloop-ssh-public-key.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPublicKey
+#     name: airsloop-ssh-public-key
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-glance-oslo-db-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-glance-oslo-db-password
+# - fieldref:
+#     fieldpath: spec/etcd/container_port
+#   name: PeglegCommonAddresses.common-addresses.spec.etcd.container_port
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ucp-shipyard-postgres-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ucp-shipyard-postgres-password
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.apiserver-etcd.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: apiserver-etcd
+# - fieldref:
+#     fieldpath: spec/ceph/ceph_mon
+#   name: PeglegEndpointCatalogue.ucp-endpoints.spec.ceph.ceph_mon
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: ucp-endpoints
+# - fieldref:
+#     fieldpath: spec/images/ceph/ceph-mon
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ceph.ceph-mon
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-heat-oslo-db-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-heat-oslo-db-password
+# - fieldref:
+#     fieldpath: spec/osh_infra/kube_controller_manager
+#   name: PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.kube_controller_manager
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-infra-endpoints
+# - fieldref:
+#     fieldpath: spec/images/ucp/rabbitmq
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ucp.rabbitmq
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/cinder/oslo_messaging/admin
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.cinder.oslo_messaging.admin
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-infra-nagios-admin-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-infra-nagios-admin-password
+# - fieldref:
+#     fieldpath: spec/charts/ucp/tenant-ceph-osd
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.tenant-ceph-osd
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/ucp/tenant-ceph-provisioners
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.tenant-ceph-provisioners
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/kubernetes/scheduler
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.scheduler
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/ucp/airflow_oslo_messaging
+#   name: PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.airflow_oslo_messaging
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: ucp-endpoints
+# - fieldref:
+#     fieldpath: spec/osh/nova_oslo_messaging
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.nova_oslo_messaging
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/ucp/shipyard/keystone
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.shipyard.keystone
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec/osh/neutron/oslo_messaging/admin
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.neutron.oslo_messaging.admin
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/charts/ucp/tenant-ceph-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.tenant-ceph-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/kubernetes/etcd/etcd
+#   name: PeglegSoftwareVersions.software-versions.spec.images.kubernetes.etcd.etcd
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/ucp/keystone/oslo_messaging
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.oslo_messaging
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec/seccompDirPath
+#   name: PeglegSeccompProfile.seccomp-default.spec.seccompDirPath
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSeccompProfile
+#     name: seccomp-default
+# - fieldref:
+#     fieldpath: spec/charts/ucp/tenant-ceph-mon
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.tenant-ceph-mon
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ucp-barbican-keystone-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ucp-barbican-keystone-password
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.apiserver.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: apiserver
+# - fieldref:
+#     fieldpath: spec/images/ucp/barbican
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ucp.barbican
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/heat_oslo_messaging
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.heat_oslo_messaging
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/images/calico/calico
+#   name: PeglegSoftwareVersions.software-versions.spec.images.calico.calico
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh_infra/monitoring
+#   name: PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.monitoring
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-infra-endpoints
+# - fieldref:
+#     fieldpath: spec/osh/compute_metadata
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.compute_metadata
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/osh/horizon/oslo_db
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.horizon.oslo_db
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/charts/kubernetes/ingress
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.ingress
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/kubernetes/apiserver-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.apiserver-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPublicKey.service-account.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPublicKey
+#     name: service-account
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-infra-oslo-db-admin-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-infra-oslo-db-admin-password
+# - fieldref:
+#     fieldpath: spec/ucp/prometheus_openstack_exporter/user
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.prometheus_openstack_exporter.user
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec/charts/ucp/drydock
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.drydock
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/ucp/deckhand
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ucp.deckhand
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/kubernetes/controller-manager
+#   name: PeglegSoftwareVersions.software-versions.spec.images.kubernetes.controller-manager
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ucp-rabbitmq-erlang-cookie.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ucp-rabbitmq-erlang-cookie
+# - fieldref:
+#     fieldpath: spec/osh/placement
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.placement
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/osh/neutron_oslo_messaging
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.neutron_oslo_messaging
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/charts/ucp/barbican
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.barbican
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/osh_infra/prometheus_node_exporter
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh_infra.prometheus_node_exporter
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/glance_rabbitmq_exporter
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.glance_rabbitmq_exporter
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/ucp/shipyard
+#   name: PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.shipyard
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: ucp-endpoints
+# - fieldref:
+#     fieldpath: spec/ucp/airflow/oslo_messaging/user
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.airflow.oslo_messaging.user
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec/images/osh/memcached
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh.memcached
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ucp-maas-admin-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ucp-maas-admin-password
+# - fieldref:
+#     fieldpath: spec/osh/nova/oslo_messaging/nova
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.oslo_messaging.nova
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/charts/ucp/ceph-mon
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.ceph-mon
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/kubernetes/haproxy-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.haproxy-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/osh/mariadb
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh.mariadb
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/kubernetes/scheduler
+#   name: PeglegSoftwareVersions.software-versions.spec.images.kubernetes.scheduler
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/kubernetes/apiserver/apiserver
+#   name: PeglegSoftwareVersions.software-versions.spec.images.kubernetes.apiserver.apiserver
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/osh_infra/prometheus_openstack_exporter
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.prometheus_openstack_exporter
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/kubernetes/proxy
+#   name: PeglegSoftwareVersions.software-versions.spec.images.kubernetes.proxy
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-glance-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-glance-password
+# - fieldref:
+#     fieldpath: spec/charts/kubernetes/calico/calico
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.calico.calico
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/keystone_oslo_messaging
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.keystone_oslo_messaging
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/images/ceph/tenant-ceph-mon
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ceph.tenant-ceph-mon
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/content
+#   name: PeglegAppArmorProfile.airship-apparmor-loader.spec.content
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAppArmorProfile
+#     name: airship-apparmor-loader
+# - fieldref:
+#     fieldpath: spec/osh/keystone/oslo_messaging/keystone
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.oslo_messaging.keystone
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/ucp/deckhand
+#   name: PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.deckhand
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: ucp-endpoints
+# - fieldref:
+#     fieldpath: spec/osh_infra/kube_state_metrics
+#   name: PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.kube_state_metrics
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-infra-endpoints
+# - fieldref:
+#     fieldpath: spec/osh_infra/ldap/admin/bind
+#   name: PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.ldap.admin.bind
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-infra-service-accounts
+# - fieldref:
+#     fieldpath: spec/osh_infra/prometheus_openstack_exporter/user
+#   name: PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.prometheus_openstack_exporter.user
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-infra-service-accounts
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ucp-drydock-postgres-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ucp-drydock-postgres-password
+# - fieldref:
+#     fieldpath: spec/osh/nova/placement
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.placement
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-infra-rgw-s3-elasticsearch-secret-key.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-infra-rgw-s3-elasticsearch-secret-key
+# - fieldref:
+#     fieldpath: spec/charts/ucp/postgresql-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.postgresql-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/ucp/drydock/keystone
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.drydock.keystone
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec/osh_infra/ldap/admin
+#   name: PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.ldap.admin
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-infra-service-accounts
+# - fieldref:
+#     fieldpath: spec/images/ucp/postgresql
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ucp.postgresql
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-keystone-admin-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-keystone-admin-password
+# - fieldref:
+#     fieldpath: spec/osh/identity
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.identity
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/ucp/drydock/postgres
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.drydock.postgres
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec/ucp/identity
+#   name: PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.identity
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: ucp-endpoints
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ucp-oslo-messaging-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ucp-oslo-messaging-password
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-oslo-db-admin-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-oslo-db-admin-password
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-cinder-rabbitmq-erlang-cookie.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-cinder-rabbitmq-erlang-cookie
+# - fieldref:
+#     fieldpath: spec/images/osh_infra/grafana
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh_infra.grafana
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/ucp/ceph-provisioners
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.ceph-provisioners
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/prometheus_mysql_exporter/user
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.prometheus_mysql_exporter.user
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/kubernetes/api_service_ip
+#   name: PeglegCommonAddresses.common-addresses.spec.kubernetes.api_service_ip
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/osh/heat/heat_stack_user
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.heat.heat_stack_user
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/osh/image_registry
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.image_registry
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/dns/cluster_domain
+#   name: PeglegCommonAddresses.common-addresses.spec.dns.cluster_domain
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.calico-etcd-anchor.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: calico-etcd-anchor
+# - fieldref:
+#     fieldpath: spec/osh/cloudwatch
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.cloudwatch
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/images/osh/keystone
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh.keystone
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/dns/upstream_servers[2_
+#   name: PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers[2_
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/images/ceph/tenant-ceph-client
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ceph.tenant-ceph-client
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/kubernetes/calico/etcd
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.calico.etcd
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh_infra/grafana/admin
+#   name: PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.grafana.admin
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-infra-service-accounts
+# - fieldref:
+#     fieldpath: spec/osh_infra/kube_scheduler
+#   name: PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.kube_scheduler
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-infra-endpoints
+# - fieldref:
+#     fieldpath: spec/images/osh_infra/nagios
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh_infra.nagios
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-neutron-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-neutron-password
+# - fieldref:
+#     fieldpath: spec/images/osh/ingress
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh.ingress
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/ucp/tiller
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ucp.tiller
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/neutron/neutron
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.neutron.neutron
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/etcd/haproxy_port
+#   name: PeglegCommonAddresses.common-addresses.spec.etcd.haproxy_port
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.calico-node.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: calico-node
+# - fieldref:
+#     fieldpath: spec/charts/ucp/rabbitmq
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.rabbitmq
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ucp-deckhand-postgres-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ucp-deckhand-postgres-password
+# - fieldref:
+#     fieldpath: spec/node_ports/maas_api
+#   name: PeglegCommonAddresses.common-addresses.spec.node_ports.maas_api
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/osh_infra/ceph_object_store/admin
+#   name: PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.ceph_object_store.admin
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-infra-service-accounts
+# - fieldref:
+#     fieldpath: spec/osh/dashboard
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.dashboard
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/ucp/barbican/oslo_db
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.barbican.oslo_db
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec/ldap/common_name
+#   name: PeglegCommonAddresses.common-addresses.spec.ldap.common_name
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-infra-elasticsearch-admin-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-infra-elasticsearch-admin-password
+# - fieldref:
+#     fieldpath: spec/ceph/ceph_mgr
+#   name: PeglegEndpointCatalogue.ucp-endpoints.spec.ceph.ceph_mgr
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: ucp-endpoints
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.calico-etcd-anchor.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: calico-etcd-anchor
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-heat-oslo-messaging-admin-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-heat-oslo-messaging-admin-password
+# - fieldref:
+#     fieldpath: spec/images/ucp/armada/helm
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ucp.armada.helm
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ucp-airflow-oslo-messaging-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ucp-airflow-oslo-messaging-password
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-nova-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-nova-password
+# - fieldref:
+#     fieldpath: spec/ucp/postgresql
+#   name: PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.postgresql
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: ucp-endpoints
+# - fieldref:
+#     fieldpath: spec/osh/network
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.network
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateAuthority.kubernetes-etcd-peer.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateAuthority
+#     name: kubernetes-etcd-peer
+# - fieldref:
+#     fieldpath: spec/osh/compute
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.compute
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/savePath
+#   name: PeglegSeccompProfile.seccomp-default.spec.savePath
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSeccompProfile
+#     name: seccomp-default
+# - fieldref:
+#     fieldpath: spec/images/kubernetes/ingress
+#   name: PeglegSoftwareVersions.software-versions.spec.images.kubernetes.ingress
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/osh_infra/fluent_logging
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.fluent_logging
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-oslo-cache-secret-key.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-oslo-cache-secret-key
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateAuthority.kubernetes.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateAuthority
+#     name: kubernetes
+# - fieldref:
+#     fieldpath: spec/osh/glance/ceph_object_store
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.glance.ceph_object_store
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/charts/osh_infra/nagios
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.nagios
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/ceph_object_store
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.ceph_object_store
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/images/osh/libvirt
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh.libvirt
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/files/kubelet
+#   name: PeglegSoftwareVersions.software-versions.spec.files.kubelet
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/osh_infra/podsecuritypolicy
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.podsecuritypolicy
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/nova/nova
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.nova
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/dns/upstream_servers[0_
+#   name: PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers[0_
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/images/kubernetes/apiserver
+#   name: PeglegSoftwareVersions.software-versions.spec.images.kubernetes.apiserver
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/ceph/ceph-client
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ceph.ceph-client
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/osh_infra/prometheus
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh_infra.prometheus
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-oslo-db-exporter-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-oslo-db-exporter-password
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-heat-oslo-messaging-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-heat-oslo-messaging-password
+# - fieldref:
+#     fieldpath: spec/charts/kubernetes/calico/calico-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.calico.calico-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-neutron-oslo-db-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-neutron-oslo-db-password
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-glance-oslo-messaging-admin-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-glance-oslo-messaging-admin-password
+# - fieldref:
+#     fieldpath: spec/charts/ucp/shipyard-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.shipyard-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh_infra/prometheus_mysql_exporter
+#   name: PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.prometheus_mysql_exporter
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-infra-endpoints
+# - fieldref:
+#     fieldpath: spec/osh/neutron/oslo_db/database
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.neutron.oslo_db.database
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/images/ucp/shipyard
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ucp.shipyard
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/kubernetes/coredns/coredns
+#   name: PeglegSoftwareVersions.software-versions.spec.images.kubernetes.coredns.coredns
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/osh_infra/prometheus
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.prometheus
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/proxy/no_proxy
+#   name: PeglegCommonAddresses.common-addresses.spec.proxy.no_proxy
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/images/osh/rabbitmq
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh.rabbitmq
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/oslo_cache
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_cache
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/ucp/maas/admin
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.maas.admin
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec/osh/neutron/oslo_db
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.neutron.oslo_db
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.apiserver-etcd.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: apiserver-etcd
+# - fieldref:
+#     fieldpath: spec/charts/ucp/ingress
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.ingress
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ceph-swift-keystone-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ceph-swift-keystone-password
+# - fieldref:
+#     fieldpath: spec/ceph/tenant_ceph_mgr
+#   name: PeglegEndpointCatalogue.ucp-endpoints.spec.ceph.tenant_ceph_mgr
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: ucp-endpoints
+# - fieldref:
+#     fieldpath: spec/charts/ucp/tenant-ceph-client
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.tenant-ceph-client
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh_infra/prometheus_openstack_exporter
+#   name: PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.prometheus_openstack_exporter
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-infra-endpoints
+# - fieldref:
+#     fieldpath: spec/charts/kubernetes/ingress-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.ingress-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/cinder/oslo_db
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.cinder.oslo_db
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-heat-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-heat-password
+# - fieldref:
+#     fieldpath: spec/charts/ucp/keystone-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.keystone-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/kubernetes/controller-manager-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.controller-manager-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.scheduler.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: scheduler
+# - fieldref:
+#     fieldpath: spec/charts/osh/ingress
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh.ingress
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/osh/helm_toolkit
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh.helm_toolkit
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/ntp/servers_joined
+#   name: PeglegCommonAddresses.common-addresses.spec.ntp.servers_joined
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/genesis/hostname
+#   name: PeglegCommonAddresses.common-addresses.spec.genesis.hostname
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-infra-prometheus-admin-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-infra-prometheus-admin-password
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.calico-node.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: calico-node
+# - fieldref:
+#     fieldpath: spec/osh/orchestration
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.orchestration
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/images/ucp/maas
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ucp.maas
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/kubernetes/proxy
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.proxy
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/ucp/barbican/oslo_messaging
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.barbican.oslo_messaging
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.controller-manager.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: controller-manager
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-keystone-ldap-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-keystone-ldap-password
+# - fieldref:
+#     fieldpath: spec/ucp/shipyard/postgres
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.shipyard.postgres
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-infra-grafana-oslo-db-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-infra-grafana-oslo-db-password
+# - fieldref:
+#     fieldpath: spec/ldap/subdomain
+#   name: PeglegCommonAddresses.common-addresses.spec.ldap.subdomain
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/osh_infra/process_exporter_metrics
+#   name: PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.process_exporter_metrics
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-infra-endpoints
+# - fieldref:
+#     fieldpath: spec/osh_infra/ceph_object_store
+#   name: PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.ceph_object_store
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-infra-endpoints
+# - fieldref:
+#     fieldpath: spec/osh/glance/oslo_db
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.glance.oslo_db
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/charts/osh/memcached
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh.memcached
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/node_ports/drydock_api
+#   name: PeglegCommonAddresses.common-addresses.spec.node_ports.drydock_api
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/ucp/postgres/admin
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.postgres.admin
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec/charts/ucp/rabbitmq-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.rabbitmq-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/ucp/keystone/oslo_db
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.oslo_db
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec/osh_infra/prometheus/admin
+#   name: PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.prometheus.admin
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-infra-service-accounts
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-neutron-oslo-messaging-admin-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-neutron-oslo-messaging-admin-password
+# - fieldref:
+#     fieldpath: spec/images/osh_infra/prometheus_kube_state_metrics
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh_infra.prometheus_kube_state_metrics
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/horizon/oslo_db/database
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.horizon.oslo_db.database
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/osh_infra/ceph_object_store/elasticsearch
+#   name: PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.ceph_object_store.elasticsearch
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-infra-service-accounts
+# - fieldref:
+#     fieldpath: spec/images/calico/etcd
+#   name: PeglegSoftwareVersions.software-versions.spec.images.calico.etcd
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ucp-shipyard-keystone-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ucp-shipyard-keystone-password
+# - fieldref:
+#     fieldpath: spec/osh/compute_novnc_proxy
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.compute_novnc_proxy
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-placement-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-placement-password
+# - fieldref:
+#     fieldpath: spec/osh/nova/oslo_messaging/admin
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.oslo_messaging.admin
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/charts/ucp/drydock-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.drydock-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh_infra/grafana/oslo_db_session
+#   name: PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.grafana.oslo_db_session
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-infra-service-accounts
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPrivateKey.service-account.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPrivateKey
+#     name: service-account
+# - fieldref:
+#     fieldpath: spec/osh_infra/grafana
+#   name: PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.grafana
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-infra-endpoints
+# - fieldref:
+#     fieldpath: spec/dns/service_ip
+#   name: PeglegCommonAddresses.common-addresses.spec.dns.service_ip
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/images/osh/cinder
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh.cinder
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/ucp/deckhand/postgres
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.deckhand.postgres
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec/packages/repositories/main_archive
+#   name: PeglegSoftwareVersions.software-versions.spec.packages.repositories.main_archive
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/heat/oslo_db/database
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.heat.oslo_db.database
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/osh/glance_oslo_messaging
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.glance_oslo_messaging
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/kubernetes/apiserver_port
+#   name: PeglegCommonAddresses.common-addresses.spec.kubernetes.apiserver_port
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/charts/osh_infra/grafana
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.grafana
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-glance-rabbitmq-erlang-cookie.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-glance-rabbitmq-erlang-cookie
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-infra-grafana-admin-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-infra-grafana-admin-password
+# - fieldref:
+#     fieldpath: spec/images/ceph/ceph-rgw
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ceph.ceph-rgw
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/heat/heat
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.heat.heat
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/ucp/airflow/postgres
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.airflow.postgres
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.apiserver.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: apiserver
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-nova-rabbitmq-erlang-cookie.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-nova-rabbitmq-erlang-cookie
+# - fieldref:
+#     fieldpath: spec/charts/osh/heat
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh.heat
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/cinder/cinder
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.cinder.cinder
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/images/osh_infra/elasticsearch
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh_infra.elasticsearch
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/ucp/key_manager
+#   name: PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.key_manager
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: ucp-endpoints
+# - fieldref:
+#     fieldpath: spec/savePath
+#   name: PeglegAppArmorProfile.airship-apparmor-loader.spec.savePath
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAppArmorProfile
+#     name: airship-apparmor-loader
+# - fieldref:
+#     fieldpath: spec/osh/keystone_rabbitmq_exporter
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.keystone_rabbitmq_exporter
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/osh/nova_rabbitmq_exporter
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.nova_rabbitmq_exporter
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ceph-fsid.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ceph-fsid
+# - fieldref:
+#     fieldpath: spec/images/osh/openvswitch
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh.openvswitch
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-infra-rgw-s3-admin-secret-key.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-infra-rgw-s3-admin-secret-key
+# - fieldref:
+#     fieldpath: spec/images/ucp/memcached
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ucp.memcached
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/nova/oslo_db_api
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.oslo_db_api
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/content
+#   name: PeglegSeccompProfile.seccomp-default.spec.content
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSeccompProfile
+#     name: seccomp-default
+# - fieldref:
+#     fieldpath: spec/osh_infra/kibana
+#   name: PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.kibana
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-infra-endpoints
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ucp-maas-postgres-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ucp-maas-postgres-password
+# - fieldref:
+#     fieldpath: spec/ucp/keystone/admin
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.admin
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ucp-openstack-exporter-keystone-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ucp-openstack-exporter-keystone-password
+# - fieldref:
+#     fieldpath: spec/osh_infra/elasticsearch
+#   name: PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.elasticsearch
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-infra-endpoints
+# - fieldref:
+#     fieldpath: spec/charts/kubernetes/etcd-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.etcd-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/neutron_rabbitmq_exporter
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.neutron_rabbitmq_exporter
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/images/ceph/ceph-osd
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ceph.ceph-osd
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/kubernetes/coredns
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.coredns
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-nova-oslo-db-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-nova-oslo-db-password
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.maas-region-key.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: maas-region-key
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-infra-rgw-s3-admin-access-key.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-infra-rgw-s3-admin-access-key
+# - fieldref:
+#     fieldpath: spec/ucp/barbican/keystone
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.barbican.keystone
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec/charts/ucp/ceph-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.ceph-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.tenant-ceph-fsid.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: tenant-ceph-fsid
+# - fieldref:
+#     fieldpath: spec/charts/kubernetes/etcd
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.etcd
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/osh/neutron
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh.neutron
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/keystone/admin
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.admin
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/osh/volumev2
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.volumev2
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/neutron/tunnel_device
+#   name: PeglegCommonAddresses.common-addresses.spec.neutron.tunnel_device
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/images/ucp/armada/tiller
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ucp.armada.tiller
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/swift/keystone
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.swift.keystone
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/charts/osh/horizon
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh.horizon
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh_infra/oslo_db
+#   name: PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.oslo_db
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-infra-endpoints
+# - fieldref:
+#     fieldpath: spec/osh_infra/grafana/oslo_db/database
+#   name: PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.grafana.oslo_db.database
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-infra-service-accounts
+# - fieldref:
+#     fieldpath: spec/kubernetes/haproxy_port
+#   name: PeglegCommonAddresses.common-addresses.spec.kubernetes.haproxy_port
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-infra-oslo-db-exporter-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-infra-oslo-db-exporter-password
+# - fieldref:
+#     fieldpath: spec/kubernetes/pod_cidr
+#   name: PeglegCommonAddresses.common-addresses.spec.kubernetes.pod_cidr
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/osh/compute_spice_proxy
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.compute_spice_proxy
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/charts/ucp/maas-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.maas-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/ucp/drydock/postgres/database
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.drydock.postgres.database
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec/ucp/shipyard/postgres/database
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.shipyard.postgres.database
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ucp-drydock-keystone-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ucp-drydock-keystone-password
+# - fieldref:
+#     fieldpath: spec/images/ucp/divingbell
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ucp.divingbell
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/ceph/tenant-ceph-osd
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ceph.tenant-ceph-osd
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-cinder-oslo-db-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-cinder-oslo-db-password
+# - fieldref:
+#     fieldpath: spec/osh/oslo_db
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/images/ucp/mariadb
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ucp.mariadb
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh_infra/oslo_db/admin
+#   name: PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.oslo_db.admin
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-infra-service-accounts
+# - fieldref:
+#     fieldpath: spec/osh/object_store
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.object_store
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-keystone-oslo-messaging-admin-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-keystone-oslo-messaging-admin-password
+# - fieldref:
+#     fieldpath: spec/images/ucp/keystone
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ucp.keystone
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/storage/ceph/public_cidr
+#   name: PeglegCommonAddresses.common-addresses.spec.storage.ceph.public_cidr
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-cinder-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-cinder-password
+# - fieldref:
+#     fieldpath: spec/charts/osh_infra/kibana
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.kibana
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ucp-deckhand-keystone-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ucp-deckhand-keystone-password
+# - fieldref:
+#     fieldpath: spec/osh/cinder/oslo_messaging/cinder
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.cinder.oslo_messaging.cinder
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/osh_infra/ldap
+#   name: PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.ldap
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-infra-endpoints
+# - fieldref:
+#     fieldpath: spec/calico/etcd/service_ip
+#   name: PeglegCommonAddresses.common-addresses.spec.calico.etcd.service_ip
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateAuthority.calico-etcd-peer.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateAuthority
+#     name: calico-etcd-peer
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ucp-keystone-oslo-db-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ucp-keystone-oslo-db-password
+# - fieldref:
+#     fieldpath: spec/osh/heat/oslo_messaging/admin
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.heat.oslo_messaging.admin
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/charts/ucp/shipyard
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.shipyard
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-nova-oslo-messaging-admin-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-nova-oslo-messaging-admin-password
+# - fieldref:
+#     fieldpath: spec/osh/keystone/oslo_db
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.oslo_db
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/charts/ucp/memcached
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.memcached
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ucp-armada-keystone-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ucp-armada-keystone-password
+# - fieldref:
+#     fieldpath: spec/charts/osh/neutron
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh.neutron
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/osh_infra/helm_toolkit
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.helm_toolkit
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/ucp/mariadb-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.mariadb-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh_infra/prometheus_elasticsearch_exporter
+#   name: PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.prometheus_elasticsearch_exporter
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-infra-endpoints
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ucp-oslo-db-admin-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ucp-oslo-db-admin-password
+# - fieldref:
+#     fieldpath: spec/genesis/ip
+#   name: PeglegCommonAddresses.common-addresses.spec.genesis.ip
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/node_ports/maas_proxy
+#   name: PeglegCommonAddresses.common-addresses.spec.node_ports.maas_proxy
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/osh_infra/prometheus_mysql_exporter/user
+#   name: PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.prometheus_mysql_exporter.user
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-infra-service-accounts
+# - fieldref:
+#     fieldpath: spec/osh/glance/oslo_db/database
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.glance.oslo_db.database
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/charts/osh/cinder
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh.cinder
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/ucp/maas/postgres
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.maas.postgres
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ipmi-admin-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ipmi-admin-password
+# - fieldref:
+#     fieldpath: spec/osh/nova/oslo_db/username
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.oslo_db.username
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/ucp/physicalprovisioner
+#   name: PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.physicalprovisioner
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: ucp-endpoints
+# - fieldref:
+#     fieldpath: spec/ucp/oslo_cache
+#   name: PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_cache
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: ucp-endpoints
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateAuthority.kubernetes-etcd.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateAuthority
+#     name: kubernetes-etcd
+# - fieldref:
+#     fieldpath: spec/images/ucp/armada/api
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ucp.armada.api
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/oslo_db/admin
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.oslo_db.admin
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/charts/kubernetes/haproxy
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.haproxy
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/osh/nova
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh.nova
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-keystone-oslo-db-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-keystone-oslo-db-password
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-neutron-rabbitmq-erlang-cookie.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-neutron-rabbitmq-erlang-cookie
+# - fieldref:
+#     fieldpath: spec/ucp/oslo_db
+#   name: PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_db
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: ucp-endpoints
+# - fieldref:
+#     fieldpath: spec/osh/glance/glance
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.glance.glance
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/charts/ucp/tiller-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.tiller-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/ucp/ceph-osd
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.ceph-osd
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh_infra/nagios/admin
+#   name: PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.nagios.admin
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-infra-service-accounts
+# - fieldref:
+#     fieldpath: spec/osh/keystone/oslo_db/database
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.oslo_db.database
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/ucp/barbican/oslo_db/database
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.barbican.oslo_db.database
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec/ceph/tenant_ceph_mon
+#   name: PeglegEndpointCatalogue.ucp-endpoints.spec.ceph.tenant_ceph_mon
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: ucp-endpoints
+# - fieldref:
+#     fieldpath: spec/images/kubernetes/kubectl
+#   name: PeglegSoftwareVersions.software-versions.spec.images.kubernetes.kubectl
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/packages/named/docker
+#   name: PeglegSoftwareVersions.software-versions.spec.packages.named.docker
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/osh_infra/nfs_provisioner
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh_infra.nfs_provisioner
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-keystone-oslo-messaging-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-keystone-oslo-messaging-password
+# - fieldref:
+#     fieldpath: spec/packages/unnamed
+#   name: PeglegSoftwareVersions.software-versions.spec.packages.unnamed
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-infra-grafana-oslo-db-session-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-infra-grafana-oslo-db-session-password
+# - fieldref:
+#     fieldpath: spec/charts/ucp/ingress-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.ingress-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/osh_infra/kibana
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh_infra.kibana
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/osh_infra/prometheus_alertmanager
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.prometheus_alertmanager
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/volume
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.volume
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-infra-openstack-exporter-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-infra-openstack-exporter-password
+# - fieldref:
+#     fieldpath: spec/osh/nova/oslo_db_cell0
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.oslo_db_cell0
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/charts/ucp/promenade-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.promenade-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/region_name
+#   name: PeglegCommonSoftwareConfig.common-software-config.spec.osh.region_name
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonSoftwareConfig
+#     name: common-software-config
+# - fieldref:
+#     fieldpath: spec/ldap/domain
+#   name: PeglegCommonAddresses.common-addresses.spec.ldap.domain
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/ucp/deckhand/keystone
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.deckhand.keystone
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec/osh/neutron/oslo_messaging/neutron
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.neutron.oslo_messaging.neutron
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/charts/ucp/postgresql
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.postgresql
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/ucp/keystone/oslo_db/database
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.oslo_db.database
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec/osh/nova/oslo_db/database
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.oslo_db.database
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/ucp/oslo_db/admin
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.oslo_db.admin
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec/images/osh_infra/prometheus_alertmanager
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh_infra.prometheus_alertmanager
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/ucp/tenant-ceph-rgw
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.tenant-ceph-rgw
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/heat_rabbitmq_exporter
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.heat_rabbitmq_exporter
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/images/ucp/promenade
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ucp.promenade
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh_infra/grafana/oslo_db_session/database
+#   name: PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.grafana.oslo_db_session.database
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-infra-service-accounts
+# - fieldref:
+#     fieldpath: spec/charts/osh_infra/prometheus_node_exporter
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.prometheus_node_exporter
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.scheduler.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: scheduler
+# - fieldref:
+#     fieldpath: spec/charts/ucp/ceph-rgw
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.ceph-rgw
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/ucp/maas/postgres/database
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.maas.postgres.database
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ucp-barbican-oslo-db-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ucp-barbican-oslo-db-password
+# - fieldref:
+#     fieldpath: spec/kubernetes/service_node_port_range
+#   name: PeglegCommonAddresses.common-addresses.spec.kubernetes.service_node_port_range
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/content
+#   name: PeglegAppArmorProfile.airship-default.spec.content
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAppArmorProfile
+#     name: airship-default
+# - fieldref:
+#     fieldpath: spec/kubernetes/service_cidr
+#   name: PeglegCommonAddresses.common-addresses.spec.kubernetes.service_cidr
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/charts/osh_infra/elasticsearch
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.elasticsearch
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateAuthority.calico-etcd.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateAuthority
+#     name: calico-etcd
+# - fieldref:
+#     fieldpath: spec/ucp/oslo_messaging
+#   name: PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_messaging
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: ucp-endpoints
+# - fieldref:
+#     fieldpath: spec/charts/ucp/deckhand-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.deckhand-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.kubernetes-etcd-anchor.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: kubernetes-etcd-anchor
+# - fieldref:
+#     fieldpath: spec/charts/ucp/divingbell-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.divingbell-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.controller-manager.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: controller-manager
+# - fieldref:
+#     fieldpath: spec/charts/kubernetes/controller-manager
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.controller-manager
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/ucp/drydock
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ucp.drydock
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/neutron/external_iface
+#   name: PeglegCommonAddresses.common-addresses.spec.neutron.external_iface
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/charts/ucp/ceph-client
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.ceph-client
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/ceph/object_store
+#   name: PeglegEndpointCatalogue.ucp-endpoints.spec.ceph.object_store
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: ucp-endpoints
+# - fieldref:
+#     fieldpath: spec/savePath
+#   name: PeglegAppArmorProfile.airship-default.spec.savePath
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAppArmorProfile
+#     name: airship-default
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-heat-stack-user-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-heat-stack-user-password
+# - fieldref:
+#     fieldpath: spec/images/osh/glance
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh.glance
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/osh/nova
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh.nova
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/kubernetes/coredns
+#   name: PeglegSoftwareVersions.software-versions.spec.images.kubernetes.coredns
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ucp-promenade-keystone-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ucp-promenade-keystone-password
+# - fieldref:
+#     fieldpath: spec/ucp/kubernetesprovisioner
+#   name: PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.kubernetesprovisioner
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: ucp-endpoints
+# - fieldref:
+#     fieldpath: spec/ucp/airflow/postgres/database
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.airflow.postgres.database
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec/images/kubernetes/controller-manager/controller_manager
+#   name: PeglegSoftwareVersions.software-versions.spec.images.kubernetes.controller-manager.controller_manager
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/ucp/ingress
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ucp.ingress
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/kubernetes/proxy-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.proxy-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/ucp/airflow/oslo_messaging/admin
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.airflow.oslo_messaging.admin
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec/charts/ucp/divingbell
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.divingbell
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/ucp/memcached-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.memcached-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-heat-trustee-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-heat-trustee-password
+# - fieldref:
+#     fieldpath: spec/dns/upstream_servers_joined
+#   name: PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers_joined
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/charts/kubernetes/calico/etcd-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.calico.etcd-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.kubernetes-etcd-anchor.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: kubernetes-etcd-anchor
+# - fieldref:
+#     fieldpath: spec/ldap/auth_path
+#   name: PeglegCommonAddresses.common-addresses.spec.ldap.auth_path
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/osh/nova/oslo_db_api/database
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.oslo_db_api.database
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/images/kubernetes/haproxy
+#   name: PeglegSoftwareVersions.software-versions.spec.images.kubernetes.haproxy
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-neutron-oslo-messaging-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-neutron-oslo-messaging-password
+# - fieldref:
+#     fieldpath: spec/storage/ceph/cluster_cidr
+#   name: PeglegCommonAddresses.common-addresses.spec.storage.ceph.cluster_cidr
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/images/osh_infra/prometheus_process_exporter
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh_infra.prometheus_process_exporter
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/dns/upstream_servers[1_
+#   name: PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers[1_
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/images/osh/heat
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh.heat
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/dns/upstream_servers
+#   name: PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/charts/ucp/maas
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.maas
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh_infra/grafana/oslo_db
+#   name: PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.grafana.oslo_db
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-infra-service-accounts
+# - fieldref:
+#     fieldpath: spec/images/kubernetes/etcd
+#   name: PeglegSoftwareVersions.software-versions.spec.images.kubernetes.etcd
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/ucp/armada
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ucp.armada
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/osh_infra/fluent_logging
+#   name: PeglegSoftwareVersions.software-versions.spec.images.osh_infra.fluent_logging
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/ucp/armada
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.armada
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/osh/openvswitch
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh.openvswitch
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh_infra/fluentd
+#   name: PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.fluentd
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-infra-endpoints
+# - fieldref:
+#     fieldpath: spec/osh/heat/oslo_db
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.heat.oslo_db
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ucp-airflow-postgres-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ucp-airflow-postgres-password
+# - fieldref:
+#     fieldpath: spec/charts/osh_infra/nfs_provisioner
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.nfs_provisioner
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/kubernetes/scheduler/scheduler
+#   name: PeglegSoftwareVersions.software-versions.spec.images.kubernetes.scheduler.scheduler
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-horizon-oslo-db-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-horizon-oslo-db-password
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ucp-postgres-admin-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ucp-postgres-admin-password
+# - fieldref:
+#     fieldpath: spec/charts/ucp/armada-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.armada-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/packages/named/socat
+#   name: PeglegSoftwareVersions.software-versions.spec.packages.named.socat
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/kubernetes/apiserver
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.apiserver
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/cloudformation
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.cloudformation
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/osh_infra/elasticsearch/admin
+#   name: PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.elasticsearch.admin
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-infra-service-accounts
+# - fieldref:
+#     fieldpath: spec/osh_infra/nagios
+#   name: PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.nagios
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-infra-endpoints
+# - fieldref:
+#     fieldpath: spec/images/ceph/tenant-ceph-provisioners
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ceph.tenant-ceph-provisioners
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/osh/mariadb
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh.mariadb
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/ucp/maas_region_ui
+#   name: PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.maas_region_ui
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: ucp-endpoints
+# - fieldref:
+#     fieldpath: spec/ucp/armada
+#   name: PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.armada
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: ucp-endpoints
+# - fieldref:
+#     fieldpath: spec/osh_infra/alerts
+#   name: PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.alerts
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-infra-endpoints
+# - fieldref:
+#     fieldpath: spec/charts/ucp/keystone
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.keystone
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/images/ceph/ceph-provisioners
+#   name: PeglegSoftwareVersions.software-versions.spec.images.ceph.ceph-provisioners
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/proxy/http
+#   name: PeglegCommonAddresses.common-addresses.spec.proxy.http
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/ucp/deckhand/postgres/database
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.deckhand.postgres.database
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec/osh/image
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.image
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/charts/osh_infra/prometheus_process_exporter
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.prometheus_process_exporter
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.private-docker-key.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: private-docker-key
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-nova-oslo-messaging-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-nova-oslo-messaging-password
+# - fieldref:
+#     fieldpath: spec/charts/osh/keystone
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh.keystone
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/ucp/armada/keystone
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.armada.keystone
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-heat-rabbitmq-erlang-cookie.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-heat-rabbitmq-erlang-cookie
+# - fieldref:
+#     fieldpath: spec/ucp/promenade/keystone
+#   name: PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.promenade.keystone
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: ucp-service-accounts
+# - fieldref:
+#     fieldpath: spec/osh/glance/oslo_messaging/glance
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.glance.oslo_messaging.glance
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
+# - fieldref:
+#     fieldpath: spec/osh/cinder_oslo_messaging
+#   name: PeglegEndpointCatalogue.osh-endpoints.spec.osh.cinder_oslo_messaging
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: osh-endpoints
+# - fieldref:
+#     fieldpath: spec/charts/ucp/promenade
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.ucp.promenade
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/ucp/postgresql_airflow_celery
+#   name: PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.postgresql_airflow_celery
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegEndpointCatalogue
+#     name: ucp-endpoints
+# - fieldref:
+#     fieldpath: spec/bootstrap/ip
+#   name: PeglegCommonAddresses.common-addresses.spec.bootstrap.ip
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.osh-cinder-oslo-messaging-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: osh-cinder-oslo-messaging-password
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ucp-keystone-admin-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ucp-keystone-admin-password
+# - fieldref:
+#     fieldpath: spec/calico/ip_autodetection_method
+#   name: PeglegCommonAddresses.common-addresses.spec.calico.ip_autodetection_method
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec/charts/osh/libvirt
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.osh.libvirt
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/charts/kubernetes/coredns-htk
+#   name: PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.coredns-htk
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegSoftwareVersions
+#     name: software-versions
+# - fieldref:
+#     fieldpath: spec/osh/glance/oslo_messaging/admin
+#   name: PeglegAccountCatalogue.osh-service-accounts.spec.osh.glance.oslo_messaging.admin
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegAccountCatalogue
+#     name: osh-service-accounts
 
 # namePrefix: pref1-
 

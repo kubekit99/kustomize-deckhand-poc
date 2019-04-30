@@ -33,7 +33,16 @@ def build_var(name, objrefkind, objrefname, path):
     objref = {}
     objref["kind"] = objrefkind
     objref["name"] = objrefname
-    objref["apiVersion"] = "foo.airshipit.org/v1alpha1"
+    if "Deckhand" in objrefkind:
+       objref["apiVersion"] = "deckhand.airshipit.org/v1alpha1"
+    if "Pegleg" in objrefkind:
+       objref["apiVersion"] = "pegleg.airshipit.org/v1alpha1"
+    if "Armada" in objrefkind:
+       objref["apiVersion"] = "armada.airshipit.org/v1alpha1"
+    if "Shipyard" in objrefkind:
+       objref["apiVersion"] = "shipyard.airshipit.org/v1alpha1"
+    if "Drydock" in objrefkind:
+       objref["apiVersion"] = "drydock.airshipit.org/v1alpha1"
     fieldref = {}
     fieldref["fieldpath"] = path.replace(".","/")
     var = {}
@@ -113,7 +122,7 @@ def load_file(filename):
             if ("substitutions" in doc["metadata"]):
                 for entry in doc["metadata"]["substitutions"]:
                     if entry["src"]["path"] != ".":
-                        varpath = "spec" + entry["src"]["path"].replace("]", "_")
+                        varpath = "spec" + entry["src"]["path"].replace("[","._").replace("]", "_")
                         varname = ".".join([entry["src"]["kind"], entry["src"]["name"], varpath])
                     else:
                         varpath = "spec"
