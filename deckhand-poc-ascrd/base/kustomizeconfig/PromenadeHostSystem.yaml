@@ -17,3 +17,5 @@ varReference:
   path: spec/packages/required/docker
 - kind: PromenadeHostSystem
   path: spec/packages/required/socat
+
+inlineReference:
