@@ -1,13 +1,10 @@
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-armada-htk
-  namespace: airsloop
+  name: armada-htk
   substitutions:
   - dest:
       path: .source
@@ -19,19 +16,16 @@ spec:
   chart_name: armada-htk
   dependencies: []
   namespace: armada-htk
-  release: pref2-pref1-armada-htk
+  release: armada-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-calico-htk
-  namespace: airsloop
+  name: calico-htk
   substitutions:
   - dest:
       path: .source
@@ -43,19 +37,16 @@ spec:
   chart_name: calico-htk
   dependencies: []
   namespace: calico-htk
-  release: pref2-pref1-calico-htk
+  release: calico-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ceph-htk
-  namespace: airsloop
+  name: ceph-htk
   substitutions:
   - dest:
       path: .source
@@ -67,7 +58,7 @@ spec:
   chart_name: ceph-htk
   dependencies: []
   namespace: ceph-htk
-  release: pref2-pref1-ceph-htk
+  release: ceph-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -75,7 +66,6 @@ kind: ArmadaChart
 metadata:
   labels:
     component: cinder
-    deckhand-poc-label: airsloop
     name: cinder-rabbitmq-global
   layeringDefinition:
     abstract: false
@@ -85,8 +75,7 @@ metadata:
     layer: type
     parentSelector:
       name: cinder-rabbitmq-global
-  name: pref2-cinder-rabbitmq
-  namespace: airsloop
+  name: cinder-rabbitmq
   replacement: true
   substitutions:
   - dest:
@@ -138,7 +127,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: pref2-pref1-cinder-rabbitmq
+  release: cinder-rabbitmq
   upgrade:
     no_hooks: false
     pre:
@@ -172,7 +161,6 @@ kind: ArmadaChart
 metadata:
   labels:
     component: cinder
-    deckhand-poc-label: airsloop
     name: cinder-global
   layeringDefinition:
     abstract: false
@@ -182,8 +170,7 @@ metadata:
     layer: type
     parentSelector:
       name: cinder-global
-  name: pref2-cinder
-  namespace: airsloop
+  name: cinder
   replacement: true
   substitutions:
   - dest:
@@ -344,7 +331,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: pref2-pref1-cinder
+  release: cinder
   upgrade:
     no_hooks: false
     post:
@@ -459,13 +446,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-coredns-htk
-  namespace: airsloop
+  name: coredns-htk
   substitutions:
   - dest:
       path: .source
@@ -477,20 +461,18 @@ spec:
   chart_name: coredns-htk
   dependencies: []
   namespace: coredns-htk
-  release: pref2-pref1-coredns-htk
+  release: coredns-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: coredns-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-coredns
-  namespace: airsloop
+  name: coredns
   substitutions:
   - dest:
       path: .source
@@ -557,7 +539,7 @@ spec:
   dependencies:
   - coredns-htk
   namespace: kube-system
-  release: pref2-pref1-coredns
+  release: coredns
   upgrade:
     no_hooks: false
     pre:
@@ -596,13 +578,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-deckhand-htk
-  namespace: airsloop
+  name: deckhand-htk
   substitutions:
   - dest:
       path: .source
@@ -614,19 +593,16 @@ spec:
   chart_name: deckhand-htk
   dependencies: []
   namespace: deckhand-htk
-  release: pref2-pref1-deckhand-htk
+  release: deckhand-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-drydock-htk
-  namespace: airsloop
+  name: drydock-htk
   substitutions:
   - dest:
       path: .source
@@ -638,14 +614,13 @@ spec:
   chart_name: drydock-htk
   dependencies: []
   namespace: drydock-htk
-  release: pref2-pref1-drydock-htk
+  release: drydock-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     hosttype: elasticsearch-global
   layeringDefinition:
     abstract: false
@@ -655,8 +630,7 @@ metadata:
     layer: type
     parentSelector:
       hosttype: elasticsearch-global
-  name: pref2-elasticsearch
-  namespace: airsloop
+  name: elasticsearch
   substitutions:
   - dest:
       path: .source
@@ -755,7 +729,7 @@ spec:
   install:
     no_hooks: false
   namespace: osh-infra
-  release: pref2-pref1-elasticsearch
+  release: elasticsearch
   upgrade:
     no_hooks: false
     post:
@@ -993,7 +967,6 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     hosttype: fluent-logging-global
   layeringDefinition:
     abstract: false
@@ -1003,8 +976,7 @@ metadata:
     layer: type
     parentSelector:
       hosttype: fluent-logging-global
-  name: pref2-fluent-logging
-  namespace: airsloop
+  name: fluent-logging
   substitutions:
   - dest:
       path: .source
@@ -1055,7 +1027,7 @@ spec:
   install:
     no_hooks: false
   namespace: osh-infra
-  release: pref2-pref1-fluent-logging
+  release: fluent-logging
   upgrade:
     no_hooks: false
     post:
@@ -1407,7 +1379,6 @@ kind: ArmadaChart
 metadata:
   labels:
     component: glance
-    deckhand-poc-label: airsloop
     name: glance-rabbitmq-global
   layeringDefinition:
     abstract: false
@@ -1417,8 +1388,7 @@ metadata:
     layer: type
     parentSelector:
       name: glance-rabbitmq-global
-  name: pref2-glance-rabbitmq
-  namespace: airsloop
+  name: glance-rabbitmq
   replacement: true
   substitutions:
   - dest:
@@ -1470,7 +1440,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: pref2-pref1-glance-rabbitmq
+  release: glance-rabbitmq
   upgrade:
     no_hooks: false
     pre:
@@ -1504,7 +1474,6 @@ kind: ArmadaChart
 metadata:
   labels:
     component: glance
-    deckhand-poc-label: airsloop
     name: glance-global
   layeringDefinition:
     abstract: false
@@ -1514,8 +1483,7 @@ metadata:
     layer: type
     parentSelector:
       name: glance-global
-  name: pref2-glance
-  namespace: airsloop
+  name: glance
   replacement: true
   substitutions:
   - dest:
@@ -1694,7 +1662,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: pref2-pref1-glance
+  release: glance
   upgrade:
     no_hooks: false
     post:
@@ -1799,7 +1767,6 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: grafana-global
   layeringDefinition:
     abstract: false
@@ -1809,8 +1776,7 @@ metadata:
     layer: type
     parentSelector:
       name: grafana-global
-  name: pref2-grafana
-  namespace: airsloop
+  name: grafana
   replacement: true
   substitutions:
   - dest:
@@ -1997,7 +1963,7 @@ spec:
   install:
     no_hooks: false
   namespace: osh-infra
-  release: pref2-pref1-grafana
+  release: grafana
   upgrade:
     no_hooks: false
     post:
@@ -2063,13 +2029,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-haproxy-htk
-  namespace: airsloop
+  name: haproxy-htk
   substitutions:
   - dest:
       path: .source
@@ -2081,20 +2044,18 @@ spec:
   chart_name: haproxy-htk
   dependencies: []
   namespace: haproxy-htk
-  release: pref2-pref1-haproxy-htk
+  release: haproxy-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: haproxy-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-haproxy
-  namespace: airsloop
+  name: haproxy
   substitutions:
   - dest:
       path: .source
@@ -2122,7 +2083,7 @@ spec:
   namespace: kube-system
   protected:
     continue_processing: true
-  release: pref2-pref1-haproxy
+  release: haproxy
   upgrade:
     no_hooks: false
     pre:
@@ -2171,7 +2132,6 @@ kind: ArmadaChart
 metadata:
   labels:
     component: heat
-    deckhand-poc-label: airsloop
     name: heat-rabbitmq-global
   layeringDefinition:
     abstract: false
@@ -2181,8 +2141,7 @@ metadata:
     layer: type
     parentSelector:
       name: heat-rabbitmq-global
-  name: pref2-heat-rabbitmq
-  namespace: airsloop
+  name: heat-rabbitmq
   replacement: true
   substitutions:
   - dest:
@@ -2234,7 +2193,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: pref2-pref1-heat-rabbitmq
+  release: heat-rabbitmq
   upgrade:
     no_hooks: false
     pre:
@@ -2268,7 +2227,6 @@ kind: ArmadaChart
 metadata:
   labels:
     component: heat
-    deckhand-poc-label: airsloop
     name: heat-global
   layeringDefinition:
     abstract: false
@@ -2278,8 +2236,7 @@ metadata:
     layer: type
     parentSelector:
       name: heat-global
-  name: pref2-heat
-  namespace: airsloop
+  name: heat
   replacement: true
   substitutions:
   - dest:
@@ -2452,7 +2409,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: pref2-pref1-heat
+  release: heat
   upgrade:
     no_hooks: false
     post:
@@ -2563,7 +2520,6 @@ kind: ArmadaChart
 metadata:
   labels:
     component: horizon
-    deckhand-poc-label: airsloop
     name: horizon-global
   layeringDefinition:
     abstract: false
@@ -2573,8 +2529,7 @@ metadata:
     layer: type
     parentSelector:
       name: horizon-global
-  name: pref2-horizon
-  namespace: airsloop
+  name: horizon
   replacement: true
   substitutions:
   - dest:
@@ -2651,7 +2606,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: pref2-pref1-horizon
+  release: horizon
   upgrade:
     no_hooks: false
     post:
@@ -2676,13 +2631,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ingress-kube-system-htk
-  namespace: airsloop
+  name: ingress-kube-system-htk
   substitutions:
   - dest:
       path: .source
@@ -2694,14 +2646,13 @@ spec:
   chart_name: ingress-kube-system-htk
   dependencies: []
   namespace: ingress-kube-system-htk
-  release: pref2-pref1-ingress-kube-system-htk
+  release: ingress-kube-system-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     ingress: kube-system
     name: ingress-kube-system-global
   layeringDefinition:
@@ -2712,8 +2663,7 @@ metadata:
     layer: type
     parentSelector:
       ingress: kube-system
-  name: pref2-ingress-kube-system
-  namespace: airsloop
+  name: ingress-kube-system
   substitutions:
   - dest:
       path: .source
@@ -2734,7 +2684,7 @@ spec:
   install:
     no_hooks: false
   namespace: kube-system
-  release: pref2-pref1-ingress-kube-system
+  release: ingress-kube-system
   upgrade:
     no_hooks: false
     pre:
@@ -2771,7 +2721,6 @@ kind: ArmadaChart
 metadata:
   labels:
     component: keystone
-    deckhand-poc-label: airsloop
     name: keystone-rabbitmq-global
   layeringDefinition:
     abstract: false
@@ -2781,8 +2730,7 @@ metadata:
     layer: type
     parentSelector:
       name: keystone-rabbitmq-global
-  name: pref2-keystone-rabbitmq
-  namespace: airsloop
+  name: keystone-rabbitmq
   replacement: true
   substitutions:
   - dest:
@@ -2834,7 +2782,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: pref2-pref1-keystone-rabbitmq
+  release: keystone-rabbitmq
   upgrade:
     no_hooks: false
     pre:
@@ -2868,7 +2816,6 @@ kind: ArmadaChart
 metadata:
   labels:
     component: keystone
-    deckhand-poc-label: airsloop
     name: keystone-global
   layeringDefinition:
     abstract: false
@@ -2878,8 +2825,7 @@ metadata:
     layer: type
     parentSelector:
       name: keystone-global
-  name: pref2-keystone
-  namespace: airsloop
+  name: keystone
   replacement: true
   substitutions:
   - dest:
@@ -2998,7 +2944,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: pref2-pref1-keystone
+  release: keystone
   upgrade:
     no_hooks: false
     post:
@@ -3120,13 +3066,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-kibana
-  namespace: airsloop
+  name: kibana
   substitutions:
   - dest:
       path: .source
@@ -3189,7 +3132,7 @@ spec:
   install:
     no_hooks: false
   namespace: osh-infra
-  release: pref2-pref1-kibana
+  release: kibana
   upgrade:
     no_hooks: false
     post:
@@ -3237,13 +3180,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-kubernetes-apiserver-htk
-  namespace: airsloop
+  name: kubernetes-apiserver-htk
   substitutions:
   - dest:
       path: .source
@@ -3255,20 +3195,18 @@ spec:
   chart_name: kubernetes-apiserver-htk
   dependencies: []
   namespace: kubernetes-apiserver-htk
-  release: pref2-pref1-kubernetes-apiserver-htk
+  release: kubernetes-apiserver-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: kubernetes-apiserver-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-kubernetes-apiserver
-  namespace: airsloop
+  name: kubernetes-apiserver
   substitutions:
   - dest:
       path: .source
@@ -3357,7 +3295,7 @@ spec:
   namespace: kube-system
   protected:
     continue_processing: true
-  release: pref2-pref1-kubernetes-apiserver
+  release: kubernetes-apiserver
   upgrade:
     no_hooks: false
     pre:
@@ -3388,116 +3326,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
-    name: kubernetes-calico-etcd-global
-  layeringDefinition:
-    abstract: true
-    layer: global
-  name: pref2-pref1-kubernetes-calico-etcd-global
-  namespace: airsloop
-  substitutions:
-  - dest:
-      path: .source
-    src:
-      kind: PeglegSoftwareVersions
-      name: software-versions
-      path: .charts.kubernetes.calico.etcd
-  - dest:
-      path: .values.images.tags
-    src:
-      kind: PeglegSoftwareVersions
-      name: software-versions
-      path: .images.calico.etcd
-  - dest:
-      path: .values.service.ip
-    src:
-      kind: PeglegCommonAddresses
-      name: common-addresses
-      path: .calico.etcd.service_ip
-  - dest:
-      path: .values.anchor.etcdctl_endpoint
-    src:
-      kind: PeglegCommonAddresses
-      name: common-addresses
-      path: .calico.etcd.service_ip
-  - dest:
-      path: .values.secrets.tls.client.ca
-    src:
-      kind: DeckhandCertificateAuthority
-      name: calico-etcd
-      path: .
-  - dest:
-      path: .values.secrets.tls.peer.ca
-    src:
-      kind: DeckhandCertificateAuthority
-      name: calico-etcd-peer
-      path: .
-  - dest:
-      path: .values.secrets.anchor.tls.cert
-    src:
-      kind: DeckhandCertificate
-      name: calico-etcd-anchor
-      path: .
-  - dest:
-      path: .values.secrets.anchor.tls.key
-    src:
-      kind: DeckhandCertificateKey
-      name: calico-etcd-anchor
-      path: .
-spec:
-  chart_name: etcd
-  dependencies:
-  - kubernetes-calico-etcd-htk
-  namespace: kube-system
-  protected:
-    continue_processing: true
-  release: pref2-pref1-kubernetes-calico-etcd
-  upgrade:
-    no_hooks: false
-    pre:
-      delete:
-      - labels:
-          release_group: airship-kubernetes-calico-etcd
-        type: job
-  values:
-    bootstrapping:
-      enabled: true
-      filename: calico-etcd-bootstrap
-      host_directory: /var/lib/anchor
-    etcd:
-      host_data_path: /var/lib/etcd/calico
-      host_etc_path: /etc/etcd/calico
-    labels:
-      anchor:
-        node_selector_key: calico-etcd
-        node_selector_value: enabled
-    network:
-      service_client:
-        name: service-client
-        port: 6666
-        target_port: 6666
-      service_peer:
-        name: service-peer
-        port: 6667
-        target_port: 6667
-    service:
-      name: calico-etcd
-  wait:
-    labels:
-      release_group: airship-kubernetes-calico-etcd
-    timeout: 600
----
-apiVersion: armada.airshipit.org/v1alpha1
-kind: ArmadaChart
-metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-kubernetes-calico-etcd-htk
-  namespace: airsloop
+  name: kubernetes-calico-etcd-htk
   substitutions:
   - dest:
       path: .source
@@ -3509,14 +3341,14 @@ spec:
   chart_name: kubernetes-calico-etcd-htk
   dependencies: []
   namespace: kubernetes-calico-etcd-htk
-  release: pref2-pref1-kubernetes-calico-etcd-htk
+  release: kubernetes-calico-etcd-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
+    name: kubernetes-calico-etcd-global
   layeringDefinition:
     abstract: false
     actions:
@@ -3525,8 +3357,7 @@ metadata:
     layer: site
     parentSelector:
       name: kubernetes-calico-etcd-global
-  name: pref2-pref1-kubernetes-calico-etcd
-  namespace: airsloop
+  name: kubernetes-calico-etcd
   substitutions:
   - dest:
       path: .values.nodes[0].name
@@ -3618,19 +3449,58 @@ metadata:
       kind: DeckhandCertificateKey
       name: calico-etcd-airsloop-control-3-peer
       path: .
-spec: {}
+spec:
+  chart_name: etcd
+  dependencies:
+  - kubernetes-calico-etcd-htk
+  namespace: kube-system
+  protected:
+    continue_processing: true
+  release: kubernetes-calico-etcd
+  upgrade:
+    no_hooks: false
+    pre:
+      delete:
+      - labels:
+          release_group: airship-kubernetes-calico-etcd
+        type: job
+  values:
+    bootstrapping:
+      enabled: true
+      filename: calico-etcd-bootstrap
+      host_directory: /var/lib/anchor
+    etcd:
+      host_data_path: /var/lib/etcd/calico
+      host_etc_path: /etc/etcd/calico
+    labels:
+      anchor:
+        node_selector_key: calico-etcd
+        node_selector_value: enabled
+    network:
+      service_client:
+        name: service-client
+        port: 6666
+        target_port: 6666
+      service_peer:
+        name: service-peer
+        port: 6667
+        target_port: 6667
+    service:
+      name: calico-etcd
+  wait:
+    labels:
+      release_group: airship-kubernetes-calico-etcd
+    timeout: 600
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: kubernetes-calico-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-kubernetes-calico
-  namespace: airsloop
+  name: kubernetes-calico
   substitutions:
   - dest:
       path: .source
@@ -3694,7 +3564,7 @@ spec:
   namespace: kube-system
   protected:
     continue_processing: true
-  release: pref2-pref1-kubernetes-calico
+  release: kubernetes-calico
   upgrade:
     no_hooks: false
     pre:
@@ -3761,13 +3631,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-kubernetes-controller-manager-htk
-  namespace: airsloop
+  name: kubernetes-controller-manager-htk
   substitutions:
   - dest:
       path: .source
@@ -3779,20 +3646,18 @@ spec:
   chart_name: kubernetes-controller-manager-htk
   dependencies: []
   namespace: kubernetes-controller-manager-htk
-  release: pref2-pref1-kubernetes-controller-manager-htk
+  release: kubernetes-controller-manager-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: kubernetes-controller-manager-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-kubernetes-controller-manager
-  namespace: airsloop
+  name: kubernetes-controller-manager
   substitutions:
   - dest:
       path: .source
@@ -3863,7 +3728,7 @@ spec:
   namespace: kube-system
   protected:
     continue_processing: true
-  release: pref2-pref1-kubernetes-controller-manager
+  release: kubernetes-controller-manager
   upgrade:
     no_hooks: false
     pre:
@@ -3889,112 +3754,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
-    name: kubernetes-etcd-global
-  layeringDefinition:
-    abstract: true
-    layer: global
-  name: pref2-pref1-kubernetes-etcd-global
-  namespace: airsloop
-  substitutions:
-  - dest:
-      path: .source
-    src:
-      kind: PeglegSoftwareVersions
-      name: software-versions
-      path: .charts.kubernetes.etcd
-  - dest:
-      path: .values.images.tags
-    src:
-      kind: PeglegSoftwareVersions
-      name: software-versions
-      path: .images.kubernetes.etcd
-  - dest:
-      path: .values.service.ip
-    src:
-      kind: PeglegCommonAddresses
-      name: common-addresses
-      path: .kubernetes.etcd_service_ip
-  - dest:
-      path: .values.anchor.etcdctl_endpoint
-    src:
-      kind: PeglegCommonAddresses
-      name: common-addresses
-      path: .kubernetes.etcd_service_ip
-  - dest:
-      path: .values.secrets.tls.client.ca
-    src:
-      kind: DeckhandCertificateAuthority
-      name: kubernetes-etcd
-      path: .
-  - dest:
-      path: .values.secrets.tls.peer.ca
-    src:
-      kind: DeckhandCertificateAuthority
-      name: kubernetes-etcd-peer
-      path: .
-  - dest:
-      path: .values.secrets.anchor.tls.cert
-    src:
-      kind: DeckhandCertificate
-      name: kubernetes-etcd-anchor
-      path: .
-  - dest:
-      path: .values.secrets.anchor.tls.key
-    src:
-      kind: DeckhandCertificateKey
-      name: kubernetes-etcd-anchor
-      path: .
-spec:
-  chart_name: etcd
-  dependencies:
-  - kubernetes-etcd-htk
-  namespace: kube-system
-  protected:
-    continue_processing: true
-  release: pref2-pref1-kubernetes-etcd
-  upgrade:
-    no_hooks: false
-    pre:
-      delete:
-      - labels:
-          release_group: airship-kubernetes-etcd
-        type: job
-  values:
-    etcd:
-      host_data_path: /var/lib/etcd/kubernetes
-      host_etc_path: /etc/etcd/kubernetes
-    labels:
-      anchor:
-        node_selector_key: kubernetes-etcd
-        node_selector_value: enabled
-    network:
-      service_client:
-        name: service-client
-        port: 2379
-        target_port: 2379
-      service_peer:
-        name: service-peer
-        port: 2380
-        target_port: 2380
-    service:
-      name: kubernetes-etcd
-  wait:
-    labels:
-      release_group: airship-kubernetes-etcd
-    timeout: 600
----
-apiVersion: armada.airshipit.org/v1alpha1
-kind: ArmadaChart
-metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-kubernetes-etcd-htk
-  namespace: airsloop
+  name: kubernetes-etcd-htk
   substitutions:
   - dest:
       path: .source
@@ -4006,14 +3769,14 @@ spec:
   chart_name: kubernetes-etcd-htk
   dependencies: []
   namespace: kubernetes-etcd-htk
-  release: pref2-pref1-kubernetes-etcd-htk
+  release: kubernetes-etcd-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
+    name: kubernetes-etcd-global
   layeringDefinition:
     abstract: false
     actions:
@@ -4022,8 +3785,7 @@ metadata:
     layer: site
     parentSelector:
       name: kubernetes-etcd-global
-  name: pref2-pref1-kubernetes-etcd
-  namespace: airsloop
+  name: kubernetes-etcd
   substitutions:
   - dest:
       path: .values.nodes[0].name
@@ -4115,18 +3877,52 @@ metadata:
       kind: DeckhandCertificateKey
       name: kubernetes-etcd-airsloop-control-3-peer
       path: $
-spec: {}
+spec:
+  chart_name: etcd
+  dependencies:
+  - kubernetes-etcd-htk
+  namespace: kube-system
+  protected:
+    continue_processing: true
+  release: kubernetes-etcd
+  upgrade:
+    no_hooks: false
+    pre:
+      delete:
+      - labels:
+          release_group: airship-kubernetes-etcd
+        type: job
+  values:
+    etcd:
+      host_data_path: /var/lib/etcd/kubernetes
+      host_etc_path: /etc/etcd/kubernetes
+    labels:
+      anchor:
+        node_selector_key: kubernetes-etcd
+        node_selector_value: enabled
+    network:
+      service_client:
+        name: service-client
+        port: 2379
+        target_port: 2379
+      service_peer:
+        name: service-peer
+        port: 2380
+        target_port: 2380
+    service:
+      name: kubernetes-etcd
+  wait:
+    labels:
+      release_group: airship-kubernetes-etcd
+    timeout: 600
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-kubernetes-proxy-htk
-  namespace: airsloop
+  name: kubernetes-proxy-htk
   substitutions:
   - dest:
       path: .source
@@ -4138,19 +3934,17 @@ spec:
   chart_name: kubernetes-proxy-htk
   dependencies: []
   namespace: kubernetes-proxy-htk
-  release: pref2-pref1-kubernetes-proxy-htk
+  release: kubernetes-proxy-htk
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: kubernetes-proxy-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-kubernetes-proxy
-  namespace: airsloop
+  name: kubernetes-proxy
   substitutions:
   - dest:
       path: .source
@@ -4182,7 +3976,7 @@ spec:
   dependencies:
   - kubernetes-proxy-htk
   namespace: kube-system
-  release: pref2-pref1-kubernetes-proxy
+  release: kubernetes-proxy
   upgrade:
     no_hooks: false
     pre:
@@ -4209,13 +4003,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-kubernetes-scheduler-htk
-  namespace: airsloop
+  name: kubernetes-scheduler-htk
   substitutions:
   - dest:
       path: .source
@@ -4227,20 +4018,18 @@ spec:
   chart_name: kubernetes-scheduler-htk
   dependencies: []
   namespace: kubernetes-scheduler-htk
-  release: pref2-pref1-kubernetes-scheduler-htk
+  release: kubernetes-scheduler-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: kubernetes-scheduler-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-kubernetes-scheduler
-  namespace: airsloop
+  name: kubernetes-scheduler
   substitutions:
   - dest:
       path: .source
@@ -4279,7 +4068,7 @@ spec:
   namespace: kube-system
   protected:
     continue_processing: true
-  release: pref2-pref1-kubernetes-scheduler
+  release: kubernetes-scheduler
   upgrade:
     no_hooks: false
     pre:
@@ -4300,13 +4089,11 @@ kind: ArmadaChart
 metadata:
   labels:
     component: libvirt
-    deckhand-poc-label: airsloop
     name: libvirt-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-libvirt
-  namespace: airsloop
+  name: libvirt
   substitutions:
   - dest:
       path: .source
@@ -4327,7 +4114,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: pref2-pref1-libvirt
+  release: libvirt
   upgrade:
     no_hooks: false
     pre:
@@ -4348,13 +4135,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-maas-htk
-  namespace: airsloop
+  name: maas-htk
   substitutions:
   - dest:
       path: .source
@@ -4366,19 +4150,16 @@ spec:
   chart_name: maas-htk
   dependencies: []
   namespace: maas-htk
-  release: pref2-pref1-maas-htk
+  release: maas-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-mariadb-htk
-  namespace: airsloop
+  name: mariadb-htk
   substitutions:
   - dest:
       path: .source
@@ -4390,19 +4171,16 @@ spec:
   chart_name: mariadb-htk
   dependencies: []
   namespace: mariadb-htk
-  release: pref2-pref1-mariadb-htk
+  release: mariadb-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-nagios
-  namespace: airsloop
+  name: nagios
   substitutions:
   - dest:
       path: .source
@@ -4495,7 +4273,7 @@ spec:
   install:
     no_hooks: false
   namespace: osh-infra
-  release: pref2-pref1-nagios
+  release: nagios
   upgrade:
     no_hooks: false
     post:
@@ -4546,7 +4324,6 @@ kind: ArmadaChart
 metadata:
   labels:
     component: neutron
-    deckhand-poc-label: airsloop
     name: neutron-rabbitmq-global
   layeringDefinition:
     abstract: false
@@ -4556,8 +4333,7 @@ metadata:
     layer: type
     parentSelector:
       name: neutron-rabbitmq-global
-  name: pref2-neutron-rabbitmq
-  namespace: airsloop
+  name: neutron-rabbitmq
   replacement: true
   substitutions:
   - dest:
@@ -4609,7 +4385,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: pref2-pref1-neutron-rabbitmq
+  release: neutron-rabbitmq
   upgrade:
     no_hooks: false
     pre:
@@ -4643,7 +4419,6 @@ kind: ArmadaChart
 metadata:
   labels:
     component: neutron
-    deckhand-poc-label: airsloop
     name: neutron-global
   layeringDefinition:
     abstract: false
@@ -4653,8 +4428,7 @@ metadata:
     layer: type
     parentSelector:
       name: neutron-global
-  name: pref2-neutron
-  namespace: airsloop
+  name: neutron
   substitutions:
   - dest:
       path: .source
@@ -4828,7 +4602,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: pref2-pref1-neutron
+  release: neutron
   test:
     timeout: 500
   upgrade:
@@ -4967,13 +4741,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-nfs-provisioner
-  namespace: airsloop
+  name: nfs-provisioner
   substitutions:
   - dest:
       path: .source
@@ -4992,7 +4763,7 @@ spec:
   dependencies:
   - osh-infra-helm-toolkit
   namespace: nfs
-  release: pref2-pref1-nfs-provisioner
+  release: nfs-provisioner
   values:
     storageclass:
       name: general
@@ -5006,7 +4777,6 @@ kind: ArmadaChart
 metadata:
   labels:
     component: nova
-    deckhand-poc-label: airsloop
     name: nova-rabbitmq-global
   layeringDefinition:
     abstract: false
@@ -5016,8 +4786,7 @@ metadata:
     layer: type
     parentSelector:
       name: nova-rabbitmq-global
-  name: pref2-nova-rabbitmq
-  namespace: airsloop
+  name: nova-rabbitmq
   replacement: true
   substitutions:
   - dest:
@@ -5069,7 +4838,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: pref2-pref1-nova-rabbitmq
+  release: nova-rabbitmq
   upgrade:
     no_hooks: false
     pre:
@@ -5103,7 +4872,6 @@ kind: ArmadaChart
 metadata:
   labels:
     component: nova
-    deckhand-poc-label: airsloop
     name: nova-global
   layeringDefinition:
     abstract: false
@@ -5113,8 +4881,7 @@ metadata:
     layer: type
     parentSelector:
       name: nova-global
-  name: pref2-nova
-  namespace: airsloop
+  name: nova
   substitutions:
   - dest:
       path: .source
@@ -5372,7 +5139,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: pref2-pref1-nova
+  release: nova
   upgrade:
     no_hooks: false
     post:
@@ -5510,13 +5277,11 @@ kind: ArmadaChart
 metadata:
   labels:
     component: ceph
-    deckhand-poc-label: airsloop
     name: openstack-ceph-config-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-openstack-ceph-config
-  namespace: airsloop
+  name: openstack-ceph-config
   substitutions:
   - dest:
       path: .source
@@ -5555,7 +5320,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: pref2-pref1-openstack-ceph-config
+  release: openstack-ceph-config
   upgrade:
     no_hooks: false
     pre:
@@ -5593,7 +5358,6 @@ kind: ArmadaChart
 metadata:
   labels:
     component: ingress
-    deckhand-poc-label: airsloop
     name: openstack-ingress-controller-global
   layeringDefinition:
     abstract: false
@@ -5603,8 +5367,7 @@ metadata:
     layer: type
     parentSelector:
       name: openstack-ingress-controller-global
-  name: pref2-openstack-ingress-controller
-  namespace: airsloop
+  name: openstack-ingress-controller
   replacement: true
   substitutions:
   - dest:
@@ -5626,7 +5389,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: pref2-pref1-openstack-ingress-controller
+  release: openstack-ingress-controller
   upgrade:
     no_hooks: false
     pre:
@@ -5656,7 +5419,6 @@ kind: ArmadaChart
 metadata:
   labels:
     component: mariadb
-    deckhand-poc-label: airsloop
     name: openstack-mariadb-global
   layeringDefinition:
     abstract: false
@@ -5666,8 +5428,7 @@ metadata:
     layer: type
     parentSelector:
       name: openstack-mariadb-global
-  name: pref2-openstack-mariadb
-  namespace: airsloop
+  name: openstack-mariadb
   replacement: true
   substitutions:
   - dest:
@@ -5725,7 +5486,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: pref2-pref1-openstack-mariadb
+  release: openstack-mariadb
   upgrade:
     no_hooks: false
     pre:
@@ -5758,13 +5519,11 @@ kind: ArmadaChart
 metadata:
   labels:
     component: memcached
-    deckhand-poc-label: airsloop
     name: openstack-memcached-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-openstack-memcached
-  namespace: airsloop
+  name: openstack-memcached
   substitutions:
   - dest:
       path: .source
@@ -5791,7 +5550,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: pref2-pref1-openstack-memcached
+  release: openstack-memcached
   upgrade:
     no_hooks: false
     pre:
@@ -5813,13 +5572,11 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: openvswitch-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-openvswitch
-  namespace: airsloop
+  name: openvswitch
   substitutions:
   - dest:
       path: .source
@@ -5840,7 +5597,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: pref2-pref1-openvswitch
+  release: openvswitch
   upgrade:
     no_hooks: false
     pre:
@@ -5861,13 +5618,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-osh-helm-toolkit
-  namespace: airsloop
+  name: osh-helm-toolkit
   substitutions:
   - dest:
       path: .source
@@ -5879,7 +5633,7 @@ spec:
   chart_name: helm-toolkit
   dependencies: []
   namespace: osh-helm-toolkit
-  release: pref2-pref1-osh-helm-toolkit
+  release: osh-helm-toolkit
   upgrade:
     no_hooks: true
   values: {}
@@ -5891,13 +5645,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-osh-infra-ceph-config
-  namespace: airsloop
+  name: osh-infra-ceph-config
   substitutions:
   - dest:
       path: .source
@@ -5936,7 +5687,7 @@ spec:
   install:
     no_hooks: false
   namespace: osh-infra
-  release: pref2-pref1-osh-infra-ceph-config
+  release: osh-infra-ceph-config
   upgrade:
     no_hooks: false
     pre:
@@ -5972,13 +5723,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-osh-infra-helm-toolkit
-  namespace: airsloop
+  name: osh-infra-helm-toolkit
   substitutions:
   - dest:
       path: .source
@@ -5990,7 +5738,7 @@ spec:
   chart_name: helm-toolkit
   dependencies: []
   namespace: osh-infra-helm-toolkit
-  release: pref2-pref1-osh-infra-helm-toolkit
+  release: osh-infra-helm-toolkit
   upgrade:
     no_hooks: true
   values: {}
@@ -6003,7 +5751,6 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: osh-infra-ingress-controller-global
   layeringDefinition:
     abstract: false
@@ -6013,8 +5760,7 @@ metadata:
     layer: type
     parentSelector:
       name: osh-infra-ingress-controller-global
-  name: pref2-osh-infra-ingress-controller
-  namespace: airsloop
+  name: osh-infra-ingress-controller
   replacement: true
   substitutions:
   - dest:
@@ -6036,7 +5782,7 @@ spec:
   install:
     no_hooks: false
   namespace: osh-infra
-  release: pref2-pref1-osh-infra-ingress-controller
+  release: osh-infra-ingress-controller
   upgrade:
     no_hooks: false
     pre:
@@ -6065,7 +5811,6 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: osh-infra-mariadb-global
   layeringDefinition:
     abstract: false
@@ -6075,8 +5820,7 @@ metadata:
     layer: type
     parentSelector:
       name: osh-infra-mariadb-global
-  name: pref2-osh-infra-mariadb
-  namespace: airsloop
+  name: osh-infra-mariadb
   replacement: true
   substitutions:
   - dest:
@@ -6134,7 +5878,7 @@ spec:
   install:
     no_hooks: false
   namespace: osh-infra
-  release: pref2-pref1-osh-infra-mariadb
+  release: osh-infra-mariadb
   upgrade:
     no_hooks: false
     pre:
@@ -6165,13 +5909,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-osh-infra-radosgw
-  namespace: airsloop
+  name: osh-infra-radosgw
   substitutions:
   - dest:
       path: .source
@@ -6234,7 +5975,7 @@ spec:
   install:
     no_hooks: false
   namespace: osh-infra
-  release: pref2-pref1-osh-infra-radosgw
+  release: osh-infra-radosgw
   upgrade:
     no_hooks: false
     pre:
@@ -6273,13 +6014,11 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: podsecuritypolicy-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-podsecuritypolicy
-  namespace: airsloop
+  name: podsecuritypolicy
   substitutions:
   - dest:
       path: .source
@@ -6294,7 +6033,7 @@ spec:
   install:
     no_hooks: true
   namespace: ucp
-  release: pref2-pref1-podsecuritypolicy
+  release: podsecuritypolicy
   upgrade:
     no_hooks: true
   values:
@@ -6331,13 +6070,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-postgres-htk
-  namespace: airsloop
+  name: postgres-htk
   substitutions:
   - dest:
       path: .source
@@ -6349,19 +6085,16 @@ spec:
   chart_name: postgres-htk
   dependencies: []
   namespace: postgres-htk
-  release: pref2-pref1-postgres-htk
+  release: postgres-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-promenade-htk
-  namespace: airsloop
+  name: promenade-htk
   substitutions:
   - dest:
       path: .source
@@ -6373,19 +6106,16 @@ spec:
   chart_name: promenade-htk
   dependencies: []
   namespace: promenade-htk
-  release: pref2-pref1-promenade-htk
+  release: promenade-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-prometheus-alertmanager
-  namespace: airsloop
+  name: prometheus-alertmanager
   substitutions:
   - dest:
       path: .source
@@ -6412,7 +6142,7 @@ spec:
   install:
     no_hooks: false
   namespace: osh-infra
-  release: pref2-pref1-prometheus-alertmanager
+  release: prometheus-alertmanager
   upgrade:
     no_hooks: false
     post:
@@ -6442,13 +6172,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-prometheus-kube-state-metrics
-  namespace: airsloop
+  name: prometheus-kube-state-metrics
   substitutions:
   - dest:
       path: .source
@@ -6487,7 +6214,7 @@ spec:
   install:
     no_hooks: false
   namespace: kube-system
-  release: pref2-pref1-prometheus-kube-state-metrics
+  release: prometheus-kube-state-metrics
   upgrade:
     no_hooks: false
     post:
@@ -6514,13 +6241,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-prometheus-node-exporter
-  namespace: airsloop
+  name: prometheus-node-exporter
   substitutions:
   - dest:
       path: .source
@@ -6547,7 +6271,7 @@ spec:
   install:
     no_hooks: false
   namespace: kube-system
-  release: pref2-pref1-prometheus-node-exporter
+  release: prometheus-node-exporter
   upgrade:
     no_hooks: false
     post:
@@ -6574,13 +6298,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-prometheus-openstack-exporter
-  namespace: airsloop
+  name: prometheus-openstack-exporter
   substitutions:
   - dest:
       path: .source
@@ -6637,7 +6358,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: pref2-pref1-prometheus-openstack-exporter
+  release: prometheus-openstack-exporter
   upgrade:
     no_hooks: false
     pre:
@@ -6661,13 +6382,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-prometheus-process-exporter
-  namespace: airsloop
+  name: prometheus-process-exporter
   substitutions:
   - dest:
       path: .source
@@ -6694,7 +6412,7 @@ spec:
   install:
     no_hooks: false
   namespace: kube-system
-  release: pref2-pref1-prometheus-process-exporter
+  release: prometheus-process-exporter
   upgrade:
     no_hooks: false
     post:
@@ -6722,7 +6440,6 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: prometheus-global
   layeringDefinition:
     abstract: false
@@ -6732,8 +6449,7 @@ metadata:
     layer: type
     parentSelector:
       name: prometheus-global
-  name: pref2-prometheus
-  namespace: airsloop
+  name: prometheus
   replacement: true
   substitutions:
   - dest:
@@ -6797,7 +6513,7 @@ spec:
   install:
     no_hooks: false
   namespace: osh-infra
-  release: pref2-pref1-prometheus
+  release: prometheus
   upgrade:
     no_hooks: false
     post:
@@ -8495,13 +8211,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-shipyard-htk
-  namespace: airsloop
+  name: shipyard-htk
   substitutions:
   - dest:
       path: .source
@@ -8513,20 +8226,23 @@ spec:
   chart_name: shipyard-htk
   dependencies: []
   namespace: shipyard-htk
-  release: pref2-pref1-shipyard-htk
+  release: shipyard-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
-    name: tenant-ceph-client-global
+    name: tenant-ceph-client-type
   layeringDefinition:
-    abstract: true
-    layer: global
-  name: pref2-pref1-tenant-ceph-client-global
-  namespace: airsloop
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: type
+    parentSelector:
+      name: tenant-ceph-client-global
+  name: tenant-ceph-client
   substitutions:
   - dest:
       path: .source
@@ -8579,7 +8295,7 @@ spec:
   namespace: tenant-ceph
   protected:
     continue_processing: true
-  release: pref2-pref1-tenant-ceph-client
+  release: tenant-ceph-client
   upgrade:
     no_hooks: false
     pre:
@@ -8602,133 +8318,6 @@ spec:
       pool:
         crush:
           tunables: hammer
-        default:
-          crush_rule: replicated_rule
-        spec:
-        - application: rbd
-          name: rbd
-          percent_total_data: 10
-          replication: 3
-        - application: cinder-volume
-          name: cinder.volumes
-          percent_total_data: 40
-          replication: 3
-        - application: rgw
-          name: .rgw.root
-          percent_total_data: 0.1
-          replication: 3
-        - application: rgw
-          name: default.rgw.control
-          percent_total_data: 0.1
-          replication: 3
-        - application: rgw
-          name: default.rgw.data.root
-          percent_total_data: 0.1
-          replication: 3
-        - application: rgw
-          name: default.rgw.gc
-          percent_total_data: 0.1
-          replication: 3
-        - application: rgw
-          name: default.rgw.log
-          percent_total_data: 0.1
-          replication: 3
-        - application: rgw
-          name: default.rgw.intent-log
-          percent_total_data: 0.1
-          replication: 3
-        - application: rgw
-          name: default.rgw.meta
-          percent_total_data: 0.1
-          replication: 3
-        - application: rgw
-          name: default.rgw.usage
-          percent_total_data: 0.1
-          replication: 3
-        - application: rgw
-          name: default.rgw.users.keys
-          percent_total_data: 0.1
-          replication: 3
-        - application: rgw
-          name: default.rgw.users.email
-          percent_total_data: 0.1
-          replication: 3
-        - application: rgw
-          name: default.rgw.users.swift
-          percent_total_data: 0.1
-          replication: 3
-        - application: rgw
-          name: default.rgw.users.uid
-          percent_total_data: 0.1
-          replication: 3
-        - application: rgw
-          name: default.rgw.buckets.extra
-          percent_total_data: 0.1
-          replication: 3
-        - application: rgw
-          name: default.rgw.buckets.index
-          percent_total_data: 3
-          replication: 3
-        - application: rgw
-          name: default.rgw.buckets.data
-          percent_total_data: 30
-          replication: 3
-        target:
-          osd: 1
-          pg_per_osd: 100
-          protected: true
-    deployment:
-      ceph: true
-    endpoints:
-      ceph_mgr:
-        namespace: tenant-ceph
-      ceph_mon:
-        namespace: tenant-ceph
-    labels:
-      job:
-        node_selector_key: tenant-ceph-control-plane
-        node_selector_value: enabled
-      mds:
-        node_selector_key: tenant-ceph-mds
-        node_selector_value: enabled
-      mgr:
-        node_selector_key: tenant-ceph-mgr
-        node_selector_value: enabled
-    manifests:
-      deployment_mds: false
-    monitoring:
-      prometheus:
-        ceph_mgr:
-          port: 9284
-  wait:
-    labels:
-      release_group: airship-tenant-ceph-client
-    timeout: 900
----
-apiVersion: armada.airshipit.org/v1alpha1
-kind: ArmadaChart
-metadata:
-  labels:
-    deckhand-poc-label: airsloop
-    name: tenant-ceph-client-type
-  layeringDefinition:
-    abstract: false
-    actions:
-    - method: merge
-      path: .
-    layer: type
-    parentSelector:
-      name: tenant-ceph-client-global
-  name: pref2-tenant-ceph-client
-  namespace: airsloop
-  replacement: true
-spec:
-  values:
-    conf:
-      ceph:
-        global:
-          osd_pool_default_size: 1
-      pool:
         default:
           crush_rule: same_host
         spec:
@@ -8802,21 +8391,47 @@ spec:
           replication: 1
         target:
           osd: 1
+          pg_per_osd: 100
+          protected: true
+    deployment:
+      ceph: true
+    endpoints:
+      ceph_mgr:
+        namespace: tenant-ceph
+      ceph_mon:
+        namespace: tenant-ceph
+    labels:
+      job:
+        node_selector_key: tenant-ceph-control-plane
+        node_selector_value: enabled
+      mds:
+        node_selector_key: tenant-ceph-mds
+        node_selector_value: enabled
+      mgr:
+        node_selector_key: tenant-ceph-mgr
+        node_selector_value: enabled
+    manifests:
+      deployment_mds: false
+    monitoring:
+      prometheus:
+        ceph_mgr:
+          port: 9284
     pod:
       replicas:
         mds: 1
         mgr: 1
+  wait:
+    labels:
+      release_group: airship-tenant-ceph-client
+    timeout: 900
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-tenant-ceph-config
-  namespace: airsloop
+  name: tenant-ceph-config
   substitutions:
   - dest:
       path: .source
@@ -8855,7 +8470,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: pref2-pref1-tenant-ceph-config
+  release: tenant-ceph-config
   upgrade:
     no_hooks: false
     pre:
@@ -8895,13 +8510,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-tenant-ceph-htk
-  namespace: airsloop
+  name: tenant-ceph-htk
   substitutions:
   - dest:
       path: .source
@@ -8913,14 +8525,13 @@ spec:
   chart_name: tenant-ceph-htk
   dependencies: []
   namespace: tenant-ceph-htk
-  release: pref2-pref1-tenant-ceph-htk
+  release: tenant-ceph-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: tenant-ceph-ingress-global
   layeringDefinition:
     abstract: false
@@ -8930,8 +8541,7 @@ metadata:
     layer: type
     parentSelector:
       name: tenant-ceph-ingress-global
-  name: pref2-tenant-ceph-ingress
-  namespace: airsloop
+  name: tenant-ceph-ingress
   replacement: true
   substitutions:
   - dest:
@@ -8953,7 +8563,7 @@ spec:
   install:
     no_hooks: false
   namespace: tenant-ceph
-  release: pref2-pref1-tenant-ceph-ingress
+  release: tenant-ceph-ingress
   upgrade:
     no_hooks: false
     pre:
@@ -8990,13 +8600,11 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: tenant-ceph-mon
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-tenant-ceph-mon
-  namespace: airsloop
+  name: tenant-ceph-mon
   substitutions:
   - dest:
       path: .source
@@ -9043,7 +8651,7 @@ spec:
   namespace: tenant-ceph
   protected:
     continue_processing: true
-  release: pref2-pref1-tenant-ceph-mon
+  release: tenant-ceph-mon
   upgrade:
     no_hooks: false
     pre:
@@ -9091,7 +8699,6 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: tenant-ceph-osd-global
   layeringDefinition:
     abstract: false
@@ -9101,8 +8708,7 @@ metadata:
     layer: type
     parentSelector:
       name: tenant-ceph-osd-global
-  name: pref2-tenant-ceph-osd
-  namespace: airsloop
+  name: tenant-ceph-osd
   substitutions:
   - dest:
       path: .source
@@ -9149,7 +8755,7 @@ spec:
   namespace: tenant-ceph
   protected:
     continue_processing: true
-  release: pref2-pref1-tenant-ceph-osd
+  release: tenant-ceph-osd
   upgrade:
     no_hooks: false
   values:
@@ -9195,13 +8801,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-tenant-ceph-rgw
-  namespace: airsloop
+  name: tenant-ceph-rgw
   substitutions:
   - dest:
       path: .source
@@ -9276,7 +8879,7 @@ spec:
   install:
     no_hooks: false
   namespace: openstack
-  release: pref2-pref1-tenant-ceph-rgw
+  release: tenant-ceph-rgw
   upgrade:
     no_hooks: false
     pre:
@@ -9328,13 +8931,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-tiller-htk
-  namespace: airsloop
+  name: tiller-htk
   substitutions:
   - dest:
       path: .source
@@ -9346,14 +8946,13 @@ spec:
   chart_name: tiller-htk
   dependencies: []
   namespace: tiller-htk
-  release: pref2-pref1-tiller-htk
+  release: tiller-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-armada-global
   layeringDefinition:
     abstract: false
@@ -9363,8 +8962,7 @@ metadata:
     layer: type
     parentSelector:
       name: ucp-armada-global
-  name: pref2-ucp-armada
-  namespace: airsloop
+  name: ucp-armada
   replacement: true
   substitutions:
   - dest:
@@ -9422,7 +9020,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: pref2-pref1-ucp-armada
+  release: ucp-armada
   upgrade:
     no_hooks: false
     pre:
@@ -9450,13 +9048,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-barbican-htk
-  namespace: airsloop
+  name: ucp-barbican-htk
   substitutions:
   - dest:
       path: .source
@@ -9468,14 +9063,13 @@ spec:
   chart_name: ucp-barbican-htk
   dependencies: []
   namespace: ucp-barbican-htk
-  release: pref2-pref1-ucp-barbican-htk
+  release: ucp-barbican-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-barbican-global
   layeringDefinition:
     abstract: false
@@ -9485,8 +9079,7 @@ metadata:
     layer: type
     parentSelector:
       name: ucp-barbican-global
-  name: pref2-ucp-barbican
-  namespace: airsloop
+  name: ucp-barbican
   replacement: true
   substitutions:
   - dest:
@@ -9611,7 +9204,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: pref2-pref1-ucp-barbican
+  release: ucp-barbican
   upgrade:
     no_hooks: false
     post:
@@ -9712,13 +9305,11 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-ceph-client-update-global
   layeringDefinition:
     abstract: true
     layer: global
-  name: pref2-pref1-ucp-ceph-client-update-global
-  namespace: airsloop
+  name: ucp-ceph-client-update
   substitutions:
   - dest:
       path: .source
@@ -9765,7 +9356,7 @@ spec:
   namespace: ceph
   protected:
     continue_processing: true
-  release: pref2-pref1-ucp-ceph-client
+  release: ucp-ceph-client
   upgrade:
     no_hooks: false
     pre:
@@ -9817,7 +9408,6 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-ceph-client-global
   layeringDefinition:
     abstract: false
@@ -9827,8 +9417,7 @@ metadata:
     layer: type
     parentSelector:
       name: ucp-ceph-client-global
-  name: pref2-ucp-ceph-client
-  namespace: airsloop
+  name: ucp-ceph-client
   substitutions:
   - dest:
       path: .source
@@ -9881,7 +9470,7 @@ spec:
   namespace: ceph
   protected:
     continue_processing: true
-  release: pref2-pref1-ucp-ceph-client
+  release: ucp-ceph-client
   upgrade:
     no_hooks: false
     pre:
@@ -10007,13 +9596,11 @@ kind: ArmadaChart
 metadata:
   labels:
     components: ceph
-    deckhand-poc-label: airsloop
     name: ucp-ceph-config-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-ceph-config
-  namespace: airsloop
+  name: ucp-ceph-config
   substitutions:
   - dest:
       path: .source
@@ -10052,7 +9639,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: pref2-pref1-ucp-ceph-config
+  release: ucp-ceph-config
   upgrade:
     no_hooks: false
     pre:
@@ -10092,7 +9679,6 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-ceph-ingress-global
   layeringDefinition:
     abstract: false
@@ -10102,8 +9688,7 @@ metadata:
     layer: type
     parentSelector:
       name: ucp-ceph-ingress-global
-  name: pref2-ucp-ceph-ingress
-  namespace: airsloop
+  name: ucp-ceph-ingress
   replacement: true
   substitutions:
   - dest:
@@ -10125,7 +9710,7 @@ spec:
   install:
     no_hooks: false
   namespace: ceph
-  release: pref2-pref1-ucp-ceph-ingress
+  release: ucp-ceph-ingress
   upgrade:
     no_hooks: false
     pre:
@@ -10162,13 +9747,11 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-ceph-mon
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-ceph-mon
-  namespace: airsloop
+  name: ucp-ceph-mon
   substitutions:
   - dest:
       path: .source
@@ -10215,7 +9798,7 @@ spec:
   namespace: ceph
   protected:
     continue_processing: true
-  release: pref2-pref1-ucp-ceph-mon
+  release: ucp-ceph-mon
   upgrade:
     no_hooks: false
     pre:
@@ -10248,7 +9831,6 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-ceph-osd-global
   layeringDefinition:
     abstract: false
@@ -10258,8 +9840,7 @@ metadata:
     layer: type
     parentSelector:
       name: ucp-ceph-osd-global
-  name: pref2-ucp-ceph-osd
-  namespace: airsloop
+  name: ucp-ceph-osd
   substitutions:
   - dest:
       path: .source
@@ -10306,7 +9887,7 @@ spec:
   namespace: ceph
   protected:
     continue_processing: true
-  release: pref2-pref1-ucp-ceph-osd
+  release: ucp-ceph-osd
   upgrade:
     no_hooks: false
   values:
@@ -10339,7 +9920,6 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-ceph-provisioners
   layeringDefinition:
     abstract: false
@@ -10349,8 +9929,7 @@ metadata:
     layer: type
     parentSelector:
       name: ucp-ceph-provisioners
-  name: pref2-ucp-ceph-provisioners
-  namespace: airsloop
+  name: ucp-ceph-provisioners
   replacement: true
   substitutions:
   - dest:
@@ -10398,7 +9977,7 @@ spec:
   namespace: ceph
   protected:
     continue_processing: true
-  release: pref2-pref1-ucp-ceph-provisioners
+  release: ucp-ceph-provisioners
   upgrade:
     no_hooks: false
     pre:
@@ -10444,13 +10023,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-ceph-rgw
-  namespace: airsloop
+  name: ucp-ceph-rgw
   substitutions:
   - dest:
       path: .source
@@ -10525,7 +10101,7 @@ spec:
   install:
     no_hooks: false
   namespace: ceph
-  release: pref2-pref1-ucp-ceph-rgw
+  release: ucp-ceph-rgw
   upgrade:
     no_hooks: false
     pre:
@@ -10572,7 +10148,6 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-deckhand-global
   layeringDefinition:
     abstract: false
@@ -10582,8 +10157,7 @@ metadata:
     layer: type
     parentSelector:
       name: ucp-deckhand-global
-  name: pref2-ucp-deckhand
-  namespace: airsloop
+  name: ucp-deckhand
   replacement: true
   substitutions:
   - dest:
@@ -10690,7 +10264,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: pref2-pref1-ucp-deckhand
+  release: ucp-deckhand
   upgrade:
     no_hooks: false
     post:
@@ -10720,27 +10294,51 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
-    name: ucp-divingbell-global
   layeringDefinition:
-    abstract: true
+    abstract: false
     layer: global
-  name: pref2-pref1-ucp-divingbell-global
-  namespace: airsloop
+  name: ucp-divingbell-htk
   substitutions:
   - dest:
       path: .source
     src:
       kind: PeglegSoftwareVersions
       name: software-versions
-      path: .charts.ucp.divingbell
+      path: .charts.ucp.divingbell-htk
+spec:
+  chart_name: ucp-divingbell-htk
+  dependencies: []
+  namespace: ucp-divingbell-htk
+  release: ucp-divingbell-htk
+  values: {}
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  labels:
+    name: ucp-divingbell-site
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: site
+    parentSelector:
+      name: ucp-divingbell-global
+  name: ucp-divingbell
+  substitutions:
   - dest:
-      path: .values.images
+      path: .values.conf.uamlite.users[0].user_sshkeys[0]
     src:
-      kind: PeglegSoftwareVersions
-      name: software-versions
-      path: .images.ucp.divingbell
+      kind: DeckhandPublicKey
+      name: airsloop-ssh-public-key
+      path: .
+  - dest:
+      path: .values.conf.uamlite.users[0].user_crypt_passwd
+    src:
+      kind: DeckhandPassphrase
+      name: airsloop-crypt-password
+      path: .
 spec:
   chart_name: ucp-divingbell
   dependencies:
@@ -10748,7 +10346,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: pref2-pref1-ucp-divingbell
+  release: ucp-divingbell
   upgrade:
     no_hooks: false
     pre:
@@ -10775,67 +10373,6 @@ spec:
         net.ipv4.tcp_retries2: "5"
         net.netfilter.nf_conntrack_acct: "1"
         net.nf_conntrack_max: "1048576"
-  wait:
-    labels:
-      release_group: airship-ucp-divingbell
-    timeout: 300
----
-apiVersion: armada.airshipit.org/v1alpha1
-kind: ArmadaChart
-metadata:
-  labels:
-    deckhand-poc-label: airsloop
-  layeringDefinition:
-    abstract: false
-    layer: global
-  name: pref2-pref1-ucp-divingbell-htk
-  namespace: airsloop
-  substitutions:
-  - dest:
-      path: .source
-    src:
-      kind: PeglegSoftwareVersions
-      name: software-versions
-      path: .charts.ucp.divingbell-htk
-spec:
-  chart_name: ucp-divingbell-htk
-  dependencies: []
-  namespace: ucp-divingbell-htk
-  release: pref2-pref1-ucp-divingbell-htk
-  values: {}
----
-apiVersion: armada.airshipit.org/v1alpha1
-kind: ArmadaChart
-metadata:
-  labels:
-    deckhand-poc-label: airsloop
-    name: ucp-divingbell-site
-  layeringDefinition:
-    abstract: false
-    actions:
-    - method: merge
-      path: .
-    layer: site
-    parentSelector:
-      name: ucp-divingbell-global
-  name: pref2-pref1-ucp-divingbell
-  namespace: airsloop
-  substitutions:
-  - dest:
-      path: .values.conf.uamlite.users[0].user_sshkeys[0]
-    src:
-      kind: DeckhandPublicKey
-      name: airsloop-ssh-public-key
-      path: .
-  - dest:
-      path: .values.conf.uamlite.users[0].user_crypt_passwd
-    src:
-      kind: DeckhandPassphrase
-      name: airsloop-crypt-password
-      path: .
-spec:
-  values:
-    conf:
       uamlite:
         users:
         - user_name: ubuntu
@@ -10851,12 +10388,15 @@ spec:
       daemonset_perm: false
       daemonset_sysctl: false
       daemonset_uamlite: true
+  wait:
+    labels:
+      release_group: airship-ucp-divingbell
+    timeout: 300
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-drydock-global
   layeringDefinition:
     abstract: false
@@ -10866,8 +10406,7 @@ metadata:
     layer: type
     parentSelector:
       name: ucp-drydock-global
-  name: pref2-ucp-drydock
-  namespace: airsloop
+  name: ucp-drydock
   replacement: true
   substitutions:
   - dest:
@@ -10988,7 +10527,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: pref2-pref1-drydock
+  release: drydock
   upgrade:
     no_hooks: false
     pre:
@@ -11022,13 +10561,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-ingress-htk
-  namespace: airsloop
+  name: ucp-ingress-htk
   substitutions:
   - dest:
       path: .source
@@ -11040,14 +10576,13 @@ spec:
   chart_name: ucp-ingress-htk
   dependencies: []
   namespace: ucp-ingress-htk
-  release: pref2-pref1-ucp-ingress-htk
+  release: ucp-ingress-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-ingress-global
   layeringDefinition:
     abstract: false
@@ -11057,8 +10592,7 @@ metadata:
     layer: type
     parentSelector:
       name: ucp-ingress-global
-  name: pref2-ucp-ingress
-  namespace: airsloop
+  name: ucp-ingress
   replacement: true
   substitutions:
   - dest:
@@ -11080,7 +10614,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: pref2-pref1-ingress
+  release: ingress
   upgrade:
     no_hooks: false
     pre:
@@ -11116,13 +10650,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-keystone-htk
-  namespace: airsloop
+  name: ucp-keystone-htk
   substitutions:
   - dest:
       path: .source
@@ -11134,20 +10665,18 @@ spec:
   chart_name: ucp-keystone-htk
   dependencies: []
   namespace: ucp-keystone-htk
-  release: pref2-pref1-ucp-keystone-htk
+  release: ucp-keystone-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-keystone-memcached-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-keystone-memcached
-  namespace: airsloop
+  name: ucp-keystone-memcached
   substitutions:
   - dest:
       path: .source
@@ -11174,7 +10703,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: pref2-pref1-ucp-keystone-memcached
+  release: ucp-keystone-memcached
   upgrade:
     no_hooks: false
     pre:
@@ -11197,7 +10726,6 @@ kind: ArmadaChart
 metadata:
   labels:
     component: keystone
-    deckhand-poc-label: airsloop
     name: ucp-keystone-global
   layeringDefinition:
     abstract: false
@@ -11207,8 +10735,7 @@ metadata:
     layer: type
     parentSelector:
       name: ucp-keystone-global
-  name: pref2-ucp-keystone
-  namespace: airsloop
+  name: ucp-keystone
   replacement: true
   substitutions:
   - dest:
@@ -11315,7 +10842,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: pref2-pref1-ucp-keystone
+  release: ucp-keystone
   upgrade:
     no_hooks: false
     post:
@@ -11413,7 +10940,6 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-maas-global
   layeringDefinition:
     abstract: false
@@ -11423,8 +10949,7 @@ metadata:
     layer: type
     parentSelector:
       name: ucp-maas-global
-  name: pref2-ucp-maas
-  namespace: airsloop
+  name: ucp-maas
   substitutions:
   - dest:
       path: .source
@@ -11558,7 +11083,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: pref2-pref1-maas
+  release: maas
   upgrade:
     no_hooks: false
     pre:
@@ -11613,7 +11138,6 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-mariadb-global
   layeringDefinition:
     abstract: false
@@ -11623,8 +11147,7 @@ metadata:
     layer: type
     parentSelector:
       name: ucp-mariadb-global
-  name: pref2-ucp-mariadb
-  namespace: airsloop
+  name: ucp-mariadb
   replacement: true
   substitutions:
   - dest:
@@ -11664,7 +11187,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: pref2-pref1-ucp-mariadb
+  release: ucp-mariadb
   upgrade:
     no_hooks: false
     pre:
@@ -11698,13 +11221,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-memcached-htk
-  namespace: airsloop
+  name: ucp-memcached-htk
   substitutions:
   - dest:
       path: .source
@@ -11716,20 +11236,18 @@ spec:
   chart_name: ucp-memcached-htk
   dependencies: []
   namespace: ucp-memcached-htk
-  release: pref2-pref1-ucp-memcached-htk
+  release: ucp-memcached-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-postgresql-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-postgresql
-  namespace: airsloop
+  name: ucp-postgresql
   substitutions:
   - dest:
       path: .source
@@ -11768,7 +11286,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: pref2-pref1-ucp-postgresql
+  release: ucp-postgresql
   upgrade:
     no_hooks: false
     post:
@@ -11799,7 +11317,6 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-promenade-global
   layeringDefinition:
     abstract: false
@@ -11809,8 +11326,7 @@ metadata:
     layer: type
     parentSelector:
       name: ucp-promenade-global
-  name: pref2-ucp-promenade
-  namespace: airsloop
+  name: ucp-promenade
   substitutions:
   - dest:
       path: .source
@@ -11867,7 +11383,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: pref2-pref1-ucp-promenade
+  release: ucp-promenade
   upgrade:
     no_hooks: false
     pre:
@@ -11899,13 +11415,11 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-prometheus-openstack-exporter-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-prometheus-openstack-exporter
-  namespace: airsloop
+  name: ucp-prometheus-openstack-exporter
   substitutions:
   - dest:
       path: .source
@@ -11962,7 +11476,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: pref2-pref1-ucp-prometheus-openstack-exporter
+  release: ucp-prometheus-openstack-exporter
   upgrade:
     no_hooks: false
     pre:
@@ -11986,13 +11500,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-rabbitmq-htk
-  namespace: airsloop
+  name: ucp-rabbitmq-htk
   substitutions:
   - dest:
       path: .source
@@ -12004,14 +11515,13 @@ spec:
   chart_name: ucp-rabbitmq-htk
   dependencies: []
   namespace: ucp-rabbitmq-htk
-  release: pref2-pref1-ucp-rabbitmq-htk
+  release: ucp-rabbitmq-htk
   values: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-rabbitmq-global
   layeringDefinition:
     abstract: false
@@ -12021,8 +11531,7 @@ metadata:
     layer: type
     parentSelector:
       name: ucp-rabbitmq-global
-  name: pref2-ucp-rabbitmq
-  namespace: airsloop
+  name: ucp-rabbitmq
   replacement: true
   substitutions:
   - dest:
@@ -12068,7 +11577,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: pref2-pref1-ucp-rabbitmq
+  release: ucp-rabbitmq
   upgrade:
     no_hooks: false
     pre:
@@ -12098,7 +11607,6 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-shipyard-global
   layeringDefinition:
     abstract: false
@@ -12108,8 +11616,7 @@ metadata:
     layer: type
     parentSelector:
       name: ucp-shipyard-global
-  name: pref2-ucp-shipyard
-  namespace: airsloop
+  name: ucp-shipyard
   replacement: true
   substitutions:
   - dest:
@@ -12314,7 +11821,7 @@ spec:
   install:
     no_hooks: false
   namespace: ucp
-  release: pref2-pref1-ucp-shipyard
+  release: ucp-shipyard
   upgrade:
     no_hooks: false
     pre:
@@ -12371,13 +11878,11 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-tiller-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-tiller
-  namespace: airsloop
+  name: ucp-tiller
   substitutions:
   - dest:
       path: .source
@@ -12398,7 +11903,7 @@ spec:
   install:
     no_hooks: false
   namespace: kube-system
-  release: pref2-pref1-ucp-tiller
+  release: ucp-tiller
   upgrade:
     no_hooks: false
     pre:
@@ -12417,13 +11922,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ingress-kube-system
-  namespace: airsloop
+  name: ingress-kube-system
 spec:
   chart_group:
   - ingress-kube-system
@@ -12432,13 +11934,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-kubernetes-container-networking
-  namespace: airsloop
+  name: kubernetes-container-networking
 spec:
   chart_group:
   - kubernetes-calico-etcd
@@ -12449,13 +11948,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-kubernetes-core
-  namespace: airsloop
+  name: kubernetes-core
 spec:
   chart_group:
   - kubernetes-apiserver
@@ -12466,13 +11962,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-kubernetes-dns
-  namespace: airsloop
+  name: kubernetes-dns
 spec:
   chart_group:
   - coredns
@@ -12481,13 +11974,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-kubernetes-etcd
-  namespace: airsloop
+  name: kubernetes-etcd
 spec:
   chart_group:
   - kubernetes-etcd
@@ -12496,13 +11986,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-kubernetes-haproxy
-  namespace: airsloop
+  name: kubernetes-haproxy
 spec:
   chart_group:
   - haproxy
@@ -12511,13 +11998,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-kubernetes-proxy
-  namespace: airsloop
+  name: kubernetes-proxy
 spec:
   chart_group:
   - kubernetes-proxy
@@ -12529,13 +12013,11 @@ kind: ArmadaChartGroup
 metadata:
   labels:
     component: ceph
-    deckhand-poc-label: airsloop
     name: openstack-ceph-config-chart-group-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-openstack-ceph-config
-  namespace: airsloop
+  name: openstack-ceph-config
 spec:
   chart_group:
   - openstack-ceph-config
@@ -12546,13 +12028,11 @@ kind: ArmadaChartGroup
 metadata:
   labels:
     component: cinder
-    deckhand-poc-label: airsloop
     name: openstack-cinder-chart-group-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-openstack-cinder
-  namespace: airsloop
+  name: openstack-cinder
 spec:
   chart_group:
   - cinder-rabbitmq
@@ -12563,13 +12043,11 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: openstack-compute-kit-chart-group-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-openstack-compute-kit
-  namespace: airsloop
+  name: openstack-compute-kit
 spec:
   chart_group:
   - libvirt
@@ -12585,13 +12063,11 @@ kind: ArmadaChartGroup
 metadata:
   labels:
     component: glance
-    deckhand-poc-label: airsloop
     name: openstack-glance-chart-group-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-openstack-glance
-  namespace: airsloop
+  name: openstack-glance
 spec:
   chart_group:
   - glance-rabbitmq
@@ -12603,13 +12079,11 @@ kind: ArmadaChartGroup
 metadata:
   labels:
     component: heat
-    deckhand-poc-label: airsloop
     name: openstack-heat-chart-group-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-openstack-heat
-  namespace: airsloop
+  name: openstack-heat
 spec:
   chart_group:
   - heat-rabbitmq
@@ -12621,13 +12095,11 @@ kind: ArmadaChartGroup
 metadata:
   labels:
     component: horizon
-    deckhand-poc-label: airsloop
     name: openstack-horizon-chart-group-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-openstack-horizon
-  namespace: airsloop
+  name: openstack-horizon
 spec:
   chart_group:
   - horizon
@@ -12638,13 +12110,11 @@ kind: ArmadaChartGroup
 metadata:
   labels:
     component: ingress
-    deckhand-poc-label: airsloop
     name: openstack-ingress-controller-chart-group-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-openstack-ingress-controller
-  namespace: airsloop
+  name: openstack-ingress-controller
 spec:
   chart_group:
   - openstack-ingress-controller
@@ -12655,13 +12125,11 @@ kind: ArmadaChartGroup
 metadata:
   labels:
     component: keystone
-    deckhand-poc-label: airsloop
     name: openstack-keystone-chart-group-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-openstack-keystone
-  namespace: airsloop
+  name: openstack-keystone
 spec:
   chart_group:
   - keystone-rabbitmq
@@ -12673,13 +12141,11 @@ kind: ArmadaChartGroup
 metadata:
   labels:
     component: mariadb
-    deckhand-poc-label: airsloop
     name: openstack-mariadb-chart-group-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-openstack-mariadb
-  namespace: airsloop
+  name: openstack-mariadb
 spec:
   chart_group:
   - openstack-mariadb
@@ -12690,13 +12156,11 @@ kind: ArmadaChartGroup
 metadata:
   labels:
     component: memcached
-    deckhand-poc-label: airsloop
     name: openstack-memcached-chart-group-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-openstack-memcached
-  namespace: airsloop
+  name: openstack-memcached
 spec:
   chart_group:
   - openstack-memcached
@@ -12705,13 +12169,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-openstack-radosgw
-  namespace: airsloop
+  name: openstack-radosgw
 spec:
   chart_group:
   - tenant-ceph-rgw
@@ -12720,13 +12181,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-openstack-tenant-ceph
-  namespace: airsloop
+  name: openstack-tenant-ceph
 spec:
   chart_group:
   - tenant-ceph-ingress
@@ -12740,13 +12198,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-osh-infra-ceph-config
-  namespace: airsloop
+  name: osh-infra-ceph-config
 spec:
   chart_group:
   - osh-infra-ceph-config
@@ -12755,13 +12210,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-osh-infra-dashboards
-  namespace: airsloop
+  name: osh-infra-dashboards
 spec:
   chart_group:
   - kibana
@@ -12771,13 +12223,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-osh-infra-ingress-controller
-  namespace: airsloop
+  name: osh-infra-ingress-controller
 spec:
   chart_group:
   - osh-infra-ingress-controller
@@ -12786,13 +12235,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-osh-infra-logging
-  namespace: airsloop
+  name: osh-infra-logging
 spec:
   chart_group:
   - elasticsearch
@@ -12803,13 +12249,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-osh-infra-mariadb
-  namespace: airsloop
+  name: osh-infra-mariadb
 spec:
   chart_group:
   - osh-infra-mariadb
@@ -12818,13 +12261,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-osh-infra-monitoring
-  namespace: airsloop
+  name: osh-infra-monitoring
 spec:
   chart_group:
   - prometheus
@@ -12837,13 +12277,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-osh-infra-nfs-provisioner
-  namespace: airsloop
+  name: osh-infra-nfs-provisioner
 spec:
   chart_group:
   - nfs-provisioner
@@ -12852,13 +12289,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-osh-infra-prometheus-openstack-exporter
-  namespace: airsloop
+  name: osh-infra-prometheus-openstack-exporter
 spec:
   chart_group:
   - prometheus-openstack-exporter
@@ -12867,13 +12301,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-osh-infra-radosgw
-  namespace: airsloop
+  name: osh-infra-radosgw
 spec:
   chart_group:
   - osh-infra-radosgw
@@ -12882,13 +12313,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-podsecuritypolicy
-  namespace: airsloop
+  name: podsecuritypolicy
 spec:
   chart_group:
   - podsecuritypolicy
@@ -12898,13 +12326,11 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-armada-chart-group-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-armada
-  namespace: airsloop
+  name: ucp-armada
 spec:
   chart_group:
   - ucp-tiller
@@ -12917,13 +12343,11 @@ kind: ArmadaChartGroup
 metadata:
   labels:
     component: ceph
-    deckhand-poc-label: airsloop
     name: ucp-ceph-config-chart-group-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-ceph-config
-  namespace: airsloop
+  name: ucp-ceph-config
 spec:
   chart_group:
   - ucp-ceph-config
@@ -12932,13 +12356,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-ceph-update
-  namespace: airsloop
+  name: ucp-ceph-update
 spec:
   chart_group:
   - ucp-ceph-ingress
@@ -12952,13 +12373,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-ceph
-  namespace: airsloop
+  name: ucp-ceph
 spec:
   chart_group:
   - ucp-ceph-ingress
@@ -12973,13 +12391,11 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-core-chart-group-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-core
-  namespace: airsloop
+  name: ucp-core
 spec:
   chart_group:
   - ucp-ingress
@@ -12992,13 +12408,11 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-deckhand-chart-group-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-deckhand
-  namespace: airsloop
+  name: ucp-deckhand
 spec:
   chart_group:
   - ucp-barbican
@@ -13008,13 +12422,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-divingbell
-  namespace: airsloop
+  name: ucp-divingbell
 spec:
   chart_group:
   - ucp-divingbell
@@ -13023,13 +12434,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-drydock
-  namespace: airsloop
+  name: ucp-drydock
 spec:
   chart_group:
   - ucp-maas
@@ -13040,13 +12448,11 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-keystone-chart-group-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-keystone
-  namespace: airsloop
+  name: ucp-keystone
 spec:
   chart_group:
   - ucp-keystone-memcached
@@ -13056,13 +12462,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-promenade
-  namespace: airsloop
+  name: ucp-promenade
 spec:
   chart_group:
   - ucp-promenade
@@ -13071,13 +12474,10 @@ spec:
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-prometheus-openstack-exporter
-  namespace: airsloop
+  name: ucp-prometheus-openstack-exporter
 spec:
   chart_group:
   - ucp-prometheus-openstack-exporter
@@ -13087,13 +12487,11 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ucp-shipyard-chart-group-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-ucp-shipyard
-  namespace: airsloop
+  name: ucp-shipyard
 spec:
   chart_group:
   - ucp-shipyard
@@ -13103,7 +12501,6 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaManifest
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: cluster-bootstrap-global
   layeringDefinition:
     abstract: false
@@ -13113,8 +12510,7 @@ metadata:
     layer: type
     parentSelector:
       name: cluster-bootstrap-global
-  name: pref2-cluster-bootstrap
-  namespace: airsloop
+  name: cluster-bootstrap
   replacement: true
 spec:
   chart_groups:
@@ -13142,7 +12538,6 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaManifest
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: full-site-global
   layeringDefinition:
     abstract: false
@@ -13152,8 +12547,7 @@ metadata:
     layer: type
     parentSelector:
       name: full-site-global
-  name: pref2-full-site
-  namespace: airsloop
+  name: full-site
   replacement: true
 spec:
   chart_groups:
@@ -13201,13 +12595,10 @@ spec:
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-admin
-  namespace: airsloop
+  name: admin
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDYDCCAkigAwIBAgIUbXyYBCQokjf4ID97Oz0CySoFC6AwDQYJKoZIhvcNAQEL
@@ -13234,13 +12625,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-apiserver-etcd
-  namespace: airsloop
+  name: apiserver-etcd
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDUDCCAjigAwIBAgIUDQ2dIj6LKiys6ZnFsQhktO0vNkYwDQYJKoZIhvcNAQEL
@@ -13266,13 +12654,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-apiserver
-  namespace: airsloop
+  name: apiserver
 spec: |
   -----BEGIN CERTIFICATE-----
   MIID8jCCAtqgAwIBAgIUTWJYgA63hnvsQ0/X4/V1n2bUtw8wDQYJKoZIhvcNAQEL
@@ -13302,13 +12687,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-armada
-  namespace: airsloop
+  name: armada
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDYTCCAkmgAwIBAgIUFo7UqH+G3NBRGLn/xT0KTicy/e4wDQYJKoZIhvcNAQEL
@@ -13335,13 +12717,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico-etcd-airsloop-control-1-peer
-  namespace: airsloop
+  name: calico-etcd-airsloop-control-1-peer
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDqTCCApGgAwIBAgIUFyagkSGlnNZTF9yW0S1s06GFKSEwDQYJKoZIhvcNAQEL
@@ -13369,13 +12748,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico-etcd-airsloop-control-1
-  namespace: airsloop
+  name: calico-etcd-airsloop-control-1
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDnzCCAoegAwIBAgIUeaeO5DCwMMRx8xJzTMRaIc8wQU0wDQYJKoZIhvcNAQEL
@@ -13403,13 +12779,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico-etcd-airsloop-control-2-peer
-  namespace: airsloop
+  name: calico-etcd-airsloop-control-2-peer
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDqTCCApGgAwIBAgIUNtK2RGE/O6cu2HabPyph4klc+qowDQYJKoZIhvcNAQEL
@@ -13437,13 +12810,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico-etcd-airsloop-control-2
-  namespace: airsloop
+  name: calico-etcd-airsloop-control-2
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDnzCCAoegAwIBAgIUH9oX7EOw+dcTewk0cZuTV7cwpjYwDQYJKoZIhvcNAQEL
@@ -13471,13 +12841,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico-etcd-airsloop-control-3-peer
-  namespace: airsloop
+  name: calico-etcd-airsloop-control-3-peer
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDqTCCApGgAwIBAgIUDAJHTCuXvIf5MVfxv9B+88qwea0wDQYJKoZIhvcNAQEL
@@ -13505,13 +12872,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico-etcd-airsloop-control-3
-  namespace: airsloop
+  name: calico-etcd-airsloop-control-3
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDnzCCAoegAwIBAgIUKCtl8SZSz1JYZEp5YbF4YS+C3N4wDQYJKoZIhvcNAQEL
@@ -13539,13 +12903,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico-etcd-anchor
-  namespace: airsloop
+  name: calico-etcd-anchor
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDSTCCAjGgAwIBAgIUWd7UZmQeqksYonthsQ4psX7bue8wDQYJKoZIhvcNAQEL
@@ -13571,13 +12932,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico-node-peer
-  namespace: airsloop
+  name: calico-node-peer
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDWTCCAkGgAwIBAgIUSNIYPI/G1gAAPjotJ6p3qFD3VWIwDQYJKoZIhvcNAQEL
@@ -13603,13 +12961,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico-node
-  namespace: airsloop
+  name: calico-node
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDTzCCAjegAwIBAgIUQM3lWI0xKS0IrjakmQ9+CKwotHEwDQYJKoZIhvcNAQEL
@@ -13635,13 +12990,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-controller-manager
-  namespace: airsloop
+  name: controller-manager
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDYDCCAkigAwIBAgIUfiWTVzOEfq5CN7JJAkIgcM7iuwUwDQYJKoZIhvcNAQEL
@@ -13668,13 +13020,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubelet-airsloop-compute-1
-  namespace: airsloop
+  name: kubelet-airsloop-compute-1
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDnjCCAoagAwIBAgIURCap83b/DcJ0cO/AbUP0yLg27lEwDQYJKoZIhvcNAQEL
@@ -13702,13 +13051,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubelet-airsloop-control-1
-  namespace: airsloop
+  name: kubelet-airsloop-control-1
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDnjCCAoagAwIBAgIUK0M7I89jOMfrHySFF6/Vwf2iwhowDQYJKoZIhvcNAQEL
@@ -13736,13 +13082,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubelet-airsloop-control-2
-  namespace: airsloop
+  name: kubelet-airsloop-control-2
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDnjCCAoagAwIBAgIUWWyxrV9ZSDjeEqVfO+i667dQvcwwDQYJKoZIhvcNAQEL
@@ -13770,13 +13113,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubelet-airsloop-control-3
-  namespace: airsloop
+  name: kubelet-airsloop-control-3
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDnjCCAoagAwIBAgIUG6ttOJbLyDAGPG+g6KrQpBda1EUwDQYJKoZIhvcNAQEL
@@ -13804,13 +13144,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubelet-genesis
-  namespace: airsloop
+  name: kubelet-genesis
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDnjCCAoagAwIBAgIUVqwxD8SvrDAPKy3f/Ph947Gxo6wwDQYJKoZIhvcNAQEL
@@ -13838,13 +13175,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes-etcd-airsloop-control-1-peer
-  namespace: airsloop
+  name: kubernetes-etcd-airsloop-control-1-peer
 spec: |
   -----BEGIN CERTIFICATE-----
   MIID4DCCAsigAwIBAgIUQ9uuMpoFtxr7EpiqzF+UA1TweZMwDQYJKoZIhvcNAQEL
@@ -13873,13 +13207,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes-etcd-airsloop-control-1
-  namespace: airsloop
+  name: kubernetes-etcd-airsloop-control-1
 spec: |
   -----BEGIN CERTIFICATE-----
   MIID1jCCAr6gAwIBAgIUSfpj2UUatynd14V0W7X50UmJyfIwDQYJKoZIhvcNAQEL
@@ -13908,13 +13239,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes-etcd-airsloop-control-2-peer
-  namespace: airsloop
+  name: kubernetes-etcd-airsloop-control-2-peer
 spec: |
   -----BEGIN CERTIFICATE-----
   MIID4DCCAsigAwIBAgIUYdaJZxcSnbL8GvxTXrDx1QARAxYwDQYJKoZIhvcNAQEL
@@ -13943,13 +13271,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes-etcd-airsloop-control-2
-  namespace: airsloop
+  name: kubernetes-etcd-airsloop-control-2
 spec: |
   -----BEGIN CERTIFICATE-----
   MIID1jCCAr6gAwIBAgIUP69Ziu1DE7YAsgtRwZS0U7xdcIcwDQYJKoZIhvcNAQEL
@@ -13978,13 +13303,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes-etcd-airsloop-control-3-peer
-  namespace: airsloop
+  name: kubernetes-etcd-airsloop-control-3-peer
 spec: |
   -----BEGIN CERTIFICATE-----
   MIID4DCCAsigAwIBAgIUe6Et6GzItsU4L5ZMvod6A361m8UwDQYJKoZIhvcNAQEL
@@ -14013,13 +13335,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes-etcd-airsloop-control-3
-  namespace: airsloop
+  name: kubernetes-etcd-airsloop-control-3
 spec: |
   -----BEGIN CERTIFICATE-----
   MIID1jCCAr6gAwIBAgIUBX9eAH3Fo1FtOb0iNMIMlN+O5eowDQYJKoZIhvcNAQEL
@@ -14048,13 +13367,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes-etcd-anchor
-  namespace: airsloop
+  name: kubernetes-etcd-anchor
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDTTCCAjWgAwIBAgIUM0K8ZCEtAgyGL2BE3Gm2yigt5lAwDQYJKoZIhvcNAQEL
@@ -14080,13 +13396,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes-etcd-genesis-peer
-  namespace: airsloop
+  name: kubernetes-etcd-genesis-peer
 spec: |
   -----BEGIN CERTIFICATE-----
   MIID1TCCAr2gAwIBAgIUPqo8TpMb0KIwq3Bujx8RAxwATRcwDQYJKoZIhvcNAQEL
@@ -14115,13 +13428,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes-etcd-genesis
-  namespace: airsloop
+  name: kubernetes-etcd-genesis
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDyzCCArOgAwIBAgIUaOMS2OUltsNvXHQVzNJGescKWRQwDQYJKoZIhvcNAQEL
@@ -14150,13 +13460,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificate
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-scheduler
-  namespace: airsloop
+  name: scheduler
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDVzCCAj+gAwIBAgIUKmH59/sx5vbphv+HsXBO1ehlhZwwDQYJKoZIhvcNAQEL
@@ -14182,13 +13489,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateAuthority
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico-etcd-peer
-  namespace: airsloop
+  name: calico-etcd-peer
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDVDCCAjygAwIBAgIUUNx/pecqR7xKnIP9fQArzA3FErYwDQYJKoZIhvcNAQEL
@@ -14214,13 +13518,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateAuthority
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico-etcd
-  namespace: airsloop
+  name: calico-etcd
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDSjCCAjKgAwIBAgIUC4DRnxMvF6eINDCAsL0prM82stYwDQYJKoZIhvcNAQEL
@@ -14246,13 +13547,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateAuthority
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes-etcd-peer
-  namespace: airsloop
+  name: kubernetes-etcd-peer
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDXDCCAkSgAwIBAgIULxkj28Vji1jbPvUjZxQOGiI4CEcwDQYJKoZIhvcNAQEL
@@ -14278,13 +13576,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateAuthority
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes-etcd
-  namespace: airsloop
+  name: kubernetes-etcd
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDUjCCAjqgAwIBAgIUHX9RM/CQw+uyaw564CkVwWBZw7owDQYJKoZIhvcNAQEL
@@ -14310,13 +13605,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateAuthority
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes
-  namespace: airsloop
+  name: kubernetes
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDSDCCAjCgAwIBAgIUPpb5ExrCoa1ZJKC6WZS+LgwCJnMwDQYJKoZIhvcNAQEL
@@ -14342,13 +13634,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateAuthorityKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico-etcd-peer
-  namespace: airsloop
+  name: calico-etcd-peer
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEAsvNE0uJKLczjce6oba969kJGvAU2dFfC1XhEzscv5zeliPHl
@@ -14381,13 +13670,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateAuthorityKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico-etcd
-  namespace: airsloop
+  name: calico-etcd
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpQIBAAKCAQEAzOqv1DPM/p/QKBJccvWSVpUWZNZ4ytS83Wx3p3vbdJyIKUvf
@@ -14420,13 +13706,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateAuthorityKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes-etcd-peer
-  namespace: airsloop
+  name: kubernetes-etcd-peer
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAx2ngXJceMrHaDYOMkWi/9lyjS5X3E/R9PfFhfLOBcwyqpQd/
@@ -14459,13 +13742,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateAuthorityKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes-etcd
-  namespace: airsloop
+  name: kubernetes-etcd
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEAwHZ4cAqdt5yfV70m+Ct/amaR4BzgUQhZJn/dKEVgJ0/8td91
@@ -14498,13 +13778,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateAuthorityKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes
-  namespace: airsloop
+  name: kubernetes
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEAt+g2Yhjtu1UPDNmFkQ+Z1Fu3+LQUr98aAZiKr8CQi4H4meMJ
@@ -14537,13 +13814,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-admin
-  namespace: airsloop
+  name: admin
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpQIBAAKCAQEAsRnjMUzcksTeL/veUWz/ft+NKmEb9M/4UwavYmmw3EmipoJT
@@ -14576,13 +13850,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-apiserver-etcd
-  namespace: airsloop
+  name: apiserver-etcd
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAyN0uQe5OCNcpnJx+bQxfiBzf3Pkz6iFAEaX7TwBQOXASU167
@@ -14615,13 +13886,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-apiserver
-  namespace: airsloop
+  name: apiserver
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpQIBAAKCAQEAvqZDrjECiIFqnDoI71/0PKibeTJlViKC1qLg/8X+AawL+717
@@ -14654,13 +13922,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-armada
-  namespace: airsloop
+  name: armada
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpQIBAAKCAQEAuWZCkJNjTu2dKuIUCWZ3YgjdSsPyu9AtZJ7G6rv44TL6l/vl
@@ -14693,13 +13958,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico-etcd-airsloop-control-1-peer
-  namespace: airsloop
+  name: calico-etcd-airsloop-control-1-peer
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEA2/Fsk28bvLuh8bUSRnDufz1CCE4YwYFSXYB/i+ivbdhjaoOZ
@@ -14732,13 +13994,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico-etcd-airsloop-control-1
-  namespace: airsloop
+  name: calico-etcd-airsloop-control-1
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpQIBAAKCAQEAv7tJDLAdEbsARNL40hcfaKXs8fD8VGO5cMTiDiAh46ZDGpKV
@@ -14771,13 +14030,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico-etcd-airsloop-control-2-peer
-  namespace: airsloop
+  name: calico-etcd-airsloop-control-2-peer
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEArTfScUMfvpPsVr1R3m6uzOa7C0lWo5rQ1nQWyllrzTOYPdPn
@@ -14810,13 +14066,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico-etcd-airsloop-control-2
-  namespace: airsloop
+  name: calico-etcd-airsloop-control-2
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEA1kalCvhVqKk7G2zGm0nptFpqNNhWl4mU3vR5sS4loRvXWe+u
@@ -14849,13 +14102,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico-etcd-airsloop-control-3-peer
-  namespace: airsloop
+  name: calico-etcd-airsloop-control-3-peer
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAz1p1Rf0dl0D83sVDcJFi2gZlm2LAt5e+UYRpJPbYVbLVO1+o
@@ -14888,13 +14138,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico-etcd-airsloop-control-3
-  namespace: airsloop
+  name: calico-etcd-airsloop-control-3
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEA7I8kOTaU07L8EuVitZ8A5JuBg21d/jn4M5e1ShWYADDMTkjP
@@ -14927,13 +14174,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico-etcd-anchor
-  namespace: airsloop
+  name: calico-etcd-anchor
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAwEVcuvvHuKwp5u02UgPPy4RcGBzBeObpKGQhuMUch9ay36t7
@@ -14966,13 +14210,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico-node-peer
-  namespace: airsloop
+  name: calico-node-peer
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAzyigp3xcuC/SdF38v75Wp+1lNFKE0RWpNOrj8kbMmrPj3V59
@@ -15005,13 +14246,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico-node
-  namespace: airsloop
+  name: calico-node
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAvDKYmFwj191ovvVxuwHU68m78twsJxwDrvg1yWlLs4vaGb4z
@@ -15044,13 +14282,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-controller-manager
-  namespace: airsloop
+  name: controller-manager
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEA1MzY6qMMAhYeELkDtx3TYZlxiGHt7e7+wdwRGWTyRZvTkXxK
@@ -15083,13 +14318,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubelet-airsloop-compute-1
-  namespace: airsloop
+  name: kubelet-airsloop-compute-1
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAoUqcY1VdB0EgrYfrUvhoydhQARtsuHylhg+NMSAbcV5LM05L
@@ -15122,13 +14354,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubelet-airsloop-control-1
-  namespace: airsloop
+  name: kubelet-airsloop-control-1
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAukrF7lsVJeqLbJ2YwwIrfZssLlSUh7S4KXiAU6+inK62ZjGI
@@ -15161,13 +14390,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubelet-airsloop-control-2
-  namespace: airsloop
+  name: kubelet-airsloop-control-2
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEAtA7y0pt1s58brEmKVtzMtsLX9GhUUh6DmD+v+8LZuECCapk3
@@ -15200,13 +14426,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubelet-airsloop-control-3
-  namespace: airsloop
+  name: kubelet-airsloop-control-3
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEAq65p49nDw/LMcqzwun8520kwqxaXnKpqIYUzqrfIHFkxikFi
@@ -15239,13 +14462,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubelet-genesis
-  namespace: airsloop
+  name: kubelet-genesis
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEA57O0RA9EcBqsUkENh7ut3zUHQbGLuW7RsLsleKkUruBQ9jnB
@@ -15278,13 +14498,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes-etcd-airsloop-control-1-peer
-  namespace: airsloop
+  name: kubernetes-etcd-airsloop-control-1-peer
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEA4VePUsY0irlTqkAOiW5/NF+pFi5lyT0eR6T7qTpvHdSX4fSc
@@ -15317,13 +14534,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes-etcd-airsloop-control-1
-  namespace: airsloop
+  name: kubernetes-etcd-airsloop-control-1
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEApBj4bh8wOj9GPbBGnMpEDaYnVUxBAV4vVhoPitjonHtq5lk9
@@ -15356,13 +14570,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes-etcd-airsloop-control-2-peer
-  namespace: airsloop
+  name: kubernetes-etcd-airsloop-control-2-peer
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpQIBAAKCAQEA75RQIOyAyNOi9tOMeBsNqG30w0VXSm65TJMQysB4kyGhcQ9Q
@@ -15395,13 +14606,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes-etcd-airsloop-control-2
-  namespace: airsloop
+  name: kubernetes-etcd-airsloop-control-2
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAzFu0nFAV8OqkPuNZyZT33ESrMZpt+/hRDPYONkabSfdqOeZ0
@@ -15434,13 +14642,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes-etcd-airsloop-control-3-peer
-  namespace: airsloop
+  name: kubernetes-etcd-airsloop-control-3-peer
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAmRNFwhJccdLztLoVMpx/kjxoeW9ukii7F3MKs7rVPtIER+a+
@@ -15473,13 +14678,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes-etcd-airsloop-control-3
-  namespace: airsloop
+  name: kubernetes-etcd-airsloop-control-3
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAwWXvCJ1NjiXtAawIccRsbUc9nNPr4wgFBvKa3EmyvvV04Hi4
@@ -15512,13 +14714,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes-etcd-anchor
-  namespace: airsloop
+  name: kubernetes-etcd-anchor
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEAzTpUpP/VgYf0V95v1RRWrUe3OVswzTqNaZdU4W1EbXQWtarH
@@ -15551,13 +14750,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes-etcd-genesis-peer
-  namespace: airsloop
+  name: kubernetes-etcd-genesis-peer
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEogIBAAKCAQEAtQAdNKei/N6U3iYuzNQHK8/94nTkMhliofuKrf3qeJLP08Ue
@@ -15590,13 +14786,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-kubernetes-etcd-genesis
-  namespace: airsloop
+  name: kubernetes-etcd-genesis
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEAzLbJMVk6re7X8VhpLfuHSjibPrlJh2yMygd0vqbfFoyOYw5k
@@ -15629,13 +14822,10 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandCertificateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-scheduler
-  namespace: airsloop
+  name: scheduler
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAs2rpfnd9v6BwaZggRLvcBBdjuTOq3Dn3dcvppYLZK3Z+6UTi
@@ -15668,1022 +14858,768 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-airsloop-crypt-password
-  namespace: airsloop
+  name: airsloop-crypt-password
 spec: $6$AVL7yH1sLYlKqvcK$ngUiLKYZQhhj07Lb3ngWa4qVwDgUP9pCGfGFG7JIpF.6iStnfEMeySf8XusA0/3i9O5gMHE9hbg1/4GrFb5rR0
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ceph-fsid
-  namespace: airsloop
+  name: ceph-fsid
 spec: d52a9d00-64b9-45f0-b564-08dffe95f847
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ceph-swift-keystone-password
-  namespace: airsloop
+  name: ceph-swift-keystone-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: ipmi-admin-password-site
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ipmi-admin-password
-  namespace: airsloop
+  name: ipmi-admin-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-maas-region-key
-  namespace: airsloop
+  name: maas-region-key
 spec: e12330cfe038735aee32
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-barbican-oslo-db-password
-  namespace: airsloop
+  name: osh-barbican-oslo-db-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-barbican-oslo-messaging-admin-password
-  namespace: airsloop
+  name: osh-barbican-oslo-messaging-admin-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-barbican-oslo-messaging-password
-  namespace: airsloop
+  name: osh-barbican-oslo-messaging-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-barbican-password
-  namespace: airsloop
+  name: osh-barbican-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-barbican-rabbitmq-erlang-cookie
-  namespace: airsloop
+  name: osh-barbican-rabbitmq-erlang-cookie
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-cinder-oslo-db-password
-  namespace: airsloop
+  name: osh-cinder-oslo-db-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-cinder-oslo-messaging-admin-password
-  namespace: airsloop
+  name: osh-cinder-oslo-messaging-admin-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-cinder-oslo-messaging-password
-  namespace: airsloop
+  name: osh-cinder-oslo-messaging-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-cinder-password
-  namespace: airsloop
+  name: osh-cinder-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-cinder-rabbitmq-erlang-cookie
-  namespace: airsloop
+  name: osh-cinder-rabbitmq-erlang-cookie
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-glance-oslo-db-password
-  namespace: airsloop
+  name: osh-glance-oslo-db-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-glance-oslo-messaging-admin-password
-  namespace: airsloop
+  name: osh-glance-oslo-messaging-admin-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-glance-oslo-messaging-password
-  namespace: airsloop
+  name: osh-glance-oslo-messaging-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-glance-password
-  namespace: airsloop
+  name: osh-glance-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-glance-rabbitmq-erlang-cookie
-  namespace: airsloop
+  name: osh-glance-rabbitmq-erlang-cookie
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-heat-oslo-db-password
-  namespace: airsloop
+  name: osh-heat-oslo-db-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-heat-oslo-messaging-admin-password
-  namespace: airsloop
+  name: osh-heat-oslo-messaging-admin-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-heat-oslo-messaging-password
-  namespace: airsloop
+  name: osh-heat-oslo-messaging-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-heat-password
-  namespace: airsloop
+  name: osh-heat-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-heat-rabbitmq-erlang-cookie
-  namespace: airsloop
+  name: osh-heat-rabbitmq-erlang-cookie
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-heat-stack-user-password
-  namespace: airsloop
+  name: osh-heat-stack-user-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-heat-trustee-password
-  namespace: airsloop
+  name: osh-heat-trustee-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-horizon-oslo-db-password
-  namespace: airsloop
+  name: osh-horizon-oslo-db-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-infra-elasticsearch-admin-password
-  namespace: airsloop
+  name: osh-infra-elasticsearch-admin-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-infra-grafana-admin-password
-  namespace: airsloop
+  name: osh-infra-grafana-admin-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-infra-grafana-oslo-db-password
-  namespace: airsloop
+  name: osh-infra-grafana-oslo-db-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-infra-grafana-oslo-db-session-password
-  namespace: airsloop
+  name: osh-infra-grafana-oslo-db-session-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-infra-nagios-admin-password
-  namespace: airsloop
+  name: osh-infra-nagios-admin-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-infra-openstack-exporter-password
-  namespace: airsloop
+  name: osh-infra-openstack-exporter-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-infra-oslo-db-admin-password
-  namespace: airsloop
+  name: osh-infra-oslo-db-admin-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-infra-oslo-db-exporter-password
-  namespace: airsloop
+  name: osh-infra-oslo-db-exporter-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-infra-prometheus-admin-password
-  namespace: airsloop
+  name: osh-infra-prometheus-admin-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-infra-rgw-s3-admin-access-key
-  namespace: airsloop
+  name: osh-infra-rgw-s3-admin-access-key
 spec: admin_access_key
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-infra-rgw-s3-admin-secret-key
-  namespace: airsloop
+  name: osh-infra-rgw-s3-admin-secret-key
 spec: admin_secret_key
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-infra-rgw-s3-elasticsearch-access-key
-  namespace: airsloop
+  name: osh-infra-rgw-s3-elasticsearch-access-key
 spec: elastic_access_key
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-infra-rgw-s3-elasticsearch-secret-key
-  namespace: airsloop
+  name: osh-infra-rgw-s3-elasticsearch-secret-key
 spec: elastic_secret_key
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-keystone-admin-password
-  namespace: airsloop
+  name: osh-keystone-admin-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-keystone-ldap-password
-  namespace: airsloop
+  name: osh-keystone-ldap-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-keystone-oslo-db-password
-  namespace: airsloop
+  name: osh-keystone-oslo-db-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-keystone-oslo-messaging-admin-password
-  namespace: airsloop
+  name: osh-keystone-oslo-messaging-admin-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-keystone-oslo-messaging-password
-  namespace: airsloop
+  name: osh-keystone-oslo-messaging-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-keystone-rabbitmq-erlang-cookie
-  namespace: airsloop
+  name: osh-keystone-rabbitmq-erlang-cookie
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-neutron-oslo-db-password
-  namespace: airsloop
+  name: osh-neutron-oslo-db-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-neutron-oslo-messaging-admin-password
-  namespace: airsloop
+  name: osh-neutron-oslo-messaging-admin-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-neutron-oslo-messaging-password
-  namespace: airsloop
+  name: osh-neutron-oslo-messaging-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-neutron-password
-  namespace: airsloop
+  name: osh-neutron-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-neutron-rabbitmq-erlang-cookie
-  namespace: airsloop
+  name: osh-neutron-rabbitmq-erlang-cookie
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-nova-oslo-db-password
-  namespace: airsloop
+  name: osh-nova-oslo-db-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-nova-oslo-messaging-admin-password
-  namespace: airsloop
+  name: osh-nova-oslo-messaging-admin-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-nova-oslo-messaging-password
-  namespace: airsloop
+  name: osh-nova-oslo-messaging-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-nova-password
-  namespace: airsloop
+  name: osh-nova-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-nova-rabbitmq-erlang-cookie
-  namespace: airsloop
+  name: osh-nova-rabbitmq-erlang-cookie
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-oslo-cache-secret-key
-  namespace: airsloop
+  name: osh-oslo-cache-secret-key
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-oslo-db-admin-password
-  namespace: airsloop
+  name: osh-oslo-db-admin-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-oslo-db-exporter-password
-  namespace: airsloop
+  name: osh-oslo-db-exporter-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-osh-placement-password
-  namespace: airsloop
+  name: osh-placement-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-private-docker-key
-  namespace: airsloop
+  name: private-docker-key
 spec: cGFzc3dvcmQxMjM=
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-tenant-ceph-fsid
-  namespace: airsloop
+  name: tenant-ceph-fsid
 spec: 9e45aa5f-9d75-4fa7-bde5-c99e4a7db7a1
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ucp-airflow-oslo-messaging-password
-  namespace: airsloop
+  name: ucp-airflow-oslo-messaging-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ucp-airflow-postgres-password
-  namespace: airsloop
+  name: ucp-airflow-postgres-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ucp-armada-keystone-password
-  namespace: airsloop
+  name: ucp-armada-keystone-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ucp-barbican-keystone-password
-  namespace: airsloop
+  name: ucp-barbican-keystone-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ucp-barbican-oslo-db-password
-  namespace: airsloop
+  name: ucp-barbican-oslo-db-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ucp-deckhand-keystone-password
-  namespace: airsloop
+  name: ucp-deckhand-keystone-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ucp-deckhand-postgres-password
-  namespace: airsloop
+  name: ucp-deckhand-postgres-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ucp-drydock-keystone-password
-  namespace: airsloop
+  name: ucp-drydock-keystone-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ucp-drydock-postgres-password
-  namespace: airsloop
+  name: ucp-drydock-postgres-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ucp-keystone-admin-password
-  namespace: airsloop
+  name: ucp-keystone-admin-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ucp-keystone-oslo-db-password
-  namespace: airsloop
+  name: ucp-keystone-oslo-db-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ucp-maas-admin-password
-  namespace: airsloop
+  name: ucp-maas-admin-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ucp-maas-postgres-password
-  namespace: airsloop
+  name: ucp-maas-postgres-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ucp-openstack-exporter-keystone-password
-  namespace: airsloop
+  name: ucp-openstack-exporter-keystone-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ucp-oslo-db-admin-password
-  namespace: airsloop
+  name: ucp-oslo-db-admin-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ucp-oslo-messaging-password
-  namespace: airsloop
+  name: ucp-oslo-messaging-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ucp-postgres-admin-password
-  namespace: airsloop
+  name: ucp-postgres-admin-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ucp-promenade-keystone-password
-  namespace: airsloop
+  name: ucp-promenade-keystone-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ucp-rabbitmq-erlang-cookie
-  namespace: airsloop
+  name: ucp-rabbitmq-erlang-cookie
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ucp-shipyard-keystone-password
-  namespace: airsloop
+  name: ucp-shipyard-keystone-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPassphrase
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-ucp-shipyard-postgres-password
-  namespace: airsloop
+  name: ucp-shipyard-postgres-password
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPrivateKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-service-account
-  namespace: airsloop
+  name: service-account
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEA6Lq5y0EVx9gcQNTCV/aYdOxt4j5ZtyZnbpaV8bG1eoDOn0Aw
@@ -16716,39 +15652,30 @@ spec: |
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPublicKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-airship-ssh-public-key
-  namespace: airsloop
+  name: airship-ssh-public-key
 spec: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyb6CDrai3VcFW1ew5ikf7IDSpqfFyrJNLI1DPyd28vcy6D1oFXdELYK7DsXzVCgV7YNDiKpneXMBTJ/Mr/aZi9K3eVvtRp1HAK3y6ycx9KRfyfMVAU0aT3xMOpE5xS/xTH8HNRbOSszp0woVYKhncpkumHweji7wbLKm/WxsggIoGDjn29KIoRhpo96tWz/DBsoU1pIHTMoZNyHW2aYWEx6kOzTEmhxL0LkKv7+A/2HJuLnqcXoQH9jl3kRQDyikNlSw2T3gQV3I8m0od/lEf98MZb1Yv9GrlDCmnUPXAJ2HQaWaVaPPpGcBW7veOZlLfeulwD4zlo6P6JW1SZaat
   airship@seaworthy
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPublicKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-airsloop-ssh-public-key
-  namespace: airsloop
+  name: airsloop-ssh-public-key
 spec: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCycUyxcb+AJIOyU2fzJ0C0tj7UnWZkIAstdPOpeuHQejhezFFT46w3CA9tvr/XlrLu6Rwk7E8qLJvBCGUuZnE0dkRgwgjv6irjy90jA3sY9pdW5h+MxrlbLVNXOEsZbHzEK3sU7WfCpAuIEcxmL+F5+0h73BCqKNG5IiJKApmzPvwYoOxc1BuWguVrFjHqEhYUjMkJwyNRXy6Sfm0MiOVcdF7uvgK7tf25mGUaoyGWJYKTSJCOJ4M535BN5n3G8amTP3fcna1Ig8Rn9yDkGF5obe5TPB7zKuLNMp2bZW5YkSIQFRpm1RDHypXqNa0Lmr4pQyKNL+Auoq852D++XH43
   airsloop@airship
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
 kind: DeckhandPublicKey
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-service-account
-  namespace: airsloop
+  name: service-account
 spec: |
   -----BEGIN PUBLIC KEY-----
   MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6Lq5y0EVx9gcQNTCV/aY
@@ -16763,13 +15690,10 @@ spec: |
 apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockBaremetalNode
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-airsloop-compute-1
-  namespace: airsloop
+  name: airsloop-compute-1
 spec:
   addressing:
   - address: 10.22.104.22
@@ -16793,13 +15717,10 @@ spec:
 apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockBootAction
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-airship-target
-  namespace: airsloop
+  name: airship-target
 spec:
   assets:
   - data: |
@@ -16819,13 +15740,10 @@ spec:
 apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockBootAction
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-apparmor-profiles
-  namespace: airsloop
+  name: apparmor-profiles
   substitutions:
   - dest:
       path: .assets[0].path
@@ -16868,12 +15786,10 @@ kind: DrydockBootAction
 metadata:
   labels:
     application: drydock
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-promjoin-systemd-unit
-  namespace: airsloop
+  name: promjoin-systemd-unit
 spec:
   assets:
   - data: |
@@ -16900,12 +15816,10 @@ kind: DrydockBootAction
 metadata:
   labels:
     application: drydock
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-promjoin
-  namespace: airsloop
+  name: promjoin
 spec:
   assets:
   - data_pipeline:
@@ -16924,13 +15838,10 @@ spec:
 apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockBootAction
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-seccomp-profiles
-  namespace: airsloop
+  name: seccomp-profiles
   substitutions:
   - dest:
       path: .assets[0].path
@@ -16955,13 +15866,10 @@ spec:
 apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockHardwareProfile
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-dell-hp-generic
-  namespace: airsloop
+  name: dell-hp-generic
 spec:
   bios_version: 2.2.3
   boot_mode: bios
@@ -16975,13 +15883,10 @@ spec:
 apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockHardwareProfile
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-dell-r720xd
-  namespace: airsloop
+  name: dell-r720xd
 spec:
   bios_version: 2.2.3
   boot_mode: bios
@@ -17007,8 +15912,6 @@ spec:
 apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockHostProfile
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     actions:
@@ -17021,8 +15924,7 @@ metadata:
     layer: site
     parentSelector:
       hosttype: dp-global
-  name: pref2-pref1-compute-r720xd
-  namespace: airsloop
+  name: compute-r720xd
 spec:
   hardware_profile: dell_r720xd
   interfaces:
@@ -17083,13 +15985,11 @@ apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockHostProfile
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     hosttype: cp-global
   layeringDefinition:
     abstract: true
     layer: global
-  name: pref2-pref1-cp-global
-  namespace: airsloop
+  name: cp
   substitutions:
   - dest:
       path: .oob.credential
@@ -17197,13 +16097,11 @@ apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockHostProfile
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     hosttype: dp-global
   layeringDefinition:
     abstract: true
     layer: global
-  name: pref2-pref1-dp-global
-  namespace: airsloop
+  name: dp
   substitutions:
   - dest:
       path: .oob.credential
@@ -17260,13 +16158,10 @@ spec:
 apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockNetwork
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-calico
-  namespace: airsloop
+  name: calico
 spec:
   cidr: 10.22.72.0/24
   mtu: 1500
@@ -17282,13 +16177,10 @@ spec:
 apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockNetwork
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-oam
-  namespace: airsloop
+  name: oam
 spec:
   cidr: 10.22.71.0/24
   dns:
@@ -17311,13 +16203,10 @@ spec:
 apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockNetwork
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-oob
-  namespace: airsloop
+  name: oob
 spec:
   cidr: 10.22.104.0/24
   ranges:
@@ -17332,13 +16221,10 @@ spec:
 apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockNetwork
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-overlay
-  namespace: airsloop
+  name: overlay
 spec:
   cidr: 10.22.74.0/24
   mtu: 1500
@@ -17354,13 +16240,10 @@ spec:
 apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockNetwork
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-pxe
-  namespace: airsloop
+  name: pxe
 spec:
   cidr: 10.22.70.0/24
   dns:
@@ -17384,13 +16267,10 @@ spec:
 apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockNetwork
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-storage
-  namespace: airsloop
+  name: storage
 spec:
   cidr: 10.22.73.0/24
   mtu: 1500
@@ -17406,13 +16286,10 @@ spec:
 apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockNetworkLink
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-data
-  namespace: airsloop
+  name: data
 spec:
   allowed_networks:
   - oam
@@ -17429,13 +16306,10 @@ spec:
 apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockNetworkLink
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-oob
-  namespace: airsloop
+  name: oob
 spec:
   allowed_networks:
   - oob
@@ -17452,13 +16326,10 @@ spec:
 apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockNetworkLink
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-pxe
-  namespace: airsloop
+  name: pxe
 spec:
   allowed_networks:
   - pxe
@@ -17473,13 +16344,10 @@ spec:
 apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockRegion
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-airsloop
-  namespace: airsloop
+  name: airsloop
   substitutions:
   - dest:
       path: .authorized_keys[0]
@@ -17500,13 +16368,10 @@ spec:
 apiVersion: pegleg.airshipit.org/v1alpha1
 kind: PeglegAccountCatalogue
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: type
-  name: pref2-pref1-osh-infra-service-accounts
-  namespace: airsloop
+  name: osh-infra-service-accounts
   substitutions:
   - dest:
       path: .osh_infra.prometheus_openstack_exporter.user.region_name
@@ -17559,13 +16424,10 @@ spec:
 apiVersion: pegleg.airshipit.org/v1alpha1
 kind: PeglegAccountCatalogue
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: type
-  name: pref2-pref1-osh-service-accounts
-  namespace: airsloop
+  name: osh-service-accounts
   substitutions:
   - dest:
       path: .osh.keystone.admin.region_name
@@ -17786,13 +16648,10 @@ spec:
 apiVersion: pegleg.airshipit.org/v1alpha1
 kind: PeglegAccountCatalogue
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: type
-  name: pref2-pref1-ucp-service-accounts
-  namespace: airsloop
+  name: ucp-service-accounts
 spec:
   ceph:
     swift:
@@ -17921,13 +16780,10 @@ spec:
 apiVersion: pegleg.airshipit.org/v1alpha1
 kind: PeglegAppArmorProfile
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-airship-apparmor-loader
-  namespace: airsloop
+  name: airship-apparmor-loader
 spec:
   content: |
     #include <tunables/global>
@@ -18003,13 +16859,10 @@ spec:
 apiVersion: pegleg.airshipit.org/v1alpha1
 kind: PeglegAppArmorProfile
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-airship-default
-  namespace: airsloop
+  name: airship-default
 spec:
   content: |
     #include <tunables/global>
@@ -18083,13 +16936,10 @@ spec:
 apiVersion: pegleg.airshipit.org/v1alpha1
 kind: PeglegCommonAddresses
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-common-addresses
-  namespace: airsloop
+  name: common-addresses
 spec:
   bootstrap:
     ip: 10.22.70.21
@@ -18153,13 +17003,10 @@ spec:
 apiVersion: pegleg.airshipit.org/v1alpha1
 kind: PeglegCommonSoftwareConfig
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: type
-  name: pref2-pref1-common-software-config
-  namespace: airsloop
+  name: common-software-config
 spec:
   osh:
     region_name: airsloop
@@ -18167,13 +17014,10 @@ spec:
 apiVersion: pegleg.airshipit.org/v1alpha1
 kind: PeglegEndpointCatalogue
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: type
-  name: pref2-pref1-osh-endpoints
-  namespace: airsloop
+  name: osh-endpoints
 spec:
   osh:
     ceph_object_store:
@@ -18656,13 +17500,10 @@ spec:
 apiVersion: pegleg.airshipit.org/v1alpha1
 kind: PeglegEndpointCatalogue
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: type
-  name: pref2-pref1-osh-infra-endpoints
-  namespace: airsloop
+  name: osh-infra-endpoints
   substitutions:
   - dest:
       path: .osh_infra.ldap.path.default
@@ -18936,13 +17777,10 @@ spec:
 apiVersion: pegleg.airshipit.org/v1alpha1
 kind: PeglegEndpointCatalogue
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: type
-  name: pref2-pref1-ucp-endpoints
-  namespace: airsloop
+  name: ucp-endpoints
 spec:
   ceph:
     ceph_mgr:
@@ -19224,13 +18062,10 @@ spec:
 apiVersion: pegleg.airshipit.org/v1alpha1
 kind: PeglegScript
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-configure-ip-rules
-  namespace: airsloop
+  name: configure-ip-rules
 spec: |-
   #!/bin/bash
   set -ex
@@ -19354,13 +18189,10 @@ spec: |-
 apiVersion: pegleg.airshipit.org/v1alpha1
 kind: PeglegSeccompProfile
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-seccomp-default
-  namespace: airsloop
+  name: seccomp-default
 spec:
   content: |
     {
@@ -20136,13 +18968,10 @@ spec:
 apiVersion: pegleg.airshipit.org/v1alpha1
 kind: PeglegSiteDefinition
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-airsloop
-  namespace: airsloop
+  name: airsloop
 spec:
   site_type: sloop
 ---
@@ -20150,13 +18979,11 @@ apiVersion: pegleg.airshipit.org/v1alpha1
 kind: PeglegSoftwareVersions
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: software-versions-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-software-versions
-  namespace: airsloop
+  name: software-versions
 spec:
   charts:
     kubernetes:
@@ -20819,13 +19646,11 @@ apiVersion: promenade.airshipit.org/v1alpha1
 kind: PromenadeDocker
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     promenade: enabled
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-docker-global
-  namespace: airsloop
+  name: docker
 spec:
   config:
     live-restore: true
@@ -20835,13 +19660,16 @@ apiVersion: promenade.airshipit.org/v1alpha1
 kind: PromenadeGenesis
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: genesis-global
   layeringDefinition:
-    abstract: true
-    layer: global
-  name: pref2-pref1-genesis-global
-  namespace: airsloop
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: site
+    parentSelector:
+      name: genesis-global
+  name: genesis
   substitutions:
   - dest:
       path: .images.armada
@@ -20932,46 +19760,6 @@ spec:
     - ceph-osd=enabled
     - ceph-rgw=enabled
     - ceph-mgr=enabled
-    - tenant-ceph-control-plane=enabled
-    - tenant-ceph-mon=enabled
-    - tenant-ceph-rgw=enabled
-    - tenant-ceph-mgr=enabled
-    - kube-dns=enabled
-    - kube-ingress=enabled
-    - kubernetes-apiserver=enabled
-    - kubernetes-controller-manager=enabled
-    - kubernetes-etcd=enabled
-    - kubernetes-scheduler=enabled
-    - promenade-genesis=enabled
-    - ucp-control-plane=enabled
-    - maas-control-plane=enabled
-    - node-exporter=enabled
----
-apiVersion: promenade.airshipit.org/v1alpha1
-kind: PromenadeGenesis
-metadata:
-  labels:
-    deckhand-poc-label: airsloop
-  layeringDefinition:
-    abstract: false
-    actions:
-    - method: merge
-      path: .
-    layer: site
-    parentSelector:
-      name: genesis-global
-  name: pref2-pref1-genesis-site
-  namespace: airsloop
-spec:
-  labels:
-    dynamic:
-    - beta.kubernetes.io/fluentd-ds-ready=true
-    - calico-etcd=enabled
-    - ceph-mds=enabled
-    - ceph-mon=enabled
-    - ceph-osd=enabled
-    - ceph-rgw=enabled
-    - ceph-mgr=enabled
     - ceph-bootstrap=enabled
     - tenant-ceph-control-plane=enabled
     - tenant-ceph-mon=enabled
@@ -20996,13 +19784,10 @@ spec:
 apiVersion: promenade.airshipit.org/v1alpha1
 kind: PromenadeHostSystem
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-host-system
-  namespace: airsloop
+  name: host-system
   substitutions:
   - dest:
       path: .files[0].tar_url
@@ -21161,13 +19946,10 @@ spec:
 apiVersion: promenade.airshipit.org/v1alpha1
 kind: PromenadeKubelet
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-kubelet
-  namespace: airsloop
+  name: kubelet
   substitutions:
   - dest:
       path: .images.pause
@@ -21199,13 +19981,10 @@ spec:
 apiVersion: promenade.airshipit.org/v1alpha1
 kind: PromenadeKubernetesNetwork
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: type
-  name: pref2-pref1-kubernetes-network
-  namespace: airsloop
+  name: kubernetes-network
   substitutions:
   - dest:
       path: .dns.cluster_domain
@@ -21289,13 +20068,10 @@ spec:
 apiVersion: promenade.airshipit.org/v1alpha1
 kind: PromenadePKICatalog
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-cluster-certificates
-  namespace: airsloop
+  name: cluster-certificates
 spec:
   certificate_authorities:
   - certificates:
@@ -21510,13 +20286,10 @@ spec:
 apiVersion: shipyard.airshipit.org/v1alpha1
 kind: ShipyardDeploymentConfiguration
 metadata:
-  labels:
-    deckhand-poc-label: airsloop
   layeringDefinition:
     abstract: false
     layer: site
-  name: pref2-pref1-deployment-configuration
-  namespace: airsloop
+  name: deployment-configuration
 spec:
   armada:
     get_releases_timeout: 300
@@ -21548,13 +20321,11 @@ apiVersion: shipyard.airshipit.org/v1alpha1
 kind: ShipyardDeploymentStrategy
 metadata:
   labels:
-    deckhand-poc-label: airsloop
     name: deployment-strategy-global
   layeringDefinition:
     abstract: false
     layer: global
-  name: pref2-pref1-deployment-strategy
-  namespace: airsloop
+  name: deployment-strategy
 spec:
   groups:
   - critical: true

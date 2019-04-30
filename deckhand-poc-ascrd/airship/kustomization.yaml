@@ -8,9 +8,9 @@ bases:
 resources:
 - airship.yaml
 
-namePrefix: pref1-
+# namePrefix: pref1-
 
-namespace: airship
+# namespace: airship
 
-commonLabels:
-  deckhand-poc-label: airship
+# commonLabels:
+#   deckhand-poc-label: airship

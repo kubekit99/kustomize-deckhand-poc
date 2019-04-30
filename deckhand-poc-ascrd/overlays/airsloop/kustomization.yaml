@@ -8,12 +8,12 @@ bases:
 # resources:
 # - airsloop.yaml
 
-namePrefix: pref2-
+# namePrefix: pref2-
 
-namespace: airsloop
+# namespace: airsloop
 
-commonLabels:
-  deckhand-poc-label: airsloop
+# commonLabels:
+#   deckhand-poc-label: airsloop
 
 patchesStrategicMerge:
 - airsloop.yaml

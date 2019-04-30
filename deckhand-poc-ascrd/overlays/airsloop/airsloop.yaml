@@ -262,6 +262,216 @@ metadata:
     actions:
     - method: merge
       path: .
+    layer: site
+    parentSelector:
+      name: kubernetes-calico-etcd-global
+  name: kubernetes-calico-etcd
+  substitutions:
+  - dest:
+      path: .values.nodes[0].name
+    src:
+      kind: PeglegCommonAddresses
+      name: common-addresses
+      path: .genesis.hostname
+  - dest:
+      path: .values.nodes[1].name
+    src:
+      kind: PeglegCommonAddresses
+      name: common-addresses
+      path: .masters[0].hostname
+  - dest:
+      path: .values.nodes[2].name
+    src:
+      kind: PeglegCommonAddresses
+      name: common-addresses
+      path: .masters[1].hostname
+  - dest:
+      path: .values.nodes[0].tls.client.cert
+    src:
+      kind: DeckhandCertificate
+      name: calico-etcd-airsloop-control-1
+      path: .
+  - dest:
+      path: .values.nodes[0].tls.client.key
+    src:
+      kind: DeckhandCertificateKey
+      name: calico-etcd-airsloop-control-1
+      path: .
+  - dest:
+      path: .values.nodes[0].tls.peer.cert
+    src:
+      kind: DeckhandCertificate
+      name: calico-etcd-airsloop-control-1-peer
+      path: .
+  - dest:
+      path: .values.nodes[0].tls.peer.key
+    src:
+      kind: DeckhandCertificateKey
+      name: calico-etcd-airsloop-control-1-peer
+      path: .
+  - dest:
+      path: .values.nodes[1].tls.client.cert
+    src:
+      kind: DeckhandCertificate
+      name: calico-etcd-airsloop-control-2
+      path: .
+  - dest:
+      path: .values.nodes[1].tls.client.key
+    src:
+      kind: DeckhandCertificateKey
+      name: calico-etcd-airsloop-control-2
+      path: .
+  - dest:
+      path: .values.nodes[1].tls.peer.cert
+    src:
+      kind: DeckhandCertificate
+      name: calico-etcd-airsloop-control-2-peer
+      path: .
+  - dest:
+      path: .values.nodes[1].tls.peer.key
+    src:
+      kind: DeckhandCertificateKey
+      name: calico-etcd-airsloop-control-2-peer
+      path: .
+  - dest:
+      path: .values.nodes[2].tls.client.cert
+    src:
+      kind: DeckhandCertificate
+      name: calico-etcd-airsloop-control-3
+      path: .
+  - dest:
+      path: .values.nodes[2].tls.client.key
+    src:
+      kind: DeckhandCertificateKey
+      name: calico-etcd-airsloop-control-3
+      path: .
+  - dest:
+      path: .values.nodes[2].tls.peer.cert
+    src:
+      kind: DeckhandCertificate
+      name: calico-etcd-airsloop-control-3-peer
+      path: .
+  - dest:
+      path: .values.nodes[2].tls.peer.key
+    src:
+      kind: DeckhandCertificateKey
+      name: calico-etcd-airsloop-control-3-peer
+      path: .
+spec: {}
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: site
+    parentSelector:
+      name: kubernetes-etcd-global
+  name: kubernetes-etcd
+  substitutions:
+  - dest:
+      path: .values.nodes[0].name
+    src:
+      kind: PeglegCommonAddresses
+      name: common-addresses
+      path: .genesis.hostname
+  - dest:
+      path: .values.nodes[1].name
+    src:
+      kind: PeglegCommonAddresses
+      name: common-addresses
+      path: .masters[0].hostname
+  - dest:
+      path: .values.nodes[2].name
+    src:
+      kind: PeglegCommonAddresses
+      name: common-addresses
+      path: .masters[1].hostname
+  - dest:
+      path: .values.nodes[0].tls.client.cert
+    src:
+      kind: DeckhandCertificate
+      name: kubernetes-etcd-genesis
+      path: .
+  - dest:
+      path: .values.nodes[0].tls.client.key
+    src:
+      kind: DeckhandCertificateKey
+      name: kubernetes-etcd-genesis
+      path: .
+  - dest:
+      path: .values.nodes[0].tls.peer.cert
+    src:
+      kind: DeckhandCertificate
+      name: kubernetes-etcd-genesis-peer
+      path: .
+  - dest:
+      path: .values.nodes[0].tls.peer.key
+    src:
+      kind: DeckhandCertificateKey
+      name: kubernetes-etcd-genesis-peer
+      path: .
+  - dest:
+      path: .values.nodes[1].tls.client.cert
+    src:
+      kind: DeckhandCertificate
+      name: kubernetes-etcd-airsloop-control-2
+      path: .
+  - dest:
+      path: .values.nodes[1].tls.client.key
+    src:
+      kind: DeckhandCertificateKey
+      name: kubernetes-etcd-airsloop-control-2
+      path: .
+  - dest:
+      path: .values.nodes[1].tls.peer.cert
+    src:
+      kind: DeckhandCertificate
+      name: kubernetes-etcd-airsloop-control-2-peer
+      path: .
+  - dest:
+      path: .values.nodes[1].tls.peer.key
+    src:
+      kind: DeckhandCertificateKey
+      name: kubernetes-etcd-airsloop-control-2-peer
+      path: .
+  - dest:
+      path: .values.nodes[2].tls.client.cert
+    src:
+      kind: DeckhandCertificate
+      name: kubernetes-etcd-airsloop-control-3
+      path: .
+  - dest:
+      path: .values.nodes[2].tls.client.key
+    src:
+      kind: DeckhandCertificateKey
+      name: kubernetes-etcd-airsloop-control-3
+      path: .
+  - dest:
+      path: .values.nodes[2].tls.peer.cert
+    src:
+      kind: DeckhandCertificate
+      name: kubernetes-etcd-airsloop-control-3-peer
+      path: .
+  - dest:
+      path: .values.nodes[2].tls.peer.key
+    src:
+      kind: DeckhandCertificateKey
+      name: kubernetes-etcd-airsloop-control-3-peer
+      path: $
+spec: {}
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
     layer: type
     parentSelector:
       name: neutron-rabbitmq-global
@@ -539,6 +749,8 @@ spec:
           name: default.rgw.buckets.data
           percent_total_data: 30
           replication: 1
+        target:
+          osd: 1
     pod:
       replicas:
         mds: 1
@@ -780,6 +992,52 @@ spec:
     pod:
       replicas:
         deckhand: 1
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  labels:
+    name: ucp-divingbell-site
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: site
+    parentSelector:
+      name: ucp-divingbell-global
+  name: ucp-divingbell
+  substitutions:
+  - dest:
+      path: .values.conf.uamlite.users[0].user_sshkeys[0]
+    src:
+      kind: DeckhandPublicKey
+      name: airsloop-ssh-public-key
+      path: .
+  - dest:
+      path: .values.conf.uamlite.users[0].user_crypt_passwd
+    src:
+      kind: DeckhandPassphrase
+      name: airsloop-crypt-password
+      path: .
+spec:
+  values:
+    conf:
+      uamlite:
+        users:
+        - user_name: ubuntu
+          user_sshkeys: []
+          user_sudo: true
+    manifests:
+      daemonset_apparmor: false
+      daemonset_apt: true
+      daemonset_ethtool: false
+      daemonset_exec: true
+      daemonset_limits: false
+      daemonset_mounts: false
+      daemonset_perm: false
+      daemonset_sysctl: false
+      daemonset_uamlite: true
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
@@ -1031,3 +1289,46 @@ spec:
   - osh-infra-prometheus-openstack-exporter
   - openstack-horizon
   release_prefix: airship
+---
+apiVersion: promenade.airshipit.org/v1alpha1
+kind: PromenadeGenesis
+metadata:
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: site
+    parentSelector:
+      name: genesis-global
+  name: genesis
+spec:
+  labels:
+    dynamic:
+    - beta.kubernetes.io/fluentd-ds-ready=true
+    - calico-etcd=enabled
+    - ceph-mds=enabled
+    - ceph-mon=enabled
+    - ceph-osd=enabled
+    - ceph-rgw=enabled
+    - ceph-mgr=enabled
+    - ceph-bootstrap=enabled
+    - tenant-ceph-control-plane=enabled
+    - tenant-ceph-mon=enabled
+    - tenant-ceph-rgw=enabled
+    - tenant-ceph-mgr=enabled
+    - kube-dns=enabled
+    - kube-ingress=enabled
+    - kubernetes-apiserver=enabled
+    - kubernetes-controller-manager=enabled
+    - kubernetes-etcd=enabled
+    - kubernetes-scheduler=enabled
+    - promenade-genesis=enabled
+    - ucp-control-plane=enabled
+    - maas-control-plane=enabled
+    - ceph-osd-bootstrap=enabled
+    - openstack-control-plane=enabled
+    - openvswitch=enabled
+    - openstack-l3-agent=enabled
+    - node-exporter=enabled
+    - fluentd=enabled
