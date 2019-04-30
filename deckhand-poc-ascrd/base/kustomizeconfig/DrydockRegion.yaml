@@ -1,3 +1,5 @@
 varReference:
-- path: spec
-  kind: DrydockRegion
+- kind: DrydockRegion
+  path: spec/authorized_keys/_0_
+- kind: DrydockRegion
+  path: spec/repositories/main_archive

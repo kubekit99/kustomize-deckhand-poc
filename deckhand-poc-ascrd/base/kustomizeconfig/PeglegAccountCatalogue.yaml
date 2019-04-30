@@ -1,3 +1,25 @@
 varReference:
-- path: spec
-  kind: PeglegAccountCatalogue
+- kind: PeglegAccountCatalogue
+  path: spec/osh/barbican/barbican/region_name
+- kind: PeglegAccountCatalogue
+  path: spec/osh/cinder/cinder/region_name
+- kind: PeglegAccountCatalogue
+  path: spec/osh/glance/glance/region_name
+- kind: PeglegAccountCatalogue
+  path: spec/osh/heat/heat/region_name
+- kind: PeglegAccountCatalogue
+  path: spec/osh/heat/heat_stack_user/region_name
+- kind: PeglegAccountCatalogue
+  path: spec/osh/heat/heat_trustee/region_name
+- kind: PeglegAccountCatalogue
+  path: spec/osh/keystone/admin/region_name
+- kind: PeglegAccountCatalogue
+  path: spec/osh/neutron/neutron/region_name
+- kind: PeglegAccountCatalogue
+  path: spec/osh/nova/nova/region_name
+- kind: PeglegAccountCatalogue
+  path: spec/osh/nova/placement/region_name
+- kind: PeglegAccountCatalogue
+  path: spec/osh/swift/keystone/region_name
+- kind: PeglegAccountCatalogue
+  path: spec/osh_infra/prometheus_openstack_exporter/user/region_name

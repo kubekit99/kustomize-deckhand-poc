@@ -9,12 +9,10 @@ metadata:
   name: poc-example-chart-01
   namespace: deckhand
 spec:
-  chart:
-    details:
-      data: foo
-    values:
+  values:
+    secrets:
       tls:
-        certificate: |
+        cert: |
           CERTIFICATE DATA
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -33,10 +31,8 @@ metadata:
   namespace: deckhand
   replacement: true
 spec:
-  chart:
-    details:
-      data: bar
-    values:
+  values:
+    secrets:
       tls:
         key: |
           KEY DATA

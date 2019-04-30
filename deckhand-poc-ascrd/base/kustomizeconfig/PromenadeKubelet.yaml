@@ -1,3 +1,5 @@
 varReference:
-- path: spec
-  kind: PromenadeKubelet
+- kind: PromenadeKubelet
+  path: spec/arguments/_9_
+- kind: PromenadeKubelet
+  path: spec/images/pause

@@ -203,21 +203,21 @@ vars:
 #     kind: DeckhandPublicKey
 #     name: airsloop-ssh-public-key
 # - fieldref:
-#     fieldpath: spec/genesis/hostname
+#     fieldpath: spec.genesis.hostname
 #   name: PeglegCommonAddresses.common-addresses.spec.genesis.hostname
 #   objref:
 #     apiVersion: pegleg.airshipit.org/v1alpha1
 #     kind: PeglegCommonAddresses
 #     name: common-addresses
 # - fieldref:
-#     fieldpath: spec/masters/_0_/hostname
+#     fieldpath: spec.masters._0_.hostname
 #   name: PeglegCommonAddresses.common-addresses.spec.masters._0_.hostname
 #   objref:
 #     apiVersion: pegleg.airshipit.org/v1alpha1
 #     kind: PeglegCommonAddresses
 #     name: common-addresses
 # - fieldref:
-#     fieldpath: spec/masters/_1_/hostname
+#     fieldpath: spec.masters._1_.hostname
 #   name: PeglegCommonAddresses.common-addresses.spec.masters._1_.hostname
 #   objref:
 #     apiVersion: pegleg.airshipit.org/v1alpha1

@@ -35,13 +35,10 @@ metadata:
   layeringDefinition:
     layer: region
 spec:
-  chart:
-    details:
-      data: foo
-    values:
-      tls:
-         # certificate: example-cert
-         certificate: $(THE_CERTIFICATE)
+  values:
+    secrets:
+       tls:
+          cert: $(THE_CERTIFICATE)
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
@@ -56,11 +53,8 @@ metadata:
       - method: merge
         path: .
 spec:
-  chart:
-    details:
-      data: bar
-    values:
+  values:
+    secrets:
       tls:
-         # key: example-key
-         key: $(THE_CERTIFICATE_KEY)
+        key: $(THE_CERTIFICATE_KEY)
 ...
