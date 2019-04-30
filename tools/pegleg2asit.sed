@@ -37,13 +37,10 @@ s;schema: promenade/KubernetesNetwork/v1;kind: PromenadeKubernetesNetwork;g
 s;schema: promenade/PKICatalog/v1;kind: PromenadePKICatalog;g
 s;schema: shipyard/DeploymentConfiguration/v1;kind: ShipyardDeploymentConfiguration;g
 s;schema: shipyard/DeploymentStrategy/v1;kind: ShipyardDeploymentStrategy;g
-/^kind: Armada/i apiVersion: armada.airshipit.org/v1alpha
-/^kind: Deckhand/i apiVersion: deckhand.airshipit.org/v1alpha
-/^kind: Drydock/i apiVersion: drydock.airshipit.org/v1alpha
-/^kind: Pegleg/i apiVersion: pegleg.airshipit.org/v1alpha
-/^kind: Promenade/i apiVersion: promenade.airshipit.org/v1alpha
-/^kind: Shipyard/i apiVersion: shipyard.airshipit.org/v1alpha
+/^kind: Armada/i apiVersion: armada.airshipit.org/v1alpha1
+/^kind: Deckhand/i apiVersion: deckhand.airshipit.org/v1alpha1
+/^kind: Drydock/i apiVersion: drydock.airshipit.org/v1alpha1
+/^kind: Pegleg/i apiVersion: pegleg.airshipit.org/v1alpha1
+/^kind: Promenade/i apiVersion: promenade.airshipit.org/v1alpha1
+/^kind: Shipyard/i apiVersion: shipyard.airshipit.org/v1alpha1
 1,$s;^data:;spec:;g
-1,$s;/v1$;;g
-/schema: metadata/d
-/storagePolicy/d

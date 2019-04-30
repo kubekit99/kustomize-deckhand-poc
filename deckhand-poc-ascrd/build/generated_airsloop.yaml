@@ -11416,9 +11416,14 @@ metadata:
     deckhand-poc-label: airsloop
     name: ucp-maas-global
   layeringDefinition:
-    abstract: true
-    layer: global
-  name: pref2-pref1-ucp-maas-global
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: type
+    parentSelector:
+      name: ucp-maas-global
+  name: pref2-ucp-maas
   namespace: airsloop
   substitutions:
   - dest:
@@ -11573,6 +11578,10 @@ spec:
             namespace: ucp
         dns:
           require_dnssec: "no"
+        images:
+          default_image: xenial
+          default_kernel: ga-16.04
+          default_os: ubuntu
         ntp:
           disable_ntpd_rack: true
           disable_ntpd_region: true
@@ -11599,30 +11608,6 @@ spec:
     labels:
       release_group: airship-maas
     timeout: 1800
----
-apiVersion: armada.airshipit.org/v1alpha1
-kind: ArmadaChart
-metadata:
-  labels:
-    deckhand-poc-label: airsloop
-  layeringDefinition:
-    abstract: false
-    actions:
-    - method: merge
-      path: .
-    layer: type
-    parentSelector:
-      name: ucp-maas-global
-  name: pref2-pref1-ucp-maas
-  namespace: airsloop
-spec:
-  values:
-    conf:
-      maas:
-        images:
-          default_image: xenial
-          default_kernel: ga-16.04
-          default_os: ubuntu
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
@@ -11817,9 +11802,14 @@ metadata:
     deckhand-poc-label: airsloop
     name: ucp-promenade-global
   layeringDefinition:
-    abstract: true
-    layer: global
-  name: pref2-pref1-ucp-promenade-global
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: type
+    parentSelector:
+      name: ucp-promenade-global
+  name: pref2-ucp-promenade
   namespace: airsloop
   substitutions:
   - dest:
@@ -11897,38 +11887,13 @@ spec:
           service_token_roles_required: true
     pod:
       env:
-        promenade_api:
-        - name: UWSGI_TIMEOUT
-          value: "900"
+        promenade_api: []
       replicas:
-        api: 2
+        api: 1
   wait:
     labels:
       release_group: airship-ucp-promenade
     timeout: 600
----
-apiVersion: armada.airshipit.org/v1alpha1
-kind: ArmadaChart
-metadata:
-  labels:
-    deckhand-poc-label: airsloop
-  layeringDefinition:
-    abstract: false
-    actions:
-    - method: merge
-      path: .
-    layer: type
-    parentSelector:
-      name: ucp-promenade-global
-  name: pref2-pref1-ucp-promenade
-  namespace: airsloop
-spec:
-  values:
-    pod:
-      env:
-        promenade_api: []
-      replicas:
-        api: 1
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
@@ -18262,7 +18227,7 @@ spec:
         public: cloudformation
       name: heat-cfn
       path:
-        default: null
+        default: /v1
       port:
         api:
           default: 8000
@@ -19027,7 +18992,7 @@ spec:
       name: swift
       namespace: ceph
       path:
-        default: /swift
+        default: /swift/v1
       port:
         api:
           default: 8088
@@ -19122,7 +19087,7 @@ spec:
         public: barbican
       name: barbican
       path:
-        default: null
+        default: /v1
       port:
         api:
           default: 9311

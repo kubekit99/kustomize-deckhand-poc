@@ -18,20 +18,65 @@ diff <(kustomize build replacement) build/generated_replacement.yaml
 
 ### Generating airsloop.yaml from original documents
 
+List of notes taken to create original documents:
+
 Clone airship-shipyard repo
 
 ```bash
-cd arship-shipyard
+cd airship-shipyard
 cd tools/airship pegleg site -r /target collect airsloop -s collect
 ```
 
+After generating in airship-treasuremap
+ 
 ```bash
-cp /home/jb447c/proj/nc_openstack/airship-treasuremap/collect/airship-treasuremap.yaml .
-sed -f ../tools/asit2crd.sed airship-treasuremap.yaml > airship/airship.yaml
+cp $HOME/airship-treasuremap/collect/airship-treasuremap.yaml . 
+```
+
+Add kind, apiversion and replace (data: by spec: which is convinient for lexical ordering
+of yaml dictionnaries)
+
+```bash
+sed -f ../../tools/pegleg2crd.sed airship-treasuremap.yaml > airship/airship.yaml 
+```
+
+Transfer duplicated declaration from airship.yaml to airsloop.yaml until
+kustomize build works with only airship.yaml in resources and airsloop.yaml in patchMerge
+sections
+
+Note:
+- Moved the duplicated/overrides from airship/airship.yaml to overlays/airsloop/airsloop.yaml
+- usage of name: especially for (-global) seems inconsistent.
+
+Note: Detected small issues in override such as:
+- name: elasticsearch-global
+- name: neutron-fixme
+
+```bash
+prompt$ kustomize build overlays/airsloop
+Error: failed to find an object with armada.airshipit.org_v1alpha_ArmadaChart|fluent-logging to apply the patch
+```
+
+```bash
+vi airship/airship.yaml overlays/airsloop/airsloop.yaml
+```
+
+Normalize using kustomize
+
+```bash
+vi airsloop/kustomize.yaml (only keep airship.yaml in resources)
+kustomize build airsloop > new_airship.yaml
+mv new_airship.yaml airsloop/airship.yaml
+```
+
+```bash
+vi airsloop/kustomize.yaml (only keep airsloop.yaml in resources)
+kustomize build airsloop > new_airsloop.yaml
+mv new_airsloop.yaml overlays/airsloop/airsloop.yaml
 ```
 
 Manual manipulation
-- move all the DeckhandDataSchema into airsloop/crds/crds.yaml
+- move all the DeckhandDataSchema into base/crds/crds.yaml
 - created a airsloop/kustomizeconfig for each CRD left in the airsloop.yaml
 - remove all the remainings "schema"
 
@@ -39,23 +84,11 @@ Manual manipulation
 
 #### TreasureMap Airship deployment
 
-Note: Moved the duplicated/overrides from airship/airship.yaml to overlays/airsloop/airsloop.yaml
-
 ```bash
 kustomize build airship
 diff <(kustomize build airship) build/generated_airship.yaml
 ```
 #### TreasureMap Airsloop deployment
-
-Note: Detected small issues in override such as:
-- name: elasticsearch-global
-- name: neutron-fixme
-
-
-```bash
-prompt$ kustomize build overlays/airsloop
-Error: failed to find an object with armada.airshipit.org_v1alpha_ArmadaChart|fluent-logging to apply the patch
-```
 
 ```bash
 kustomize build overlays/airsloop
@@ -109,7 +142,7 @@ Quick notes:
 ### Creating CRDs in kubectl
 
 ```
-kubectl apply -f airship/crds/
+kubectl apply -f base/crds/
 
 customresourcedefinition.apiextensions.k8s.io/armadacharts.armada.airshipit.org created
 customresourcedefinition.apiextensions.k8s.io/armadachartgroups.armada.airshipit.org created

@@ -49,4 +49,47 @@ Check that replacejson and patchmerge have the same result on the objects
 diff <(kustomize build overlays/patchmerge) <(kustomize build overlays/replacejson)
 ```
 
+## airsloop/airship testing
 
+### Creating original files
+
+Clone airship-shipyard repo
+
+```bash
+cd airship-shipyard
+cd tools/airship pegleg site -r /target collect airsloop -s collect
+```
+
+After generating in airship-treasuremap
+ 
+```bash
+cp $HOME/airship-treasuremap/collect/airship-treasuremap.yaml airsloop 
+```
+
+Add kind, apiversion and replace (data: by spec: which is convinient for lexical ordering
+of yaml dictionnaries)
+
+```bash
+sed -f ../../tools/pegleg2asit.sed airship-treasuremap.yaml > airship.yaml 
+```
+
+Transfer duplicated declaration from airship.yaml to airsloop.yaml until
+kustomize build works with only airship.yaml in resources and airsloop.yaml in patchMerge
+sections
+
+```bash
+vi airsloop/airship.yaml airsloop/airsloop.yaml
+```
+
+Normalize using kustomize
+```bash
+vi airsloop/kustomize.yaml (only keep airship.yaml in resources)
+kustomize build airsloop > new_airship.yaml
+mv new_airship.yaml airsloop/airship.yaml
+```
+
+```bash
+vi airsloop/kustomize.yaml (only keep airsloop.yaml in resources)
+kustomize build airsloop > new_airsloop.yaml
+mv new_airsloop.yaml airsloop/airsloop.yaml
+```
