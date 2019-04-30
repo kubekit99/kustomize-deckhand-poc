@@ -194,6 +194,83 @@ def remove_metadata(filename):
     return docs2
 
 
+def find_key(key, node):
+    thekey = key.pop(0)
+    theindex = -1
+    if thekey.startswith('_') and thekey.endswith('_'):
+        theindex = int(thekey.replace("_", ""))
+
+    if (len(key) == 0):
+        if (theindex != -1):
+            return node[theindex]
+        else:
+            return node[thekey]
+    else:
+        if (theindex != -1):
+            return find_key(key, node[theindex])
+        else:
+            return find_key(key, node[thekey])
+
+
+def check_var_or_substitution(filename):
+    """
+    TBD
+    Args:
+       tbd
+    Returns:
+       tbd
+    """
+    docs2 = []
+    vars = {}
+    varrefs = {}
+
+    with open("kustomization.vars.yaml", 'r') as stream:
+        vars = yaml.load(stream)
+
+    realvars = []
+    realsubs = []
+
+    with open(filename, 'r') as stream:
+        try:
+            docs = yaml.load_all(stream)
+        except yaml.YAMLError as exc:
+            print(exc)
+
+        docs2 = list(docs)
+
+
+        for var in vars:
+            path = var["fieldref"]["fieldpath"]
+            name = var["name"]
+            objkind = var["objref"]["kind"]
+            objname = var["objref"]["name"]
+
+            found = None
+            for doc in docs2:
+                if (doc["kind"] == objkind) and (doc["metadata"]["name"] == objname):
+                    found = doc
+                    continue
+
+            if found:
+                print("Found " + name)
+                res = find_key(path.split("."),found)
+                if isinstance(res, dict):
+                   realsubs.append(var)
+                else:
+                   realvars.append(var)
+            else:
+                print("Unknown " + name)
+
+    sortedlist = sorted(realvars, key=lambda k: k['name'])
+    with open("kustomization.realvars.yaml", 'w') as stream:
+        yaml.dump(sortedlist, stream, default_flow_style=False)
+    sortedlist = sorted(realsubs, key=lambda k: k['name'])
+    with open("kustomization.realsubs.yaml", 'w') as stream:
+        yaml.dump(sortedlist, stream, default_flow_style=False)
+
+    return docs2
+
+
 def save_file(filename, docs):
     with open(filename, 'w') as stream:
         yaml.dump_all(docs, stream, default_flow_style=False)
@@ -204,7 +281,7 @@ if __name__ == "__main__":
 
     parser.add_argument('-c', '--command',
                         help="Command to run",
-                        type=str, choices=["extract_subst", "remove_metadata"],
+                        type=str, choices=["extract_subst", "remove_metadata", "check"],
                         default="extract_subst")
     parser.add_argument('-f', '--filename',
                         help="filename",
@@ -219,5 +296,7 @@ if __name__ == "__main__":
     elif (args.command == "remove_metadata"):
         docs = remove_metadata(args.filename)
         save_file(args.filename + ".simple", docs)
+    elif (args.command == "check"):
+        docs = check_var_or_substitution(args.filename)
     else:
         pass

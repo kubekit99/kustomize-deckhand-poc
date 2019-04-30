@@ -7,3 +7,5 @@ varReference:
   path: spec/assets/_1_/data
 - kind: DrydockBootAction
   path: spec/assets/_1_/path
+
+inlineReference:

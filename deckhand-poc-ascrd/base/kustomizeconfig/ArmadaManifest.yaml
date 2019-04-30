@@ -3,10 +3,9 @@ nameReference:
   fieldSpecs:
   - path: spec/chartGroupRef/name
     kind: ArmadaManifest
-  - path: spec/chart_groups[0]
-    kind: ArmadaManifest
-
 
 varReference:
 - path: spec/release_prefix
   kind: ArmadaManifest
+
+inlineReference:

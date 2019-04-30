@@ -23,3 +23,5 @@ varReference:
   path: spec/osh/swift/keystone/region_name
 - kind: PeglegAccountCatalogue
   path: spec/osh_infra/prometheus_openstack_exporter/user/region_name
+
+inlineReference:

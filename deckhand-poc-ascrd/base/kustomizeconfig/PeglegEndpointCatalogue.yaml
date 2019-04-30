@@ -1,3 +1,5 @@
 varReference:
 - kind: PeglegEndpointCatalogue
   path: spec/osh_infra/ldap/path/default
+
+inlineReference:

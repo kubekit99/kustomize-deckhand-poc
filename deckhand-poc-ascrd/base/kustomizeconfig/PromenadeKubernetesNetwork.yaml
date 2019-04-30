@@ -23,3 +23,5 @@ varReference:
   path: spec/proxy/additional_no_proxy
 - kind: PromenadeKubernetesNetwork
   path: spec/proxy/url
+
+inlineReference:
