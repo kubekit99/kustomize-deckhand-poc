@@ -31,8 +31,8 @@ spec:
     details:
       data: here
     values:
-      some_url: http://admin:$(INSERT_PASSWORD_HERE)@service-name:8080
+      some_url: http://admin:$(DeckhandPassphrase.example-password.spec)@service-name:8080
       tls:
-         key: $(THE_CERTIFICATE_KEY)
-         certificate: $(THE_CERTIFICATE)
+         key: $(DeckhandCertificateKey.example-key.spec)
+         certificate: $(DeckhandCertificate.example-cert.spec)
 ...

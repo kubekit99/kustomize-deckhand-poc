@@ -38,7 +38,7 @@ spec:
   values:
     secrets:
        tls:
-          cert: $(THE_CERTIFICATE)
+          cert: $(DeckhandCertificate.example-cert.spec)
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
@@ -56,5 +56,5 @@ spec:
   values:
     secrets:
       tls:
-        key: $(THE_CERTIFICATE_KEY)
+        key: $(DeckhandCertificateKey.example-key.spec)
 ...
