@@ -139,8 +139,9 @@ def load_file(filename):
     varlist=[]
     for key, value in vars.items():
        varlist.append(value)
+    sortedlist = sorted(varlist, key=lambda k: k['name']) 
     with open("kustomization.vars.yaml", 'w') as stream:
-        yaml.dump(varlist, stream, default_flow_style=False)
+        yaml.dump(sortedlist, stream, default_flow_style=False)
 
     return docs2
 

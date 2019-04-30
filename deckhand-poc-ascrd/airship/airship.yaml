@@ -538,42 +538,42 @@ metadata:
       path: .dns.service_ip
   - dest:
       path: .values.conf.coredns.corefile
-      pattern: (CLUSTER_DOMAIN)
+      pattern: CLUSTER_DOMAIN
     src:
       kind: PeglegCommonAddresses
       name: common-addresses
       path: .dns.cluster_domain
   - dest:
       path: .values.conf.coredns.corefile
-      pattern: (SERVICE_CIDR)
+      pattern: SERVICE_CIDR
     src:
       kind: PeglegCommonAddresses
       name: common-addresses
       path: .kubernetes.service_cidr
   - dest:
       path: .values.conf.coredns.corefile
-      pattern: (POD_CIDR)
+      pattern: POD_CIDR
     src:
       kind: PeglegCommonAddresses
       name: common-addresses
       path: .kubernetes.pod_cidr
   - dest:
       path: .values.conf.coredns.corefile
-      pattern: (UPSTREAM1)
+      pattern: UPSTREAM1
     src:
       kind: PeglegCommonAddresses
       name: common-addresses
       path: .dns.upstream_servers[0]
   - dest:
       path: .values.conf.coredns.corefile
-      pattern: (UPSTREAM2)
+      pattern: UPSTREAM2
     src:
       kind: PeglegCommonAddresses
       name: common-addresses
       path: .dns.upstream_servers[1]
   - dest:
       path: .values.conf.coredns.corefile
-      pattern: (UPSTREAM3)
+      pattern: UPSTREAM3
     src:
       kind: PeglegCommonAddresses
       name: common-addresses
@@ -600,15 +600,15 @@ spec:
               errors
               health
               autopath @kubernetes
-              kubernetes CLUSTER_DOMAIN SERVICE_CIDR POD_CIDR {
+              kubernetes $(PeglegCommonAddresses.common-addresses.spec.dns.cluster_domain) $(PeglegCommonAddresses.common-addresses.spec.kubernetes.service_cidr) $(PeglegCommonAddresses.common-addresses.spec.kubernetes.pod_cidr) {
                 pods insecure
                 fallthrough in-addr.arpa ip6.arpa
-                upstream UPSTREAM1
-                upstream UPSTREAM2
-                upstream UPSTREAM3
+                upstream $(PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers._0_)
+                upstream $(PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers._1_)
+                upstream $(PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers._2_)
               }
               prometheus :9153
-              forward . UPSTREAM1 UPSTREAM2 UPSTREAM3
+              forward . $(PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers._0_) $(PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers._1_) $(PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers._2_)
               cache 30
           }
     images:
@@ -11564,28 +11564,28 @@ metadata:
       path: .images.ucp.maas
   - dest:
       path: .values.conf.drydock.bootaction_url
-      pattern: (DRYDOCK_IP)
+      pattern: DRYDOCK_IP
     src:
       kind: PeglegCommonAddresses
       name: common-addresses
       path: .bootstrap.ip
   - dest:
       path: .values.conf.drydock.bootaction_url
-      pattern: (DRYDOCK_PORT)
+      pattern: DRYDOCK_PORT
     src:
       kind: PeglegCommonAddresses
       name: common-addresses
       path: .node_ports.drydock_api
   - dest:
       path: .values.conf.maas.url.maas_url
-      pattern: (MAAS_IP)
+      pattern: MAAS_IP
     src:
       kind: PeglegCommonAddresses
       name: common-addresses
       path: .bootstrap.ip
   - dest:
       path: .values.conf.maas.url.maas_url
-      pattern: (MAAS_PORT)
+      pattern: MAAS_PORT
     src:
       kind: PeglegCommonAddresses
       name: common-addresses
@@ -11696,7 +11696,7 @@ spec:
       cache:
         enabled: true
       drydock:
-        bootaction_url: http://DRYDOCK_IP:DRYDOCK_PORT/api/v1.0/bootactions/nodes/
+        bootaction_url: http://$(PeglegCommonAddresses.common-addresses.spec.bootstrap.ip):$(PeglegCommonAddresses.common-addresses.spec.node_ports.drydock_api)/api/v1.0/bootactions/nodes/
       maas:
         credentials:
           secret:
@@ -11712,7 +11712,7 @@ spec:
         proxy:
           proxy_enabled: "true"
         url:
-          maas_url: http://MAAS_IP:MAAS_PORT/MAAS
+          maas_url: http://$(PeglegCommonAddresses.common-addresses.spec.bootstrap.ip):$(PeglegCommonAddresses.common-addresses.spec.node_ports.maas_api)/MAAS
     endpoints:
       maas_db:
         auth:
