@@ -255,6 +255,14 @@ varReference:
   path: spec/values/command_prefix/_1_
 - kind: ArmadaChart
   path: spec/values/command_prefix/_2_
+- kind: ArmadaChart
+  path: spec/values/endpoints/etcd/host_fqdn_override/default
+- kind: ArmadaChart
+  path: spec/values/endpoints/oslo_db/auth/nova/username
+- kind: ArmadaChart
+  path: spec/values/endpoints/physicalprovisioner/port/api/nodeport
+- kind: ArmadaChart
+  path: spec/values/endpoints/ldap/auth/admin/bind_dn
 
 inlineReference:
 - kind: ArmadaChart
@@ -295,8 +303,6 @@ inlineReference:
   path: spec/values/endpoints/elasticsearch
 - kind: ArmadaChart
   path: spec/values/endpoints/elasticsearch/auth/admin
-- kind: ArmadaChart
-  path: spec/values/endpoints/etcd/host_fqdn_override/default
 - kind: ArmadaChart
   path: spec/values/endpoints/fluentd
 - kind: ArmadaChart
@@ -354,8 +360,6 @@ inlineReference:
 - kind: ArmadaChart
   path: spec/values/endpoints/ldap/auth/admin
 - kind: ArmadaChart
-  path: spec/values/endpoints/ldap/auth/admin/bind_dn
-- kind: ArmadaChart
   path: spec/values/endpoints/maas_db
 - kind: ArmadaChart
   path: spec/values/endpoints/maas_db/auth/admin
@@ -406,8 +410,6 @@ inlineReference:
 - kind: ArmadaChart
   path: spec/values/endpoints/oslo_db/auth/neutron
 - kind: ArmadaChart
-  path: spec/values/endpoints/oslo_db/auth/nova/username
-- kind: ArmadaChart
   path: spec/values/endpoints/oslo_db/auth/user
 - kind: ArmadaChart
   path: spec/values/endpoints/oslo_db/path
@@ -451,8 +453,6 @@ inlineReference:
   path: spec/values/endpoints/oslo_messaging/auth/user
 - kind: ArmadaChart
   path: spec/values/endpoints/physicalprovisioner
-- kind: ArmadaChart
-  path: spec/values/endpoints/physicalprovisioner/port/api/nodeport
 - kind: ArmadaChart
   path: spec/values/endpoints/placement
 - kind: ArmadaChart
@@ -509,7 +509,7 @@ inlineReference:
   path: spec/values/endpoints/volumev2
 - kind: ArmadaChart
   path: spec/values/endpoints/volumev3
-# - kind: ArmadaChart
-#  path: spec/values/images
+- kind: ArmadaChart
+  path: spec/values/images
 - kind: ArmadaChart
   path: spec/values/images/tags

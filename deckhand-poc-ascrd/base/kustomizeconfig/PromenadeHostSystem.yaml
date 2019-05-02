@@ -12,10 +12,10 @@ varReference:
 - kind: PromenadeHostSystem
   path: spec/images/kubernetes/kubectl
 - kind: PromenadeHostSystem
-  path: spec/packages/additional
-- kind: PromenadeHostSystem
   path: spec/packages/required/docker
 - kind: PromenadeHostSystem
   path: spec/packages/required/socat
 
 inlineReference:
+- kind: PromenadeHostSystem
+  path: spec/packages/additional

@@ -1082,13 +1082,6 @@ vars:
     kind: PeglegCommonAddresses
     name: common-addresses
 - fieldref:
-    fieldpath: spec.proxy.no_proxy
-  name: PeglegCommonAddresses.common-addresses.spec.proxy.no_proxy
-  objref:
-    apiVersion: pegleg.airshipit.org/v1alpha1
-    kind: PeglegCommonAddresses
-    name: common-addresses
-- fieldref:
     fieldpath: spec.storage.ceph.cluster_cidr
   name: PeglegCommonAddresses.common-addresses.spec.storage.ceph.cluster_cidr
   objref:
@@ -1224,13 +1217,6 @@ vars:
 - fieldref:
     fieldpath: spec.packages.named.socat
   name: PeglegSoftwareVersions.software-versions.spec.packages.named.socat
-  objref:
-    apiVersion: pegleg.airshipit.org/v1alpha1
-    kind: PeglegSoftwareVersions
-    name: software-versions
-- fieldref:
-    fieldpath: spec.packages.unnamed
-  name: PeglegSoftwareVersions.software-versions.spec.packages.unnamed
   objref:
     apiVersion: pegleg.airshipit.org/v1alpha1
     kind: PeglegSoftwareVersions
@@ -2851,6 +2837,13 @@ inlines:
     kind: PeglegSoftwareVersions
     name: software-versions
 - fieldref:
+    fieldpath: spec.dns.upstream_servers
+  name: PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers
+  objref:
+    apiVersion: pegleg.airshipit.org/v1alpha1
+    kind: PeglegCommonAddresses
+    name: common-addresses
+- fieldref:
     fieldpath: spec.images.calico.calico
   name: PeglegSoftwareVersions.software-versions.spec.images.calico.calico
   objref:
@@ -3278,8 +3271,15 @@ inlines:
     kind: PeglegSoftwareVersions
     name: software-versions
 - fieldref:
-    fieldpath: spec.dns.upstream_servers
-  name: PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers
+    fieldpath: spec.packages.unnamed
+  name: PeglegSoftwareVersions.software-versions.spec.packages.unnamed
+  objref:
+    apiVersion: pegleg.airshipit.org/v1alpha1
+    kind: PeglegSoftwareVersions
+    name: software-versions
+- fieldref:
+    fieldpath: spec.proxy.no_proxy
+  name: PeglegCommonAddresses.common-addresses.spec.proxy.no_proxy
   objref:
     apiVersion: pegleg.airshipit.org/v1alpha1
     kind: PeglegCommonAddresses
