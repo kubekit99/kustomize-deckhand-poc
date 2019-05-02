@@ -93,7 +93,7 @@ spec:
                 required:
                   - 'repo_type'
                   - 'url'
-                  - 'arches'
+                #JEB  - 'arches'
 status:
   acceptedNames:
     kind: ""
