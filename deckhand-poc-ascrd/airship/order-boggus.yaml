@@ -1,0 +1,23 @@
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: cinder-rabbitmq
+spec:
+  values:
+    endpoints:
+      oslo_messaging:
+        auth:
+          foobar: foo
+          user:
+            foobar: bar
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: cinder-rabbitmq
+        namespace: openstack
+        path: /cinder
+        port:
+          amqp:
+            default: 5672
+          http:
+            default: 15672

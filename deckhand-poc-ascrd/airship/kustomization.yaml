@@ -9,6 +9,10 @@ resources:
 # - airship-novars.yaml
 - airship.yaml
 
+# Attempt to solve inlining using patches
+# patchesStrategicMerge:
+# - order-boggus.yaml
+
 # namePrefix: pref1-
 
 # namespace: airship

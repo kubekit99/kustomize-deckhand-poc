@@ -75,9 +75,9 @@ spec:
         auth:
           erlang_cookie: $(DeckhandPassphrase.osh-cinder-rabbitmq-erlang-cookie.spec)
           user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.cinder.oslo_messaging.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.cinder.oslo_messaging.admin)
             password: $(DeckhandPassphrase.osh-cinder-oslo-messaging-admin-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.cinder_oslo_messaging)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.cinder_oslo_messaging)
       prometheus_rabbitmq_exporter: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.cinder_rabbitmq_exporter)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh.rabbitmq)
@@ -203,36 +203,36 @@ spec:
       identity:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.admin)
             password: $(DeckhandPassphrase.osh-keystone-admin-password.spec)
           cinder:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.cinder.cinder)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.cinder.cinder)
             password: $(DeckhandPassphrase.osh-cinder-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.identity)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.identity)
       image: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.image)
       image_registry: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.image_registry)
       oslo_cache:
         auth:
           memcache_secret_key: $(DeckhandPassphrase.osh-oslo-cache-secret-key.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_cache)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_cache)
       oslo_db:
         auth:
           admin:
             password: $(DeckhandPassphrase.osh-oslo-db-admin-password.spec)
           cinder:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.cinder.oslo_db)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.cinder.oslo_db)
             password: $(DeckhandPassphrase.osh-cinder-oslo-db-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db)
         path: /$(PeglegAccountCatalogue.osh-service-accounts.spec.osh.cinder.oslo_db.database)
       oslo_messaging:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.cinder.oslo_messaging.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.cinder.oslo_messaging.admin)
             password: $(DeckhandPassphrase.osh-cinder-oslo-messaging-admin-password.spec)
           cinder:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.cinder.oslo_messaging.cinder)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.cinder.oslo_messaging.cinder)
             password: $(DeckhandPassphrase.osh-cinder-oslo-messaging-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.cinder_oslo_messaging)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.cinder_oslo_messaging)
       volume: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.volume)
       volumev2: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.volumev2)
       volumev3: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.volumev3)
@@ -532,24 +532,24 @@ spec:
         auth:
           admin:
             access_key: $(DeckhandPassphrase.osh-infra-rgw-s3-admin-access-key.spec)
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.ceph_object_store.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.ceph_object_store.admin)
             secret_key: $(DeckhandPassphrase.osh-infra-rgw-s3-admin-secret-key.spec)
           elasticsearch:
             access_key: $(DeckhandPassphrase.osh-infra-rgw-s3-elasticsearch-access-key.spec)
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.ceph_object_store.elasticsearch)
+            parent-inline: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.ceph_object_store.elasticsearch)
             secret_key: $(DeckhandPassphrase.osh-infra-rgw-s3-elasticsearch-secret-key.spec)
       elasticsearch:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.elasticsearch.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.elasticsearch.admin)
             password: $(DeckhandPassphrase.osh-infra-elasticsearch-admin-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.elasticsearch)
+        parent-inline: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.elasticsearch)
       ldap:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.ldap.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.ldap.admin)
             password: $(DeckhandPassphrase.osh-keystone-ldap-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.ldap)
+        parent-inline: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.ldap)
       prometheus_elasticsearch_exporter: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.prometheus_elasticsearch_exporter)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh_infra.elasticsearch)
@@ -949,9 +949,9 @@ spec:
       elasticsearch:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.elasticsearch.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.elasticsearch.admin)
             password: $(DeckhandPassphrase.osh-infra-elasticsearch-admin-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.elasticsearch)
+        parent-inline: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.elasticsearch)
       fluentd: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.fluentd)
       prometheus_fluentd_exporter: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.prometheus_fluentd_exporter)
     images:
@@ -1048,9 +1048,9 @@ spec:
         auth:
           erlang_cookie: $(DeckhandPassphrase.osh-glance-rabbitmq-erlang-cookie.spec)
           user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.glance.oslo_messaging.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.glance.oslo_messaging.admin)
             password: $(DeckhandPassphrase.osh-glance-oslo-messaging-admin-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.glance_oslo_messaging)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.glance_oslo_messaging)
       prometheus_rabbitmq_exporter: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.glance_rabbitmq_exporter)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh.rabbitmq)
@@ -1175,49 +1175,49 @@ spec:
       ceph_object_store:
         auth:
           glance:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.glance.ceph_object_store)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.glance.ceph_object_store)
             password: $(DeckhandPassphrase.osh-glance-password.spec)
             tmpurlkey: $(DeckhandPassphrase.ceph-swift-keystone-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.ceph_object_store)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.ceph_object_store)
       fluentd: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.fluentd)
       identity:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.admin)
             password: $(DeckhandPassphrase.osh-keystone-admin-password.spec)
           glance:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.glance.glance)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.glance.glance)
             password: $(DeckhandPassphrase.osh-glance-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.identity)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.identity)
       image: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.image)
       image_registry: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.image_registry)
       object_store:
         auth:
           glance:
             tmpurlkey: $(DeckhandPassphrase.ceph-swift-keystone-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.object_store)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.object_store)
       oslo_cache:
         auth:
           memcache_secret_key: $(DeckhandPassphrase.osh-oslo-cache-secret-key.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_cache)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_cache)
       oslo_db:
         auth:
           admin:
             password: $(DeckhandPassphrase.osh-oslo-db-admin-password.spec)
           glance:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.glance.oslo_db)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.glance.oslo_db)
             password: $(DeckhandPassphrase.osh-glance-oslo-db-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db)
         path: /$(PeglegAccountCatalogue.osh-service-accounts.spec.osh.glance.oslo_db.database)
       oslo_messaging:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.glance.oslo_messaging.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.glance.oslo_messaging.admin)
             password: $(DeckhandPassphrase.osh-glance-oslo-messaging-admin-password.spec)
           glance:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.glance.oslo_messaging.glance)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.glance.oslo_messaging.glance)
             password: $(DeckhandPassphrase.osh-glance-oslo-messaging-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.glance_oslo_messaging)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.glance_oslo_messaging)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh.glance)
     labels:
@@ -1308,38 +1308,38 @@ spec:
       grafana:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.grafana.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.grafana.admin)
             password: $(DeckhandPassphrase.osh-infra-grafana-admin-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.grafana)
+        parent-inline: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.grafana)
       ldap:
         auth:
           admin:
             bind_dn: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.ldap.admin.bind)
             password: $(DeckhandPassphrase.osh-keystone-ldap-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.ldap)
+        parent-inline: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.ldap)
       monitoring:
         auth:
           user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.prometheus.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.prometheus.admin)
             password: $(DeckhandPassphrase.osh-infra-prometheus-admin-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.monitoring)
+        parent-inline: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.monitoring)
       oslo_db:
         auth:
           admin:
             password: $(DeckhandPassphrase.osh-infra-oslo-db-admin-password.spec)
           user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.grafana.oslo_db)
+            parent-inline: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.grafana.oslo_db)
             password: $(DeckhandPassphrase.osh-infra-grafana-oslo-db-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.oslo_db)
+        parent-inline: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.oslo_db)
         path: /$(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.grafana.oslo_db.database)
       oslo_db_session:
         auth:
           admin:
             password: $(DeckhandPassphrase.osh-infra-oslo-db-admin-password.spec)
           user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.grafana.oslo_db_session)
+            parent-inline: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.grafana.oslo_db_session)
             password: $(DeckhandPassphrase.osh-infra-grafana-oslo-db-session-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.oslo_db)
+        parent-inline: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.oslo_db)
         path: /$(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.grafana.oslo_db_session.database)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh_infra.grafana)
@@ -1468,9 +1468,9 @@ spec:
         auth:
           erlang_cookie: $(DeckhandPassphrase.osh-heat-rabbitmq-erlang-cookie.spec)
           user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.heat.oslo_messaging.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.heat.oslo_messaging.admin)
             password: $(DeckhandPassphrase.osh-heat-oslo-messaging-admin-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.heat_oslo_messaging)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.heat_oslo_messaging)
       prometheus_rabbitmq_exporter: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.heat_rabbitmq_exporter)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh.rabbitmq)
@@ -1595,41 +1595,41 @@ spec:
       identity:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.admin)
             password: $(DeckhandPassphrase.osh-keystone-admin-password.spec)
           heat:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.heat.heat)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.heat.heat)
             password: $(DeckhandPassphrase.osh-heat-password.spec)
           heat_stack_user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.heat.heat_stack_user)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.heat.heat_stack_user)
             password: $(DeckhandPassphrase.osh-heat-stack-user-password.spec)
           heat_trustee:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.heat.heat_trustee)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.heat.heat_trustee)
             password: $(DeckhandPassphrase.osh-heat-trustee-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.identity)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.identity)
       orchestration: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.orchestration)
       oslo_cache:
         auth:
           memcache_secret_key: $(DeckhandPassphrase.osh-oslo-cache-secret-key.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_cache)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_cache)
       oslo_db:
         auth:
           admin:
             password: $(DeckhandPassphrase.osh-oslo-db-admin-password.spec)
           heat:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.heat.oslo_db)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.heat.oslo_db)
             password: $(DeckhandPassphrase.osh-heat-oslo-db-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db)
         path: /$(PeglegAccountCatalogue.osh-service-accounts.spec.osh.heat.oslo_db.database)
       oslo_messaging:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.heat.oslo_messaging.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.heat.oslo_messaging.admin)
             password: $(DeckhandPassphrase.osh-heat-oslo-messaging-admin-password.spec)
           heat:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.heat.oslo_messaging.heat)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.heat.oslo_messaging.heat)
             password: $(DeckhandPassphrase.osh-heat-oslo-messaging-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.heat_oslo_messaging)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.heat_oslo_messaging)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh.heat)
     labels:
@@ -1694,7 +1694,7 @@ spec:
       oslo_cache:
         auth:
           memcache_secret_key: $(DeckhandPassphrase.osh-oslo-cache-secret-key.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_cache)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_cache)
       oslo_db:
         auth:
           admin:
@@ -1702,7 +1702,7 @@ spec:
           horizon: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.horizon.oslo_db)
           keystone:
             password: $(DeckhandPassphrase.osh-horizon-oslo-db-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db)
         path: /$(PeglegAccountCatalogue.osh-service-accounts.spec.osh.horizon.oslo_db.database)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh.horizon)
@@ -1816,9 +1816,9 @@ spec:
         auth:
           erlang_cookie: $(DeckhandPassphrase.osh-keystone-rabbitmq-erlang-cookie.spec)
           user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.oslo_messaging.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.oslo_messaging.admin)
             password: $(DeckhandPassphrase.osh-keystone-oslo-messaging-admin-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.keystone_oslo_messaging)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.keystone_oslo_messaging)
       prometheus_rabbitmq_exporter: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.keystone_rabbitmq_exporter)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh.rabbitmq)
@@ -1966,31 +1966,31 @@ spec:
       identity:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.admin)
             password: $(DeckhandPassphrase.osh-keystone-admin-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.identity)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.identity)
       oslo_cache:
         auth:
           memcache_secret_key: $(DeckhandPassphrase.osh-oslo-cache-secret-key.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_cache)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_cache)
       oslo_db:
         auth:
           admin:
             password: $(DeckhandPassphrase.osh-oslo-db-admin-password.spec)
           keystone:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.oslo_db)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.oslo_db)
             password: $(DeckhandPassphrase.osh-keystone-oslo-db-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db)
         path: /$(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.oslo_db.database)
       oslo_messaging:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.oslo_messaging.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.oslo_messaging.admin)
             password: $(DeckhandPassphrase.osh-keystone-oslo-messaging-admin-password.spec)
           keystone:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.oslo_messaging.keystone)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.oslo_messaging.keystone)
             password: $(DeckhandPassphrase.osh-keystone-oslo-messaging-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.keystone_oslo_messaging)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.keystone_oslo_messaging)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh.keystone)
     labels:
@@ -2060,16 +2060,16 @@ spec:
       elasticsearch:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.elasticsearch.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.elasticsearch.admin)
             password: $(DeckhandPassphrase.osh-infra-elasticsearch-admin-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.elasticsearch)
+        parent-inline: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.elasticsearch)
       kibana: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.kibana)
       ldap:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.ldap.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.ldap.admin)
             password: $(DeckhandPassphrase.osh-keystone-ldap-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.ldap)
+        parent-inline: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.ldap)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh_infra.kibana)
     labels:
@@ -2713,27 +2713,27 @@ spec:
       elasticsearch:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.elasticsearch.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.elasticsearch.admin)
             password: $(DeckhandPassphrase.osh-infra-elasticsearch-admin-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.elasticsearch)
+        parent-inline: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.elasticsearch)
       ldap:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.ldap.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.ldap.admin)
             password: $(DeckhandPassphrase.osh-keystone-ldap-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.ldap)
+        parent-inline: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.ldap)
       monitoring:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.prometheus.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.prometheus.admin)
             password: $(DeckhandPassphrase.osh-infra-prometheus-admin-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.monitoring)
+        parent-inline: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.monitoring)
       nagios:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.nagios.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.nagios.admin)
             password: $(DeckhandPassphrase.osh-infra-nagios-admin-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.nagios)
+        parent-inline: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.nagios)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh_infra.nagios)
     labels:
@@ -2783,9 +2783,9 @@ spec:
         auth:
           erlang_cookie: $(DeckhandPassphrase.osh-neutron-rabbitmq-erlang-cookie.spec)
           user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.neutron.oslo_messaging.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.neutron.oslo_messaging.admin)
             password: $(DeckhandPassphrase.osh-neutron-oslo-messaging-admin-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.neutron_oslo_messaging)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.neutron_oslo_messaging)
       prometheus_rabbitmq_exporter: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.neutron_rabbitmq_exporter)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh.rabbitmq)
@@ -2928,39 +2928,39 @@ spec:
       identity:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.admin)
             password: $(DeckhandPassphrase.osh-keystone-admin-password.spec)
           neutron:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.neutron.neutron)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.neutron.neutron)
             password: $(DeckhandPassphrase.osh-neutron-password.spec)
           nova:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.nova)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.nova)
             password: $(DeckhandPassphrase.osh-nova-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.identity)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.identity)
       image_registry: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.compute_metadata)
       network: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.network)
       oslo_cache:
         auth:
           memcache_secret_key: $(DeckhandPassphrase.osh-oslo-cache-secret-key.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_cache)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_cache)
       oslo_db:
         auth:
           admin:
             password: $(DeckhandPassphrase.osh-oslo-db-admin-password.spec)
           neutron:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.neutron.oslo_db)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.neutron.oslo_db)
             password: $(DeckhandPassphrase.osh-neutron-oslo-db-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db)
         path: /$(PeglegAccountCatalogue.osh-service-accounts.spec.osh.neutron.oslo_db.database)
       oslo_messaging:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.neutron.oslo_messaging.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.neutron.oslo_messaging.admin)
             password: $(DeckhandPassphrase.osh-neutron-oslo-messaging-admin-password.spec)
           neutron:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.neutron.oslo_messaging.neutron)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.neutron.oslo_messaging.neutron)
             password: $(DeckhandPassphrase.osh-neutron-oslo-messaging-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.neutron_oslo_messaging)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.neutron_oslo_messaging)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh.neutron)
     labels:
@@ -3057,9 +3057,9 @@ spec:
         auth:
           erlang_cookie: $(DeckhandPassphrase.osh-nova-rabbitmq-erlang-cookie.spec)
           user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.oslo_messaging.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.oslo_messaging.admin)
             password: $(DeckhandPassphrase.osh-nova-oslo-messaging-admin-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.nova_oslo_messaging)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.nova_oslo_messaging)
       prometheus_rabbitmq_exporter: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.nova_rabbitmq_exporter)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh.rabbitmq)
@@ -3189,24 +3189,24 @@ spec:
       identity:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.admin)
             password: $(DeckhandPassphrase.osh-keystone-admin-password.spec)
           neutron:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.neutron.neutron)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.neutron.neutron)
             password: $(DeckhandPassphrase.osh-neutron-password.spec)
           nova:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.nova)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.nova)
             password: $(DeckhandPassphrase.osh-nova-password.spec)
           placement:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.placement)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.placement)
             password: $(DeckhandPassphrase.osh-placement-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.identity)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.identity)
       image: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.image)
       network: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.network)
       oslo_cache:
         auth:
           memcache_secret_key: $(DeckhandPassphrase.osh-oslo-cache-secret-key.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_cache)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_cache)
       oslo_db:
         auth:
           admin:
@@ -3214,35 +3214,35 @@ spec:
           nova:
             password: $(DeckhandPassphrase.osh-nova-oslo-db-password.spec)
             username: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.oslo_db.username)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db)
         path: /$(PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.oslo_db.database)
       oslo_db_api:
         auth:
           admin:
             password: $(DeckhandPassphrase.osh-oslo-db-admin-password.spec)
           nova:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.oslo_db_api)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.oslo_db_api)
             password: $(DeckhandPassphrase.osh-nova-oslo-db-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db)
         path: /$(PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.oslo_db_api.database)
       oslo_db_cell0:
         auth:
           admin:
             password: $(DeckhandPassphrase.osh-oslo-db-admin-password.spec)
           nova:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.oslo_db_cell0)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.oslo_db_cell0)
             password: $(DeckhandPassphrase.osh-nova-oslo-db-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db)
         path: /$(PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.oslo_db_cell0.database)
       oslo_messaging:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.oslo_messaging.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.oslo_messaging.admin)
             password: $(DeckhandPassphrase.osh-nova-oslo-messaging-admin-password.spec)
           nova:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.oslo_messaging.nova)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.nova.oslo_messaging.nova)
             password: $(DeckhandPassphrase.osh-nova-oslo-messaging-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.nova_oslo_messaging)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.nova_oslo_messaging)
       placement: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.placement)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh.nova)
@@ -3429,15 +3429,15 @@ spec:
       oslo_db:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.oslo_db.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.oslo_db.admin)
             password: $(DeckhandPassphrase.osh-oslo-db-admin-password.spec)
           exporter:
             password: $(DeckhandPassphrase.osh-oslo-db-exporter-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_db)
       prometheus_mysql_exporter:
         auth:
           user: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.prometheus_mysql_exporter.user)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.prometheus_mysql_exporter)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.prometheus_mysql_exporter)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh.mariadb)
     labels:
@@ -3703,15 +3703,15 @@ spec:
       oslo_db:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.oslo_db.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.oslo_db.admin)
             password: $(DeckhandPassphrase.osh-infra-oslo-db-admin-password.spec)
           exporter:
             password: $(DeckhandPassphrase.osh-infra-oslo-db-exporter-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.oslo_db)
+        parent-inline: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.oslo_db)
       prometheus_mysql_exporter:
         auth:
           user: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.prometheus_mysql_exporter.user)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.prometheus_mysql_exporter)
+        parent-inline: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.prometheus_mysql_exporter)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh.mariadb)
     labels:
@@ -3773,9 +3773,9 @@ spec:
         auth:
           admin:
             access_key: $(DeckhandPassphrase.osh-infra-rgw-s3-admin-access-key.spec)
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.ceph_object_store.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.ceph_object_store.admin)
             secret_key: $(DeckhandPassphrase.osh-infra-rgw-s3-admin-secret-key.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.ceph_object_store)
+        parent-inline: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.ceph_object_store)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.ceph.ceph-rgw)
     labels:
@@ -4036,12 +4036,12 @@ spec:
       identity:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.admin)
             password: $(DeckhandPassphrase.osh-keystone-admin-password.spec)
           user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.prometheus_openstack_exporter.user)
+            parent-inline: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.prometheus_openstack_exporter.user)
             password: $(DeckhandPassphrase.osh-infra-openstack-exporter-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.identity)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.identity)
       prometheus_openstack_exporter: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.prometheus_openstack_exporter)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh_infra.prometheus_openstack_exporter)
@@ -5787,15 +5787,15 @@ spec:
       ldap:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.ldap.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.ldap.admin)
             password: $(DeckhandPassphrase.osh-keystone-ldap-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.ldap)
+        parent-inline: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.ldap)
       monitoring:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.prometheus.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.prometheus.admin)
             password: $(DeckhandPassphrase.osh-infra-prometheus-admin-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.monitoring)
+        parent-inline: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.monitoring)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh_infra.prometheus)
     labels:
@@ -6300,12 +6300,12 @@ spec:
       identity:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.admin)
             password: $(DeckhandPassphrase.osh-keystone-admin-password.spec)
           swift:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.swift.keystone)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.swift.keystone)
             password: $(DeckhandPassphrase.ceph-swift-keystone-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.identity)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.identity)
       object_store: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.object_store)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.ceph.tenant-ceph-rgw)
@@ -6381,12 +6381,12 @@ spec:
       identity:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.admin)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.admin)
             password: $(DeckhandPassphrase.ucp-keystone-admin-password.spec)
           user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.armada.keystone)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.armada.keystone)
             password: $(DeckhandPassphrase.ucp-armada-keystone-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.identity)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.identity)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.ucp.armada)
     manifests:
@@ -6516,12 +6516,12 @@ spec:
       identity:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.admin)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.admin)
             password: $(DeckhandPassphrase.ucp-keystone-admin-password.spec)
           barbican:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.barbican.keystone)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.barbican.keystone)
             password: $(DeckhandPassphrase.ucp-barbican-keystone-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.identity)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.identity)
       key_manager: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.key_manager)
       oslo_cache: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_cache)
       oslo_db:
@@ -6529,9 +6529,9 @@ spec:
           admin:
             password: $(DeckhandPassphrase.ucp-oslo-db-admin-password.spec)
           barbican:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.barbican.oslo_db)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.barbican.oslo_db)
             password: $(DeckhandPassphrase.ucp-barbican-oslo-db-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_db)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_db)
         path: /$(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.barbican.oslo_db.database)
       oslo_messaging:
         auth:
@@ -6539,8 +6539,8 @@ spec:
             password: $(DeckhandPassphrase.ucp-oslo-messaging-password.spec)
           barbican:
             password: $(DeckhandPassphrase.ucp-oslo-messaging-password.spec)
-          #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.barbican.oslo_messaging)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_messaging)
+          parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.barbican.oslo_messaging)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_messaging)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.ucp.barbican)
     labels:
@@ -7038,12 +7038,12 @@ spec:
       identity:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.admin)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.keystone.admin)
             password: $(DeckhandPassphrase.osh-keystone-admin-password.spec)
           swift:
-            #JEB order-boggus: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.swift.keystone)
+            parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.swift.keystone)
             password: $(DeckhandPassphrase.ceph-swift-keystone-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.identity)
+        parent-inline: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.identity)
       object_store: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ceph.object_store)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.ceph.ceph-rgw)
@@ -7106,23 +7106,23 @@ spec:
       identity:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.admin)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.admin)
             password: $(DeckhandPassphrase.ucp-keystone-admin-password.spec)
           user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.deckhand.keystone)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.deckhand.keystone)
             password: $(DeckhandPassphrase.ucp-deckhand-keystone-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.identity)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.identity)
       key_manager: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.key_manager)
       oslo_cache: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_cache)
       postgresql:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.postgres.admin)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.postgres.admin)
             password: $(DeckhandPassphrase.ucp-postgres-admin-password.spec)
           user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.deckhand.postgres)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.deckhand.postgres)
             password: $(DeckhandPassphrase.ucp-deckhand-postgres-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.postgresql)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.postgresql)
         path: /$(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.deckhand.postgres.database)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.ucp.deckhand)
@@ -7237,26 +7237,26 @@ spec:
       identity:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.admin)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.admin)
             password: $(DeckhandPassphrase.ucp-keystone-admin-password.spec)
           drydock:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.drydock.keystone)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.drydock.keystone)
             password: $(DeckhandPassphrase.ucp-drydock-keystone-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.identity)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.identity)
       physicalprovisioner:
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.physicalprovisioner)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.physicalprovisioner)
         port:
           api:
             nodeport: $(PeglegCommonAddresses.common-addresses.spec.node_ports.drydock_api)
       postgresql:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.postgres.admin)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.postgres.admin)
             password: $(DeckhandPassphrase.ucp-postgres-admin-password.spec)
           user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.drydock.postgres)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.drydock.postgres)
             password: $(DeckhandPassphrase.ucp-drydock-postgres-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.postgresql)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.postgresql)
         path: /$(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.drydock.postgres.database)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.ucp.drydock)
@@ -7498,18 +7498,18 @@ spec:
       identity:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.admin)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.admin)
             password: $(DeckhandPassphrase.ucp-keystone-admin-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.identity)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.identity)
       oslo_cache: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_cache)
       oslo_db:
         auth:
           admin:
             password: $(DeckhandPassphrase.ucp-oslo-db-admin-password.spec)
           keystone:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.oslo_db)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.oslo_db)
             password: $(DeckhandPassphrase.ucp-keystone-oslo-db-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_db)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_db)
         path: /$(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.oslo_db.database)
       oslo_messaging:
         auth:
@@ -7517,8 +7517,8 @@ spec:
             password: $(DeckhandPassphrase.ucp-oslo-messaging-password.spec)
           keystone:
             password: $(DeckhandPassphrase.ucp-oslo-messaging-password.spec)
-          #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.oslo_messaging)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_messaging)
+          parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.oslo_messaging)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_messaging)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.ucp.keystone)
     labels:
@@ -7587,19 +7587,19 @@ spec:
       maas_db:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.postgres.admin)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.postgres.admin)
             password: $(DeckhandPassphrase.ucp-postgres-admin-password.spec)
           user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.maas.postgres)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.maas.postgres)
             password: $(DeckhandPassphrase.ucp-maas-postgres-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.postgresql)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.postgresql)
         path: /$(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.maas.postgres.database)
       maas_region_ui:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.maas.admin)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.maas.admin)
             password: $(DeckhandPassphrase.ucp-maas-admin-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.maas_region_ui)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.maas_region_ui)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.ucp.maas)
     jobs:
@@ -7659,9 +7659,9 @@ spec:
       oslo_db:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.oslo_db.admin)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.oslo_db.admin)
             password: $(DeckhandPassphrase.ucp-oslo-db-admin-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_db)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_db)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.ucp.mariadb)
     labels:
@@ -7736,9 +7736,9 @@ spec:
       postgresql:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.postgres.admin)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.postgres.admin)
             password: $(DeckhandPassphrase.ucp-postgres-admin-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.postgresql)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.postgresql)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.ucp.postgresql)
     labels:
@@ -7789,12 +7789,12 @@ spec:
       identity:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.admin)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.admin)
             password: $(DeckhandPassphrase.ucp-keystone-admin-password.spec)
           user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.promenade.keystone)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.promenade.keystone)
             password: $(DeckhandPassphrase.ucp-promenade-keystone-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.identity)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.identity)
       kubernetesprovisioner: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.kubernetesprovisioner)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.ucp.promenade)
@@ -7840,12 +7840,12 @@ spec:
       identity:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.admin)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.admin)
             password: $(DeckhandPassphrase.ucp-keystone-admin-password.spec)
           user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.prometheus_openstack_exporter.user)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.prometheus_openstack_exporter.user)
             password: $(DeckhandPassphrase.ucp-openstack-exporter-keystone-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.identity)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.identity)
       prometheus_openstack_exporter: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.prometheus_openstack_exporter)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh_infra.prometheus_openstack_exporter)
@@ -7907,9 +7907,9 @@ spec:
         auth:
           erlang_cookie: $(DeckhandPassphrase.ucp-rabbitmq-erlang-cookie.spec)
           user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.oslo_messaging.admin)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.oslo_messaging.admin)
             password: $(DeckhandPassphrase.ucp-oslo-messaging-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_messaging)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_messaging)
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.ucp.rabbitmq)
     labels:
@@ -7960,51 +7960,51 @@ spec:
       identity:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.admin)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.keystone.admin)
             password: $(DeckhandPassphrase.ucp-keystone-admin-password.spec)
           shipyard:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.shipyard.keystone)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.shipyard.keystone)
             password: $(DeckhandPassphrase.ucp-shipyard-keystone-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.identity)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.identity)
       oslo_cache: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_cache)
       oslo_messaging:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.airflow.oslo_messaging.admin)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.airflow.oslo_messaging.admin)
             password: $(DeckhandPassphrase.ucp-oslo-messaging-password.spec)
           user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.airflow.oslo_messaging.user)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.airflow.oslo_messaging.user)
             password: $(DeckhandPassphrase.ucp-airflow-oslo-messaging-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.airflow_oslo_messaging)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.airflow_oslo_messaging)
       postgresql_airflow_celery_db:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.postgres.admin)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.postgres.admin)
             password: $(DeckhandPassphrase.ucp-postgres-admin-password.spec)
           user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.airflow.postgres)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.airflow.postgres)
             password: $(DeckhandPassphrase.ucp-airflow-postgres-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.postgresql_airflow_celery)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.postgresql_airflow_celery)
         path: /$(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.airflow.postgres.database)
       postgresql_airflow_db:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.postgres.admin)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.postgres.admin)
             password: $(DeckhandPassphrase.ucp-postgres-admin-password.spec)
           user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.airflow.postgres)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.airflow.postgres)
             password: $(DeckhandPassphrase.ucp-airflow-postgres-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.postgresql)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.postgresql)
         path: /$(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.airflow.postgres.database)
       postgresql_shipyard_db:
         auth:
           admin:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.postgres.admin)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.postgres.admin)
             password: $(DeckhandPassphrase.ucp-postgres-admin-password.spec)
           user:
-            #JEB order-boggus: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.shipyard.postgres)
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.shipyard.postgres)
             password: $(DeckhandPassphrase.ucp-shipyard-postgres-password.spec)
-        #JEB order-boggus: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.postgresql)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.postgresql)
         path: /$(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.shipyard.postgres.database)
       shipyard: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.shipyard)
     images:
