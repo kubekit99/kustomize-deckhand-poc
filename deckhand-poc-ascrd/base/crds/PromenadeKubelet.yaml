@@ -53,8 +53,8 @@ spec:
               type: array
               items:
                 type: string
-          #JEB required:
-          #JEB   - images
+          required:
+            - images
           # additionalProperties: false
 status:
   acceptedNames:

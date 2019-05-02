@@ -314,15 +314,15 @@ spec:
               errors
               health
               autopath @kubernetes
-              kubernetes CLUSTER_DOMAIN SERVICE_CIDR POD_CIDR {
+              kubernetes $(PeglegCommonAddresses.common-addresses.spec.dns.cluster_domain) $(PeglegCommonAddresses.common-addresses.spec.kubernetes.service_cidr) $(PeglegCommonAddresses.common-addresses.spec.kubernetes.pod_cidr) {
                 pods insecure
                 fallthrough in-addr.arpa ip6.arpa
-                upstream UPSTREAM1
-                upstream UPSTREAM2
-                upstream UPSTREAM3
+                upstream $(PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers._0_)
+                upstream $(PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers._1_)
+                upstream $(PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers._2_)
               }
               prometheus :9153
-              forward . UPSTREAM1 UPSTREAM2 UPSTREAM3
+              forward . $(PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers._0_) $(PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers._1_) $(PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers._2_)
               cache 30
           }
     images:
@@ -7193,7 +7193,8 @@ spec:
         net.ipv4.tcp_retries2: "5"
         net.netfilter.nf_conntrack_acct: "1"
         net.nf_conntrack_max: "1048576"
-    images: $(PeglegSoftwareVersions.software-versions.spec.images.ucp.divingbell)
+    images:
+       tags: $(PeglegSoftwareVersions.software-versions.spec.images.ucp.divingbell)
   wait:
     labels:
       release_group: airship-ucp-divingbell
@@ -7566,7 +7567,7 @@ spec:
       cache:
         enabled: true
       drydock:
-        bootaction_url: http://DRYDOCK_IP:DRYDOCK_PORT/api/v1.0/bootactions/nodes/
+        bootaction_url: http://$(PeglegCommonAddresses.common-addresses.spec.bootstrap.ip):$(PeglegCommonAddresses.common-addresses.spec.node_ports.drydock_api)/api/v1.0/bootactions/nodes/
       maas:
         credentials:
           secret:
@@ -7582,7 +7583,7 @@ spec:
         proxy:
           proxy_enabled: "true"
         url:
-          maas_url: http://MAAS_IP:MAAS_PORT/MAAS
+          maas_url: http://$(PeglegCommonAddresses.common-addresses.spec.genesis.ip):$(PeglegCommonAddresses.common-addresses.spec.node_ports.maas_api)/MAAS
     endpoints:
       maas_db:
         auth:

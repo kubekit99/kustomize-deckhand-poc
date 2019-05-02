@@ -291,6 +291,26 @@ varReference:
   path: spec/values/endpoints/physicalprovisioner/port/api/nodeport
 - kind: ArmadaChart
   path: spec/values/endpoints/ldap/auth/admin/bind_dn
+- kind: ArmadaChart
+  path: spec/values/endpoints/ldap/path
+- kind: ArmadaChart
+  path: spec/values/endpoints/oslo_db/path
+- kind: ArmadaChart
+  path: spec/values/endpoints/maas_db/path
+- kind: ArmadaChart
+  path: spec/values/endpoints/postgresql_airflow_celery_db/path
+- kind: ArmadaChart
+  path: spec/values/endpoints/postgresql_airflow_db/path
+- kind: ArmadaChart
+  path: spec/values/endpoints/postgresql_shipyard_db/path
+- kind: ArmadaChart
+  path: spec/values/endpoints/postgresql/path
+- kind: ArmadaChart
+  path: spec/values/endpoints/oslo_db_api/path
+- kind: ArmadaChart
+  path: spec/values/endpoints/oslo_db_cell0/path
+- kind: ArmadaChart
+  path: spec/values/endpoints/oslo_db_session/path
 
 inlineReference:
 - kind: ArmadaChart
@@ -394,8 +414,6 @@ inlineReference:
 - kind: ArmadaChart
   path: spec/values/endpoints/maas_db/auth/user
 - kind: ArmadaChart
-  path: spec/values/endpoints/maas_db/path
-- kind: ArmadaChart
   path: spec/values/endpoints/maas_region_ui
 - kind: ArmadaChart
   path: spec/values/endpoints/maas_region_ui/auth/admin
@@ -440,25 +458,17 @@ inlineReference:
 - kind: ArmadaChart
   path: spec/values/endpoints/oslo_db/auth/user
 - kind: ArmadaChart
-  path: spec/values/endpoints/oslo_db/path
-- kind: ArmadaChart
   path: spec/values/endpoints/oslo_db_api
 - kind: ArmadaChart
   path: spec/values/endpoints/oslo_db_api/auth/nova
-- kind: ArmadaChart
-  path: spec/values/endpoints/oslo_db_api/path
 - kind: ArmadaChart
   path: spec/values/endpoints/oslo_db_cell0
 - kind: ArmadaChart
   path: spec/values/endpoints/oslo_db_cell0/auth/nova
 - kind: ArmadaChart
-  path: spec/values/endpoints/oslo_db_cell0/path
-- kind: ArmadaChart
   path: spec/values/endpoints/oslo_db_session
 - kind: ArmadaChart
   path: spec/values/endpoints/oslo_db_session/auth/user
-- kind: ArmadaChart
-  path: spec/values/endpoints/oslo_db_session/path
 - kind: ArmadaChart
   path: spec/values/endpoints/oslo_messaging
 - kind: ArmadaChart
@@ -490,15 +500,11 @@ inlineReference:
 - kind: ArmadaChart
   path: spec/values/endpoints/postgresql/auth/user
 - kind: ArmadaChart
-  path: spec/values/endpoints/postgresql/path
-- kind: ArmadaChart
   path: spec/values/endpoints/postgresql_airflow_celery_db
 - kind: ArmadaChart
   path: spec/values/endpoints/postgresql_airflow_celery_db/auth/admin
 - kind: ArmadaChart
   path: spec/values/endpoints/postgresql_airflow_celery_db/auth/user
-- kind: ArmadaChart
-  path: spec/values/endpoints/postgresql_airflow_celery_db/path
 - kind: ArmadaChart
   path: spec/values/endpoints/postgresql_airflow_db
 - kind: ArmadaChart
@@ -506,15 +512,11 @@ inlineReference:
 - kind: ArmadaChart
   path: spec/values/endpoints/postgresql_airflow_db/auth/user
 - kind: ArmadaChart
-  path: spec/values/endpoints/postgresql_airflow_db/path
-- kind: ArmadaChart
   path: spec/values/endpoints/postgresql_shipyard_db
 - kind: ArmadaChart
   path: spec/values/endpoints/postgresql_shipyard_db/auth/admin
 - kind: ArmadaChart
   path: spec/values/endpoints/postgresql_shipyard_db/auth/user
-- kind: ArmadaChart
-  path: spec/values/endpoints/postgresql_shipyard_db/path
 - kind: ArmadaChart
   path: spec/values/endpoints/process_exporter_metrics
 - kind: ArmadaChart
@@ -537,7 +539,5 @@ inlineReference:
   path: spec/values/endpoints/volumev2
 - kind: ArmadaChart
   path: spec/values/endpoints/volumev3
-- kind: ArmadaChart
-  path: spec/values/images
 - kind: ArmadaChart
   path: spec/values/images/tags

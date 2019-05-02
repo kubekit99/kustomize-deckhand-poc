@@ -139,6 +139,14 @@ Quick notes:
 - AnyOf is not supported by CRDs. (had to peak on type)
 - Deckhand type could be removed and transformed into secrets...but later.
 
+### Improvements to kustomize
+
+Multiple improvments have been done to kustomize
+- Extend var different beyond just string. int64, bool, float64 are also supported.
+- Added "Inline" concept based on the Var and NameRef syntax. This allow to copy/inline sections
+  of a CRD into another CRD.
+- Code available in github at: [repo](https://github.com/kubekit99/kustomize-deckhand-poc) 
+
 ### Creating CRDs in kubectl
 
 ```
@@ -190,8 +198,13 @@ customresourcedefinition.apiextensions.k8s.io/shipyarddeploymentstrategys.shipya
 kubectl create namespace airship
 ```
 
+Once improvment in kustomize are merged:
 ```bash
-kubectl apply -k airship/
+kubectl apply -k overlays/airsloop/
+```
+
+```bash
+kutomize build airship | sed -e '/port: "/ s;";;g' | kubectl apply -f -ubectl apply -k airship/
 
 armadachart.armada.airshipit.org/armada-htk created
 armadachart.armada.airshipit.org/calico-htk created
@@ -556,8 +569,14 @@ kubectl delete -k airship
 kubectl create namespace airsloop
 ```
 
+Once improvment in kustomize are merged:
 ```bash
 kubectl apply -k overlays/airsloop/
+```
+
+Until then:
+```bash
+kustomize build overlays/airsloop | sed -e '/port: "/ s;";;g' | kubectl apply -f - 
 
 armadachart.armada.airshipit.org/armada-htk created
 armadachart.armada.airshipit.org/calico-htk created

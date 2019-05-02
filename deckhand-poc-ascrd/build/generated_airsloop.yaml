@@ -358,7 +358,13 @@ spec:
         hosts:
           default: mariadb
           discovery: mariadb-discovery
-        path: null
+        path: /cinder
+        port:
+          mysql:
+            default: 3306
+          wsrep:
+            default: 4567
+        scheme: mysql+pymysql
       oslo_messaging:
         auth:
           admin:
@@ -513,15 +519,15 @@ spec:
               errors
               health
               autopath @kubernetes
-              kubernetes CLUSTER_DOMAIN SERVICE_CIDR POD_CIDR {
+              kubernetes cluster.local 10.96.0.0/16 10.97.0.0/16 {
                 pods insecure
                 fallthrough in-addr.arpa ip6.arpa
-                upstream UPSTREAM1
-                upstream UPSTREAM2
-                upstream UPSTREAM3
+                upstream $(PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers._0_)
+                upstream $(PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers._1_)
+                upstream $(PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers._2_)
               }
               prometheus :9153
-              forward . UPSTREAM1 UPSTREAM2 UPSTREAM3
+              forward . $(PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers._0_) $(PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers._1_) $(PeglegCommonAddresses.common-addresses.spec.dns.upstream_servers._2_)
               cache 30
           }
     images:
@@ -1664,7 +1670,12 @@ spec:
         hosts:
           default: mariadb
           discovery: mariadb-discovery
-        path: null
+        path: /glance
+        port:
+          mysql:
+            default: 3306
+          wsrep:
+            default: 4567
         scheme: mysql+pymysql
       oslo_messaging:
         auth:
@@ -1854,7 +1865,11 @@ spec:
         hosts:
           default: mariadb
         namespace: osh-infra
-        path: null
+        path: /grafana
+        port:
+          mysql:
+            default: 3306
+        scheme: mysql+pymysql
       oslo_db_session:
         auth:
           admin:
@@ -1868,7 +1883,10 @@ spec:
         hosts:
           default: mariadb
         namespace: osh-infra
-        path: null
+        path: /grafana_session
+        port:
+          mysql:
+            default: 3306
         scheme: mysql+pymysql
     images:
       tags: {}
@@ -2306,7 +2324,13 @@ spec:
         hosts:
           default: mariadb
           discovery: mariadb-discovery
-        path: null
+        path: /heat
+        port:
+          mysql:
+            default: 3306
+          wsrep:
+            default: 4567
+        scheme: mysql+pymysql
       oslo_messaging:
         auth:
           admin:
@@ -2446,10 +2470,18 @@ spec:
             username: horizon
           keystone:
             password: airsloop123
+        host_fqdn_override:
+          default: null
         hosts:
           default: mariadb
           discovery: mariadb-discovery
-        path: null
+        path: /horizon
+        port:
+          mysql:
+            default: 3306
+          wsrep:
+            default: 4567
+        scheme: mysql+pymysql
     images:
       tags: {}
     labels:
@@ -2829,7 +2861,13 @@ spec:
         hosts:
           default: mariadb
           discovery: mariadb-discovery
-        path: null
+        path: /keystone
+        port:
+          mysql:
+            default: 3306
+          wsrep:
+            default: 4567
+        scheme: mysql+pymysql
       oslo_messaging:
         auth:
           admin:
@@ -4429,7 +4467,34 @@ spec:
             96YDQiJIBcNGDjzCx6pLROK8wkO2WywGcaTOgK9SlkzH+Vu5xgIjuSNE0kOhVdpA
             RrwiMo5UtqoiYwW+t3zhWMdIsXj7eemlxMEKNtrEC/o/PWhS
             -----END CERTIFICATE-----
-          key: $(DeckhandCertificateKey.kubernetes-etcd-airsloop-control-3-peer.spec$)
+          key: |
+            -----BEGIN RSA PRIVATE KEY-----
+            MIIEowIBAAKCAQEAmRNFwhJccdLztLoVMpx/kjxoeW9ukii7F3MKs7rVPtIER+a+
+            +X8IIcw0LYDwVf7VW3coDS9G5k7m13cvAf4N++4vmToUAi4zSiB8VQG8AflZU/xE
+            8BAE19bllmG0DfaTmr0oX6XESsgAEzxSXLjouivHhBDbe4CNhvcGA2eXZeJTWK8e
+            nFfBBWfcoEeMRA4HRvivB6PhJMmCTKkCE1Xn0VM0lA3ETr0EHg6I6oosYbT9AQND
+            GKv3ttzYoRhaVaMh8bC5JFtrsNpJ8T6iGOndqHgxs38GIRbxgRZnXfoB2mYfzZW6
+            Uhnyuktdkei/kcDb8KAl9uRkNq8a/4lyI0/cGQIDAQABAoIBAEzTe2NXy8Xk1iOS
+            cSkhmnVOlDC+WIRKpPuz5V8nGfeZeESN7rNRqkcsMdPUrsq6R2LMfvF/FNpqJzlk
+            u9cIJwSWGpWQrJIblepSO5R+dlmXR9n69q51m7ioRjofdzq60oILBcRbchUGI+OD
+            luKqe0NUzaHexAlMD7v5Jq92wmmDUv1um1ZjWa6tQapRXrm4mpAoY39S3hIYkyDK
+            hgA2bSBtpQOFM3ETyLXIBPviHR0zRZLRcJUAJ1ZruzspU2PwLjUcMnbKS1vNigO0
+            SX7G+rdwmj1DfcloGBGKPsM866HSqqES5TWYZMkOyRwqOHsx5gWCtDjG/1AubfjL
+            2CxUSTECgYEAzAAzqgDhNAjYrIZPOmx/Ywc/gbkY0zr9RbvD3jDlBK0qcz9VUgom
+            bB2WfxYYCimk0MGi6TB6cKJa4DllSBtBXe8g8sCkxyc0bSdFUEc0br6duSF1oFF4
+            AWnv3kc76Rud8WygXNEBbG0pxQt66nVvGQFBu0GrMskhk9VwmlUbEn8CgYEAwBf+
+            u+RqgISViURxGr7AA9mWN9zkbIwxn+XvdE8Oz3mAiWiQysJOWmkBT1FS9mvdOA/A
+            dgAY5kMmpZIo0w0OiFnGej+ANPmHrmRvFVYsKOjU0q8B3wBr5pUX5qkg60VZOPc4
+            v6kGot6Nk5VQv/3ybNvvymmMEPalO+SQkeGZFWcCgYARYbMFOS33EQnlKUx23ee8
+            uFFg7DSBSvVpi6YUuHXLADYtu6e5ZcQAUkUQbwF9XC7+2oDW/ZpxHmQ/1qQakLfx
+            GP7lsCRaE60T39S4ElkVVoh5zbAICOkAtdYKSmeAZSn/+BFx1x0X7/UvJNtEPt1I
+            dCL1oZLEsP57aiQ+AiJcYQKBgQCSQTK4CB92nnvkOXIMNPOper8+5TYd11fpMH5y
+            hcb2/MF63VxwpCRX/d77byXFbTbPel7E+Sn8F2CTa4cdubE463GMnlCVBO/jPaC+
+            FBAnTa7MgmbgTUfaFeZOvrLLrs9R6hkRBDaDRwNwPJ1wsH8llwcpi9cTC1efFFVm
+            XOfbPQKBgCEy8LhhiMbBBUGV7oCk2YprBvbDmqDQTkrMjDEgcNPeBJbwpkWgpTf8
+            Sf3FHe8A+Blp6lmVLfxzKNBF7zxQ8k+Izb5OKQv4vgrw9vavlKB3fOUnEnsxQ/LY
+            vUXRkyo6lQfU9r+/KnrfKbNUHtpCiHN8OYQOO/t/yyT7BB40Ok+r
+            -----END RSA PRIVATE KEY-----
     secrets:
       anchor:
         tls:
@@ -5322,7 +5387,13 @@ spec:
         hosts:
           default: mariadb
           discovery: mariadb-discovery
-        path: null
+        path: /neutron
+        port:
+          mysql:
+            default: 3306
+          wsrep:
+            default: 4567
+        scheme: mysql+pymysql
       oslo_messaging:
         auth:
           admin:
@@ -5791,7 +5862,13 @@ spec:
         hosts:
           default: mariadb
           discovery: mariadb-discovery
-        path: null
+        path: /nova
+        port:
+          mysql:
+            default: 3306
+          wsrep:
+            default: 4567
+        scheme: mysql+pymysql
       oslo_db_api:
         auth:
           admin:
@@ -5805,7 +5882,13 @@ spec:
         hosts:
           default: mariadb
           discovery: mariadb-discovery
-        path: null
+        path: /nova_api
+        port:
+          mysql:
+            default: 3306
+          wsrep:
+            default: 4567
+        scheme: mysql+pymysql
       oslo_db_cell0:
         auth:
           admin:
@@ -5814,10 +5897,18 @@ spec:
             database: nova_cell0
             password: airsloop123
             username: nova
+        host_fqdn_override:
+          default: null
         hosts:
           default: mariadb
           discovery: mariadb-discovery
-        path: null
+        path: /nova_cell0
+        port:
+          mysql:
+            default: 3306
+          wsrep:
+            default: 4567
+        scheme: mysql+pymysql
       oslo_messaging:
         auth:
           admin:
@@ -6083,7 +6174,7 @@ spec:
         hosts:
           default: mariadb
           discovery: mariadb-discovery
-        path: null
+        path: /DB_NAME
         port:
           mysql:
             default: 3306
@@ -6441,7 +6532,7 @@ spec:
         hosts:
           default: mariadb
         namespace: osh-infra
-        path: null
+        path: /DB_NAME
         port:
           mysql:
             default: 3306
@@ -9768,7 +9859,13 @@ spec:
         hosts:
           default: mariadb
           discovery: mariadb-discovery
-        path: null
+        path: /barbican
+        port:
+          mysql:
+            default: 3306
+          wsrep:
+            default: 4567
+        scheme: mysql+pymysql
       oslo_messaging:
         auth:
           admin:
@@ -10677,7 +10774,7 @@ spec:
         hosts:
           default: postgresql
         name: postgresql
-        path: /DB_NAME
+        path: /deckhand
         port:
           postgresql:
             default: 5432
@@ -10775,7 +10872,8 @@ spec:
             airsloop@airship
           user_sudo: true
     images:
-      divingbell: docker.io/ubuntu:16.04
+      tags:
+        divingbell: docker.io/ubuntu:16.04
     manifests:
       daemonset_apparmor: false
       daemonset_apt: true
@@ -10867,12 +10965,20 @@ spec:
           default: http
           internal: http
       physicalprovisioner:
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: drydock-api
+          public: drydock-api
+        name: drydock
         path:
           default: /api/v1.0
         port:
           api:
             default: 9000
-            nodeport: "30000"
+            nodeport: 30000
+        scheme:
+          default: http
       postgresql:
         auth:
           admin:
@@ -10887,7 +10993,7 @@ spec:
         hosts:
           default: postgresql
         name: postgresql
-        path: /DB_NAME
+        path: /drydock
         port:
           postgresql:
             default: 5432
@@ -10905,7 +11011,7 @@ spec:
           enabled: true
       drydock:
         node_port:
-          port: "30000"
+          port: 30000
     replicas:
       drydock: 1
   wait:
@@ -11225,10 +11331,18 @@ spec:
             database: keystone
             password: airsloop123
             username: keystone
+        host_fqdn_override:
+          default: null
         hosts:
           default: mariadb
           discovery: mariadb-discovery
-        path: null
+        path: /keystone
+        port:
+          mysql:
+            default: 3306
+          wsrep:
+            default: 4567
+        scheme: mysql+pymysql
       oslo_messaging:
         auth:
           admin:
@@ -11303,7 +11417,7 @@ spec:
       cache:
         enabled: true
       drydock:
-        bootaction_url: http://DRYDOCK_IP:DRYDOCK_PORT/api/v1.0/bootactions/nodes/
+        bootaction_url: http://10.22.70.21:30000/api/v1.0/bootactions/nodes/
       maas:
         credentials:
           secret:
@@ -11323,7 +11437,7 @@ spec:
         proxy:
           proxy_enabled: "true"
         url:
-          maas_url: http://MAAS_IP:MAAS_PORT/MAAS
+          maas_url: http://10.22.72.21:30001/MAAS
     endpoints:
       maas_db:
         auth:
@@ -11339,7 +11453,11 @@ spec:
         hosts:
           default: postgresql
         name: postgresql
-        path: null
+        path: /maasdb
+        port:
+          postgresql:
+            default: 5432
+        scheme: postgresql+psycopg2
       maas_region_ui:
         auth:
           admin:
@@ -11381,7 +11499,7 @@ spec:
     network:
       gui:
         node_port:
-          port: "30001"
+          port: 30001
       port:
         service_proxy: "31800"
       proxy:
@@ -11442,7 +11560,7 @@ spec:
         hosts:
           default: mariadb
           discovery: mariadb-discovery
-        path: null
+        path: /DB_NAME
         port:
           mysql:
             default: 3306
@@ -11951,7 +12069,11 @@ spec:
         hosts:
           default: postgresql
         name: postgresql-airflow-celery-db
-        path: null
+        path: /airflow
+        port:
+          postgresql:
+            default: 5432
+        scheme: db+postgresql
       postgresql_airflow_db:
         auth:
           admin:
@@ -11961,10 +12083,16 @@ spec:
             database: airflow
             password: airsloop123
             username: airflow
+        host_fqdn_override:
+          default: null
         hosts:
           default: postgresql
         name: postgresql
-        path: null
+        path: /airflow
+        port:
+          postgresql:
+            default: 5432
+        scheme: postgresql+psycopg2
       postgresql_shipyard_db:
         auth:
           admin:
@@ -11974,8 +12102,16 @@ spec:
             database: shipyard
             password: airsloop123
             username: shipyard
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: postgresql
         name: postgresql
-        path: null
+        path: /shipyard
+        port:
+          postgresql:
+            default: 5432
+        scheme: postgresql+psycopg2
       shipyard:
         host_fqdn_override:
           default: null

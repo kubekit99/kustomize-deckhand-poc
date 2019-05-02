@@ -332,7 +332,7 @@ spec:
           key: $(DeckhandCertificateKey.kubernetes-etcd-airsloop-control-3.spec)
         peer:
           cert: $(DeckhandCertificate.kubernetes-etcd-airsloop-control-3-peer.spec)
-          key: $(DeckhandCertificateKey.kubernetes-etcd-airsloop-control-3-peer.spec$)
+          key: $(DeckhandCertificateKey.kubernetes-etcd-airsloop-control-3-peer.spec)
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
