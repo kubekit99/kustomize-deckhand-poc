@@ -204,7 +204,7 @@ kubectl apply -k overlays/airsloop/
 ```
 
 ```bash
-kutomize build airship | sed -e '/port: "/ s;";;g' | kubectl apply -f -ubectl apply -k airship/
+kutomize build airship | sed -e '/port: "/ s;";;g' | kubectl apply -f -
 
 armadachart.armada.airshipit.org/armada-htk created
 armadachart.armada.airshipit.org/calico-htk created
@@ -931,4 +931,271 @@ To cleanup
 
 ```bash
 kubectl delete -k overlays/airsloop
+```
+
+## Armada like operations
+
+```bash
+kubectl get act
+
+NAME                                STATE   TARGET STATE   SATISFIED
+armada-htk
+calico-htk
+ceph-htk
+cinder
+cinder-rabbitmq
+coredns
+coredns-htk
+deckhand-htk
+drydock-htk
+elasticsearch
+fluent-logging
+glance
+glance-rabbitmq
+grafana
+haproxy
+haproxy-htk
+heat
+heat-rabbitmq
+horizon
+ingress-kube-system
+ingress-kube-system-htk
+keystone
+keystone-rabbitmq
+kibana
+kubernetes-apiserver
+kubernetes-apiserver-htk
+kubernetes-calico
+kubernetes-calico-etcd
+kubernetes-calico-etcd-htk
+kubernetes-controller-manager
+kubernetes-controller-manager-htk
+kubernetes-etcd
+kubernetes-etcd-htk
+kubernetes-proxy
+kubernetes-proxy-htk
+kubernetes-scheduler
+kubernetes-scheduler-htk
+libvirt
+maas-htk
+mariadb-htk
+nagios
+neutron
+neutron-rabbitmq
+nfs-provisioner
+nova
+nova-rabbitmq
+openstack-ceph-config
+openstack-ingress-controller
+openstack-mariadb
+openstack-memcached
+openvswitch
+osh-helm-toolkit
+osh-infra-ceph-config
+osh-infra-helm-toolkit
+osh-infra-ingress-controller
+osh-infra-mariadb
+osh-infra-radosgw
+podsecuritypolicy
+postgres-htk
+promenade-htk
+prometheus
+prometheus-alertmanager
+prometheus-kube-state-metrics
+prometheus-node-exporter
+prometheus-openstack-exporter
+prometheus-process-exporter
+shipyard-htk
+tenant-ceph-client
+tenant-ceph-config
+tenant-ceph-htk
+tenant-ceph-ingress
+tenant-ceph-mon
+tenant-ceph-osd
+tenant-ceph-rgw
+tiller-htk
+ucp-armada
+ucp-barbican
+ucp-barbican-htk
+ucp-ceph-client
+ucp-ceph-client-update
+ucp-ceph-config
+ucp-ceph-ingress
+ucp-ceph-mon
+ucp-ceph-osd
+ucp-ceph-provisioners
+ucp-ceph-rgw
+ucp-deckhand
+ucp-divingbell
+ucp-divingbell-htk
+ucp-drydock
+ucp-ingress
+ucp-ingress-htk
+ucp-keystone
+ucp-keystone-htk
+ucp-keystone-memcached
+ucp-maas
+ucp-mariadb
+ucp-memcached-htk
+ucp-postgresql
+ucp-promenade
+ucp-prometheus-openstack-exporter
+ucp-rabbitmq
+ucp-rabbitmq-htk
+ucp-shipyard
+ucp-tiller
+```
+
+```bash
+kubectl describe act glance-rabbitmq
+
+Name:         glance-rabbitmq
+Namespace:    default
+Labels:       component=glance
+              name=glance-rabbitmq-global
+Annotations:  kubectl.kubernetes.io/last-applied-configuration:
+                {"apiVersion":"armada.airshipit.org/v1alpha1","kind":"ArmadaChart","metadata":{"annotations":{},"labels":{"component":"glance","name":"gla...
+API Version:  armada.airshipit.org/v1alpha1
+Kind:         ArmadaChart
+Metadata:
+  Creation Timestamp:  2019-05-02T21:18:49Z
+  Generation:          1
+  Resource Version:    705592
+  Self Link:           /apis/armada.airshipit.org/v1alpha1/namespaces/default/armadacharts/glance-rabbitmq
+  UID:                 e0b77813-6d1f-11e9-8670-0800272e6982
+Spec:
+  Chart Name:  glance-rabbitmq
+  Dependencies:
+    osh-helm-toolkit
+  Install:
+    No Hooks:  false
+  Namespace:   openstack
+  Release:     glance-rabbitmq
+  Source:
+    Location:   https://git.openstack.org/openstack/openstack-helm-infra
+    Reference:  a367bacb4bd3af55dd11dbc5c9855749a123779d
+    Subpath:    rabbitmq
+    Type:       git
+  Upgrade:
+    No Hooks:  false
+    Pre:
+      Delete:
+        Labels:
+          Release Group:  airship-glance-rabbitmq
+        Type:             job
+  Values:
+    Endpoints:
+      Oslo Messaging:
+        Auth:
+          Erlang Cookie:  airsloop123
+          User:
+            Password:  airsloop123
+            Username:  glance-rabbitmq-admin
+        Host Fqdn Override:
+          Default:  <nil>
+        Hosts:
+          Default:  glance-rabbitmq
+        Namespace:  openstack
+        Path:       /glance
+        Port:
+          Amqp:
+            Default:  5672
+          Http:
+            Default:  15672
+        Scheme:       rabbit
+      Prometheus Rabbitmq Exporter:
+        Host Fqdn Override:
+          Default:  <nil>
+        Hosts:
+          Default:  glance-rabbitmq-exporter
+        Namespace:  openstack
+        Path:
+          Default:  /metrics
+        Port:
+          Metrics:
+            Default:  9095
+        Scheme:
+          Default:  http
+    Images:
+      Tags:
+    Labels:
+      Prometheus Rabbitmq Exporter:
+        Node Selector Key:    openstack-control-plane
+        Node Selector Value:  enabled
+      Server:
+        Node Selector Key:    openstack-control-plane
+        Node Selector Value:  enabled
+    Monitoring:
+      Prometheus:
+        Enabled:  true
+    Pod:
+      Replicas:
+        Server:  1
+  Wait:
+    Labels:
+      Release Group:  airship-glance-rabbitmq
+    Resources:
+      Type:   statefulset
+    Timeout:  900
+Events:       <none>
+```
+
+```bash
+jb447c@airship:~/src/github.com/kubekit99/kustomize-deckhand-poc/deckhand-poc-ascrd$ kubectl describe amf full-site
+Name:         full-site
+Namespace:    default
+Labels:       name=full-site-global
+Annotations:  kubectl.kubernetes.io/last-applied-configuration:
+                {"apiVersion":"armada.airshipit.org/v1alpha1","kind":"ArmadaManifest","metadata":{"annotations":{},"labels":{"name":"full-site-global"},"l...
+API Version:  armada.airshipit.org/v1alpha1
+Kind:         ArmadaManifest
+Metadata:
+  Creation Timestamp:  2019-05-02T21:18:50Z
+  Generation:          1
+  Resource Version:    705730
+  Self Link:           /apis/armada.airshipit.org/v1alpha1/namespaces/default/armadamanifests/full-site
+  UID:                 e1a6a3d9-6d1f-11e9-8670-0800272e6982
+Spec:
+  Chart Groups:
+    podsecuritypolicy
+    kubernetes-proxy
+    kubernetes-container-networking
+    kubernetes-dns
+    kubernetes-etcd
+    kubernetes-haproxy
+    kubernetes-core
+    ingress-kube-system
+    ucp-ceph
+    ucp-ceph-config
+    ucp-core
+    ucp-keystone
+    ucp-divingbell
+    ucp-armada
+    ucp-deckhand
+    ucp-drydock
+    ucp-promenade
+    ucp-shipyard
+    ucp-prometheus-openstack-exporter
+    osh-infra-ingress-controller
+    osh-infra-ceph-config
+    osh-infra-radosgw
+    osh-infra-logging
+    osh-infra-monitoring
+    osh-infra-mariadb
+    osh-infra-dashboards
+    openstack-ingress-controller
+    openstack-ceph-config
+    openstack-tenant-ceph
+    openstack-mariadb
+    openstack-memcached
+    openstack-keystone
+    openstack-radosgw
+    openstack-glance
+    openstack-cinder
+    openstack-compute-kit
+    openstack-heat
+    osh-infra-prometheus-openstack-exporter
+    openstack-horizon
+  Release Prefix:  airship
+Events:            <none>
 ```
