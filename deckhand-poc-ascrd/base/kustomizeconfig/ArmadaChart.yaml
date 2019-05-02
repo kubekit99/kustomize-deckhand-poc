@@ -166,6 +166,34 @@ varReference:
 - kind: ArmadaChart
   path: spec/values/endpoints/identity/auth/user/password
 - kind: ArmadaChart
+  path: spec/values/endpoints/identity/auth/admin/region_name
+- kind: ArmadaChart
+  path: spec/values/endpoints/identity/auth/barbican/region_name
+- kind: ArmadaChart
+  path: spec/values/endpoints/identity/auth/cinder/region_name
+- kind: ArmadaChart
+  path: spec/values/endpoints/identity/auth/drydock/region_name
+- kind: ArmadaChart
+  path: spec/values/endpoints/identity/auth/glance/region_name
+- kind: ArmadaChart
+  path: spec/values/endpoints/identity/auth/heat/region_name
+- kind: ArmadaChart
+  path: spec/values/endpoints/identity/auth/heat_stack_user/region_name
+- kind: ArmadaChart
+  path: spec/values/endpoints/identity/auth/heat_trustee/region_name
+- kind: ArmadaChart
+  path: spec/values/endpoints/identity/auth/neutron/region_name
+- kind: ArmadaChart
+  path: spec/values/endpoints/identity/auth/nova/region_name
+- kind: ArmadaChart
+  path: spec/values/endpoints/identity/auth/placement/region_name
+- kind: ArmadaChart
+  path: spec/values/endpoints/identity/auth/shipyard/region_name
+- kind: ArmadaChart
+  path: spec/values/endpoints/identity/auth/swift/region_name
+- kind: ArmadaChart
+  path: spec/values/endpoints/identity/auth/user/region_name
+- kind: ArmadaChart
   path: spec/values/endpoints/ldap/auth/admin/password
 - kind: ArmadaChart
   path: spec/values/endpoints/maas_db/auth/admin/password

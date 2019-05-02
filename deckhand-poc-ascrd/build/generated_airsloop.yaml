@@ -98,6 +98,19 @@ spec:
           erlang_cookie: airsloop123
           user:
             password: airsloop123
+            username: cinder-rabbitmq-admin
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: cinder-rabbitmq
+        namespace: openstack
+        path: /cinder
+        port:
+          amqp:
+            default: 5672
+          http:
+            default: 15672
+        scheme: rabbit
       prometheus_rabbitmq_exporter:
         host_fqdn_override:
           default: null
@@ -264,8 +277,32 @@ spec:
         auth:
           admin:
             password: airsloop123
+            project_domain_name: default
+            project_name: admin
+            region_name: airsloop
+            user_domain_name: default
+            username: admin
           cinder:
             password: airsloop123
+            project_domain_name: default
+            project_name: service
+            region_name: airsloop
+            role: admin
+            user_domain_name: default
+            username: cinder
+        host_fqdn_override:
+          default: null
+        name: keystone
+        namespace: openstack
+        path:
+          default: /v3
+        port:
+          api:
+            default: 80
+            internal: 5000
+        scheme:
+          default: http
+          internal: http
       image:
         host_fqdn_override:
           default: null
@@ -300,19 +337,48 @@ spec:
       oslo_cache:
         auth:
           memcache_secret_key: airsloop123
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: memcached
+        namespace: openstack
+        port:
+          memcache:
+            default: 11211
       oslo_db:
         auth:
           admin:
             password: airsloop123
           cinder:
+            database: cinder
             password: airsloop123
+            username: cinder
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: mariadb
+          discovery: mariadb-discovery
         path: null
       oslo_messaging:
         auth:
           admin:
             password: airsloop123
+            username: cinder-rabbitmq-admin
           cinder:
             password: airsloop123
+            username: cinder-rabbitmq-user
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: cinder-rabbitmq
+        namespace: openstack
+        path: /cinder
+        port:
+          amqp:
+            default: 5672
+          http:
+            default: 15672
+        scheme: rabbit
       volume:
         host_fqdn_override:
           default: null
@@ -684,17 +750,45 @@ spec:
           admin:
             access_key: admin_access_key
             secret_key: admin_secret_key
+            username: s3_admin
           elasticsearch:
             access_key: elastic_access_key
             secret_key: elastic_secret_key
+            username: elasticsearch
       elasticsearch:
         auth:
           admin:
             password: airsloop123
+            username: elasticsearch
+        host_fqdn_override:
+          default: null
+        hosts:
+          data: elasticsearch-data
+          default: elasticsearch-logging
+          discovery: elasticsearch-discovery
+          public: elasticsearch
+        name: elasticsearch
+        namespace: osh-infra
+        path:
+          default: null
+        scheme:
+          default: http
       ldap:
         auth:
           admin:
+            bind: test@ldap.example.com
             password: airsloop123
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: ldap
+        path:
+          default: /DC=test,DC=test,DC=com?sAMAccountName?sub?memberof=CN=test,OU=Application,OU=Groups,DC=test,DC=test,DC=com
+        port:
+          ldap:
+            default: 389
+        scheme:
+          default: ldap
       prometheus_elasticsearch_exporter:
         host_fqdn_override:
           default: null
@@ -1118,6 +1212,20 @@ spec:
         auth:
           admin:
             password: airsloop123
+            username: elasticsearch
+        host_fqdn_override:
+          default: null
+        hosts:
+          data: elasticsearch-data
+          default: elasticsearch-logging
+          discovery: elasticsearch-discovery
+          public: elasticsearch
+        name: elasticsearch
+        namespace: osh-infra
+        path:
+          default: null
+        scheme:
+          default: http
       fluentd:
         host_fqdn_override:
           default: null
@@ -1254,6 +1362,19 @@ spec:
           erlang_cookie: airsloop123
           user:
             password: airsloop123
+            username: glance-rabbitmq-admin
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: glance-rabbitmq
+        namespace: openstack
+        path: /glance
+        port:
+          amqp:
+            default: 5672
+          http:
+            default: 15672
+        scheme: rabbit
       prometheus_rabbitmq_exporter:
         host_fqdn_override:
           default: null
@@ -1405,6 +1526,23 @@ spec:
           glance:
             password: airsloop123
             tmpurlkey: airsloop123
+            username: glance
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: ceph-rgw
+          public: radosgw
+        name: radosgw
+        namespace: openstack
+        path:
+          default: /auth/v1.0
+        port:
+          api:
+            default: 8088
+            public: 80
+        scheme:
+          default: http
+          public: http
       fluentd:
         host_fqdn_override:
           default: null
@@ -1425,8 +1563,32 @@ spec:
         auth:
           admin:
             password: airsloop123
+            project_domain_name: default
+            project_name: admin
+            region_name: airsloop
+            user_domain_name: default
+            username: admin
           glance:
             password: airsloop123
+            project_domain_name: default
+            project_name: service
+            region_name: airsloop
+            role: admin
+            user_domain_name: default
+            username: glance
+        host_fqdn_override:
+          default: null
+        name: keystone
+        namespace: openstack
+        path:
+          default: /v3
+        port:
+          api:
+            default: 80
+            internal: 5000
+        scheme:
+          default: http
+          internal: http
       image:
         host_fqdn_override:
           default: null
@@ -1462,22 +1624,68 @@ spec:
         auth:
           glance:
             tmpurlkey: airsloop123
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: ceph-rgw
+          public: radosgw
+        name: swift
+        namespace: openstack
+        path:
+          default: /swift/v1/KEY_$(tenant_id)s
+        port:
+          api:
+            default: 8088
+            public: 80
+        scheme:
+          default: http
+          public: http
       oslo_cache:
         auth:
           memcache_secret_key: airsloop123
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: memcached
+        namespace: openstack
+        port:
+          memcache:
+            default: 11211
       oslo_db:
         auth:
           admin:
             password: airsloop123
           glance:
+            database: glance
             password: airsloop123
+            username: glance
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: mariadb
+          discovery: mariadb-discovery
         path: null
+        scheme: mysql+pymysql
       oslo_messaging:
         auth:
           admin:
             password: airsloop123
+            username: glance-rabbitmq-admin
           glance:
             password: airsloop123
+            username: glance-rabbitmq-user
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: glance-rabbitmq
+        namespace: openstack
+        path: /glance
+        port:
+          amqp:
+            default: 5672
+          http:
+            default: 15672
+        scheme: rabbit
     images:
       tags: {}
     labels:
@@ -1579,29 +1787,89 @@ spec:
         auth:
           admin:
             password: airsloop123
+            username: grafana
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: grafana-dashboard
+          public: grafana
+        name: grafana
+        namespace: osh-infra
+        path:
+          default: null
+        port:
+          grafana:
+            default: 3000
+            public: 80
+        scheme:
+          default: http
+          public: http
       ldap:
         auth:
           admin:
             bind_dn: test@ldap.example.com
             password: airsloop123
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: ldap
+        path:
+          default: /DC=test,DC=test,DC=com?sAMAccountName?sub?memberof=CN=test,OU=Application,OU=Groups,DC=test,DC=test,DC=com
+        port:
+          ldap:
+            default: 389
+        scheme:
+          default: ldap
       monitoring:
         auth:
           user:
             password: airsloop123
+            username: prometheus
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: prom-metrics
+          public: prometheus
+        name: prometheus
+        namespace: osh-infra
+        path:
+          default: null
+        port:
+          api:
+            default: 9090
+          http:
+            default: 80
+        scheme:
+          default: http
       oslo_db:
         auth:
           admin:
             password: airsloop123
           user:
+            database: grafana
             password: airsloop123
+            username: grafana
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: mariadb
+        namespace: osh-infra
         path: null
       oslo_db_session:
         auth:
           admin:
             password: airsloop123
           user:
+            database: grafana_session
             password: airsloop123
+            username: grafana_session
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: mariadb
+        namespace: osh-infra
         path: null
+        scheme: mysql+pymysql
     images:
       tags: {}
     labels:
@@ -1750,6 +2018,19 @@ spec:
           erlang_cookie: airsloop123
           user:
             password: airsloop123
+            username: heat-rabbitmq-admin
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: heat-rabbitmq
+        namespace: openstack
+        path: /heat
+        port:
+          amqp:
+            default: 5672
+          http:
+            default: 15672
+        scheme: rabbit
       prometheus_rabbitmq_exporter:
         host_fqdn_override:
           default: null
@@ -1945,12 +2226,46 @@ spec:
         auth:
           admin:
             password: airsloop123
+            project_domain_name: default
+            project_name: admin
+            region_name: airsloop
+            user_domain_name: default
+            username: admin
           heat:
             password: airsloop123
+            project_domain_name: default
+            project_name: service
+            region_name: airsloop
+            role: admin
+            user_domain_name: default
+            username: heat
           heat_stack_user:
+            domain_name: heat
             password: airsloop123
+            region_name: airsloop
+            role: admin
+            username: heat-domain
           heat_trustee:
             password: airsloop123
+            project_domain_name: default
+            project_name: service
+            region_name: airsloop
+            role: admin
+            user_domain_name: default
+            username: heat-trust
+        host_fqdn_override:
+          default: null
+        name: keystone
+        namespace: openstack
+        path:
+          default: /v3
+        port:
+          api:
+            default: 80
+            internal: 5000
+        scheme:
+          default: http
+          internal: http
       orchestration:
         host_fqdn_override:
           default: null
@@ -1970,19 +2285,48 @@ spec:
       oslo_cache:
         auth:
           memcache_secret_key: airsloop123
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: memcached
+        namespace: openstack
+        port:
+          memcache:
+            default: 11211
       oslo_db:
         auth:
           admin:
             password: airsloop123
           heat:
+            database: heat
             password: airsloop123
+            username: heat
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: mariadb
+          discovery: mariadb-discovery
         path: null
       oslo_messaging:
         auth:
           admin:
             password: airsloop123
+            username: heat-rabbitmq-admin
           heat:
             password: airsloop123
+            username: heat-rabbitmq-user
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: heat-rabbitmq
+        namespace: openstack
+        path: /heat
+        port:
+          amqp:
+            default: 5672
+          http:
+            default: 15672
+        scheme: rabbit
     images:
       tags: {}
     labels:
@@ -2085,6 +2429,14 @@ spec:
       oslo_cache:
         auth:
           memcache_secret_key: airsloop123
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: memcached
+        namespace: openstack
+        port:
+          memcache:
+            default: 11211
       oslo_db:
         auth:
           admin:
@@ -2094,6 +2446,9 @@ spec:
             username: horizon
           keystone:
             password: airsloop123
+        hosts:
+          default: mariadb
+          discovery: mariadb-discovery
         path: null
     images:
       tags: {}
@@ -2231,6 +2586,19 @@ spec:
           erlang_cookie: airsloop123
           user:
             password: airsloop123
+            username: keystone-rabbitmq-admin
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: keystone-rabbitmq
+        namespace: openstack
+        path: /keystone
+        port:
+          amqp:
+            default: 5672
+          http:
+            default: 15672
+        scheme: rabbit
       prometheus_rabbitmq_exporter:
         host_fqdn_override:
           default: null
@@ -2419,22 +2787,69 @@ spec:
         auth:
           admin:
             password: airsloop123
+            project_domain_name: default
+            project_name: admin
+            region_name: airsloop
+            user_domain_name: default
+            username: admin
+        host_fqdn_override:
+          default: null
+        name: keystone
+        namespace: openstack
+        path:
+          default: /v3
+        port:
+          api:
+            default: 80
+            internal: 5000
+        scheme:
+          default: http
+          internal: http
       oslo_cache:
         auth:
           memcache_secret_key: airsloop123
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: memcached
+        namespace: openstack
+        port:
+          memcache:
+            default: 11211
       oslo_db:
         auth:
           admin:
             password: airsloop123
           keystone:
+            database: keystone
             password: airsloop123
+            username: keystone
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: mariadb
+          discovery: mariadb-discovery
         path: null
       oslo_messaging:
         auth:
           admin:
             password: airsloop123
+            username: keystone-rabbitmq-admin
           keystone:
             password: airsloop123
+            username: keystone-rabbitmq-user
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: keystone-rabbitmq
+        namespace: openstack
+        path: /keystone
+        port:
+          amqp:
+            default: 5672
+          http:
+            default: 15672
+        scheme: rabbit
     images:
       tags: {}
     labels:
@@ -2509,6 +2924,20 @@ spec:
         auth:
           admin:
             password: airsloop123
+            username: elasticsearch
+        host_fqdn_override:
+          default: null
+        hosts:
+          data: elasticsearch-data
+          default: elasticsearch-logging
+          discovery: elasticsearch-discovery
+          public: elasticsearch
+        name: elasticsearch
+        namespace: osh-infra
+        path:
+          default: null
+        scheme:
+          default: http
       kibana:
         host_fqdn_override:
           default: null
@@ -2529,7 +2958,19 @@ spec:
       ldap:
         auth:
           admin:
+            bind: test@ldap.example.com
             password: airsloop123
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: ldap
+        path:
+          default: /DC=test,DC=test,DC=com?sAMAccountName?sub?memberof=CN=test,OU=Application,OU=Groups,DC=test,DC=test,DC=com
+        port:
+          ldap:
+            default: 389
+        scheme:
+          default: ldap
     images:
       tags: {}
     labels:
@@ -4448,18 +4889,78 @@ spec:
         auth:
           admin:
             password: airsloop123
+            username: elasticsearch
+        host_fqdn_override:
+          default: null
+        hosts:
+          data: elasticsearch-data
+          default: elasticsearch-logging
+          discovery: elasticsearch-discovery
+          public: elasticsearch
+        name: elasticsearch
+        namespace: osh-infra
+        path:
+          default: null
+        scheme:
+          default: http
       ldap:
         auth:
           admin:
+            bind: test@ldap.example.com
             password: airsloop123
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: ldap
+        path:
+          default: /DC=test,DC=test,DC=com?sAMAccountName?sub?memberof=CN=test,OU=Application,OU=Groups,DC=test,DC=test,DC=com
+        port:
+          ldap:
+            default: 389
+        scheme:
+          default: ldap
       monitoring:
         auth:
           admin:
             password: airsloop123
+            username: prometheus
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: prom-metrics
+          public: prometheus
+        name: prometheus
+        namespace: osh-infra
+        path:
+          default: null
+        port:
+          api:
+            default: 9090
+          http:
+            default: 80
+        scheme:
+          default: http
       nagios:
         auth:
           admin:
             password: airsloop123
+            username: nagios
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: nagios-metrics
+          public: nagios
+        name: nagios
+        namespace: osh-infra
+        path:
+          default: null
+        port:
+          http:
+            default: 80
+            public: 80
+        scheme:
+          default: http
+          public: http
     images:
       tags: {}
     labels:
@@ -4520,6 +5021,19 @@ spec:
           erlang_cookie: airsloop123
           user:
             password: airsloop123
+            username: neutron-rabbitmq-admin
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: neutron-rabbitmq
+        namespace: openstack
+        path: /neutron
+        port:
+          amqp:
+            default: 5672
+          http:
+            default: 15672
+        scheme: rabbit
       prometheus_rabbitmq_exporter:
         host_fqdn_override:
           default: null
@@ -4719,10 +5233,40 @@ spec:
         auth:
           admin:
             password: airsloop123
+            project_domain_name: default
+            project_name: admin
+            region_name: airsloop
+            user_domain_name: default
+            username: admin
           neutron:
             password: airsloop123
+            project_domain_name: default
+            project_name: service
+            region_name: airsloop
+            role: admin
+            user_domain_name: default
+            username: neutron
           nova:
             password: airsloop123
+            project_domain_name: default
+            project_name: service
+            region_name: airsloop
+            role: admin
+            user_domain_name: default
+            username: nova
+        host_fqdn_override:
+          default: null
+        name: keystone
+        namespace: openstack
+        path:
+          default: /v3
+        port:
+          api:
+            default: 80
+            internal: 5000
+        scheme:
+          default: http
+          internal: http
       image_registry:
         host_fqdn_override:
           default: null
@@ -4757,19 +5301,48 @@ spec:
       oslo_cache:
         auth:
           memcache_secret_key: airsloop123
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: memcached
+        namespace: openstack
+        port:
+          memcache:
+            default: 11211
       oslo_db:
         auth:
           admin:
             password: airsloop123
           neutron:
+            database: neutron
             password: airsloop123
+            username: neutron
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: mariadb
+          discovery: mariadb-discovery
         path: null
       oslo_messaging:
         auth:
           admin:
             password: airsloop123
+            username: neutron-rabbitmq-admin
           neutron:
             password: airsloop123
+            username: neutron-rabbitmq-user
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: neutron-rabbitmq
+        namespace: openstack
+        path: /neutron
+        port:
+          amqp:
+            default: 5672
+          http:
+            default: 15672
+        scheme: rabbit
     images:
       tags: {}
     labels:
@@ -4881,6 +5454,19 @@ spec:
           erlang_cookie: airsloop123
           user:
             password: airsloop123
+            username: nova-rabbitmq-admin
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: nova-rabbitmq
+        namespace: openstack
+        path: /nova
+        port:
+          amqp:
+            default: 5672
+          http:
+            default: 15672
+        scheme: rabbit
       prometheus_rabbitmq_exporter:
         host_fqdn_override:
           default: null
@@ -5108,12 +5694,48 @@ spec:
         auth:
           admin:
             password: airsloop123
+            project_domain_name: default
+            project_name: admin
+            region_name: airsloop
+            user_domain_name: default
+            username: admin
           neutron:
             password: airsloop123
+            project_domain_name: default
+            project_name: service
+            region_name: airsloop
+            role: admin
+            user_domain_name: default
+            username: neutron
           nova:
             password: airsloop123
+            project_domain_name: default
+            project_name: service
+            region_name: airsloop
+            role: admin
+            user_domain_name: default
+            username: nova
           placement:
             password: airsloop123
+            project_domain_name: default
+            project_name: service
+            region_name: airsloop
+            role: admin
+            user_domain_name: default
+            username: placement
+        host_fqdn_override:
+          default: null
+        name: keystone
+        namespace: openstack
+        path:
+          default: /v3
+        port:
+          api:
+            default: 80
+            internal: 5000
+        scheme:
+          default: http
+          internal: http
       image:
         host_fqdn_override:
           default: null
@@ -5149,6 +5771,14 @@ spec:
       oslo_cache:
         auth:
           memcache_secret_key: airsloop123
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: memcached
+        namespace: openstack
+        port:
+          memcache:
+            default: 11211
       oslo_db:
         auth:
           admin:
@@ -5156,27 +5786,58 @@ spec:
           nova:
             password: airsloop123
             username: nova
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: mariadb
+          discovery: mariadb-discovery
         path: null
       oslo_db_api:
         auth:
           admin:
             password: airsloop123
           nova:
+            database: nova_api
             password: airsloop123
+            username: nova
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: mariadb
+          discovery: mariadb-discovery
         path: null
       oslo_db_cell0:
         auth:
           admin:
             password: airsloop123
           nova:
+            database: nova_cell0
             password: airsloop123
+            username: nova
+        hosts:
+          default: mariadb
+          discovery: mariadb-discovery
         path: null
       oslo_messaging:
         auth:
           admin:
             password: airsloop123
+            username: nova-rabbitmq-admin
           nova:
             password: airsloop123
+            username: nova-rabbitmq-user
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: nova-rabbitmq
+        namespace: openstack
+        path: /nova
+        port:
+          amqp:
+            default: 5672
+          http:
+            default: 15672
+        scheme: rabbit
       placement:
         host_fqdn_override:
           default: null
@@ -5414,12 +6075,37 @@ spec:
         auth:
           admin:
             password: airsloop123
+            username: root
           exporter:
             password: airsloop123
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: mariadb
+          discovery: mariadb-discovery
+        path: null
+        port:
+          mysql:
+            default: 3306
+          wsrep:
+            default: 4567
+        scheme: mysql+pymysql
       prometheus_mysql_exporter:
         auth:
           user:
             username: osh-oslodb-exporter
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: mysql-exporter
+        namespace: openstack
+        path:
+          default: /metrics
+        port:
+          metrics:
+            default: 9104
+        scheme:
+          default: http
     images:
       tags: {}
     labels:
@@ -5747,12 +6433,35 @@ spec:
         auth:
           admin:
             password: airsloop123
+            username: root
           exporter:
             password: airsloop123
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: mariadb
+        namespace: osh-infra
+        path: null
+        port:
+          mysql:
+            default: 3306
+        scheme: mysql+pymysql
       prometheus_mysql_exporter:
         auth:
           user:
             username: osh-infra-oslodb-exporter
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: mysql-exporter
+        namespace: osh-infra
+        path:
+          default: /metrics
+        port:
+          metrics:
+            default: 9104
+        scheme:
+          default: http
     images:
       tags: {}
     labels:
@@ -5832,6 +6541,22 @@ spec:
           admin:
             access_key: admin_access_key
             secret_key: admin_secret_key
+            username: s3_admin
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: ceph-rgw
+          public: radosgw
+        name: radosgw
+        namespace: osh-infra
+        path:
+          default: null
+        port:
+          api:
+            default: 8088
+            public: 80
+        scheme:
+          default: http
     images:
       tags: {}
     labels:
@@ -6173,8 +6898,32 @@ spec:
         auth:
           admin:
             password: airsloop123
+            project_domain_name: default
+            project_name: admin
+            region_name: airsloop
+            user_domain_name: default
+            username: admin
           user:
             password: airsloop123
+            project_domain_name: default
+            project_name: service
+            region_name: airsloop
+            role: admin
+            user_domain_name: default
+            username: prometheus-openstack-exporter
+        host_fqdn_override:
+          default: null
+        name: keystone
+        namespace: openstack
+        path:
+          default: /v3
+        port:
+          api:
+            default: 80
+            internal: 5000
+        scheme:
+          default: http
+          internal: http
       prometheus_openstack_exporter:
         host_fqdn_override:
           default: null
@@ -7976,11 +8725,40 @@ spec:
       ldap:
         auth:
           admin:
+            bind: test@ldap.example.com
             password: airsloop123
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: ldap
+        path:
+          default: /DC=test,DC=test,DC=com?sAMAccountName?sub?memberof=CN=test,OU=Application,OU=Groups,DC=test,DC=test,DC=com
+        port:
+          ldap:
+            default: 389
+        scheme:
+          default: ldap
       monitoring:
         auth:
           admin:
             password: airsloop123
+            username: prometheus
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: prom-metrics
+          public: prometheus
+        name: prometheus
+        namespace: osh-infra
+        path:
+          default: null
+        port:
+          api:
+            default: 9090
+          http:
+            default: 80
+        scheme:
+          default: http
     images:
       tags: {}
     labels:
@@ -8595,8 +9373,32 @@ spec:
         auth:
           admin:
             password: airsloop123
+            project_domain_name: default
+            project_name: admin
+            region_name: airsloop
+            user_domain_name: default
+            username: admin
           swift:
             password: airsloop123
+            project_domain_name: default
+            project_name: service
+            region_name: airsloop
+            role: admin
+            user_domain_name: default
+            username: swift
+        host_fqdn_override:
+          default: null
+        name: keystone
+        namespace: openstack
+        path:
+          default: /v3
+        port:
+          api:
+            default: 80
+            internal: 5000
+        scheme:
+          default: http
+          internal: http
       object_store:
         host_fqdn_override:
           default: null
@@ -8716,8 +9518,32 @@ spec:
         auth:
           admin:
             password: airsloop123
+            project_domain_name: default
+            project_name: admin
+            region_name: RegionOne
+            user_domain_name: default
+            username: admin
           user:
             password: airsloop123
+            project_domain_name: default
+            project_name: service
+            region_name: RegionOne
+            role: admin
+            user_domain_name: default
+            username: armada
+        host_fqdn_override:
+          default: null
+        name: keystone
+        namespace: ucp
+        path:
+          default: /v3
+        port:
+          api:
+            default: 80
+            internal: 5000
+        scheme:
+          default: http
+          internal: http
     images:
       tags:
         api: quay.io/airshipit/armada:c7d9e21b1e3c144eee54d7d2a5da3eb562255894
@@ -8880,8 +9706,32 @@ spec:
         auth:
           admin:
             password: airsloop123
+            project_domain_name: default
+            project_name: admin
+            region_name: RegionOne
+            user_domain_name: default
+            username: admin
           barbican:
             password: airsloop123
+            project_domain_name: default
+            project_name: service
+            region_name: RegionOne
+            role: admin
+            user_domain_name: default
+            username: barbican
+        host_fqdn_override:
+          default: null
+        name: keystone
+        namespace: ucp
+        path:
+          default: /v3
+        port:
+          api:
+            default: 80
+            internal: 5000
+        scheme:
+          default: http
+          internal: http
       key_manager:
         host_fqdn_override:
           default: null
@@ -8910,14 +9760,34 @@ spec:
           admin:
             password: airsloop123
           barbican:
+            database: barbican
             password: airsloop123
+            username: barbican
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: mariadb
+          discovery: mariadb-discovery
         path: null
       oslo_messaging:
         auth:
           admin:
             password: airsloop123
+            username: rabbitmq
           barbican:
             password: airsloop123
+          keystone:
+            username: keystone
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: rabbitmq
+        namespace: null
+        path: /keystone
+        port:
+          amqp:
+            default: 5672
+        scheme: rabbit
     images:
       tags: {}
     labels:
@@ -9616,8 +10486,32 @@ spec:
         auth:
           admin:
             password: airsloop123
+            project_domain_name: default
+            project_name: admin
+            region_name: airsloop
+            user_domain_name: default
+            username: admin
           swift:
             password: airsloop123
+            project_domain_name: default
+            project_name: service
+            region_name: airsloop
+            role: admin
+            user_domain_name: default
+            username: swift
+        host_fqdn_override:
+          default: null
+        name: keystone
+        namespace: openstack
+        path:
+          default: /v3
+        port:
+          api:
+            default: 80
+            internal: 5000
+        scheme:
+          default: http
+          internal: http
       object_store:
         host_fqdn_override:
           default: null
@@ -9720,8 +10614,32 @@ spec:
         auth:
           admin:
             password: airsloop123
+            project_domain_name: default
+            project_name: admin
+            region_name: RegionOne
+            user_domain_name: default
+            username: admin
           user:
             password: airsloop123
+            project_domain_name: default
+            project_name: service
+            region_name: RegionOne
+            role: admin
+            user_domain_name: default
+            username: deckhand
+        host_fqdn_override:
+          default: null
+        name: keystone
+        namespace: ucp
+        path:
+          default: /v3
+        port:
+          api:
+            default: 80
+            internal: 5000
+        scheme:
+          default: http
+          internal: http
       key_manager:
         host_fqdn_override:
           default: null
@@ -9749,9 +10667,21 @@ spec:
         auth:
           admin:
             password: airsloop123
+            username: postgres
           user:
+            database: deckhand
             password: airsloop123
-        path: null
+            username: deckhand
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: postgresql
+        name: postgresql
+        path: /DB_NAME
+        port:
+          postgresql:
+            default: 5432
+        scheme: postgresql+psycopg2
     images:
       tags:
         db_sync: quay.io/airshipit/deckhand:49ad9f38842f7f1ecb86d907d86d332f8186eb8c
@@ -9910,19 +10840,58 @@ spec:
         auth:
           admin:
             password: airsloop123
+            project_domain_name: default
+            project_name: admin
+            region_name: RegionOne
+            user_domain_name: default
+            username: admin
           drydock:
             password: airsloop123
-      physicalprovisioner:
+            project_domain_name: default
+            project_name: service
+            region_name: RegionOne
+            role: admin
+            user_domain_name: default
+            username: drydock
+        host_fqdn_override:
+          default: null
+        name: keystone
+        namespace: ucp
+        path:
+          default: /v3
         port:
           api:
+            default: 80
+            internal: 5000
+        scheme:
+          default: http
+          internal: http
+      physicalprovisioner:
+        path:
+          default: /api/v1.0
+        port:
+          api:
+            default: 9000
             nodeport: "30000"
       postgresql:
         auth:
           admin:
             password: airsloop123
+            username: postgres
           user:
+            database: drydock
             password: airsloop123
-        path: null
+            username: drydock
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: postgresql
+        name: postgresql
+        path: /DB_NAME
+        port:
+          postgresql:
+            default: 5432
+        scheme: postgresql+psycopg2
     images:
       tags:
         drydock: quay.io/airshipit/drydock:3470f89519d018c572905566891bafc8a3c51c3b
@@ -10222,6 +11191,24 @@ spec:
         auth:
           admin:
             password: airsloop123
+            project_domain_name: default
+            project_name: admin
+            region_name: RegionOne
+            user_domain_name: default
+            username: admin
+        host_fqdn_override:
+          default: null
+        name: keystone
+        namespace: ucp
+        path:
+          default: /v3
+        port:
+          api:
+            default: 80
+            internal: 5000
+        scheme:
+          default: http
+          internal: http
       oslo_cache:
         host_fqdn_override:
           default: null
@@ -10235,14 +11222,31 @@ spec:
           admin:
             password: airsloop123
           keystone:
+            database: keystone
             password: airsloop123
+            username: keystone
+        hosts:
+          default: mariadb
+          discovery: mariadb-discovery
         path: null
       oslo_messaging:
         auth:
           admin:
             password: airsloop123
+            username: rabbitmq
           keystone:
             password: airsloop123
+            username: keystone
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: rabbitmq
+        namespace: null
+        path: /keystone
+        port:
+          amqp:
+            default: 5672
+        scheme: rabbit
     images:
       tags: {}
     labels:
@@ -10325,13 +11329,37 @@ spec:
         auth:
           admin:
             password: airsloop123
+            username: postgres
           user:
+            database: maasdb
             password: airsloop123
+            username: maas
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: postgresql
+        name: postgresql
         path: null
       maas_region_ui:
         auth:
           admin:
+            email: none@none
             password: airsloop123
+            username: admin
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: maas-region-ui
+          public: maas
+        name: maas-region-ui
+        path:
+          default: /MAAS
+        port:
+          region_ui:
+            default: 80
+            public: 80
+        scheme:
+          default: http
     images:
       tags:
         bootstrap: quay.io/airshipit/maas-region-controller:2e003450cceb16b9bda71aa69a939a8466516582
@@ -10408,6 +11436,19 @@ spec:
         auth:
           admin:
             password: airsloop123
+            username: root
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: mariadb
+          discovery: mariadb-discovery
+        path: null
+        port:
+          mysql:
+            default: 3306
+          wsrep:
+            default: 4567
+        scheme: mysql+pymysql
     images:
       tags: {}
     labels:
@@ -10495,6 +11536,17 @@ spec:
         auth:
           admin:
             password: airsloop123
+            username: postgres
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: postgresql
+        name: postgresql
+        path: /DB_NAME
+        port:
+          postgresql:
+            default: 5432
+        scheme: postgresql+psycopg2
     images:
       tags: {}
     labels:
@@ -10555,8 +11607,32 @@ spec:
         auth:
           admin:
             password: airsloop123
+            project_domain_name: default
+            project_name: admin
+            region_name: RegionOne
+            user_domain_name: default
+            username: admin
           user:
             password: airsloop123
+            project_domain_name: default
+            project_name: service
+            region_name: RegionOne
+            role: admin
+            user_domain_name: default
+            username: promenade
+        host_fqdn_override:
+          default: null
+        name: keystone
+        namespace: ucp
+        path:
+          default: /v3
+        port:
+          api:
+            default: 80
+            internal: 5000
+        scheme:
+          default: http
+          internal: http
       kubernetesprovisioner:
         host_fqdn_override:
           default: null
@@ -10618,8 +11694,32 @@ spec:
         auth:
           admin:
             password: airsloop123
+            project_domain_name: default
+            project_name: admin
+            region_name: RegionOne
+            user_domain_name: default
+            username: admin
           user:
             password: airsloop123
+            project_domain_name: default
+            project_name: service
+            region_name: RegionOne
+            role: admin
+            user_domain_name: default
+            username: prometheus-openstack-exporter
+        host_fqdn_override:
+          default: null
+        name: keystone
+        namespace: ucp
+        path:
+          default: /v3
+        port:
+          api:
+            default: 80
+            internal: 5000
+        scheme:
+          default: http
+          internal: http
       prometheus_openstack_exporter:
         host_fqdn_override:
           default: null
@@ -10708,6 +11808,17 @@ spec:
           erlang_cookie: airsloop123
           user:
             password: airsloop123
+            username: rabbitmq
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: rabbitmq
+        namespace: null
+        path: /keystone
+        port:
+          amqp:
+            default: 5672
+        scheme: rabbit
     images:
       tags: {}
     labels:
@@ -10772,8 +11883,32 @@ spec:
         auth:
           admin:
             password: airsloop123
+            project_domain_name: default
+            project_name: admin
+            region_name: RegionOne
+            user_domain_name: default
+            username: admin
           shipyard:
             password: airsloop123
+            project_domain_name: default
+            project_name: service
+            region_name: RegionOne
+            role: admin
+            user_domain_name: default
+            username: shipyard
+        host_fqdn_override:
+          default: null
+        name: keystone
+        namespace: ucp
+        path:
+          default: /v3
+        port:
+          api:
+            default: 80
+            internal: 5000
+        scheme:
+          default: http
+          internal: http
       oslo_cache:
         host_fqdn_override:
           default: null
@@ -10786,28 +11921,60 @@ spec:
         auth:
           admin:
             password: airsloop123
+            username: rabbitmq
           user:
             password: airsloop123
+            username: airflow
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: rabbitmq
+        namespace: null
+        path: /airflow
+        port:
+          amqp:
+            default: 5672
+          http:
+            default: 15672
+        scheme: amqp
       postgresql_airflow_celery_db:
         auth:
           admin:
             password: airsloop123
+            username: postgres
           user:
+            database: airflow
             password: airsloop123
+            username: airflow
+        host_fqdn_override:
+          default: null
+        hosts:
+          default: postgresql
+        name: postgresql-airflow-celery-db
         path: null
       postgresql_airflow_db:
         auth:
           admin:
             password: airsloop123
+            username: postgres
           user:
+            database: airflow
             password: airsloop123
+            username: airflow
+        hosts:
+          default: postgresql
+        name: postgresql
         path: null
       postgresql_shipyard_db:
         auth:
           admin:
             password: airsloop123
+            username: postgres
           user:
+            database: shipyard
             password: airsloop123
+            username: shipyard
+        name: postgresql
         path: null
       shipyard:
         host_fqdn_override:
