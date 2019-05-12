@@ -168,67 +168,6 @@ def load_file(filename):
 
     return docs2
 
-
-def load_file(filename):
-    """
-    TBD
-    Args:
-       tbd
-    Returns:
-       tbd
-    """
-    docs2 = []
-    vars = {}
-    varrefs = {}
-    with open(filename, 'r') as stream:
-        try:
-            docs = yaml.load_all(stream)
-        except yaml.YAMLError as exc:
-            print(exc)
-
-        docs2 = list(docs)
-        for doc in docs2:
-            if ("substitutions" in doc["metadata"]):
-                if (doc["kind"] not in varrefs):
-                    varrefs[doc["kind"]] = {}
-                for entry in doc["metadata"]["substitutions"]:
-                    if entry["src"]["path"] != ".":
-                        varpath = "spec" + entry["src"]["path"].replace("[", "._").replace("]", "_")
-                        varname = ".".join([entry["src"]["kind"], entry["src"]["name"], varpath])
-                    else:
-                        varpath = "spec"
-                        varname = ".".join([entry["src"]["kind"], entry["src"]["name"], varpath])
-                    vars[varname] = build_var(varname, entry["src"]["kind"], entry["src"]["name"], varpath)
-
-                    dest = entry["dest"]["path"].split(".")
-                    dest[0] = "spec"
-                    thepattern = None
-                    if ("pattern" in entry["dest"]):
-                        thepattern = entry["dest"]["pattern"]
-
-                    varrefs[doc["kind"]]["/".join(dest).replace("[", "/_").replace("]", "_")] = doc["kind"]
-                    add_key(dest, doc, "$(" + varname + ")", thepattern)
-
-    # Save the list of vars to add to the kustomization.yaml
-    varlist = []
-    for key, value in vars.items():
-        varlist.append(value)
-    sortedlist = sorted(varlist, key=lambda k: k['name'])
-    with open("kustomization.vars.yaml", 'w') as stream:
-        yaml.dump(sortedlist, stream, default_flow_style=False)
-
-    # Save the list of varref to add to the kustomizeconfig/crd.yaml
-    for key, value in varrefs.items():
-        with open("res/" + key + ".yaml", 'w') as stream:
-            varlist = []
-            for key2, value2 in value.items():
-                varlist.append({"path": key2, "kind": value2})
-            sortedlist = sorted(varlist, key=lambda k: k['path'])
-            yaml.dump(sortedlist, stream, default_flow_style=False)
-
-    return docs2
-
-
 def remove_metadata(filename):
     """
     TBD
