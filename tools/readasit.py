@@ -192,6 +192,33 @@ def remove_metadata(filename):
 
     return docs2
 
+def move_namespace(filename):
+    """
+    TBD
+    Args:
+       tbd
+    Returns:
+       tbd
+    """
+    docs2 = []
+    vars = {}
+    varrefs = {}
+    with open(filename, 'r') as stream:
+        try:
+            docs = yaml.load_all(stream)
+        except yaml.YAMLError as exc:
+            print(exc)
+
+        docs2 = list(docs)
+        for doc in docs2:
+            if ("namespace" in doc["spec"]):
+                if ("-htk" in  doc["spec"]["namespace"]) or ("helm-toolkit" in  doc["spec"]["namespace"]):
+                   doc["metadata"]["namespace"] = "deckhand"
+                else:
+                   doc["metadata"]["namespace"] = doc["spec"]["namespace"]
+                doc["spec"].pop("namespace")
+
+    return docs2
 
 def find_key(key, node):
     thekey = key.pop(0)
@@ -374,7 +401,7 @@ if __name__ == "__main__":
 
     parser.add_argument('-c', '--command',
                         help="Command to run",
-                        type=str, choices=["extract_subst", "remove_metadata", "check", "values", "onevalue", "togo"],
+                        type=str, choices=["extract_subst", "remove_metadata", "move_namespace", "check", "values", "onevalue", "togo"],
                         default="extract_subst")
     parser.add_argument('-f', '--filename',
                         help="filename",
@@ -388,6 +415,9 @@ if __name__ == "__main__":
         save_file(args.filename + ".new", docs)
     elif (args.command == "remove_metadata"):
         docs = remove_metadata(args.filename)
+        save_file(args.filename + ".simple", docs)
+    elif (args.command == "move_namespace"):
+        docs = move_namespace(args.filename)
         save_file(args.filename + ".simple", docs)
     elif (args.command == "check"):
         docs = check_var_or_substitution(args.filename)

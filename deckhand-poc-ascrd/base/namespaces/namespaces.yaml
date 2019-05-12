@@ -1,0 +1,35 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ceph
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: deckhand
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nfs
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: openstack
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: osh-infra
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tenant-ceph
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ucp
