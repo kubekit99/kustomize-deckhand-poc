@@ -169,6 +169,66 @@ def load_file(filename):
     return docs2
 
 
+def load_file(filename):
+    """
+    TBD
+    Args:
+       tbd
+    Returns:
+       tbd
+    """
+    docs2 = []
+    vars = {}
+    varrefs = {}
+    with open(filename, 'r') as stream:
+        try:
+            docs = yaml.load_all(stream)
+        except yaml.YAMLError as exc:
+            print(exc)
+
+        docs2 = list(docs)
+        for doc in docs2:
+            if ("substitutions" in doc["metadata"]):
+                if (doc["kind"] not in varrefs):
+                    varrefs[doc["kind"]] = {}
+                for entry in doc["metadata"]["substitutions"]:
+                    if entry["src"]["path"] != ".":
+                        varpath = "spec" + entry["src"]["path"].replace("[", "._").replace("]", "_")
+                        varname = ".".join([entry["src"]["kind"], entry["src"]["name"], varpath])
+                    else:
+                        varpath = "spec"
+                        varname = ".".join([entry["src"]["kind"], entry["src"]["name"], varpath])
+                    vars[varname] = build_var(varname, entry["src"]["kind"], entry["src"]["name"], varpath)
+
+                    dest = entry["dest"]["path"].split(".")
+                    dest[0] = "spec"
+                    thepattern = None
+                    if ("pattern" in entry["dest"]):
+                        thepattern = entry["dest"]["pattern"]
+
+                    varrefs[doc["kind"]]["/".join(dest).replace("[", "/_").replace("]", "_")] = doc["kind"]
+                    add_key(dest, doc, "$(" + varname + ")", thepattern)
+
+    # Save the list of vars to add to the kustomization.yaml
+    varlist = []
+    for key, value in vars.items():
+        varlist.append(value)
+    sortedlist = sorted(varlist, key=lambda k: k['name'])
+    with open("kustomization.vars.yaml", 'w') as stream:
+        yaml.dump(sortedlist, stream, default_flow_style=False)
+
+    # Save the list of varref to add to the kustomizeconfig/crd.yaml
+    for key, value in varrefs.items():
+        with open("res/" + key + ".yaml", 'w') as stream:
+            varlist = []
+            for key2, value2 in value.items():
+                varlist.append({"path": key2, "kind": value2})
+            sortedlist = sorted(varlist, key=lambda k: k['path'])
+            yaml.dump(sortedlist, stream, default_flow_style=False)
+
+    return docs2
+
+
 def remove_metadata(filename):
     """
     TBD
@@ -238,7 +298,6 @@ def check_var_or_substitution(filename):
 
         docs2 = list(docs)
 
-
         for var in vars:
             path = var["fieldref"]["fieldpath"]
             name = var["name"]
@@ -253,11 +312,11 @@ def check_var_or_substitution(filename):
 
             if found:
                 print("Found " + name)
-                res = find_key(path.split("."),found)
+                res = find_key(path.split("."), found)
                 if isinstance(res, dict):
-                   realsubs.append(var)
+                    realsubs.append(var)
                 else:
-                   realvars.append(var)
+                    realvars.append(var)
             else:
                 print("Unknown " + name)
 
@@ -271,9 +330,104 @@ def check_var_or_substitution(filename):
     return docs2
 
 
+def extract_keys(thedict, prefix):
+    res = []
+    for key, value in thedict.items():
+        current = prefix + "." + key
+        if isinstance(value, dict):
+            res.extend(extract_keys(value, current))
+        else:
+            res.append(current)
+    return res
+
+
+def extract_values_syntax(filename):
+    """
+    TBD
+    Args:
+       tbd
+    Returns:
+       tbd
+    """
+    docs2 = []
+    vars = {}
+    varrefs = {}
+    with open(filename, 'r') as stream:
+        try:
+            docs = yaml.load_all(stream)
+        except yaml.YAMLError as exc:
+            print(exc)
+        docs2 = list(docs)
+        for doc in docs2:
+            if (doc["kind"] == "ArmadaChart") and ("values" in doc["spec"]):
+                if (isinstance(doc["spec"]["values"], dict)):
+                    print("\n".join(extract_keys(doc["spec"]["values"], "")))
+
+    return docs2
+
+
+def extract_one_value_yaml(filename):
+    """
+    TBD
+    Args:
+       tbd
+    Returns:
+       tbd
+    """
+    doc = []
+    with open(filename, 'r') as stream:
+        try:
+            doc = yaml.load(stream)
+        except yaml.YAMLError as exc:
+            print(exc)
+        if (isinstance(doc, dict)):
+            print("\n".join(extract_keys(doc, "")))
+
+    return doc
+
+
 def save_file(filename, docs):
     with open(filename, 'w') as stream:
         yaml.dump_all(docs, stream, default_flow_style=False)
+
+
+def add_to_structdict(structname, structdict):
+    if (structname not in structdict):
+        structdict[structname] = []
+
+
+def generate_go_struct(structname, fields):
+    print('type {} struct {}'.format(structname, '{'))
+    for field in fields:
+        print('    {}'.format(field))
+    print('{}'.format('}'))
+    print('')
+
+
+# Simple script to generate set of go struct that could be
+# used to refine the ArmadaChartValue field
+def to_go(filepath):
+    structdict = {}
+    structname = "AV"
+    add_to_structdict(structname, structdict)
+    with open(filepath) as fp:
+        line = fp.readline()
+        cnt = 1
+        while line:
+            # Create a line as follow:
+            # Upgrade *ArmadaUpgrade `json:"upgrade,omitempty"`
+            fieldname = line.strip()
+            camelcase = ''.join(x for x in fieldname.replace("_", " ").title() if not x.isspace())
+            substructname = structname + camelcase
+            structdict[structname].append('// {} contains tbd'.format(fieldname))
+            structdict[structname].append('{} *{} `json:"{},omitempty"`'.format(camelcase, substructname, fieldname))
+            add_to_structdict(substructname, structdict)
+            line = fp.readline()
+            cnt += 1
+    for structname, fields in structdict.items():
+        generate_go_struct(structname, fields)
+
+    return structdict
 
 
 if __name__ == "__main__":
@@ -281,7 +435,7 @@ if __name__ == "__main__":
 
     parser.add_argument('-c', '--command',
                         help="Command to run",
-                        type=str, choices=["extract_subst", "remove_metadata", "check"],
+                        type=str, choices=["extract_subst", "remove_metadata", "check", "values", "onevalue", "togo"],
                         default="extract_subst")
     parser.add_argument('-f', '--filename',
                         help="filename",
@@ -298,5 +452,11 @@ if __name__ == "__main__":
         save_file(args.filename + ".simple", docs)
     elif (args.command == "check"):
         docs = check_var_or_substitution(args.filename)
+    elif (args.command == "values"):
+        docs = extract_values_syntax(args.filename)
+    elif (args.command == "onevalue"):
+        docs = extract_one_value_yaml(args.filename)
+    elif (args.command == "togo"):
+        docs = to_go(args.filename)
     else:
         pass
