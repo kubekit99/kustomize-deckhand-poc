@@ -8,251 +8,10 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: cinder-rabbitmq-global
-  name: cinder-rabbitmq
-  replacement: true
-spec:
-  values:
-    pod:
-      replicas:
-        server: 1
----
-apiVersion: armada.airshipit.org/v1alpha1
-kind: ArmadaChart
-metadata:
-  layeringDefinition:
-    abstract: false
-    actions:
-    - method: merge
-      path: .
-    layer: type
-    parentSelector:
-      name: cinder-global
-  name: cinder
-  replacement: true
-spec:
-  values:
-    pod:
-      replicas:
-        api: 1
-        backup: 1
-        scheduler: 1
-        volume: 1
----
-apiVersion: armada.airshipit.org/v1alpha1
-kind: ArmadaChart
-metadata:
-  layeringDefinition:
-    abstract: false
-    actions:
-    - method: merge
-      path: .
-    layer: type
-    parentSelector:
-      hosttype: elasticsearch-global
-  name: elasticsearch
-spec:
-  values:
-    conf:
-      elasticsearch:
-        env:
-          java_opts: -Xms768m -Xmx768m
-    pod:
-      replicas:
-        client: 2
-        data: 1
-        master: 2
-    storage:
-      requests:
-        storage: 50Gi
----
-apiVersion: armada.airshipit.org/v1alpha1
-kind: ArmadaChart
-metadata:
-  layeringDefinition:
-    abstract: false
-    actions:
-    - method: merge
-      path: .
-    layer: type
-    parentSelector:
-      hosttype: fluent-logging-global
-  name: fluent-logging
-spec:
-  values:
-    pod:
-      replicas:
-        fluentd: 1
----
-apiVersion: armada.airshipit.org/v1alpha1
-kind: ArmadaChart
-metadata:
-  layeringDefinition:
-    abstract: false
-    actions:
-    - method: merge
-      path: .
-    layer: type
-    parentSelector:
-      name: glance-rabbitmq-global
-  name: glance-rabbitmq
-  replacement: true
-spec:
-  values:
-    pod:
-      replicas:
-        server: 1
----
-apiVersion: armada.airshipit.org/v1alpha1
-kind: ArmadaChart
-metadata:
-  layeringDefinition:
-    abstract: false
-    actions:
-    - method: merge
-      path: .
-    layer: type
-    parentSelector:
-      name: glance-global
-  name: glance
-  replacement: true
-spec:
-  values:
-    pod:
-      replicas:
-        api: 1
-        registry: 1
----
-apiVersion: armada.airshipit.org/v1alpha1
-kind: ArmadaChart
-metadata:
-  layeringDefinition:
-    abstract: false
-    actions:
-    - method: merge
-      path: .
-    layer: type
-    parentSelector:
-      name: grafana-global
-  name: grafana
-  replacement: true
-spec:
-  values:
-    pod:
-      replicas:
-        grafana: 1
----
-apiVersion: armada.airshipit.org/v1alpha1
-kind: ArmadaChart
-metadata:
-  layeringDefinition:
-    abstract: false
-    actions:
-    - method: merge
-      path: .
-    layer: type
-    parentSelector:
-      name: heat-rabbitmq-global
-  name: heat-rabbitmq
-  replacement: true
-spec:
-  values:
-    pod:
-      replicas:
-        server: 1
----
-apiVersion: armada.airshipit.org/v1alpha1
-kind: ArmadaChart
-metadata:
-  layeringDefinition:
-    abstract: false
-    actions:
-    - method: merge
-      path: .
-    layer: type
-    parentSelector:
-      name: heat-global
-  name: heat
-  replacement: true
-spec:
-  values:
-    pod:
-      replicas:
-        api: 1
-        cfn: 1
-        cloudwatch: 1
-        engine: 1
----
-apiVersion: armada.airshipit.org/v1alpha1
-kind: ArmadaChart
-metadata:
-  layeringDefinition:
-    abstract: false
-    actions:
-    - method: merge
-      path: .
-    layer: type
-    parentSelector:
-      name: horizon-global
-  name: horizon
-  replacement: true
-spec:
-  values:
-    pod:
-      replicas:
-        server: 1
----
-apiVersion: armada.airshipit.org/v1alpha1
-kind: ArmadaChart
-metadata:
-  layeringDefinition:
-    abstract: false
-    actions:
-    - method: merge
-      path: .
-    layer: type
-    parentSelector:
       ingress: kube-system
   name: ingress-kube-system
+  namespace: kube-system
 spec: {}
----
-apiVersion: armada.airshipit.org/v1alpha1
-kind: ArmadaChart
-metadata:
-  layeringDefinition:
-    abstract: false
-    actions:
-    - method: merge
-      path: .
-    layer: type
-    parentSelector:
-      name: keystone-rabbitmq-global
-  name: keystone-rabbitmq
-  replacement: true
-spec:
-  values:
-    pod:
-      replicas:
-        server: 1
----
-apiVersion: armada.airshipit.org/v1alpha1
-kind: ArmadaChart
-metadata:
-  layeringDefinition:
-    abstract: false
-    actions:
-    - method: merge
-      path: .
-    layer: type
-    parentSelector:
-      name: keystone-global
-  name: keystone
-  replacement: true
-spec:
-  values:
-    pod:
-      replicas:
-        api: 1
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
@@ -264,8 +23,9 @@ metadata:
       path: .
     layer: site
     parentSelector:
-      name: kubernetes-calico-etcd-global
+      name: kubernetes-calico-etcd
   name: kubernetes-calico-etcd
+  namespace: kube-system
 spec:
   values:
     nodes:
@@ -304,8 +64,9 @@ metadata:
       path: .
     layer: site
     parentSelector:
-      name: kubernetes-etcd-global
+      name: kubernetes-etcd
   name: kubernetes-etcd
+  namespace: kube-system
 spec:
   values:
     nodes:
@@ -344,8 +105,263 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: neutron-rabbitmq-global
+      name: cinder-rabbitmq
+  name: cinder-rabbitmq
+  namespace: openstack
+  replacement: true
+spec:
+  values:
+    pod:
+      replicas:
+        server: 1
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: type
+    parentSelector:
+      name: cinder
+  name: cinder
+  namespace: openstack
+  replacement: true
+spec:
+  values:
+    pod:
+      replicas:
+        api: 1
+        backup: 1
+        scheduler: 1
+        volume: 1
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: type
+    parentSelector:
+      hosttype: elasticsearch
+  name: elasticsearch
+  namespace: openstack
+spec:
+  values:
+    conf:
+      elasticsearch:
+        env:
+          java_opts: -Xms768m -Xmx768m
+    pod:
+      replicas:
+        client: 2
+        data: 1
+        master: 2
+    storage:
+      requests:
+        storage: 50Gi
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: type
+    parentSelector:
+      hosttype: fluent-logging
+  name: fluent-logging
+  namespace: openstack
+spec:
+  values:
+    pod:
+      replicas:
+        fluentd: 1
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: type
+    parentSelector:
+      name: glance-rabbitmq
+  name: glance-rabbitmq
+  namespace: openstack
+  replacement: true
+spec:
+  values:
+    pod:
+      replicas:
+        server: 1
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: type
+    parentSelector:
+      name: glance
+  name: glance
+  namespace: openstack
+  replacement: true
+spec:
+  values:
+    pod:
+      replicas:
+        api: 1
+        registry: 1
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: type
+    parentSelector:
+      name: grafana
+  name: grafana
+  namespace: openstack
+  replacement: true
+spec:
+  values:
+    pod:
+      replicas:
+        grafana: 1
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: type
+    parentSelector:
+      name: heat-rabbitmq
+  name: heat-rabbitmq
+  namespace: openstack
+  replacement: true
+spec:
+  values:
+    pod:
+      replicas:
+        server: 1
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: type
+    parentSelector:
+      name: heat
+  name: heat
+  namespace: openstack
+  replacement: true
+spec:
+  values:
+    pod:
+      replicas:
+        api: 1
+        cfn: 1
+        cloudwatch: 1
+        engine: 1
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: type
+    parentSelector:
+      name: horizon
+  name: horizon
+  namespace: openstack
+  replacement: true
+spec:
+  values:
+    pod:
+      replicas:
+        server: 1
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: type
+    parentSelector:
+      name: keystone-rabbitmq
+  name: keystone-rabbitmq
+  namespace: openstack
+  replacement: true
+spec:
+  values:
+    pod:
+      replicas:
+        server: 1
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: type
+    parentSelector:
+      name: keystone
+  name: keystone
+  namespace: openstack
+  replacement: true
+spec:
+  values:
+    pod:
+      replicas:
+        api: 1
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: type
+    parentSelector:
+      name: neutron-rabbitmq
   name: neutron-rabbitmq
+  namespace: openstack
   replacement: true
 spec:
   values:
@@ -363,8 +379,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: neutron-global
+      name: neutron
   name: neutron
+  namespace: openstack
 spec:
   values:
     pod:
@@ -381,8 +398,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: nova-rabbitmq-global
+      name: nova-rabbitmq
   name: nova-rabbitmq
+  namespace: openstack
   replacement: true
 spec:
   values:
@@ -400,8 +418,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: nova-global
+      name: nova
   name: nova
+  namespace: openstack
 spec:
   values:
     pod:
@@ -426,8 +445,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: openstack-ingress-controller-global
+      name: openstack-ingress-controller
   name: openstack-ingress-controller
+  namespace: openstack
   replacement: true
 spec:
   values:
@@ -446,8 +466,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: openstack-mariadb-global
+      name: openstack-mariadb
   name: openstack-mariadb
+  namespace: openstack
   replacement: true
 spec:
   values:
@@ -466,8 +487,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: osh-infra-ingress-controller-global
+      name: osh-infra-ingress-controller
   name: osh-infra-ingress-controller
+  namespace: osh-infra
   replacement: true
 spec:
   values:
@@ -486,8 +508,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: osh-infra-mariadb-global
+      name: osh-infra-mariadb
   name: osh-infra-mariadb
+  namespace: osh-infra
   replacement: true
 spec:
   values:
@@ -506,8 +529,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: prometheus-global
+      name: prometheus
   name: prometheus
+  namespace: osh-infra
   replacement: true
 spec:
   values:
@@ -539,8 +563,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: tenant-ceph-client-global
+      name: tenant-ceph-client
   name: tenant-ceph-client
+  namespace: tenant-ceph
 spec:
   values:
     conf:
@@ -636,8 +661,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: tenant-ceph-ingress-global
+      name: tenant-ceph-ingress
   name: tenant-ceph-ingress
+  namespace: tenant-ceph
   replacement: true
 spec:
   values:
@@ -656,8 +682,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: tenant-ceph-osd-global
+      name: tenant-ceph-osd
   name: tenant-ceph-osd
+  namespace: tenant-ceph
 spec: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -670,8 +697,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-armada-global
+      name: ucp-armada
   name: ucp-armada
+  namespace: ucp
   replacement: true
 spec:
   values:
@@ -689,8 +717,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-barbican-global
+      name: ucp-barbican
   name: ucp-barbican
+  namespace: ucp
   replacement: true
 spec:
   values:
@@ -708,8 +737,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-ceph-client-global
+      name: ucp-ceph-client
   name: ucp-ceph-client
+  namespace: ucp
 spec:
   values:
     conf:
@@ -800,8 +830,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-ceph-ingress-global
+      name: ucp-ceph-ingress
   name: ucp-ceph-ingress
+  namespace: ucp
   replacement: true
 spec:
   values:
@@ -820,8 +851,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-ceph-osd-global
+      name: ucp-ceph-osd
   name: ucp-ceph-osd
+  namespace: ucp
 spec: {}
 ---
 apiVersion: armada.airshipit.org/v1alpha1
@@ -836,6 +868,7 @@ metadata:
     parentSelector:
       name: ucp-ceph-provisioners
   name: ucp-ceph-provisioners
+  namespace: ucp
   replacement: true
 spec:
   values:
@@ -854,8 +887,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-deckhand-global
+      name: ucp-deckhand
   name: ucp-deckhand
+  namespace: ucp
   replacement: true
 spec:
   values:
@@ -875,8 +909,9 @@ metadata:
       path: .
     layer: site
     parentSelector:
-      name: ucp-divingbell-global
+      name: ucp-divingbell
   name: ucp-divingbell
+  namespace: ucp
 spec:
   values:
     conf:
@@ -908,8 +943,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-drydock-global
+      name: ucp-drydock
   name: ucp-drydock
+  namespace: ucp
   replacement: true
 spec:
   values:
@@ -926,8 +962,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-ingress-global
+      name: ucp-ingress
   name: ucp-ingress
+  namespace: ucp
   replacement: true
 spec:
   values:
@@ -946,8 +983,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-keystone-global
+      name: ucp-keystone
   name: ucp-keystone
+  namespace: ucp
   replacement: true
 spec:
   values:
@@ -965,8 +1003,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-maas-global
+      name: ucp-maas
   name: ucp-maas
+  namespace: ucp
 spec:
   values:
     conf:
@@ -986,8 +1025,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-mariadb-global
+      name: ucp-mariadb
   name: ucp-mariadb
+  namespace: ucp
   replacement: true
 spec:
   values:
@@ -1006,8 +1046,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-promenade-global
+      name: ucp-promenade
   name: ucp-promenade
+  namespace: ucp
 spec:
   values:
     pod:
@@ -1026,8 +1067,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-rabbitmq-global
+      name: ucp-rabbitmq
   name: ucp-rabbitmq
+  namespace: ucp
   replacement: true
 spec:
   values:
@@ -1045,8 +1087,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-shipyard-global
+      name: ucp-shipyard
   name: ucp-shipyard
+  namespace: ucp
   replacement: true
 spec:
   values:
@@ -1068,8 +1111,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: cluster-bootstrap-global
+      name: cluster-bootstrap
   name: cluster-bootstrap
+  namespace: shipyard
   replacement: true
 spec:
   chart_groups:
@@ -1103,8 +1147,9 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: full-site-global
+      name: full-site
   name: full-site
+  namespace: shipyard
   replacement: true
 spec:
   chart_groups:
@@ -1159,8 +1204,9 @@ metadata:
       path: .
     layer: site
     parentSelector:
-      name: genesis-global
+      name: genesis
   name: genesis
+  namespace: drydock
 spec:
   labels:
     dynamic:
