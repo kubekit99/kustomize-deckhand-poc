@@ -220,6 +220,42 @@ def move_namespace(filename):
 
     return docs2
 
+def add_namespace(filename):
+    """
+    TBD
+    Args:
+       tbd
+    Returns:
+       tbd
+    """
+    docs2 = []
+    vars = {}
+    varrefs = {}
+    with open(filename, 'r') as stream:
+        try:
+            docs = yaml.load_all(stream)
+        except yaml.YAMLError as exc:
+            print(exc)
+
+        docs2 = list(docs)
+        for doc in docs2:
+            name=doc["metadata"]["name"]
+            kind=doc["kind"]
+            if ("namespace" not in doc["metadata"]):
+                   if ("Pegleg" in kind):
+                      doc["metadata"]["namespace"] = "pegleg"
+                   elif ("Deckhand" in kind):
+                      doc["metadata"]["namespace"] = "deckhand"
+                   elif ("Promenade" in kind):
+                      doc["metadata"]["namespace"] = "promenade"
+                   elif ("Shipyard" in kind):
+                      doc["metadata"]["namespace"] = "shipyard"
+                   else:
+                      doc["metadata"]["namespace"] = "boggus"
+            print("{} {} in {}".format(kind,name,doc["metadata"]["namespace"]))
+
+    return docs2
+
 def find_key(key, node):
     thekey = key.pop(0)
     theindex = -1
@@ -401,7 +437,7 @@ if __name__ == "__main__":
 
     parser.add_argument('-c', '--command',
                         help="Command to run",
-                        type=str, choices=["extract_subst", "remove_metadata", "move_namespace", "check", "values", "onevalue", "togo"],
+                        type=str, choices=["extract_subst", "remove_metadata", "move_namespace", "add_namespace", "check", "values", "onevalue", "togo"],
                         default="extract_subst")
     parser.add_argument('-f', '--filename',
                         help="filename",
@@ -418,6 +454,9 @@ if __name__ == "__main__":
         save_file(args.filename + ".simple", docs)
     elif (args.command == "move_namespace"):
         docs = move_namespace(args.filename)
+        save_file(args.filename + ".simple", docs)
+    elif (args.command == "add_namespace"):
+        docs = add_namespace(args.filename)
         save_file(args.filename + ".simple", docs)
     elif (args.command == "check"):
         docs = check_var_or_substitution(args.filename)

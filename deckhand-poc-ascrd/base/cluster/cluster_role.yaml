@@ -20,3 +20,9 @@ rules:
   - storageclasses
   verbs:
   - '*'
+- apiGroups:
+  - extensions
+  resources:
+  - podsecuritypolicies
+  verbs:
+  - '*'

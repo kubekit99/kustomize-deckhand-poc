@@ -7,11 +7,6 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: deckhand
----
-apiVersion: v1
-kind: Namespace
-metadata:
   name: nfs
 ---
 apiVersion: v1
@@ -33,3 +28,18 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: ucp
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pegleg
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: shipyard
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: drydock

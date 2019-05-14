@@ -2,7 +2,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: ucp-ceph-client-update-global
+    name: ucp-ceph-client-update
   layeringDefinition:
     abstract: true
     layer: global
@@ -74,7 +74,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: ucp-ceph-client-global
+    name: ucp-ceph-client
   layeringDefinition:
     abstract: true
     layer: global
@@ -147,7 +147,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: ucp-ceph-ingress-global
+    name: ucp-ceph-ingress
   layeringDefinition:
     abstract: false
     layer: global
@@ -255,7 +255,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: ucp-ceph-osd-global
+    name: ucp-ceph-osd
   layeringDefinition:
     abstract: true
     layer: global
@@ -448,7 +448,7 @@ metadata:
     abstract: false
     layer: global
   name: armada-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: armada-htk
   dependencies: []
@@ -463,7 +463,7 @@ metadata:
     abstract: false
     layer: global
   name: calico-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: calico-htk
   dependencies: []
@@ -478,7 +478,7 @@ metadata:
     abstract: false
     layer: global
   name: ceph-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: ceph-htk
   dependencies: []
@@ -493,7 +493,7 @@ metadata:
     abstract: false
     layer: global
   name: coredns-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: coredns-htk
   dependencies: []
@@ -508,7 +508,7 @@ metadata:
     abstract: false
     layer: global
   name: deckhand-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: deckhand-htk
   dependencies: []
@@ -523,7 +523,7 @@ metadata:
     abstract: false
     layer: global
   name: drydock-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: drydock-htk
   dependencies: []
@@ -538,7 +538,7 @@ metadata:
     abstract: false
     layer: global
   name: haproxy-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: haproxy-htk
   dependencies: []
@@ -553,7 +553,7 @@ metadata:
     abstract: false
     layer: global
   name: ingress-kube-system-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: ingress-kube-system-htk
   dependencies: []
@@ -568,7 +568,7 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-apiserver-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: kubernetes-apiserver-htk
   dependencies: []
@@ -583,7 +583,7 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-calico-etcd-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: kubernetes-calico-etcd-htk
   dependencies: []
@@ -598,7 +598,7 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-controller-manager-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: kubernetes-controller-manager-htk
   dependencies: []
@@ -613,7 +613,7 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-etcd-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: kubernetes-etcd-htk
   dependencies: []
@@ -628,7 +628,7 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-proxy-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: kubernetes-proxy-htk
   dependencies: []
@@ -642,7 +642,7 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-scheduler-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: kubernetes-scheduler-htk
   dependencies: []
@@ -657,7 +657,7 @@ metadata:
     abstract: false
     layer: global
   name: maas-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: maas-htk
   dependencies: []
@@ -672,7 +672,7 @@ metadata:
     abstract: false
     layer: global
   name: mariadb-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: mariadb-htk
   dependencies: []
@@ -687,7 +687,7 @@ metadata:
     abstract: false
     layer: global
   name: osh-helm-toolkit
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: helm-toolkit
   dependencies: []
@@ -708,7 +708,7 @@ metadata:
     abstract: false
     layer: global
   name: osh-infra-helm-toolkit
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: helm-toolkit
   dependencies: []
@@ -729,7 +729,7 @@ metadata:
     abstract: false
     layer: global
   name: postgres-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: postgres-htk
   dependencies: []
@@ -744,7 +744,7 @@ metadata:
     abstract: false
     layer: global
   name: promenade-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: promenade-htk
   dependencies: []
@@ -759,7 +759,7 @@ metadata:
     abstract: false
     layer: global
   name: shipyard-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: shipyard-htk
   dependencies: []
@@ -774,7 +774,7 @@ metadata:
     abstract: false
     layer: global
   name: tenant-ceph-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: tenant-ceph-htk
   dependencies: []
@@ -789,7 +789,7 @@ metadata:
     abstract: false
     layer: global
   name: tiller-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: tiller-htk
   dependencies: []
@@ -804,7 +804,7 @@ metadata:
     abstract: false
     layer: global
   name: ucp-barbican-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: ucp-barbican-htk
   dependencies: []
@@ -819,7 +819,7 @@ metadata:
     abstract: false
     layer: global
   name: ucp-divingbell-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: ucp-divingbell-htk
   dependencies: []
@@ -834,7 +834,7 @@ metadata:
     abstract: false
     layer: global
   name: ucp-ingress-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: ucp-ingress-htk
   dependencies: []
@@ -849,7 +849,7 @@ metadata:
     abstract: false
     layer: global
   name: ucp-keystone-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: ucp-keystone-htk
   dependencies: []
@@ -864,7 +864,7 @@ metadata:
     abstract: false
     layer: global
   name: ucp-memcached-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: ucp-memcached-htk
   dependencies: []
@@ -879,7 +879,7 @@ metadata:
     abstract: false
     layer: global
   name: ucp-rabbitmq-htk
-  namespace: deckhand
+  namespace: pegleg
 spec:
   chart_name: ucp-rabbitmq-htk
   dependencies: []
@@ -891,7 +891,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: coredns-global
+    name: coredns
   layeringDefinition:
     abstract: false
     layer: global
@@ -946,7 +946,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: haproxy-global
+    name: haproxy
   layeringDefinition:
     abstract: false
     layer: global
@@ -1010,7 +1010,7 @@ kind: ArmadaChart
 metadata:
   labels:
     ingress: kube-system
-    name: ingress-kube-system-global
+    name: ingress-kube-system
   layeringDefinition:
     abstract: true
     layer: global
@@ -1061,7 +1061,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: kubernetes-apiserver-global
+    name: kubernetes-apiserver
   layeringDefinition:
     abstract: false
     layer: global
@@ -1123,7 +1123,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: kubernetes-calico-etcd-global
+    name: kubernetes-calico-etcd
   layeringDefinition:
     abstract: true
     layer: global
@@ -1191,7 +1191,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: kubernetes-calico-global
+    name: kubernetes-calico
   layeringDefinition:
     abstract: false
     layer: global
@@ -1284,7 +1284,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: kubernetes-controller-manager-global
+    name: kubernetes-controller-manager
   layeringDefinition:
     abstract: false
     layer: global
@@ -1335,7 +1335,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: kubernetes-etcd-global
+    name: kubernetes-etcd
   layeringDefinition:
     abstract: true
     layer: global
@@ -1399,7 +1399,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: kubernetes-proxy-global
+    name: kubernetes-proxy
   layeringDefinition:
     abstract: false
     layer: global
@@ -1443,7 +1443,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: kubernetes-scheduler-global
+    name: kubernetes-scheduler
   layeringDefinition:
     abstract: false
     layer: global
@@ -1614,7 +1614,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: ucp-tiller-global
+    name: ucp-tiller
   layeringDefinition:
     abstract: false
     layer: global
@@ -1674,7 +1674,7 @@ kind: ArmadaChart
 metadata:
   labels:
     component: cinder
-    name: cinder-rabbitmq-global
+    name: cinder-rabbitmq
   layeringDefinition:
     abstract: false
     layer: global
@@ -1729,7 +1729,7 @@ kind: ArmadaChart
 metadata:
   labels:
     component: cinder
-    name: cinder-global
+    name: cinder
   layeringDefinition:
     abstract: false
     layer: global
@@ -1899,7 +1899,7 @@ kind: ArmadaChart
 metadata:
   labels:
     component: glance
-    name: glance-rabbitmq-global
+    name: glance-rabbitmq
   layeringDefinition:
     abstract: false
     layer: global
@@ -1954,7 +1954,7 @@ kind: ArmadaChart
 metadata:
   labels:
     component: glance
-    name: glance-global
+    name: glance
   layeringDefinition:
     abstract: false
     layer: global
@@ -2122,7 +2122,7 @@ kind: ArmadaChart
 metadata:
   labels:
     component: heat
-    name: heat-rabbitmq-global
+    name: heat-rabbitmq
   layeringDefinition:
     abstract: false
     layer: global
@@ -2177,7 +2177,7 @@ kind: ArmadaChart
 metadata:
   labels:
     component: heat
-    name: heat-global
+    name: heat
   layeringDefinition:
     abstract: false
     layer: global
@@ -2345,7 +2345,7 @@ kind: ArmadaChart
 metadata:
   labels:
     component: horizon
-    name: horizon-global
+    name: horizon
   layeringDefinition:
     abstract: false
     layer: global
@@ -2403,7 +2403,7 @@ kind: ArmadaChart
 metadata:
   labels:
     component: keystone
-    name: keystone-rabbitmq-global
+    name: keystone-rabbitmq
   layeringDefinition:
     abstract: false
     layer: global
@@ -2458,7 +2458,7 @@ kind: ArmadaChart
 metadata:
   labels:
     component: keystone
-    name: keystone-global
+    name: keystone
   layeringDefinition:
     abstract: false
     layer: global
@@ -2627,7 +2627,7 @@ kind: ArmadaChart
 metadata:
   labels:
     component: libvirt
-    name: libvirt-global
+    name: libvirt
   layeringDefinition:
     abstract: false
     layer: global
@@ -2665,7 +2665,7 @@ kind: ArmadaChart
 metadata:
   labels:
     component: neutron
-    name: neutron-rabbitmq-global
+    name: neutron-rabbitmq
   layeringDefinition:
     abstract: false
     layer: global
@@ -2720,7 +2720,7 @@ kind: ArmadaChart
 metadata:
   labels:
     component: neutron
-    name: neutron-global
+    name: neutron
   layeringDefinition:
     abstract: false
     layer: global
@@ -2915,7 +2915,7 @@ kind: ArmadaChart
 metadata:
   labels:
     component: nova
-    name: nova-rabbitmq-global
+    name: nova-rabbitmq
   layeringDefinition:
     abstract: false
     layer: global
@@ -2970,7 +2970,7 @@ kind: ArmadaChart
 metadata:
   labels:
     component: nova
-    name: nova-global
+    name: nova
   layeringDefinition:
     abstract: true
     layer: global
@@ -3185,7 +3185,7 @@ kind: ArmadaChart
 metadata:
   labels:
     component: ceph
-    name: openstack-ceph-config-global
+    name: openstack-ceph-config
   layeringDefinition:
     abstract: false
     layer: global
@@ -3243,7 +3243,7 @@ kind: ArmadaChart
 metadata:
   labels:
     component: ingress
-    name: openstack-ingress-controller-global
+    name: openstack-ingress-controller
   layeringDefinition:
     abstract: false
     layer: global
@@ -3288,7 +3288,7 @@ kind: ArmadaChart
 metadata:
   labels:
     component: mariadb
-    name: openstack-mariadb-global
+    name: openstack-mariadb
   layeringDefinition:
     abstract: false
     layer: global
@@ -3345,7 +3345,7 @@ kind: ArmadaChart
 metadata:
   labels:
     component: memcached
-    name: openstack-memcached-global
+    name: openstack-memcached
   layeringDefinition:
     abstract: false
     layer: global
@@ -3384,7 +3384,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: openvswitch-global
+    name: openvswitch
   layeringDefinition:
     abstract: false
     layer: global
@@ -3603,7 +3603,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    hosttype: elasticsearch-global
+    hosttype: elasticsearch
   layeringDefinition:
     abstract: true
     layer: global
@@ -3878,7 +3878,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    hosttype: fluent-logging-global
+    hosttype: fluent-logging
   layeringDefinition:
     abstract: true
     layer: global
@@ -4251,7 +4251,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: grafana-global
+    name: grafana
   layeringDefinition:
     abstract: false
     layer: global
@@ -4589,7 +4589,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: osh-infra-ingress-controller-global
+    name: osh-infra-ingress-controller
   layeringDefinition:
     abstract: false
     layer: global
@@ -4633,7 +4633,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: osh-infra-mariadb-global
+    name: osh-infra-mariadb
   layeringDefinition:
     abstract: false
     layer: global
@@ -4799,7 +4799,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: prometheus-global
+    name: prometheus
   layeringDefinition:
     abstract: false
     layer: global
@@ -6527,7 +6527,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: tenant-ceph-client-global
+    name: tenant-ceph-client
   layeringDefinition:
     abstract: true
     layer: global
@@ -6676,7 +6676,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: tenant-ceph-ingress-global
+    name: tenant-ceph-ingress
   layeringDefinition:
     abstract: false
     layer: global
@@ -6798,7 +6798,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: tenant-ceph-osd-global
+    name: tenant-ceph-osd
   layeringDefinition:
     abstract: true
     layer: global
@@ -6866,7 +6866,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: podsecuritypolicy-global
+    name: podsecuritypolicy
   layeringDefinition:
     abstract: false
     layer: global
@@ -6917,7 +6917,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: ucp-armada-global
+    name: ucp-armada
   layeringDefinition:
     abstract: false
     layer: global
@@ -6972,7 +6972,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: ucp-barbican-global
+    name: ucp-barbican
   layeringDefinition:
     abstract: false
     layer: global
@@ -7119,7 +7119,7 @@ kind: ArmadaChart
 metadata:
   labels:
     components: ceph
-    name: ucp-ceph-config-global
+    name: ucp-ceph-config
   layeringDefinition:
     abstract: false
     layer: global
@@ -7179,7 +7179,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: ucp-deckhand-global
+    name: ucp-deckhand
   layeringDefinition:
     abstract: false
     layer: global
@@ -7248,7 +7248,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: ucp-divingbell-global
+    name: ucp-divingbell
   layeringDefinition:
     abstract: true
     layer: global
@@ -7299,7 +7299,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: ucp-drydock-global
+    name: ucp-drydock
   layeringDefinition:
     abstract: false
     layer: global
@@ -7375,7 +7375,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: ucp-ingress-global
+    name: ucp-ingress
   layeringDefinition:
     abstract: false
     layer: global
@@ -7427,7 +7427,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: ucp-keystone-memcached-global
+    name: ucp-keystone-memcached
   layeringDefinition:
     abstract: false
     layer: global
@@ -7467,7 +7467,7 @@ kind: ArmadaChart
 metadata:
   labels:
     component: keystone
-    name: ucp-keystone-global
+    name: ucp-keystone
   layeringDefinition:
     abstract: false
     layer: global
@@ -7606,7 +7606,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: ucp-maas-global
+    name: ucp-maas
   layeringDefinition:
     abstract: true
     layer: global
@@ -7699,7 +7699,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: ucp-mariadb-global
+    name: ucp-mariadb
   layeringDefinition:
     abstract: false
     layer: global
@@ -7752,7 +7752,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: ucp-postgresql-global
+    name: ucp-postgresql
   layeringDefinition:
     abstract: false
     layer: global
@@ -7805,7 +7805,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: ucp-promenade-global
+    name: ucp-promenade
   layeringDefinition:
     abstract: true
     layer: global
@@ -7865,7 +7865,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: ucp-prometheus-openstack-exporter-global
+    name: ucp-prometheus-openstack-exporter
   layeringDefinition:
     abstract: false
     layer: global
@@ -7916,7 +7916,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: ucp-rabbitmq-global
+    name: ucp-rabbitmq
   layeringDefinition:
     abstract: false
     layer: global
@@ -7966,7 +7966,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: ucp-shipyard-global
+    name: ucp-shipyard
   layeringDefinition:
     abstract: false
     layer: global
@@ -8069,6 +8069,7 @@ metadata:
     abstract: false
     layer: global
   name: ingress-kube-system
+  namespace: kube-system
 spec:
   chart_group:
   - ingress-kube-system
@@ -8081,6 +8082,7 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-container-networking
+  namespace: kube-system
 spec:
   chart_group:
   - kubernetes-calico-etcd
@@ -8095,6 +8097,7 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-core
+  namespace: kube-system
 spec:
   chart_group:
   - kubernetes-apiserver
@@ -8109,6 +8112,7 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-dns
+  namespace: kube-system
 spec:
   chart_group:
   - coredns
@@ -8121,6 +8125,7 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-etcd
+  namespace: kube-system
 spec:
   chart_group:
   - kubernetes-etcd
@@ -8133,6 +8138,7 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-haproxy
+  namespace: kube-system
 spec:
   chart_group:
   - haproxy
@@ -8145,6 +8151,7 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-proxy
+  namespace: kube-system
 spec:
   chart_group:
   - kubernetes-proxy
@@ -8156,11 +8163,12 @@ kind: ArmadaChartGroup
 metadata:
   labels:
     component: ceph
-    name: openstack-ceph-config-chart-group-global
+    name: openstack-ceph-config-chart-group
   layeringDefinition:
     abstract: false
     layer: global
   name: openstack-ceph-config
+  namespace: openstack
 spec:
   chart_group:
   - openstack-ceph-config
@@ -8171,11 +8179,12 @@ kind: ArmadaChartGroup
 metadata:
   labels:
     component: cinder
-    name: openstack-cinder-chart-group-global
+    name: openstack-cinder-chart-group
   layeringDefinition:
     abstract: false
     layer: global
   name: openstack-cinder
+  namespace: openstack
 spec:
   chart_group:
   - cinder-rabbitmq
@@ -8186,11 +8195,12 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
   labels:
-    name: openstack-compute-kit-chart-group-global
+    name: openstack-compute-kit-chart-group
   layeringDefinition:
     abstract: false
     layer: global
   name: openstack-compute-kit
+  namespace: openstack
 spec:
   chart_group:
   - libvirt
@@ -8206,11 +8216,12 @@ kind: ArmadaChartGroup
 metadata:
   labels:
     component: glance
-    name: openstack-glance-chart-group-global
+    name: openstack-glance-chart-group
   layeringDefinition:
     abstract: false
     layer: global
   name: openstack-glance
+  namespace: openstack
 spec:
   chart_group:
   - glance-rabbitmq
@@ -8222,11 +8233,12 @@ kind: ArmadaChartGroup
 metadata:
   labels:
     component: heat
-    name: openstack-heat-chart-group-global
+    name: openstack-heat-chart-group
   layeringDefinition:
     abstract: false
     layer: global
   name: openstack-heat
+  namespace: openstack
 spec:
   chart_group:
   - heat-rabbitmq
@@ -8238,11 +8250,12 @@ kind: ArmadaChartGroup
 metadata:
   labels:
     component: horizon
-    name: openstack-horizon-chart-group-global
+    name: openstack-horizon-chart-group
   layeringDefinition:
     abstract: false
     layer: global
   name: openstack-horizon
+  namespace: openstack
 spec:
   chart_group:
   - horizon
@@ -8253,11 +8266,12 @@ kind: ArmadaChartGroup
 metadata:
   labels:
     component: ingress
-    name: openstack-ingress-controller-chart-group-global
+    name: openstack-ingress-controller-chart-group
   layeringDefinition:
     abstract: false
     layer: global
   name: openstack-ingress-controller
+  namespace: openstack
 spec:
   chart_group:
   - openstack-ingress-controller
@@ -8268,11 +8282,12 @@ kind: ArmadaChartGroup
 metadata:
   labels:
     component: keystone
-    name: openstack-keystone-chart-group-global
+    name: openstack-keystone-chart-group
   layeringDefinition:
     abstract: false
     layer: global
   name: openstack-keystone
+  namespace: openstack
 spec:
   chart_group:
   - keystone-rabbitmq
@@ -8284,11 +8299,12 @@ kind: ArmadaChartGroup
 metadata:
   labels:
     component: mariadb
-    name: openstack-mariadb-chart-group-global
+    name: openstack-mariadb-chart-group
   layeringDefinition:
     abstract: false
     layer: global
   name: openstack-mariadb
+  namespace: openstack
 spec:
   chart_group:
   - openstack-mariadb
@@ -8299,11 +8315,12 @@ kind: ArmadaChartGroup
 metadata:
   labels:
     component: memcached
-    name: openstack-memcached-chart-group-global
+    name: openstack-memcached-chart-group
   layeringDefinition:
     abstract: false
     layer: global
   name: openstack-memcached
+  namespace: openstack
 spec:
   chart_group:
   - openstack-memcached
@@ -8316,6 +8333,7 @@ metadata:
     abstract: false
     layer: global
   name: openstack-radosgw
+  namespace: openstack
 spec:
   chart_group:
   - tenant-ceph-rgw
@@ -8328,6 +8346,7 @@ metadata:
     abstract: false
     layer: global
   name: openstack-tenant-ceph
+  namespace: openstack
 spec:
   chart_group:
   - tenant-ceph-ingress
@@ -8345,6 +8364,7 @@ metadata:
     abstract: false
     layer: global
   name: osh-infra-ceph-config
+  namespace: osh-infra
 spec:
   chart_group:
   - osh-infra-ceph-config
@@ -8357,6 +8377,7 @@ metadata:
     abstract: false
     layer: global
   name: osh-infra-dashboards
+  namespace: osh-infra
 spec:
   chart_group:
   - kibana
@@ -8370,6 +8391,7 @@ metadata:
     abstract: false
     layer: global
   name: osh-infra-ingress-controller
+  namespace: osh-infra
 spec:
   chart_group:
   - osh-infra-ingress-controller
@@ -8382,6 +8404,7 @@ metadata:
     abstract: false
     layer: global
   name: osh-infra-logging
+  namespace: osh-infra
 spec:
   chart_group:
   - elasticsearch
@@ -8396,6 +8419,7 @@ metadata:
     abstract: false
     layer: global
   name: osh-infra-mariadb
+  namespace: osh-infra
 spec:
   chart_group:
   - osh-infra-mariadb
@@ -8408,6 +8432,7 @@ metadata:
     abstract: false
     layer: global
   name: osh-infra-monitoring
+  namespace: osh-infra
 spec:
   chart_group:
   - prometheus
@@ -8424,6 +8449,7 @@ metadata:
     abstract: false
     layer: global
   name: osh-infra-nfs-provisioner
+  namespace: osh-infra
 spec:
   chart_group:
   - nfs-provisioner
@@ -8436,6 +8462,7 @@ metadata:
     abstract: false
     layer: global
   name: osh-infra-prometheus-openstack-exporter
+  namespace: osh-infra
 spec:
   chart_group:
   - prometheus-openstack-exporter
@@ -8448,6 +8475,7 @@ metadata:
     abstract: false
     layer: global
   name: osh-infra-radosgw
+  namespace: osh-infra
 spec:
   chart_group:
   - osh-infra-radosgw
@@ -8460,6 +8488,7 @@ metadata:
     abstract: false
     layer: global
   name: podsecuritypolicy
+  namespace: ucp
 spec:
   chart_group:
   - podsecuritypolicy
@@ -8469,11 +8498,12 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
   labels:
-    name: ucp-armada-chart-group-global
+    name: ucp-armada-chart-group
   layeringDefinition:
     abstract: false
     layer: global
   name: ucp-armada
+  namespace: ucp
 spec:
   chart_group:
   - ucp-tiller
@@ -8486,11 +8516,12 @@ kind: ArmadaChartGroup
 metadata:
   labels:
     component: ceph
-    name: ucp-ceph-config-chart-group-global
+    name: ucp-ceph-config-chart-group
   layeringDefinition:
     abstract: false
     layer: global
   name: ucp-ceph-config
+  namespace: ucp
 spec:
   chart_group:
   - ucp-ceph-config
@@ -8503,6 +8534,7 @@ metadata:
     abstract: false
     layer: global
   name: ucp-ceph-update
+  namespace: ucp
 spec:
   chart_group:
   - ucp-ceph-ingress
@@ -8520,6 +8552,7 @@ metadata:
     abstract: false
     layer: global
   name: ucp-ceph
+  namespace: ucp
 spec:
   chart_group:
   - ucp-ceph-ingress
@@ -8534,11 +8567,12 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
   labels:
-    name: ucp-core-chart-group-global
+    name: ucp-core-chart-group
   layeringDefinition:
     abstract: false
     layer: global
   name: ucp-core
+  namespace: ucp
 spec:
   chart_group:
   - ucp-ingress
@@ -8551,11 +8585,12 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
   labels:
-    name: ucp-deckhand-chart-group-global
+    name: ucp-deckhand-chart-group
   layeringDefinition:
     abstract: false
     layer: global
   name: ucp-deckhand
+  namespace: ucp
 spec:
   chart_group:
   - ucp-barbican
@@ -8569,6 +8604,7 @@ metadata:
     abstract: false
     layer: global
   name: ucp-divingbell
+  namespace: ucp
 spec:
   chart_group:
   - ucp-divingbell
@@ -8581,6 +8617,7 @@ metadata:
     abstract: false
     layer: global
   name: ucp-drydock
+  namespace: ucp
 spec:
   chart_group:
   - ucp-maas
@@ -8591,11 +8628,12 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
   labels:
-    name: ucp-keystone-chart-group-global
+    name: ucp-keystone-chart-group
   layeringDefinition:
     abstract: false
     layer: global
   name: ucp-keystone
+  namespace: ucp
 spec:
   chart_group:
   - ucp-keystone-memcached
@@ -8609,6 +8647,7 @@ metadata:
     abstract: false
     layer: global
   name: ucp-promenade
+  namespace: ucp
 spec:
   chart_group:
   - ucp-promenade
@@ -8621,6 +8660,7 @@ metadata:
     abstract: false
     layer: global
   name: ucp-prometheus-openstack-exporter
+  namespace: ucp
 spec:
   chart_group:
   - ucp-prometheus-openstack-exporter
@@ -8630,11 +8670,12 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
   labels:
-    name: ucp-shipyard-chart-group-global
+    name: ucp-shipyard-chart-group
   layeringDefinition:
     abstract: false
     layer: global
   name: ucp-shipyard
+  namespace: ucp
 spec:
   chart_group:
   - ucp-shipyard
@@ -8644,11 +8685,12 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaManifest
 metadata:
   labels:
-    name: cluster-bootstrap-global
+    name: cluster-bootstrap
   layeringDefinition:
     abstract: false
     layer: global
   name: cluster-bootstrap
+  namespace: shipyard
 spec:
   chart_groups:
   - podsecuritypolicy
@@ -8675,11 +8717,12 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaManifest
 metadata:
   labels:
-    name: full-site-global
+    name: full-site
   layeringDefinition:
     abstract: false
     layer: global
   name: full-site
+  namespace: shipyard
 spec:
   chart_groups:
   - podsecuritypolicy
@@ -8730,6 +8773,7 @@ metadata:
     abstract: false
     layer: site
   name: admin
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDYDCCAkigAwIBAgIUbXyYBCQokjf4ID97Oz0CySoFC6AwDQYJKoZIhvcNAQEL
@@ -8760,6 +8804,7 @@ metadata:
     abstract: false
     layer: site
   name: apiserver-etcd
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDUDCCAjigAwIBAgIUDQ2dIj6LKiys6ZnFsQhktO0vNkYwDQYJKoZIhvcNAQEL
@@ -8789,6 +8834,7 @@ metadata:
     abstract: false
     layer: site
   name: apiserver
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIID8jCCAtqgAwIBAgIUTWJYgA63hnvsQ0/X4/V1n2bUtw8wDQYJKoZIhvcNAQEL
@@ -8822,6 +8868,7 @@ metadata:
     abstract: false
     layer: site
   name: armada
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDYTCCAkmgAwIBAgIUFo7UqH+G3NBRGLn/xT0KTicy/e4wDQYJKoZIhvcNAQEL
@@ -8852,6 +8899,7 @@ metadata:
     abstract: false
     layer: site
   name: calico-etcd-airsloop-control-1-peer
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDqTCCApGgAwIBAgIUFyagkSGlnNZTF9yW0S1s06GFKSEwDQYJKoZIhvcNAQEL
@@ -8883,6 +8931,7 @@ metadata:
     abstract: false
     layer: site
   name: calico-etcd-airsloop-control-1
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDnzCCAoegAwIBAgIUeaeO5DCwMMRx8xJzTMRaIc8wQU0wDQYJKoZIhvcNAQEL
@@ -8914,6 +8963,7 @@ metadata:
     abstract: false
     layer: site
   name: calico-etcd-airsloop-control-2-peer
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDqTCCApGgAwIBAgIUNtK2RGE/O6cu2HabPyph4klc+qowDQYJKoZIhvcNAQEL
@@ -8945,6 +8995,7 @@ metadata:
     abstract: false
     layer: site
   name: calico-etcd-airsloop-control-2
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDnzCCAoegAwIBAgIUH9oX7EOw+dcTewk0cZuTV7cwpjYwDQYJKoZIhvcNAQEL
@@ -8976,6 +9027,7 @@ metadata:
     abstract: false
     layer: site
   name: calico-etcd-airsloop-control-3-peer
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDqTCCApGgAwIBAgIUDAJHTCuXvIf5MVfxv9B+88qwea0wDQYJKoZIhvcNAQEL
@@ -9007,6 +9059,7 @@ metadata:
     abstract: false
     layer: site
   name: calico-etcd-airsloop-control-3
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDnzCCAoegAwIBAgIUKCtl8SZSz1JYZEp5YbF4YS+C3N4wDQYJKoZIhvcNAQEL
@@ -9038,6 +9091,7 @@ metadata:
     abstract: false
     layer: site
   name: calico-etcd-anchor
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDSTCCAjGgAwIBAgIUWd7UZmQeqksYonthsQ4psX7bue8wDQYJKoZIhvcNAQEL
@@ -9067,6 +9121,7 @@ metadata:
     abstract: false
     layer: site
   name: calico-node-peer
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDWTCCAkGgAwIBAgIUSNIYPI/G1gAAPjotJ6p3qFD3VWIwDQYJKoZIhvcNAQEL
@@ -9096,6 +9151,7 @@ metadata:
     abstract: false
     layer: site
   name: calico-node
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDTzCCAjegAwIBAgIUQM3lWI0xKS0IrjakmQ9+CKwotHEwDQYJKoZIhvcNAQEL
@@ -9125,6 +9181,7 @@ metadata:
     abstract: false
     layer: site
   name: controller-manager
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDYDCCAkigAwIBAgIUfiWTVzOEfq5CN7JJAkIgcM7iuwUwDQYJKoZIhvcNAQEL
@@ -9155,6 +9212,7 @@ metadata:
     abstract: false
     layer: site
   name: kubelet-airsloop-compute-1
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDnjCCAoagAwIBAgIURCap83b/DcJ0cO/AbUP0yLg27lEwDQYJKoZIhvcNAQEL
@@ -9186,6 +9244,7 @@ metadata:
     abstract: false
     layer: site
   name: kubelet-airsloop-control-1
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDnjCCAoagAwIBAgIUK0M7I89jOMfrHySFF6/Vwf2iwhowDQYJKoZIhvcNAQEL
@@ -9217,6 +9276,7 @@ metadata:
     abstract: false
     layer: site
   name: kubelet-airsloop-control-2
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDnjCCAoagAwIBAgIUWWyxrV9ZSDjeEqVfO+i667dQvcwwDQYJKoZIhvcNAQEL
@@ -9248,6 +9308,7 @@ metadata:
     abstract: false
     layer: site
   name: kubelet-airsloop-control-3
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDnjCCAoagAwIBAgIUG6ttOJbLyDAGPG+g6KrQpBda1EUwDQYJKoZIhvcNAQEL
@@ -9279,6 +9340,7 @@ metadata:
     abstract: false
     layer: site
   name: kubelet-genesis
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDnjCCAoagAwIBAgIUVqwxD8SvrDAPKy3f/Ph947Gxo6wwDQYJKoZIhvcNAQEL
@@ -9310,6 +9372,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes-etcd-airsloop-control-1-peer
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIID4DCCAsigAwIBAgIUQ9uuMpoFtxr7EpiqzF+UA1TweZMwDQYJKoZIhvcNAQEL
@@ -9342,6 +9405,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes-etcd-airsloop-control-1
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIID1jCCAr6gAwIBAgIUSfpj2UUatynd14V0W7X50UmJyfIwDQYJKoZIhvcNAQEL
@@ -9374,6 +9438,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes-etcd-airsloop-control-2-peer
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIID4DCCAsigAwIBAgIUYdaJZxcSnbL8GvxTXrDx1QARAxYwDQYJKoZIhvcNAQEL
@@ -9406,6 +9471,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes-etcd-airsloop-control-2
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIID1jCCAr6gAwIBAgIUP69Ziu1DE7YAsgtRwZS0U7xdcIcwDQYJKoZIhvcNAQEL
@@ -9438,6 +9504,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes-etcd-airsloop-control-3-peer
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIID4DCCAsigAwIBAgIUe6Et6GzItsU4L5ZMvod6A361m8UwDQYJKoZIhvcNAQEL
@@ -9470,6 +9537,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes-etcd-airsloop-control-3
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIID1jCCAr6gAwIBAgIUBX9eAH3Fo1FtOb0iNMIMlN+O5eowDQYJKoZIhvcNAQEL
@@ -9502,6 +9570,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes-etcd-anchor
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDTTCCAjWgAwIBAgIUM0K8ZCEtAgyGL2BE3Gm2yigt5lAwDQYJKoZIhvcNAQEL
@@ -9531,6 +9600,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes-etcd-genesis-peer
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIID1TCCAr2gAwIBAgIUPqo8TpMb0KIwq3Bujx8RAxwATRcwDQYJKoZIhvcNAQEL
@@ -9563,6 +9633,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes-etcd-genesis
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDyzCCArOgAwIBAgIUaOMS2OUltsNvXHQVzNJGescKWRQwDQYJKoZIhvcNAQEL
@@ -9595,6 +9666,7 @@ metadata:
     abstract: false
     layer: site
   name: scheduler
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDVzCCAj+gAwIBAgIUKmH59/sx5vbphv+HsXBO1ehlhZwwDQYJKoZIhvcNAQEL
@@ -9624,6 +9696,7 @@ metadata:
     abstract: false
     layer: site
   name: calico-etcd-peer
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDVDCCAjygAwIBAgIUUNx/pecqR7xKnIP9fQArzA3FErYwDQYJKoZIhvcNAQEL
@@ -9653,6 +9726,7 @@ metadata:
     abstract: false
     layer: site
   name: calico-etcd
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDSjCCAjKgAwIBAgIUC4DRnxMvF6eINDCAsL0prM82stYwDQYJKoZIhvcNAQEL
@@ -9682,6 +9756,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes-etcd-peer
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDXDCCAkSgAwIBAgIULxkj28Vji1jbPvUjZxQOGiI4CEcwDQYJKoZIhvcNAQEL
@@ -9711,6 +9786,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes-etcd
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDUjCCAjqgAwIBAgIUHX9RM/CQw+uyaw564CkVwWBZw7owDQYJKoZIhvcNAQEL
@@ -9740,6 +9816,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes
+  namespace: pegleg
 spec: |
   -----BEGIN CERTIFICATE-----
   MIIDSDCCAjCgAwIBAgIUPpb5ExrCoa1ZJKC6WZS+LgwCJnMwDQYJKoZIhvcNAQEL
@@ -9769,6 +9846,7 @@ metadata:
     abstract: false
     layer: site
   name: calico-etcd-peer
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEAsvNE0uJKLczjce6oba969kJGvAU2dFfC1XhEzscv5zeliPHl
@@ -9805,6 +9883,7 @@ metadata:
     abstract: false
     layer: site
   name: calico-etcd
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpQIBAAKCAQEAzOqv1DPM/p/QKBJccvWSVpUWZNZ4ytS83Wx3p3vbdJyIKUvf
@@ -9841,6 +9920,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes-etcd-peer
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAx2ngXJceMrHaDYOMkWi/9lyjS5X3E/R9PfFhfLOBcwyqpQd/
@@ -9877,6 +9957,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes-etcd
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEAwHZ4cAqdt5yfV70m+Ct/amaR4BzgUQhZJn/dKEVgJ0/8td91
@@ -9913,6 +9994,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEAt+g2Yhjtu1UPDNmFkQ+Z1Fu3+LQUr98aAZiKr8CQi4H4meMJ
@@ -9949,6 +10031,7 @@ metadata:
     abstract: false
     layer: site
   name: admin
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpQIBAAKCAQEAsRnjMUzcksTeL/veUWz/ft+NKmEb9M/4UwavYmmw3EmipoJT
@@ -9985,6 +10068,7 @@ metadata:
     abstract: false
     layer: site
   name: apiserver-etcd
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAyN0uQe5OCNcpnJx+bQxfiBzf3Pkz6iFAEaX7TwBQOXASU167
@@ -10021,6 +10105,7 @@ metadata:
     abstract: false
     layer: site
   name: apiserver
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpQIBAAKCAQEAvqZDrjECiIFqnDoI71/0PKibeTJlViKC1qLg/8X+AawL+717
@@ -10057,6 +10142,7 @@ metadata:
     abstract: false
     layer: site
   name: armada
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpQIBAAKCAQEAuWZCkJNjTu2dKuIUCWZ3YgjdSsPyu9AtZJ7G6rv44TL6l/vl
@@ -10093,6 +10179,7 @@ metadata:
     abstract: false
     layer: site
   name: calico-etcd-airsloop-control-1-peer
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEA2/Fsk28bvLuh8bUSRnDufz1CCE4YwYFSXYB/i+ivbdhjaoOZ
@@ -10129,6 +10216,7 @@ metadata:
     abstract: false
     layer: site
   name: calico-etcd-airsloop-control-1
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpQIBAAKCAQEAv7tJDLAdEbsARNL40hcfaKXs8fD8VGO5cMTiDiAh46ZDGpKV
@@ -10165,6 +10253,7 @@ metadata:
     abstract: false
     layer: site
   name: calico-etcd-airsloop-control-2-peer
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEArTfScUMfvpPsVr1R3m6uzOa7C0lWo5rQ1nQWyllrzTOYPdPn
@@ -10201,6 +10290,7 @@ metadata:
     abstract: false
     layer: site
   name: calico-etcd-airsloop-control-2
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEA1kalCvhVqKk7G2zGm0nptFpqNNhWl4mU3vR5sS4loRvXWe+u
@@ -10237,6 +10327,7 @@ metadata:
     abstract: false
     layer: site
   name: calico-etcd-airsloop-control-3-peer
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAz1p1Rf0dl0D83sVDcJFi2gZlm2LAt5e+UYRpJPbYVbLVO1+o
@@ -10273,6 +10364,7 @@ metadata:
     abstract: false
     layer: site
   name: calico-etcd-airsloop-control-3
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEA7I8kOTaU07L8EuVitZ8A5JuBg21d/jn4M5e1ShWYADDMTkjP
@@ -10309,6 +10401,7 @@ metadata:
     abstract: false
     layer: site
   name: calico-etcd-anchor
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAwEVcuvvHuKwp5u02UgPPy4RcGBzBeObpKGQhuMUch9ay36t7
@@ -10345,6 +10438,7 @@ metadata:
     abstract: false
     layer: site
   name: calico-node-peer
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAzyigp3xcuC/SdF38v75Wp+1lNFKE0RWpNOrj8kbMmrPj3V59
@@ -10381,6 +10475,7 @@ metadata:
     abstract: false
     layer: site
   name: calico-node
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAvDKYmFwj191ovvVxuwHU68m78twsJxwDrvg1yWlLs4vaGb4z
@@ -10417,6 +10512,7 @@ metadata:
     abstract: false
     layer: site
   name: controller-manager
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEA1MzY6qMMAhYeELkDtx3TYZlxiGHt7e7+wdwRGWTyRZvTkXxK
@@ -10453,6 +10549,7 @@ metadata:
     abstract: false
     layer: site
   name: kubelet-airsloop-compute-1
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAoUqcY1VdB0EgrYfrUvhoydhQARtsuHylhg+NMSAbcV5LM05L
@@ -10489,6 +10586,7 @@ metadata:
     abstract: false
     layer: site
   name: kubelet-airsloop-control-1
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAukrF7lsVJeqLbJ2YwwIrfZssLlSUh7S4KXiAU6+inK62ZjGI
@@ -10525,6 +10623,7 @@ metadata:
     abstract: false
     layer: site
   name: kubelet-airsloop-control-2
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEAtA7y0pt1s58brEmKVtzMtsLX9GhUUh6DmD+v+8LZuECCapk3
@@ -10561,6 +10660,7 @@ metadata:
     abstract: false
     layer: site
   name: kubelet-airsloop-control-3
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEAq65p49nDw/LMcqzwun8520kwqxaXnKpqIYUzqrfIHFkxikFi
@@ -10597,6 +10697,7 @@ metadata:
     abstract: false
     layer: site
   name: kubelet-genesis
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEA57O0RA9EcBqsUkENh7ut3zUHQbGLuW7RsLsleKkUruBQ9jnB
@@ -10633,6 +10734,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes-etcd-airsloop-control-1-peer
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEA4VePUsY0irlTqkAOiW5/NF+pFi5lyT0eR6T7qTpvHdSX4fSc
@@ -10669,6 +10771,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes-etcd-airsloop-control-1
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEApBj4bh8wOj9GPbBGnMpEDaYnVUxBAV4vVhoPitjonHtq5lk9
@@ -10705,6 +10808,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes-etcd-airsloop-control-2-peer
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpQIBAAKCAQEA75RQIOyAyNOi9tOMeBsNqG30w0VXSm65TJMQysB4kyGhcQ9Q
@@ -10741,6 +10845,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes-etcd-airsloop-control-2
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAzFu0nFAV8OqkPuNZyZT33ESrMZpt+/hRDPYONkabSfdqOeZ0
@@ -10777,6 +10882,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes-etcd-airsloop-control-3-peer
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAmRNFwhJccdLztLoVMpx/kjxoeW9ukii7F3MKs7rVPtIER+a+
@@ -10813,6 +10919,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes-etcd-airsloop-control-3
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAwWXvCJ1NjiXtAawIccRsbUc9nNPr4wgFBvKa3EmyvvV04Hi4
@@ -10849,6 +10956,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes-etcd-anchor
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEAzTpUpP/VgYf0V95v1RRWrUe3OVswzTqNaZdU4W1EbXQWtarH
@@ -10885,6 +10993,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes-etcd-genesis-peer
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEogIBAAKCAQEAtQAdNKei/N6U3iYuzNQHK8/94nTkMhliofuKrf3qeJLP08Ue
@@ -10921,6 +11030,7 @@ metadata:
     abstract: false
     layer: site
   name: kubernetes-etcd-genesis
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEAzLbJMVk6re7X8VhpLfuHSjibPrlJh2yMygd0vqbfFoyOYw5k
@@ -10957,6 +11067,7 @@ metadata:
     abstract: false
     layer: site
   name: scheduler
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEowIBAAKCAQEAs2rpfnd9v6BwaZggRLvcBBdjuTOq3Dn3dcvppYLZK3Z+6UTi
@@ -10993,6 +11104,7 @@ metadata:
     abstract: false
     layer: site
   name: airsloop-crypt-password
+  namespace: pegleg
 spec: $6$AVL7yH1sLYlKqvcK$ngUiLKYZQhhj07Lb3ngWa4qVwDgUP9pCGfGFG7JIpF.6iStnfEMeySf8XusA0/3i9O5gMHE9hbg1/4GrFb5rR0
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11002,6 +11114,7 @@ metadata:
     abstract: false
     layer: site
   name: ceph-fsid
+  namespace: pegleg
 spec: d52a9d00-64b9-45f0-b564-08dffe95f847
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11011,6 +11124,7 @@ metadata:
     abstract: false
     layer: site
   name: ceph-swift-keystone-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11022,6 +11136,7 @@ metadata:
     abstract: false
     layer: site
   name: ipmi-admin-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11031,6 +11146,7 @@ metadata:
     abstract: false
     layer: site
   name: maas-region-key
+  namespace: pegleg
 spec: e12330cfe038735aee32
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11040,6 +11156,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-barbican-oslo-db-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11049,6 +11166,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-barbican-oslo-messaging-admin-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11058,6 +11176,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-barbican-oslo-messaging-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11067,6 +11186,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-barbican-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11076,6 +11196,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-barbican-rabbitmq-erlang-cookie
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11085,6 +11206,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-cinder-oslo-db-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11094,6 +11216,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-cinder-oslo-messaging-admin-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11103,6 +11226,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-cinder-oslo-messaging-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11112,6 +11236,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-cinder-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11121,6 +11246,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-cinder-rabbitmq-erlang-cookie
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11130,6 +11256,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-glance-oslo-db-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11139,6 +11266,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-glance-oslo-messaging-admin-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11148,6 +11276,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-glance-oslo-messaging-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11157,6 +11286,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-glance-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11166,6 +11296,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-glance-rabbitmq-erlang-cookie
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11175,6 +11306,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-heat-oslo-db-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11184,6 +11316,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-heat-oslo-messaging-admin-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11193,6 +11326,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-heat-oslo-messaging-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11202,6 +11336,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-heat-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11211,6 +11346,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-heat-rabbitmq-erlang-cookie
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11220,6 +11356,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-heat-stack-user-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11229,6 +11366,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-heat-trustee-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11238,6 +11376,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-horizon-oslo-db-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11247,6 +11386,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-infra-elasticsearch-admin-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11256,6 +11396,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-infra-grafana-admin-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11265,6 +11406,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-infra-grafana-oslo-db-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11274,6 +11416,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-infra-grafana-oslo-db-session-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11283,6 +11426,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-infra-nagios-admin-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11292,6 +11436,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-infra-openstack-exporter-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11301,6 +11446,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-infra-oslo-db-admin-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11310,6 +11456,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-infra-oslo-db-exporter-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11319,6 +11466,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-infra-prometheus-admin-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11328,6 +11476,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-infra-rgw-s3-admin-access-key
+  namespace: pegleg
 spec: admin_access_key
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11337,6 +11486,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-infra-rgw-s3-admin-secret-key
+  namespace: pegleg
 spec: admin_secret_key
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11346,6 +11496,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-infra-rgw-s3-elasticsearch-access-key
+  namespace: pegleg
 spec: elastic_access_key
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11355,6 +11506,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-infra-rgw-s3-elasticsearch-secret-key
+  namespace: pegleg
 spec: elastic_secret_key
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11364,6 +11516,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-keystone-admin-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11373,6 +11526,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-keystone-ldap-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11382,6 +11536,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-keystone-oslo-db-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11391,6 +11546,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-keystone-oslo-messaging-admin-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11400,6 +11556,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-keystone-oslo-messaging-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11409,6 +11566,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-keystone-rabbitmq-erlang-cookie
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11418,6 +11576,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-neutron-oslo-db-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11427,6 +11586,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-neutron-oslo-messaging-admin-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11436,6 +11596,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-neutron-oslo-messaging-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11445,6 +11606,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-neutron-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11454,6 +11616,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-neutron-rabbitmq-erlang-cookie
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11463,6 +11626,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-nova-oslo-db-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11472,6 +11636,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-nova-oslo-messaging-admin-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11481,6 +11646,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-nova-oslo-messaging-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11490,6 +11656,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-nova-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11499,6 +11666,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-nova-rabbitmq-erlang-cookie
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11508,6 +11676,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-oslo-cache-secret-key
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11517,6 +11686,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-oslo-db-admin-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11526,6 +11696,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-oslo-db-exporter-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11535,6 +11706,7 @@ metadata:
     abstract: false
     layer: site
   name: osh-placement-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11544,6 +11716,7 @@ metadata:
     abstract: false
     layer: global
   name: private-docker-key
+  namespace: pegleg
 spec: cGFzc3dvcmQxMjM=
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11553,6 +11726,7 @@ metadata:
     abstract: false
     layer: site
   name: tenant-ceph-fsid
+  namespace: pegleg
 spec: 9e45aa5f-9d75-4fa7-bde5-c99e4a7db7a1
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11562,6 +11736,7 @@ metadata:
     abstract: false
     layer: site
   name: ucp-airflow-oslo-messaging-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11571,6 +11746,7 @@ metadata:
     abstract: false
     layer: site
   name: ucp-airflow-postgres-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11580,6 +11756,7 @@ metadata:
     abstract: false
     layer: site
   name: ucp-armada-keystone-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11589,6 +11766,7 @@ metadata:
     abstract: false
     layer: site
   name: ucp-barbican-keystone-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11598,6 +11776,7 @@ metadata:
     abstract: false
     layer: site
   name: ucp-barbican-oslo-db-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11607,6 +11786,7 @@ metadata:
     abstract: false
     layer: site
   name: ucp-deckhand-keystone-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11616,6 +11796,7 @@ metadata:
     abstract: false
     layer: site
   name: ucp-deckhand-postgres-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11625,6 +11806,7 @@ metadata:
     abstract: false
     layer: site
   name: ucp-drydock-keystone-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11634,6 +11816,7 @@ metadata:
     abstract: false
     layer: site
   name: ucp-drydock-postgres-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11643,6 +11826,7 @@ metadata:
     abstract: false
     layer: site
   name: ucp-keystone-admin-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11652,6 +11836,7 @@ metadata:
     abstract: false
     layer: site
   name: ucp-keystone-oslo-db-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11661,6 +11846,7 @@ metadata:
     abstract: false
     layer: site
   name: ucp-maas-admin-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11670,6 +11856,7 @@ metadata:
     abstract: false
     layer: site
   name: ucp-maas-postgres-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11679,6 +11866,7 @@ metadata:
     abstract: false
     layer: site
   name: ucp-openstack-exporter-keystone-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11688,6 +11876,7 @@ metadata:
     abstract: false
     layer: site
   name: ucp-oslo-db-admin-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11697,6 +11886,7 @@ metadata:
     abstract: false
     layer: site
   name: ucp-oslo-messaging-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11706,6 +11896,7 @@ metadata:
     abstract: false
     layer: site
   name: ucp-postgres-admin-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11715,6 +11906,7 @@ metadata:
     abstract: false
     layer: site
   name: ucp-promenade-keystone-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11724,6 +11916,7 @@ metadata:
     abstract: false
     layer: site
   name: ucp-rabbitmq-erlang-cookie
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11733,6 +11926,7 @@ metadata:
     abstract: false
     layer: site
   name: ucp-shipyard-keystone-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11742,6 +11936,7 @@ metadata:
     abstract: false
     layer: site
   name: ucp-shipyard-postgres-password
+  namespace: pegleg
 spec: airsloop123
 ---
 apiVersion: deckhand.airshipit.org/v1alpha1
@@ -11751,6 +11946,7 @@ metadata:
     abstract: false
     layer: site
   name: service-account
+  namespace: pegleg
 spec: |
   -----BEGIN RSA PRIVATE KEY-----
   MIIEpAIBAAKCAQEA6Lq5y0EVx9gcQNTCV/aYdOxt4j5ZtyZnbpaV8bG1eoDOn0Aw
@@ -11787,6 +11983,7 @@ metadata:
     abstract: false
     layer: global
   name: airship-ssh-public-key
+  namespace: pegleg
 spec: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyb6CDrai3VcFW1ew5ikf7IDSpqfFyrJNLI1DPyd28vcy6D1oFXdELYK7DsXzVCgV7YNDiKpneXMBTJ/Mr/aZi9K3eVvtRp1HAK3y6ycx9KRfyfMVAU0aT3xMOpE5xS/xTH8HNRbOSszp0woVYKhncpkumHweji7wbLKm/WxsggIoGDjn29KIoRhpo96tWz/DBsoU1pIHTMoZNyHW2aYWEx6kOzTEmhxL0LkKv7+A/2HJuLnqcXoQH9jl3kRQDyikNlSw2T3gQV3I8m0od/lEf98MZb1Yv9GrlDCmnUPXAJ2HQaWaVaPPpGcBW7veOZlLfeulwD4zlo6P6JW1SZaat
   airship@seaworthy
 ---
@@ -11797,6 +11994,7 @@ metadata:
     abstract: false
     layer: site
   name: airsloop-ssh-public-key
+  namespace: pegleg
 spec: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCycUyxcb+AJIOyU2fzJ0C0tj7UnWZkIAstdPOpeuHQejhezFFT46w3CA9tvr/XlrLu6Rwk7E8qLJvBCGUuZnE0dkRgwgjv6irjy90jA3sY9pdW5h+MxrlbLVNXOEsZbHzEK3sU7WfCpAuIEcxmL+F5+0h73BCqKNG5IiJKApmzPvwYoOxc1BuWguVrFjHqEhYUjMkJwyNRXy6Sfm0MiOVcdF7uvgK7tf25mGUaoyGWJYKTSJCOJ4M535BN5n3G8amTP3fcna1Ig8Rn9yDkGF5obe5TPB7zKuLNMp2bZW5YkSIQFRpm1RDHypXqNa0Lmr4pQyKNL+Auoq852D++XH43
   airsloop@airship
 ---
@@ -11807,6 +12005,7 @@ metadata:
     abstract: false
     layer: site
   name: service-account
+  namespace: pegleg
 spec: |
   -----BEGIN PUBLIC KEY-----
   MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6Lq5y0EVx9gcQNTCV/aY
@@ -11825,6 +12024,7 @@ metadata:
     abstract: false
     layer: site
   name: airsloop-compute-1
+  namespace: drydock
 spec:
   addressing:
   - address: 10.22.104.22
@@ -11852,6 +12052,7 @@ metadata:
     abstract: false
     layer: global
   name: airship-target
+  namespace: drydock
 spec:
   assets:
   - data: |
@@ -11875,6 +12076,7 @@ metadata:
     abstract: false
     layer: global
   name: apparmor-profiles
+  namespace: drydock
 spec:
   assets:
   - data: $(PeglegAppArmorProfile.airship-default.spec.content)
@@ -11900,6 +12102,7 @@ metadata:
     abstract: false
     layer: global
   name: promjoin-systemd-unit
+  namespace: drydock
 spec:
   assets:
   - data: |
@@ -11930,6 +12133,7 @@ metadata:
     abstract: false
     layer: site
   name: promjoin
+  namespace: drydock
 spec:
   assets:
   - data_pipeline:
@@ -11952,6 +12156,7 @@ metadata:
     abstract: false
     layer: global
   name: seccomp-profiles
+  namespace: drydock
 spec:
   assets:
   - data: $(PeglegSeccompProfile.seccomp-default.spec.content)
@@ -11969,6 +12174,7 @@ metadata:
     abstract: false
     layer: global
   name: dell-hp-generic
+  namespace: drydock
 spec:
   bios_version: 2.2.3
   boot_mode: bios
@@ -11986,6 +12192,7 @@ metadata:
     abstract: false
     layer: site
   name: dell-r720xd
+  namespace: drydock
 spec:
   bios_version: 2.2.3
   boot_mode: bios
@@ -12022,8 +12229,9 @@ metadata:
       path: .
     layer: site
     parentSelector:
-      hosttype: dp-global
+      hosttype: dp
   name: compute-r720xd
+  namespace: drydock
 spec:
   hardware_profile: dell_r720xd
   interfaces:
@@ -12084,11 +12292,12 @@ apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockHostProfile
 metadata:
   labels:
-    hosttype: cp-global
+    hosttype: cp
   layeringDefinition:
     abstract: true
     layer: global
   name: cp
+  namespace: drydock
 spec:
   metadata:
     owner_data:
@@ -12190,11 +12399,12 @@ apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockHostProfile
 metadata:
   labels:
-    hosttype: dp-global
+    hosttype: dp
   layeringDefinition:
     abstract: true
     layer: global
   name: dp
+  namespace: drydock
 spec:
   metadata:
     owner_data:
@@ -12249,6 +12459,7 @@ metadata:
     abstract: false
     layer: site
   name: calico
+  namespace: drydock
 spec:
   cidr: 10.22.72.0/24
   mtu: 1500
@@ -12268,6 +12479,7 @@ metadata:
     abstract: false
     layer: site
   name: oam
+  namespace: drydock
 spec:
   cidr: 10.22.71.0/24
   dns:
@@ -12294,6 +12506,7 @@ metadata:
     abstract: false
     layer: site
   name: oob
+  namespace: drydock
 spec:
   cidr: 10.22.104.0/24
   ranges:
@@ -12312,6 +12525,7 @@ metadata:
     abstract: false
     layer: site
   name: overlay
+  namespace: drydock
 spec:
   cidr: 10.22.74.0/24
   mtu: 1500
@@ -12331,6 +12545,7 @@ metadata:
     abstract: false
     layer: site
   name: pxe
+  namespace: drydock
 spec:
   cidr: 10.22.70.0/24
   dns:
@@ -12358,6 +12573,7 @@ metadata:
     abstract: false
     layer: site
   name: storage
+  namespace: drydock
 spec:
   cidr: 10.22.73.0/24
   mtu: 1500
@@ -12377,6 +12593,7 @@ metadata:
     abstract: false
     layer: site
   name: data
+  namespace: drydock
 spec:
   allowed_networks:
   - oam
@@ -12397,6 +12614,7 @@ metadata:
     abstract: false
     layer: site
   name: oob
+  namespace: drydock
 spec:
   allowed_networks:
   - oob
@@ -12417,6 +12635,7 @@ metadata:
     abstract: false
     layer: site
   name: pxe
+  namespace: drydock
 spec:
   allowed_networks:
   - pxe
@@ -12435,6 +12654,7 @@ metadata:
     abstract: false
     layer: site
   name: airsloop
+  namespace: drydock
 spec:
   authorized_keys:
   - $(DeckhandPublicKey.airsloop-ssh-public-key.spec)
@@ -12449,6 +12669,7 @@ metadata:
     abstract: false
     layer: type
   name: osh-infra-service-accounts
+  namespace: pegleg
 spec:
   osh_infra:
     ceph_object_store:
@@ -12499,6 +12720,7 @@ metadata:
     abstract: false
     layer: type
   name: osh-service-accounts
+  namespace: pegleg
 spec:
   osh:
     barbican:
@@ -12667,6 +12889,7 @@ metadata:
     abstract: false
     layer: type
   name: ucp-service-accounts
+  namespace: pegleg
 spec:
   ceph:
     swift:
@@ -12799,6 +13022,7 @@ metadata:
     abstract: false
     layer: global
   name: airship-apparmor-loader
+  namespace: pegleg
 spec:
   content: |
     #include <tunables/global>
@@ -12878,6 +13102,7 @@ metadata:
     abstract: false
     layer: global
   name: airship-default
+  namespace: pegleg
 spec:
   content: |
     #include <tunables/global>
@@ -12955,6 +13180,7 @@ metadata:
     abstract: false
     layer: site
   name: common-addresses
+  namespace: pegleg
 spec:
   bootstrap:
     ip: 10.22.70.21
@@ -13022,6 +13248,7 @@ metadata:
     abstract: false
     layer: type
   name: common-software-config
+  namespace: pegleg
 spec:
   osh:
     region_name: airsloop
@@ -13033,6 +13260,7 @@ metadata:
     abstract: false
     layer: type
   name: osh-endpoints
+  namespace: pegleg
 spec:
   osh:
     ceph_object_store:
@@ -13519,6 +13747,7 @@ metadata:
     abstract: false
     layer: type
   name: osh-infra-endpoints
+  namespace: pegleg
 spec:
   osh_infra:
     alerts:
@@ -13788,6 +14017,7 @@ metadata:
     abstract: false
     layer: type
   name: ucp-endpoints
+  namespace: pegleg
 spec:
   ceph:
     ceph_mgr:
@@ -14073,6 +14303,7 @@ metadata:
     abstract: false
     layer: global
   name: configure-ip-rules
+  namespace: pegleg
 spec: |-
   #!/bin/bash
   set -ex
@@ -14200,6 +14431,7 @@ metadata:
     abstract: false
     layer: global
   name: seccomp-default
+  namespace: pegleg
 spec:
   content: |
     {
@@ -14979,6 +15211,7 @@ metadata:
     abstract: false
     layer: site
   name: airsloop
+  namespace: pegleg
 spec:
   site_type: sloop
 ---
@@ -14986,11 +15219,12 @@ apiVersion: pegleg.airshipit.org/v1alpha1
 kind: PeglegSoftwareVersions
 metadata:
   labels:
-    name: software-versions-global
+    name: software-versions
   layeringDefinition:
     abstract: false
     layer: global
   name: software-versions
+  namespace: pegleg
 spec:
   charts:
     kubernetes:
@@ -15658,6 +15892,7 @@ metadata:
     abstract: false
     layer: global
   name: docker
+  namespace: drydock
 spec:
   config:
     live-restore: true
@@ -15667,11 +15902,12 @@ apiVersion: promenade.airshipit.org/v1alpha1
 kind: PromenadeGenesis
 metadata:
   labels:
-    name: genesis-global
+    name: genesis
   layeringDefinition:
     abstract: true
     layer: global
   name: genesis
+  namespace: drydock
 spec:
   apiserver:
     command_prefix:
@@ -15732,6 +15968,7 @@ metadata:
     abstract: false
     layer: global
   name: host-system
+  namespace: drydock
 spec:
   files:
   - mode: 365
@@ -15849,6 +16086,7 @@ metadata:
     abstract: false
     layer: global
   name: kubelet
+  namespace: drydock
 spec:
   arguments:
   - --cni-bin-dir=/opt/cni/bin
@@ -15872,6 +16110,7 @@ metadata:
     abstract: false
     layer: type
   name: kubernetes-network
+  namespace: drydock
 spec:
   dns:
     bootstrap_validation_checks:
@@ -15901,6 +16140,7 @@ metadata:
     abstract: false
     layer: site
   name: cluster-certificates
+  namespace: drydock
 spec:
   certificate_authorities:
   - certificates:
@@ -16119,6 +16359,7 @@ metadata:
     abstract: false
     layer: site
   name: deployment-configuration
+  namespace: shipyard
 spec:
   armada:
     get_releases_timeout: 300
@@ -16150,11 +16391,12 @@ apiVersion: shipyard.airshipit.org/v1alpha1
 kind: ShipyardDeploymentStrategy
 metadata:
   labels:
-    name: deployment-strategy-global
+    name: deployment-strategy
   layeringDefinition:
     abstract: false
     layer: global
   name: deployment-strategy
+  namespace: shipyard
 spec:
   groups:
   - critical: true

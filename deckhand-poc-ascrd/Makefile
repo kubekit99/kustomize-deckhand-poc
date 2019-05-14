@@ -1,5 +1,11 @@
 
 install:
+	kubectl label nodes airship openstack-control-plane=enabled --overwrite
+	kubectl label nodes airship ucp-control-plane=enabled --overwrite
+	kubectl label nodes airship ceph-mds=enabled --overwrite
+	kubectl label nodes airship ceph-mgr=enabled --overwrite
+	kubectl label nodes airship ceph-mon=enabled --overwrite
+	kubectl label nodes airship ceph-rgw=enabled --overwrite
 	kubectl apply -f ./base/namespaces
 	kubectl apply -f ./base/crds/
 	kubectl apply -n ceph -f ./base/operator
