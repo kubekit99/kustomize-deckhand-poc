@@ -2,85 +2,329 @@
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  name: fluent-logging
+  labels:
+    hosttype: fluent-logging
   layeringDefinition:
     abstract: true
     layer: global
-  labels:
-    hosttype: fluent-logging
-  substitutions:
-    # Chart source
-    - src:
-        kind: PeglegSoftwareVersions
-        name: software-versions
-        path: .charts.osh_infra.fluent_logging
-      dest:
-        path: .source
-
-    # Images
-    - src:
-        kind: PeglegSoftwareVersions
-        name: software-versions
-        path: .images.osh_infra.fluent_logging
-      dest:
-        path: .values.images.tags
-
-    # Endpoints
-    - src:
-        kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
-        path: .osh_infra.elasticsearch
-      dest:
-        path: .values.endpoints.elasticsearch
-    - src:
-        kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
-        path: .osh_infra.fluentd
-      dest:
-        path: .values.endpoints.fluentd
-    - src:
-        kind: PeglegEndpointCatalogue
-        name: osh_infra_endpoints
-        path: .osh_infra.prometheus_fluentd_exporter
-      dest:
-        path: .values.endpoints.prometheus_fluentd_exporter
-    # Accounts
-    - src:
-        kind: PeglegAccountCatalogue
-        name: osh_infra_service_accounts
-        path: .osh_infra.elasticsearch.admin
-      dest:
-        path: .values.endpoints.elasticsearch.auth.admin
-
-    # Secrets
-    - dest:
-        path: .values.endpoints.elasticsearch.auth.admin.password
-      src:
-        kind: DeckhandPassphrase
-        name: osh_infra_elasticsearch_admin_password
-        path: .
-
+  name: fluent-logging
 spec:
   chart_name: fluent-logging
-  release: fluent-logging
-  namespace: osh-infra
-  wait:
-    timeout: 900
-    labels:
-      release_group: airship-fluent-logging
+  dependencies:
+  - osh-infra-helm-toolkit
   install:
     no_hooks: false
+  namespace: osh-infra
+  release: fluent-logging
+  source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.fluent_logging)
   upgrade:
     no_hooks: false
-    pre:
-      delete:
-        - type: job
-          labels:
-            release_group: airship-fluent-logging
-      create: []
     post:
       create: []
+    pre:
+      create: []
+      delete:
+      - labels:
+          release_group: airship-fluent-logging
+        type: job
   values:
+    conf:
+      fluentbit:
+      - service:
+          Daemon: false
+          Flush: 5
+          Log_Level: info
+          Parsers_File: parsers.conf
+          header: service
+      - kernel_messages:
+          Buffer_Chunk_Size: 1M
+          Buffer_Max_Size: 1M
+          Mem_Buf_Limit: 5MB
+          Name: tail
+          Path: /var/log/kern.log
+          Tag: kernel
+          header: input
+      - kubelet:
+          Buffer_Chunk_Size: 1M
+          Buffer_Max_Size: 1M
+          Mem_Buf_Limit: 5MB
+          Name: systemd
+          Path: ${JOURNAL_PATH}
+          Systemd_Filter: _SYSTEMD_UNIT=kubelet.service
+          Tag: journal.*
+          header: input
+      - docker_daemon:
+          Buffer_Chunk_Size: 1M
+          Buffer_Max_Size: 1M
+          Mem_Buf_Limit: 5MB
+          Name: systemd
+          Path: ${JOURNAL_PATH}
+          Systemd_Filter: _SYSTEMD_UNIT=docker.service
+          Tag: journal.*
+          header: input
+      - libvirt:
+          Buffer_Chunk_Size: 1M
+          Buffer_Max_Size: 1M
+          Mem_Buf_Limit: 5MB
+          Name: tail
+          Path: /var/log/libvirt/libvirtd.log
+          Tag: libvirt
+          header: input
+      - qemu:
+          Buffer_Chunk_Size: 1M
+          Buffer_Max_Size: 1M
+          Mem_Buf_Limit: 5MB
+          Name: tail
+          Path: /var/log/libvirt/qemu/*.log
+          Tag: qemu
+          header: input
+      - libvirt_record_modifier:
+          Match: libvirt
+          Name: record_modifier
+          Record: hostname ${HOSTNAME}
+          header: filter
+      - qemu_record_modifier:
+          Match: qemu
+          Name: record_modifier
+          Record: hostname ${HOSTNAME}
+          header: filter
+      - kernel_record_modifier:
+          Match: kernel
+          Name: record_modifier
+          Record: hostname ${HOSTNAME}
+          header: filter
+      - systemd_modify_fields:
+          Match: journal.**
+          Name: modify
+          Rename:
+            _BOOT_ID: BOOT_ID
+            _CAP_EFFECTIVE: CAP_EFFECTIVE
+            _CMDLINE: CMDLINE
+            _COMM: COMM
+            _EXE: EXE
+            _GID: GID
+            _HOSTNAME: HOSTNAME
+            _MACHINE_ID: MACHINE_ID
+            _PID: PID
+            _SYSTEMD_CGROUP: SYSTEMD_CGROUP
+            _SYSTEMD_SLICE: SYSTEMD_SLICE
+            _SYSTEMD_UNIT: SYSTEMD_UNIT
+            _TRANSPORT: TRANSPORT
+            _UID: UID
+          header: filter
+      - ceph_cluster_logs:
+          Buffer_Chunk_Size: 1M
+          Buffer_Max_Size: 1M
+          Mem_Buf_Limit: 5MB
+          Name: tail
+          Parsers: syslog
+          Path: /var/log/ceph/airship-ucp-ceph-mon/ceph.log
+          Tag: ceph.cluster.*
+          header: input
+      - ceph_audit_logs:
+          Buffer_Chunk_Size: 1M
+          Buffer_Max_Size: 1M
+          Mem_Buf_Limit: 5MB
+          Name: tail
+          Parsers: syslog
+          Path: /var/log/ceph/airship-ucp-ceph-mon/ceph.audit.log
+          Tag: ceph.audit.*
+          header: input
+      - ceph_mon_logs:
+          Buffer_Chunk_Size: 1M
+          Buffer_Max_Size: 1M
+          Mem_Buf_Limit: 5MB
+          Name: tail
+          Parsers: syslog
+          Path: /var/log/ceph/airship-ucp-ceph-mon/ceph-mon**.log
+          Tag: ceph.mon.*
+          header: input
+      - ceph_osd_logs:
+          Buffer_Chunk_Size: 1M
+          Buffer_Max_Size: 1M
+          Mem_Buf_Limit: 5MB
+          Name: tail
+          Parsers: syslog
+          Path: /var/log/ceph/airship-ucp-ceph-osd/ceph-osd**.log
+          Tag: ceph.osd.*
+          header: input
+      - containers_tail:
+          Buffer_Chunk_Size: 1M
+          Buffer_Max_Size: 1M
+          Mem_Buf_Limit: 5MB
+          Name: tail
+          Parser: docker
+          Path: /var/log/containers/*.log
+          Tag: kube.*
+          header: input
+      - drop_fluentd_logs:
+          Match: '**.fluentd**'
+          Name: "null"
+          header: output
+      - kube_filter:
+          Match: kube.*
+          Merge_JSON_Log: true
+          Name: kubernetes
+          header: filter
+      - throttle_filter:
+          Interval: 1s
+          Match: '**'
+          Name: throttle
+          Rate: 1000
+          Window: 300
+          header: filter
+      - fluentd_output:
+          Host: ${FLUENTD_HOST}
+          Match: '*'
+          Name: forward
+          Port: ${FLUENTD_PORT}
+          header: output
+      fluentd:
+      - metrics_agent:
+          bind: 0.0.0.0
+          header: source
+          port: 24220
+          type: monitor_agent
+      - fluentbit_forward:
+          bind: 0.0.0.0
+          header: source
+          port: '#{ENV[''FLUENTD_PORT'']}'
+          type: forward
+      - filter_fluentd_logs:
+          expression: fluent.**
+          header: match
+          type: "null"
+      - journal_elasticsearch:
+          buffer:
+          - - chunk_limit_size: 8MB
+              flush_interval: "15"
+              flush_thread_count: 8
+              header: buffer
+              queue_limit_length: 256
+              retry_forever: false
+              retry_max_interval: 30
+          expression: journal.**
+          header: match
+          host: '#{ENV[''ELASTICSEARCH_HOST'']}'
+          include_tag_key: true
+          logstash_format: true
+          logstash_prefix: journal
+          password: '#{ENV[''ELASTICSEARCH_PASSWORD'']}'
+          port: '#{ENV[''ELASTICSEARCH_PORT'']}'
+          type: elasticsearch
+          user: '#{ENV[''ELASTICSEARCH_USERNAME'']}'
+      - kernel_elasticsearch:
+          buffer:
+          - - chunk_limit_size: 8MB
+              flush_interval: "15"
+              flush_thread_count: 8
+              header: buffer
+              queue_limit_length: 256
+              retry_forever: false
+              retry_max_interval: 30
+          expression: kernel
+          header: match
+          host: '#{ENV[''ELASTICSEARCH_HOST'']}'
+          include_tag_key: true
+          logstash_format: true
+          logstash_prefix: kernel
+          password: '#{ENV[''ELASTICSEARCH_PASSWORD'']}'
+          port: '#{ENV[''ELASTICSEARCH_PORT'']}'
+          type: elasticsearch
+          user: '#{ENV[''ELASTICSEARCH_USERNAME'']}'
+      - ceph_elasticsearch:
+          buffer:
+          - - chunk_limit_size: 8MB
+              flush_interval: "15"
+              flush_thread_count: 8
+              header: buffer
+              queue_limit_length: 256
+              retry_forever: false
+              retry_max_interval: 30
+          expression: '**ceph-**.log'
+          header: match
+          host: '#{ENV[''ELASTICSEARCH_HOST'']}'
+          include_tag_key: true
+          logstash_format: true
+          logstash_prefix: ceph
+          password: '#{ENV[''ELASTICSEARCH_PASSWORD'']}'
+          port: '#{ENV[''ELASTICSEARCH_PORT'']}'
+          type: elasticsearch
+          user: '#{ENV[''ELASTICSEARCH_USERNAME'']}'
+      - oslo_fluentd_elasticsearch:
+          buffer:
+          - - chunk_limit_size: 8MB
+              flush_interval: "15"
+              flush_thread_count: 8
+              header: buffer
+              queue_limit_length: 256
+              retry_forever: false
+              retry_max_interval: 30
+          expression: '**.openstack.*'
+          header: match
+          host: '#{ENV[''ELASTICSEARCH_HOST'']}'
+          include_tag_key: true
+          logstash_format: true
+          logstash_prefix: openstack
+          password: '#{ENV[''ELASTICSEARCH_PASSWORD'']}'
+          port: '#{ENV[''ELASTICSEARCH_PORT'']}'
+          type: elasticsearch
+          type_name: oslo_openstack_fluentd
+          user: '#{ENV[''ELASTICSEARCH_USERNAME'']}'
+      - elasticsearch:
+          buffer:
+          - - chunk_limit_size: 8MB
+              flush_interval: "15"
+              flush_thread_count: 8
+              header: buffer
+              queue_limit_length: 256
+              retry_forever: false
+              retry_max_interval: 30
+          expression: '**'
+          flush_interval: "10"
+          header: match
+          host: '#{ENV[''ELASTICSEARCH_HOST'']}'
+          include_tag_key: true
+          logstash_format: true
+          password: '#{ENV[''ELASTICSEARCH_PASSWORD'']}'
+          port: '#{ENV[''ELASTICSEARCH_PORT'']}'
+          type: elasticsearch
+          user: '#{ENV[''ELASTICSEARCH_USERNAME'']}'
+      parsers:
+      - syslog:
+          Format: regex
+          Name: syslog
+          Regex: ^(?<time>.*[0-9]{2}:[0-9]{2}:[0-9]{2}) (?<host>[^ ]*) (?<app>[a-zA-Z0-9_\/\.\-]*)(?:\[(?<pid>[0-9]+)\])?(?:[^\:]*\:)?
+            (?<log>.+)$
+          Time_Format: '%Y-%m-%dT%H:%M:%S.%L'
+          Time_Keep: true
+          Time_Key: time
+          Types: pid:integer
+          header: parser
+    endpoints:
+      elasticsearch:
+        auth:
+          admin:
+            parent-inline: $(PeglegAccountCatalogue.osh-infra-service-accounts.spec.osh_infra.elasticsearch.admin)
+            password: $(DeckhandPassphrase.osh-infra-elasticsearch-admin-password.spec)
+        parent-inline: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.elasticsearch)
+      fluentd: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.fluentd)
+      prometheus_fluentd_exporter: $(PeglegEndpointCatalogue.osh-infra-endpoints.spec.osh_infra.prometheus_fluentd_exporter)
+    images:
+      tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh_infra.fluent_logging)
+    labels:
+      fluentbit:
+        node_selector_key: fluentbit
+        node_selector_value: enabled
+      fluentd:
+        node_selector_key: fluentd
+        node_selector_value: enabled
+      job:
+        node_selector_key: openstack-control-plane
+        node_selector_value: enabled
+      prometheus_fluentd_exporter:
+        node_selector_key: openstack-control-plane
+        node_selector_value: enabled
     monitoring:
       prometheus:
         enabled: true
@@ -89,330 +333,41 @@ spec:
         enabled: true
         fluentbit:
           limits:
-            memory: '4Gi'
-            cpu: '2000m'
+            cpu: 2000m
+            memory: 4Gi
           requests:
-            memory: '2Gi'
-            cpu: '1000m'
+            cpu: 1000m
+            memory: 2Gi
         fluentd:
           limits:
-            memory: '4Gi'
-            cpu: '2000m'
+            cpu: 2000m
+            memory: 4Gi
           requests:
-            memory: '2Gi'
-            cpu: '1000m'
-        prometheus_fluentd_exporter:
-          limits:
-            memory: '1024Mi'
-            cpu: '2000m'
-          requests:
-            memory: '0'
-            cpu: '0'
+            cpu: 1000m
+            memory: 2Gi
         jobs:
           image_repo_sync:
-            requests:
-              memory: '0'
-              cpu: '0'
             limits:
-              memory: '1024Mi'
-              cpu: '2000m'
+              cpu: 2000m
+              memory: 1024Mi
+            requests:
+              cpu: "0"
+              memory: "0"
           tests:
-            requests:
-              memory: '0'
-              cpu: '0'
             limits:
-              memory: '1024Mi'
-              cpu: '2000m'
+              cpu: 2000m
+              memory: 1024Mi
+            requests:
+              cpu: "0"
+              memory: "0"
+        prometheus_fluentd_exporter:
+          limits:
+            cpu: 2000m
+            memory: 1024Mi
+          requests:
+            cpu: "0"
+            memory: "0"
+  wait:
     labels:
-      fluentd:
-        node_selector_key: fluentd
-        node_selector_value: enabled
-      fluentbit:
-        node_selector_key: fluentbit
-        node_selector_value: enabled
-      prometheus_fluentd_exporter:
-        node_selector_key: openstack-control-plane
-        node_selector_value: enabled
-      job:
-        node_selector_key: openstack-control-plane
-        node_selector_value: enabled
-    conf:
-      fluentbit:
-        - service:
-            header: service
-            Flush: 5
-            Daemon: Off
-            Log_Level: info
-            Parsers_File: parsers.conf
-        - kernel_messages:
-            header: input
-            Name: tail
-            Tag: kernel
-            Path: /var/log/kern.log
-            Mem_Buf_Limit: 5MB
-            Buffer_Chunk_Size: 1M
-            Buffer_Max_Size: 1M
-        - kubelet:
-            header: input
-            Name: systemd
-            Tag: journal.*
-            Path: ${JOURNAL_PATH}
-            Systemd_Filter: _SYSTEMD_UNIT=kubelet.service
-            Mem_Buf_Limit: 5MB
-            Buffer_Chunk_Size: 1M
-            Buffer_Max_Size: 1M
-        - docker_daemon:
-            header: input
-            Name: systemd
-            Tag: journal.*
-            Path: ${JOURNAL_PATH}
-            Systemd_Filter: _SYSTEMD_UNIT=docker.service
-            Mem_Buf_Limit: 5MB
-            Buffer_Chunk_Size: 1M
-            Buffer_Max_Size: 1M
-        - libvirt:
-            header: input
-            Name: tail
-            Tag: libvirt
-            Path: /var/log/libvirt/libvirtd.log
-            Mem_Buf_Limit: 5MB
-            Buffer_Chunk_Size: 1M
-            Buffer_Max_Size: 1M
-        - qemu:
-            header: input
-            Name: tail
-            Tag: qemu
-            Path: /var/log/libvirt/qemu/*.log
-            Mem_Buf_Limit: 5MB
-            Buffer_Chunk_Size: 1M
-            Buffer_Max_Size: 1M
-        - libvirt_record_modifier:
-            header: filter
-            Name: record_modifier
-            Match: libvirt
-            Record: hostname ${HOSTNAME}
-        - qemu_record_modifier:
-            header: filter
-            Name: record_modifier
-            Match: qemu
-            Record: hostname ${HOSTNAME}
-        - kernel_record_modifier:
-            header: filter
-            Name: record_modifier
-            Match: kernel
-            Record: hostname ${HOSTNAME}
-        - systemd_modify_fields:
-            header: filter
-            Name: modify
-            Match: journal.**
-            Rename:
-              _BOOT_ID: BOOT_ID
-              _CAP_EFFECTIVE: CAP_EFFECTIVE
-              _CMDLINE: CMDLINE
-              _COMM: COMM
-              _EXE: EXE
-              _GID: GID
-              _HOSTNAME: HOSTNAME
-              _MACHINE_ID: MACHINE_ID
-              _PID: PID
-              _SYSTEMD_CGROUP: SYSTEMD_CGROUP
-              _SYSTEMD_SLICE: SYSTEMD_SLICE
-              _SYSTEMD_UNIT: SYSTEMD_UNIT
-              _UID: UID
-              _TRANSPORT: TRANSPORT
-        - ceph_cluster_logs:
-            header: input
-            Name: tail
-            Tag: ceph.cluster.*
-            Path: /var/log/ceph/airship-ucp-ceph-mon/ceph.log
-            Parsers: syslog
-            Mem_Buf_Limit: 5MB
-            Buffer_Chunk_Size: 1M
-            Buffer_Max_Size: 1M
-        - ceph_audit_logs:
-            header: input
-            Name: tail
-            Tag: ceph.audit.*
-            Path: /var/log/ceph/airship-ucp-ceph-mon/ceph.audit.log
-            Parsers: syslog
-            Mem_Buf_Limit: 5MB
-            Buffer_Chunk_Size: 1M
-            Buffer_Max_Size: 1M
-        - ceph_mon_logs:
-            header: input
-            Name: tail
-            Tag: ceph.mon.*
-            Path: /var/log/ceph/airship-ucp-ceph-mon/ceph-mon**.log
-            Parsers: syslog
-            Mem_Buf_Limit: 5MB
-            Buffer_Chunk_Size: 1M
-            Buffer_Max_Size: 1M
-        - ceph_osd_logs:
-            header: input
-            Name: tail
-            Tag: ceph.osd.*
-            Path: /var/log/ceph/airship-ucp-ceph-osd/ceph-osd**.log
-            Parsers: syslog
-            Mem_Buf_Limit: 5MB
-            Buffer_Chunk_Size: 1M
-            Buffer_Max_Size: 1M
-        - containers_tail:
-            header: input
-            Name: tail
-            Tag: kube.*
-            Path: /var/log/containers/*.log
-            Parser: docker
-            Buffer_Chunk_Size: 1M
-            Buffer_Max_Size: 1M
-            Mem_Buf_Limit: 5MB
-        - drop_fluentd_logs:
-            header: output
-            Name: "null"
-            Match: "**.fluentd**"
-        - kube_filter:
-            header: filter
-            Name: kubernetes
-            Match: kube.*
-            Merge_JSON_Log: On
-        - throttle_filter:
-            header: filter
-            Name: throttle
-            Match: "**"
-            Rate: 1000
-            Window: 300
-            Interval: 1s
-        - fluentd_output:
-            header: output
-            Name: forward
-            Match: "*"
-            Host: ${FLUENTD_HOST}
-            Port: ${FLUENTD_PORT}
-      fluentd:
-        - metrics_agent:
-            header: source
-            type: monitor_agent
-            bind: 0.0.0.0
-            port: 24220
-        - fluentbit_forward:
-            header: source
-            type: forward
-            port: "#{ENV['FLUENTD_PORT']}"
-            bind: 0.0.0.0
-        - filter_fluentd_logs:
-            header: match
-            expression: "fluent.**"
-            type: "null"
-        - journal_elasticsearch:
-            header: match
-            type: elasticsearch
-            user: "#{ENV['ELASTICSEARCH_USERNAME']}"
-            password: "#{ENV['ELASTICSEARCH_PASSWORD']}"
-            expression: "journal.**"
-            include_tag_key: true
-            host: "#{ENV['ELASTICSEARCH_HOST']}"
-            port: "#{ENV['ELASTICSEARCH_PORT']}"
-            logstash_format: true
-            logstash_prefix: journal
-            buffer:
-              -
-                - header: buffer
-                  flush_thread_count: 8
-                  flush_interval: "15"
-                  chunk_limit_size: 8MB
-                  queue_limit_length: 256
-                  retry_max_interval: 30
-                  retry_forever: false
-        - kernel_elasticsearch:
-            header: match
-            type: elasticsearch
-            user: "#{ENV['ELASTICSEARCH_USERNAME']}"
-            password: "#{ENV['ELASTICSEARCH_PASSWORD']}"
-            expression: "kernel"
-            include_tag_key: true
-            host: "#{ENV['ELASTICSEARCH_HOST']}"
-            port: "#{ENV['ELASTICSEARCH_PORT']}"
-            logstash_format: true
-            logstash_prefix: kernel
-            buffer:
-              -
-                - header: buffer
-                  flush_thread_count: 8
-                  flush_interval: "15"
-                  chunk_limit_size: 8MB
-                  queue_limit_length: 256
-                  retry_max_interval: 30
-                  retry_forever: false
-        - ceph_elasticsearch:
-            header: match
-            type: elasticsearch
-            user: "#{ENV['ELASTICSEARCH_USERNAME']}"
-            password: "#{ENV['ELASTICSEARCH_PASSWORD']}"
-            expression: "**ceph-**.log"
-            include_tag_key: true
-            host: "#{ENV['ELASTICSEARCH_HOST']}"
-            port: "#{ENV['ELASTICSEARCH_PORT']}"
-            logstash_format: true
-            logstash_prefix: ceph
-            buffer:
-              -
-                - header: buffer
-                  flush_thread_count: 8
-                  flush_interval: "15"
-                  chunk_limit_size: 8MB
-                  queue_limit_length: 256
-                  retry_max_interval: 30
-                  retry_forever: false
-        - oslo_fluentd_elasticsearch:
-            header: match
-            type: elasticsearch
-            user: "#{ENV['ELASTICSEARCH_USERNAME']}"
-            password: "#{ENV['ELASTICSEARCH_PASSWORD']}"
-            expression: "**.openstack.*"
-            include_tag_key: true
-            host: "#{ENV['ELASTICSEARCH_HOST']}"
-            port: "#{ENV['ELASTICSEARCH_PORT']}"
-            logstash_format: true
-            logstash_prefix: openstack
-            buffer:
-              -
-                - header: buffer
-                  flush_thread_count: 8
-                  flush_interval: "15"
-                  chunk_limit_size: 8MB
-                  queue_limit_length: 256
-                  retry_max_interval: 30
-                  retry_forever: false
-            type_name: oslo_openstack_fluentd
-        - elasticsearch:
-            header: match
-            type: elasticsearch
-            user: "#{ENV['ELASTICSEARCH_USERNAME']}"
-            password: "#{ENV['ELASTICSEARCH_PASSWORD']}"
-            expression: "**"
-            include_tag_key: true
-            host: "#{ENV['ELASTICSEARCH_HOST']}"
-            port: "#{ENV['ELASTICSEARCH_PORT']}"
-            logstash_format: true
-            buffer:
-              -
-                - header: buffer
-                  flush_thread_count: 8
-                  flush_interval: "15"
-                  chunk_limit_size: 8MB
-                  queue_limit_length: 256
-                  retry_max_interval: 30
-                  retry_forever: false
-            flush_interval: "10"
-      parsers:
-        - syslog:
-            header: parser
-            Name: syslog
-            Format: regex
-            Regex: '^(?<time>.*[0-9]{2}:[0-9]{2}:[0-9]{2}) (?<host>[^ ]*) (?<app>[a-zA-Z0-9_\/\.\-]*)(?:\[(?<pid>[0-9]+)\])?(?:[^\:]*\:)? (?<log>.+)$'
-            Time_Key: time
-            Time_Format: "%Y-%m-%dT%H:%M:%S.%L"
-            Time_Keep: On
-            Types: "pid:integer"
-  dependencies:
-    - osh-infra-helm-toolkit
-...
+      release_group: airship-fluent-logging
+    timeout: 900

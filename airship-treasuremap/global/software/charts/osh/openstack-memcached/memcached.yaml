@@ -2,58 +2,39 @@
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  name: openstack-memcached
   labels:
-    name: openstack-memcached
     component: memcached
+    name: openstack-memcached
   layeringDefinition:
     abstract: false
     layer: global
-  substitutions:
-    # Chart source
-    - src:
-        kind: PeglegSoftwareVersions
-        name: software-versions
-        path: .charts.osh.memcached
-      dest:
-        path: .source
-
-    # Images
-    - src:
-        kind: PeglegSoftwareVersions
-        name: software-versions
-        path: .images.osh.memcached
-      dest:
-        path: .values.images.tags
-
-    - src:
-        kind: PeglegEndpointCatalogue
-        name: osh_endpoints
-        path: .osh.oslo_cache
-      dest:
-        path: .values.endpoints.oslo_cache
+  name: openstack-memcached
 spec:
   chart_name: openstack-memcached
-  release: openstack-memcached
-  namespace: openstack
-  wait:
-    timeout: 900
-    labels:
-      release_group: airship-openstack-memcached
+  dependencies:
+  - osh-helm-toolkit
   install:
     no_hooks: false
+  namespace: openstack
+  release: openstack-memcached
+  source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.memcached)
   upgrade:
     no_hooks: false
     pre:
       delete:
-        - type: job
-          labels:
-            release_group: airship-openstack-memcached
+      - labels:
+          release_group: airship-openstack-memcached
+        type: job
   values:
+    endpoints:
+      oslo_cache: $(PeglegEndpointCatalogue.osh-endpoints.spec.osh.oslo_cache)
+    images:
+      tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh.memcached)
     labels:
       server:
         node_selector_key: openstack-control-plane
         node_selector_value: enabled
-  dependencies:
-    - osh-helm-toolkit
-...
+  wait:
+    labels:
+      release_group: airship-openstack-memcached
+    timeout: 900

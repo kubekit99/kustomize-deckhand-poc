@@ -2,26 +2,20 @@
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  name: osh-helm-toolkit
   layeringDefinition:
     abstract: false
     layer: global
-  substitutions:
-    - src:
-        kind: PeglegSoftwareVersions
-        name: software-versions
-        path: .charts.osh.helm_toolkit
-      dest:
-        path: .source
+  name: osh-helm-toolkit
 spec:
   chart_name: helm-toolkit
-  release: osh-helm-toolkit
+  dependencies: []
   namespace: osh-helm-toolkit
-  wait:
-    timeout: 600
-    labels:
-      release_group: airship-osh-helm-toolkit
+  release: osh-helm-toolkit
+  source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.helm_toolkit)
   upgrade:
     no_hooks: true
   values: {}
-  dependencies: []
+  wait:
+    labels:
+      release_group: airship-osh-helm-toolkit
+    timeout: 600

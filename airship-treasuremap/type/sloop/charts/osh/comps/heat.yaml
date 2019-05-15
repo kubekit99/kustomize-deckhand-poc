@@ -2,16 +2,16 @@
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  replacement: true
-  name: heat
   layeringDefinition:
     abstract: false
+    actions:
+    - method: merge
+      path: .
     layer: type
     parentSelector:
       name: heat-global
-    actions:
-      - method: merge
-        path: .
+  name: heat
+  replacement: true
 spec:
   values:
     pod:
@@ -20,4 +20,3 @@ spec:
         cfn: 1
         cloudwatch: 1
         engine: 1
-...

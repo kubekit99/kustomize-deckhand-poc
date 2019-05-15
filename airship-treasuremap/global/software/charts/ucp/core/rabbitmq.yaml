@@ -2,108 +2,64 @@
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  name: ucp-rabbitmq
   labels:
     name: ucp-rabbitmq
   layeringDefinition:
     abstract: false
     layer: global
-  substitutions:
-    # Chart source
-    - src:
-        kind: PeglegSoftwareVersions
-        name: software-versions
-        path: .charts.ucp.rabbitmq
-      dest:
-        path: .source
-
-    # Images
-    - src:
-        kind: PeglegSoftwareVersions
-        name: software-versions
-        path: .images.ucp.rabbitmq
-      dest:
-        path: .values.images.tags
-
-    # Endpoints
-    - src:
-        kind: PeglegEndpointCatalogue
-        name: ucp_endpoints
-        path: .ucp.oslo_messaging
-      dest:
-        path: .values.endpoints.oslo_messaging
-
-    # Credentials
-    - src:
-        kind: PeglegAccountCatalogue
-        name: ucp_service_accounts
-        path: .ucp.oslo_messaging.admin
-      dest:
-        path: .values.endpoints.oslo_messaging.auth.user
-
-    # Secrets
-
-    - src:
-        kind: DeckhandPassphrase
-        name: ucp_rabbitmq_erlang_cookie
-        path: .
-      dest:
-        path: .values.endpoints.oslo_messaging.auth.erlang_cookie
-    - src:
-        kind: DeckhandPassphrase
-        name: ucp_oslo_messaging_password
-        path: .
-      dest:
-        path: .values.endpoints.oslo_messaging.auth.user.password
+  name: ucp-rabbitmq
 spec:
   chart_name: ucp-rabbitmq
-  release: ucp-rabbitmq
-  namespace: ucp
-  wait:
-    timeout: 300
-    labels:
-      release_group: airship-ucp-rabbitmq
-    resources:
-      - type: statefulset
+  dependencies:
+  - ucp-rabbitmq-htk
   install:
     no_hooks: false
+  namespace: ucp
+  release: ucp-rabbitmq
+  source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.rabbitmq)
   upgrade:
     no_hooks: false
     pre:
       delete:
-        - type: job
-          labels:
-            release_group: airship-ucp-rabbitmq
+      - labels:
+          release_group: airship-ucp-rabbitmq
+        type: job
   values:
+    endpoints:
+      oslo_messaging:
+        auth:
+          erlang_cookie: $(DeckhandPassphrase.ucp-rabbitmq-erlang-cookie.spec)
+          user:
+            parent-inline: $(PeglegAccountCatalogue.ucp-service-accounts.spec.ucp.oslo_messaging.admin)
+            password: $(DeckhandPassphrase.ucp-oslo-messaging-password.spec)
+        parent-inline: $(PeglegEndpointCatalogue.ucp-endpoints.spec.ucp.oslo_messaging)
+    images:
+      tags: $(PeglegSoftwareVersions.software-versions.spec.images.ucp.rabbitmq)
     labels:
-      server:
-        node_selector_key: ucp-control-plane
-        node_selector_value: enabled
       prometheus_rabbitmq_exporter:
         node_selector_key: ucp-control-plane
         node_selector_value: enabled
-  dependencies:
-    - ucp-rabbitmq-htk
-...
+      server:
+        node_selector_key: ucp-control-plane
+        node_selector_value: enabled
+  wait:
+    labels:
+      release_group: airship-ucp-rabbitmq
+    resources:
+    - type: statefulset
+    timeout: 300
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  name: ucp-rabbitmq-htk
   layeringDefinition:
     abstract: false
     layer: global
-  substitutions:
-    - src:
-        kind: PeglegSoftwareVersions
-        name: software-versions
-        path: .charts.ucp.rabbitmq-htk
-      dest:
-        path: .source
+  name: ucp-rabbitmq-htk
 spec:
   chart_name: ucp-rabbitmq-htk
-  release: ucp-rabbitmq-htk
-  namespace: ucp-rabbitmq-htk
-  values: {}
   dependencies: []
-...
+  namespace: ucp-rabbitmq-htk
+  release: ucp-rabbitmq-htk
+  source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.rabbitmq-htk)
+  values: {}

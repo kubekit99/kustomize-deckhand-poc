@@ -2,104 +2,40 @@
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  name: kubernetes-etcd
+  labels:
+    name: kubernetes-etcd
   layeringDefinition:
     abstract: true
     layer: global
-  labels:
-    name: kubernetes-etcd
-  substitutions:
-
-    # Chart source
-    - src:
-        kind: PeglegSoftwareVersions
-        name: software-versions
-        path: .charts.kubernetes.etcd
-      dest:
-        path: .source
-
-    # Images
-    - src:
-        kind: PeglegSoftwareVersions
-        name: software-versions
-        path: .images.kubernetes.etcd
-      dest:
-        path: .values.images.tags
-
-    # IP addresses
-    -
-      src:
-        kind: PeglegCommonAddresses
-        name: common-addresses
-        path: .kubernetes.etcd_service_ip
-      dest:
-        path: .values.service.ip
-    -
-      src:
-        kind: PeglegCommonAddresses
-        name: common-addresses
-        path: .kubernetes.etcd_service_ip
-      dest:
-        path: .values.anchor.etcdctl_endpoint
-
-    # CAs
-    -
-      src:
-        kind: DeckhandCertificateAuthority
-        name: kubernetes-etcd
-        path: .
-      dest:
-        path: .values.secrets.tls.client.ca
-    -
-      src:
-        kind: DeckhandCertificateAuthority
-        name: kubernetes-etcd-peer
-        path: .
-      dest:
-        path: .values.secrets.tls.peer.ca
-
-    -
-      src:
-        kind: DeckhandCertificate
-        name: kubernetes-etcd-anchor
-        path: .
-      dest:
-        path: .values.secrets.anchor.tls.cert
-    -
-      src:
-        kind: DeckhandCertificateKey
-        name: kubernetes-etcd-anchor
-        path: .
-      dest:
-        path: .values.secrets.anchor.tls.key
-
+  name: kubernetes-etcd
 spec:
   chart_name: etcd
-  release: kubernetes-etcd
+  dependencies:
+  - kubernetes-etcd-htk
   namespace: kube-system
   protected:
     continue_processing: true
-  wait:
-    timeout: 600
-    labels:
-      release_group: airship-kubernetes-etcd
+  release: kubernetes-etcd
+  source: $(PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.etcd)
   upgrade:
     no_hooks: false
     pre:
       delete:
-        - type: job
-          labels:
-            release_group: airship-kubernetes-etcd
+      - labels:
+          release_group: airship-kubernetes-etcd
+        type: job
   values:
+    anchor:
+      etcdctl_endpoint: $(PeglegCommonAddresses.common-addresses.spec.kubernetes.etcd_service_ip)
+    etcd:
+      host_data_path: /var/lib/etcd/kubernetes
+      host_etc_path: /etc/etcd/kubernetes
+    images:
+      tags: $(PeglegSoftwareVersions.software-versions.spec.images.kubernetes.etcd)
     labels:
       anchor:
         node_selector_key: kubernetes-etcd
         node_selector_value: enabled
-    etcd:
-      host_data_path: /var/lib/etcd/kubernetes
-      host_etc_path: /etc/etcd/kubernetes
-    service:
-      name: kubernetes-etcd
     network:
       service_client:
         name: service_client
@@ -109,27 +45,35 @@ spec:
         name: service_peer
         port: 2380
         target_port: 2380
-  dependencies:
-    - kubernetes-etcd-htk
+    secrets:
+      anchor:
+        tls:
+          cert: $(DeckhandCertificate.kubernetes-etcd-anchor.spec)
+          key: $(DeckhandCertificateKey.kubernetes-etcd-anchor.spec)
+      tls:
+        client:
+          ca: $(DeckhandCertificateAuthority.kubernetes-etcd.spec)
+        peer:
+          ca: $(DeckhandCertificateAuthority.kubernetes-etcd-peer.spec)
+    service:
+      ip: $(PeglegCommonAddresses.common-addresses.spec.kubernetes.etcd_service_ip)
+      name: kubernetes-etcd
+  wait:
+    labels:
+      release_group: airship-kubernetes-etcd
+    timeout: 600
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  name: kubernetes-etcd-htk
   layeringDefinition:
     abstract: false
     layer: global
-  substitutions:
-    - src:
-        kind: PeglegSoftwareVersions
-        name: software-versions
-        path: .charts.kubernetes.etcd-htk
-      dest:
-        path: .source
+  name: kubernetes-etcd-htk
 spec:
   chart_name: kubernetes-etcd-htk
-  release: kubernetes-etcd-htk
-  namespace: kubernetes-etcd-htk
-  values: {}
   dependencies: []
-...
+  namespace: kubernetes-etcd-htk
+  release: kubernetes-etcd-htk
+  source: $(PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.etcd-htk)
+  values: {}

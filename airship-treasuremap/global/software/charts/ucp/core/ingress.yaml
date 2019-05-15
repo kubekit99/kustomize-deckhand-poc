@@ -2,84 +2,66 @@
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  name: ucp-ingress
   labels:
     name: ucp-ingress
   layeringDefinition:
     abstract: false
     layer: global
-  substitutions:
-    # Chart source
-    - src:
-        kind: PeglegSoftwareVersions
-        name: software-versions
-        path: .charts.ucp.ingress
-      dest:
-        path: .source
-    # Images
-    - src:
-        kind: PeglegSoftwareVersions
-        name: software-versions
-        path: .images.ucp.ingress
-      dest:
-        path: .values.images.tags
+  name: ucp-ingress
 spec:
   chart_name: ingress
-  release: ingress
-  namespace: ucp
-  wait:
-    timeout: 300
-    labels:
-      release_group: airship-ingress
+  dependencies:
+  - ucp-ingress-htk
   install:
     no_hooks: false
+  namespace: ucp
+  release: ingress
+  source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.ingress)
   upgrade:
     no_hooks: false
     pre:
       delete:
-        - type: job
-          labels:
-            release_group: airship-ingress
+      - labels:
+          release_group: airship-ingress
+        type: job
   values:
     conf:
       ingress:
         proxy-body-size: 20m
+    images:
+      tags: $(PeglegSoftwareVersions.software-versions.spec.images.ucp.ingress)
     labels:
-      server:
-        node_selector_key: ucp-control-plane
-        node_selector_value: enabled
       error_server:
         node_selector_key: ucp-control-plane
         node_selector_value: enabled
-    pod:
-      replicas:
-        ingress: 2
-        error_page: 2
+      server:
+        node_selector_key: ucp-control-plane
+        node_selector_value: enabled
     network:
       ingress:
         annotations:
           nginx.ingress.kubernetes.io/proxy-body-size: 20m
           nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
-  dependencies:
-    - ucp-ingress-htk
+    pod:
+      replicas:
+        error_page: 2
+        ingress: 2
+  wait:
+    labels:
+      release_group: airship-ingress
+    timeout: 300
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  name: ucp-ingress-htk
   layeringDefinition:
     abstract: false
     layer: global
-  substitutions:
-    - src:
-        kind: PeglegSoftwareVersions
-        name: software-versions
-        path: .charts.ucp.ingress-htk
-      dest:
-        path: .source
+  name: ucp-ingress-htk
 spec:
   chart_name: ucp-ingress-htk
-  release: ucp-ingress-htk
-  namespace: ucp-ingress-htk
-  values: {}
   dependencies: []
+  namespace: ucp-ingress-htk
+  release: ucp-ingress-htk
+  source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.ingress-htk)
+  values: {}

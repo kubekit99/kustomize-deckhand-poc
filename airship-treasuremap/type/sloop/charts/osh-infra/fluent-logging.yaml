@@ -2,18 +2,17 @@
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  name: fluent-logging
   layeringDefinition:
     abstract: false
+    actions:
+    - method: merge
+      path: .
     layer: type
     parentSelector:
       hosttype: fluent-logging-global
-    actions:
-      - method: merge
-        path: .
+  name: fluent-logging
 spec:
   values:
     pod:
       replicas:
         fluentd: 1
-...

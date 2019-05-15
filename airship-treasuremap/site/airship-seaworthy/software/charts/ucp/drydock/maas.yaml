@@ -1,23 +1,21 @@
 ---
-# This file defines site-specific deviations for MaaS.
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  name: ucp-maas
   layeringDefinition:
     abstract: false
+    actions:
+    - method: merge
+      path: .
     layer: site
     parentSelector:
       name: ucp-maas-global
-    actions:
-      - method: merge
-        path: .
+  name: ucp-maas
 spec:
   values:
     conf:
       maas:
         images:
-          default_os: 'ubuntu'
-          default_image: 'xenial'
-          default_kernel: 'hwe-16.04'
-...
+          default_image: xenial
+          default_kernel: hwe-16.04
+          default_os: ubuntu

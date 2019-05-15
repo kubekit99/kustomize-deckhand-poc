@@ -2,91 +2,57 @@
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  name: kubernetes-proxy
   labels:
     name: kubernetes-proxy
   layeringDefinition:
     abstract: false
     layer: global
-  substitutions:
-    # Chart source
-    - src:
-        kind: PeglegSoftwareVersions
-        name: software-versions
-        path: .charts.kubernetes.proxy
-      dest:
-        path: .source
-
-    # Images
-    - src:
-        kind: PeglegSoftwareVersions
-        name: software-versions
-        path: .images.kubernetes.proxy
-      dest:
-        path: .values.images.tags
-
-    # IP Addresses
-    - src:
-        kind: PeglegCommonAddresses
-        name: common-addresses
-        path: .kubernetes.pod_cidr
-      dest:
-        path: .values.command_prefix[1]
-        pattern: POD_CIDR
-
-    # Secrets
-    - src:
-        kind: DeckhandCertificateAuthority
-        name: kubernetes
-        path: .
-      dest:
-        path: .values.secrets.tls.ca
+  name: kubernetes-proxy
 spec:
   chart_name: proxy
-  release: kubernetes-proxy
+  dependencies:
+  - kubernetes-proxy-htk
   namespace: kube-system
-  wait:
-    timeout: 600
-    labels:
-      release_group: airship-kubernetes-proxy
+  release: kubernetes-proxy
+  source: $(PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.proxy)
   upgrade:
     no_hooks: false
     pre:
       delete:
-        - type: job
-          labels:
-            release_group: airship-kubernetes-proxy
+      - labels:
+          release_group: airship-kubernetes-proxy
+        type: job
   values:
     command_prefix:
-      - /proxy
-      - --cluster-cidr=POD_CIDR
-      - --proxy-mode=iptables
+    - /proxy
+    - --cluster-cidr=$(PeglegCommonAddresses.common-addresses.spec.kubernetes.pod_cidr)
+    - --proxy-mode=iptables
+    images:
+      tags: $(PeglegSoftwareVersions.software-versions.spec.images.kubernetes.proxy)
     kube_service:
       host: 127.0.0.1
       port: 6553
     livenessProbe:
       whitelist:
-        - tiller-deploy
-  dependencies:
-    - kubernetes-proxy-htk
+      - tiller-deploy
+    secrets:
+      tls:
+        ca: $(DeckhandCertificateAuthority.kubernetes.spec)
+  wait:
+    labels:
+      release_group: airship-kubernetes-proxy
+    timeout: 600
 ---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  name: kubernetes-proxy-htk
   layeringDefinition:
     abstract: false
     layer: global
-  substitutions:
-    - src:
-        kind: PeglegSoftwareVersions
-        name: software-versions
-        path: .charts.kubernetes.proxy-htk
-      dest:
-        path: .source
+  name: kubernetes-proxy-htk
 spec:
   chart_name: kubernetes-proxy-htk
-  release: kubernetes-proxy-htk
-  namespace: kubernetes-proxy-htk
   dependencies: []
-...
+  namespace: kubernetes-proxy-htk
+  release: kubernetes-proxy-htk
+  source: $(PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.proxy-htk)

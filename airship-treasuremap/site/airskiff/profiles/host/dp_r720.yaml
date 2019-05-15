@@ -7,7 +7,7 @@
 apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockHostProfile
 metadata:
-  name: dp_r720
+  name: dp-r720
   layeringDefinition:
     abstract: false
     layer: site

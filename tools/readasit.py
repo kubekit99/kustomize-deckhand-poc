@@ -83,8 +83,11 @@ def add_key(key, node, varname, thepattern):
     if (len(key) == 0):
         if (thepattern):
             if thekey not in node:
-                print("Pattern issue with " + varname + " " + thepattern + " " + thekey + " " + str(theindex))
-                node[thekey] = {"pattern-boggus": thepattern, "varname-boggus": varname}
+                if (thepattern == "DB_NAME") and (thekey == "path"):
+                    node[thekey] = "/" + varname
+                else:
+                    print("Pattern issue with " + varname + " " + thepattern + " " + thekey + " " + str(theindex))
+                    node[thekey] = {"pattern-boggus": thepattern, "varname-boggus": varname}
             else:
                 if (theindex != -1):
                     node[thekey][theindex] = node[thekey][theindex].replace(thepattern, varname)
@@ -104,7 +107,7 @@ def add_key(key, node, varname, thepattern):
             elif not isinstance(node[thekey], dict):
                 # boggus replacement
                 org = node[thekey]
-                node[thekey] = {"order-boggus": org}
+                node[thekey] = {"parent-inline": org}
 
             add_key(key, node[thekey], varname, thepattern)
 
@@ -134,39 +137,54 @@ def load_file(filename):
                 for entry in doc["metadata"]["substitutions"]:
                     if entry["src"]["path"] != ".":
                         varpath = "spec" + entry["src"]["path"].replace("[", "._").replace("]", "_")
-                        varname = ".".join([entry["src"]["kind"], entry["src"]["name"], varpath])
+                        varname = ".".join([entry["src"]["kind"], entry["src"]["name"].replace("_","-"), varpath])
                     else:
                         varpath = "spec"
-                        varname = ".".join([entry["src"]["kind"], entry["src"]["name"], varpath])
-                    vars[varname] = build_var(varname, entry["src"]["kind"], entry["src"]["name"], varpath)
+                        varname = ".".join([entry["src"]["kind"], entry["src"]["name"].replace("_","-"), varpath])
+                    vars[varname] = build_var(varname, entry["src"]["kind"], entry["src"]["name"].replace("_","-"), varpath)
 
-                    dest = entry["dest"]["path"].split(".")
-                    dest[0] = "spec"
-                    thepattern = None
-                    if ("pattern" in entry["dest"]):
-                        thepattern = entry["dest"]["pattern"]
+                    if (isinstance(entry["dest"], list)):
+                        for subdest in entry["dest"]:
+                            dest = subdest["path"].split(".")
+                            dest[0] = "spec"
+                            thepattern = None
+                            if ("pattern" in subdest):
+                                thepattern = subdest["pattern"].replace("'","").replace("(","").replace(")","")
 
-                    varrefs[doc["kind"]]["/".join(dest).replace("[", "/_").replace("]", "_")] = doc["kind"]
-                    add_key(dest, doc, "$(" + varname + ")", thepattern)
+                            varrefs[doc["kind"]]["/".join(dest).replace("[", "/_").replace("]", "_")] = doc["kind"]
+                            add_key(dest, doc, "$(" + varname + ")", thepattern)
+                    else:
+                        dest = entry["dest"]["path"].split(".")
+                        dest[0] = "spec"
+                        thepattern = None
+                        if ("pattern" in entry["dest"]):
+                            thepattern = entry["dest"]["pattern"].replace("'","").replace("(","").replace(")","")
 
+                        varrefs[doc["kind"]]["/".join(dest).replace("[", "/_").replace("]", "_")] = doc["kind"]
+                        add_key(dest, doc, "$(" + varname + ")", thepattern)
+                doc["metadata"].pop("substitutions")
+               
     # Save the list of vars to add to the kustomization.yaml
-    varlist = []
-    for key, value in vars.items():
-        varlist.append(value)
-    sortedlist = sorted(varlist, key=lambda k: k['name'])
-    with open("kustomization.vars.yaml", 'w') as stream:
-        yaml.dump(sortedlist, stream, default_flow_style=False)
-
-    # Save the list of varref to add to the kustomizeconfig/crd.yaml
-    for key, value in varrefs.items():
-        with open("res/" + key + ".yaml", 'w') as stream:
-            varlist = []
-            for key2, value2 in value.items():
-                varlist.append({"path": key2, "kind": value2})
-            sortedlist = sorted(varlist, key=lambda k: k['path'])
+    if False:
+        varlist = []
+        for key, value in vars.items():
+            varlist.append(value)
+        sortedlist = sorted(varlist, key=lambda k: k['name'])
+        with open("kustomization.vars.yaml", 'w') as stream:
             yaml.dump(sortedlist, stream, default_flow_style=False)
 
+    # Save the list of varref to add to the kustomizeconfig/crd.yaml
+    if False:
+        for key, value in varrefs.items():
+            with open("res/" + key + ".yaml", 'w') as stream:
+                varlist = []
+                for key2, value2 in value.items():
+                    varlist.append({"path": key2, "kind": value2})
+                sortedlist = sorted(varlist, key=lambda k: k['path'])
+                yaml.dump(sortedlist, stream, default_flow_style=False)
+
     return docs2
+
 
 def remove_metadata(filename):
     """
@@ -192,6 +210,7 @@ def remove_metadata(filename):
 
     return docs2
 
+
 def move_namespace(filename):
     """
     TBD
@@ -212,13 +231,14 @@ def move_namespace(filename):
         docs2 = list(docs)
         for doc in docs2:
             if ("namespace" in doc["spec"]):
-                if ("-htk" in  doc["spec"]["namespace"]) or ("helm-toolkit" in  doc["spec"]["namespace"]):
-                   doc["metadata"]["namespace"] = "deckhand"
+                if ("-htk" in doc["spec"]["namespace"]) or ("helm-toolkit" in doc["spec"]["namespace"]):
+                    doc["metadata"]["namespace"] = "deckhand"
                 else:
-                   doc["metadata"]["namespace"] = doc["spec"]["namespace"]
+                    doc["metadata"]["namespace"] = doc["spec"]["namespace"]
                 doc["spec"].pop("namespace")
 
     return docs2
+
 
 def add_namespace(filename):
     """
@@ -239,22 +259,23 @@ def add_namespace(filename):
 
         docs2 = list(docs)
         for doc in docs2:
-            name=doc["metadata"]["name"]
-            kind=doc["kind"]
+            name = doc["metadata"]["name"]
+            kind = doc["kind"]
             if ("namespace" not in doc["metadata"]):
-                   if ("Pegleg" in kind):
-                      doc["metadata"]["namespace"] = "pegleg"
-                   elif ("Deckhand" in kind):
-                      doc["metadata"]["namespace"] = "deckhand"
-                   elif ("Promenade" in kind):
-                      doc["metadata"]["namespace"] = "promenade"
-                   elif ("Shipyard" in kind):
-                      doc["metadata"]["namespace"] = "shipyard"
-                   else:
-                      doc["metadata"]["namespace"] = "boggus"
-            print("{} {} in {}".format(kind,name,doc["metadata"]["namespace"]))
+                if ("Pegleg" in kind):
+                    doc["metadata"]["namespace"] = "pegleg"
+                elif ("Deckhand" in kind):
+                    doc["metadata"]["namespace"] = "deckhand"
+                elif ("Promenade" in kind):
+                    doc["metadata"]["namespace"] = "promenade"
+                elif ("Shipyard" in kind):
+                    doc["metadata"]["namespace"] = "shipyard"
+                else:
+                    doc["metadata"]["namespace"] = "boggus"
+            print("{} {} in {}".format(kind, name, doc["metadata"]["namespace"]))
 
     return docs2
+
 
 def find_key(key, node):
     thekey = key.pop(0)

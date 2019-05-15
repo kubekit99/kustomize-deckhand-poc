@@ -1,4 +1,13 @@
 ---
+apiVersion: pegleg.airshipit.org/v1alpha1
+kind: PeglegSoftwareVersions
+metadata:
+  labels:
+    name: software-versions
+  layeringDefinition:
+    abstract: false
+    layer: global
+  name: software-versions
 spec:
   charts:
     kubernetes:
@@ -530,8 +539,6 @@ spec:
       prometheus_openstack_exporter: {}
       prometheus_process_exporter: {}
     ucp:
-      pegleg:
-        pegleg: quay.io/airshipit/pegleg:178c058474fb632806e281673d3eaf6be80fa854
       armada:
         api: quay.io/airshipit/armada:c7d9e21b1e3c144eee54d7d2a5da3eb562255894
         helm: docker.io/lachlanevenson/k8s-helm:v2.12.1
@@ -556,6 +563,8 @@ spec:
         maas_region: quay.io/airshipit/maas-region-controller:2e003450cceb16b9bda71aa69a939a8466516582
       mariadb: {}
       memcached: {}
+      pegleg:
+        pegleg: quay.io/airshipit/pegleg:178c058474fb632806e281673d3eaf6be80fa854
       postgresql: {}
       promenade:
         promenade: quay.io/airshipit/promenade:12b1e84791befdc0b70b6a3854088d874f369214
@@ -656,13 +665,3 @@ spec:
         url: http://us.archive.ubuntu.com/ubuntu
     unnamed:
     - ceph-common
-metadata:
-  labels:
-    name: software-versions
-  layeringDefinition:
-    abstract: false
-    layer: global
-  name: software-versions
-apiVersion: pegleg.airshipit.org/v1alpha1
-kind: PeglegSoftwareVersions
-...

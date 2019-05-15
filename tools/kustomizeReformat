@@ -1,0 +1,12 @@
+#!/bin/bash
+echo "---\n" > toto/sepfile
+rm -f globalfiles
+for i in baremetal deployment profiles scripts secrets software
+do
+find global/$i -name "*.yaml" -print >> globalfiles
+done
+for i in `cat globalfiles`
+do
+../tools/buildname.py -f $i -d toto
+done
+rm -f globalfiles

@@ -2,19 +2,18 @@
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  replacement: true
-  name: cinder-rabbitmq
   layeringDefinition:
     abstract: false
+    actions:
+    - method: merge
+      path: .
     layer: type
     parentSelector:
       name: cinder-rabbitmq-global
-    actions:
-      - method: merge
-        path: .
+  name: cinder-rabbitmq
+  replacement: true
 spec:
   values:
     pod:
       replicas:
         server: 1
-...

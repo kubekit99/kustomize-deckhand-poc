@@ -2,19 +2,18 @@
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  replacement: true
-  name: ucp-armada
   layeringDefinition:
     abstract: false
+    actions:
+    - method: merge
+      path: .
     layer: type
     parentSelector:
       name: ucp-armada-global
-    actions:
-      - method: merge
-        path: .
+  name: ucp-armada
+  replacement: true
 spec:
   values:
     pod:
       replicas:
         api: 1
-...

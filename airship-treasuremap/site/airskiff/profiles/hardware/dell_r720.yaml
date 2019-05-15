@@ -5,7 +5,7 @@ apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockHardwareProfile
 metadata:
   schema: 'metadata/Document/v1'
-  name: dell_r720
+  name: dell-r720
   layeringDefinition:
     abstract: false
     layer: site

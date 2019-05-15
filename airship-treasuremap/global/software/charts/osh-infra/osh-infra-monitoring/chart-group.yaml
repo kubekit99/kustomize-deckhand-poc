@@ -2,18 +2,15 @@
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  name: osh-infra-monitoring
   layeringDefinition:
     abstract: false
     layer: global
+  name: osh-infra-monitoring
 spec:
-  description: OSH Infra Monitoring
   chart_group:
-    - prometheus
-    - prometheus-alertmanager
-    - prometheus-node-exporter
-    - prometheus-process-exporter
-    - prometheus-kube-state-metrics
-    # fixme: enable once fixed
-    # - nagios
-...
+  - prometheus
+  - prometheus-alertmanager
+  - prometheus-node-exporter
+  - prometheus-process-exporter
+  - prometheus-kube-state-metrics
+  description: OSH Infra Monitoring
