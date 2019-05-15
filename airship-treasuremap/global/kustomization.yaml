@@ -907,13 +907,6 @@ vars:
     name: service-account
 - fieldref:
     fieldpath: spec
-  name: DeckhandPublicKey.airsloop-ssh-public-key.spec
-  objref:
-    apiVersion: deckhand.airshipit.org/v1alpha1
-    kind: DeckhandPublicKey
-    name: airsloop-ssh-public-key
-- fieldref:
-    fieldpath: spec
   name: DeckhandPublicKey.service-account.spec
   objref:
     apiVersion: deckhand.airshipit.org/v1alpha1

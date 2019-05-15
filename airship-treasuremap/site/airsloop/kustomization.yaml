@@ -285,6 +285,13 @@ vars:
     apiVersion: deckhand.airshipit.org/v1alpha1
     kind: DeckhandPassphrase
     name: airsloop-crypt-password
+- fieldref:
+    fieldpath: spec
+  name: DeckhandPublicKey.airsloop-ssh-public-key.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandPublicKey
+    name: airsloop-ssh-public-key
 
 inlines:
 # - fieldref:

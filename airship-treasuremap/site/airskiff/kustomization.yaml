@@ -139,6 +139,68 @@ resources:
 - ./software/config/service_accounts.yaml
 
 vars:
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.kubernetes-etcd-genesis-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: kubernetes-etcd-genesis-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.kubernetes-etcd-genesis.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: kubernetes-etcd-genesis
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.kubernetes-etcd-genesis-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: kubernetes-etcd-genesis-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.kubernetes-etcd-genesis.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: kubernetes-etcd-genesis
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.ingress-crt.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: ingress-crt
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateAuthority.ingress-ca.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateAuthority
+    name: ingress-ca
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.ingress-key.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: ingress-key
 
 inlines:
-
+# - fieldref:
+#     fieldpath: spec.masters._0_.hostname
+#   name: PeglegCommonAddresses.common-addresses.spec.masters._0_.hostname
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec.masters._1_.hostname
+#   name: PeglegCommonAddresses.common-addresses.spec.masters._1_.hostname
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
