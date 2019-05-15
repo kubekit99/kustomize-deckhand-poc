@@ -1,0 +1,90 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+- ../../base
+
+resources:
+- ./cinder-rabbitmq.yaml
+- ./cinder.yaml
+- ./coredns.yaml
+- ./elasticsearch.yaml
+- ./fluent-logging.yaml
+- ./glance-rabbitmq.yaml
+- ./glance.yaml
+- ./grafana.yaml
+- ./haproxy.yaml
+- ./heat-rabbitmq.yaml
+- ./heat.yaml
+- ./horizon.yaml
+- ./ingress-kube-system.yaml
+- ./keystone-rabbitmq.yaml
+- ./keystone.yaml
+- ./kibana.yaml
+- ./kubernetes-apiserver.yaml
+- ./kubernetes-calico-etcd.yaml
+- ./kubernetes-calico.yaml
+- ./kubernetes-controller-manager.yaml
+- ./kubernetes-etcd.yaml
+- ./kubernetes-proxy.yaml
+- ./kubernetes-scheduler.yaml
+- ./libvirt.yaml
+- ./nagios.yaml
+- ./neutron-rabbitmq.yaml
+- ./neutron.yaml
+- ./nfs-provisioner.yaml
+- ./nova-rabbitmq.yaml
+- ./nova.yaml
+- ./openstack-ceph-config.yaml
+- ./openstack-ingress-controller.yaml
+- ./openstack-mariadb.yaml
+- ./openstack-memcached.yaml
+- ./openvswitch.yaml
+- ./osh-helm-toolkit.yaml
+- ./osh-infra-ceph-config.yaml
+- ./osh-infra-helm-toolkit.yaml
+- ./osh-infra-ingress-controller.yaml
+- ./osh-infra-mariadb.yaml
+- ./osh-infra-radosgw.yaml
+- ./podsecuritypolicy.yaml
+- ./prometheus-alertmanager.yaml
+- ./prometheus-kube-state-metrics.yaml
+- ./prometheus-node-exporter.yaml
+- ./prometheus-openstack-exporter.yaml
+- ./prometheus-process-exporter.yaml
+- ./prometheus.yaml
+- ./tenant-ceph-client.yaml
+- ./tenant-ceph-config.yaml
+- ./tenant-ceph-ingress.yaml
+- ./tenant-ceph-mon.yaml
+- ./tenant-ceph-osd.yaml
+- ./tenant-ceph-rgw.yaml
+- ./ucp-armada.yaml
+- ./ucp-barbican.yaml
+- ./ucp-ceph-client-update.yaml
+- ./ucp-ceph-client.yaml
+- ./ucp-ceph-config.yaml
+- ./ucp-ceph-ingress.yaml
+- ./ucp-ceph-mon.yaml
+- ./ucp-ceph-osd.yaml
+- ./ucp-ceph-provisioners.yaml
+- ./ucp-ceph-rgw.yaml
+- ./ucp-deckhand.yaml
+- ./ucp-divingbell.yaml
+- ./ucp-drydock.yaml
+- ./ucp-ingress.yaml
+- ./ucp-keystone-memcached.yaml
+- ./ucp-keystone.yaml
+- ./ucp-maas.yaml
+- ./ucp-mariadb.yaml
+- ./ucp-postgresql.yaml
+- ./ucp-promenade.yaml
+- ./ucp-prometheus-openstack-exporter.yaml
+- ./ucp-rabbitmq.yaml
+- ./ucp-shipyard.yaml
+- ./ucp-tiller.yaml
+
+vars:
+
+inlines:

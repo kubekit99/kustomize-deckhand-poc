@@ -1,0 +1,13 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChartGroup
+metadata:
+  name: kubernetes-proxy
+  layeringDefinition:
+    abstract: false
+    layer: global
+spec:
+  description: Kubernetes proxy
+  sequenced: true
+  chart_group:
+    - kubernetes-proxy

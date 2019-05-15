@@ -1,0 +1,15 @@
+---
+apiVersion: deckhand.airshipit.org/v1alpha1
+kind: DeckhandDataSchema
+metadata:
+  name: pegleg/CommonSoftwareConfig
+spec:
+  $schema: 'http://json-schema.org/schema#'
+  type: object
+  properties:
+    osh:
+      type: object
+      properties:
+        region_name:
+          type: string
+...

@@ -1,0 +1,15 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChartGroup
+metadata:
+  name: openstack-ceph-config
+  labels:
+    name: openstack-ceph-config-chart-group
+    component: ceph
+  layeringDefinition:
+    abstract: false
+    layer: global
+spec:
+  description: Ceph config for OpenStack namespace(s)
+  chart_group:
+    - openstack-ceph-config

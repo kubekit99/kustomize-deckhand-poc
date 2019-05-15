@@ -1,0 +1,43 @@
+---
+apiVersion: deckhand.airshipit.org/v1alpha1
+kind: DeckhandDataSchema
+metadata:
+  name: promenade/PKICatalog
+  labels:
+    application: promenade
+spec:
+  $schema: http://json-schema.org/schema#
+  certificate_authorities:
+    type: array
+    items:
+      type: object
+      properties:
+        description:
+          type: string
+        certificates:
+          type: array
+          items:
+            type: object
+            properties:
+              document_name:
+                type: string
+              description:
+                type: string
+              common_name:
+                type: string
+              hosts:
+                type: array
+                items: string
+              groups:
+                type: array
+                items: string
+  keypairs:
+    type: array
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+...

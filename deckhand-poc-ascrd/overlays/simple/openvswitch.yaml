@@ -1,0 +1,41 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  labels:
+    name: openvswitch
+  layeringDefinition:
+    abstract: false
+    layer: global
+  name: openvswitch
+  namespace: openstack
+spec:
+  chart_name: openvswitch
+  dependencies:
+  - osh-helm-toolkit
+  install:
+    no_hooks: false
+  release: openvswitch
+  source:
+    location: https://git.openstack.org/openstack/openstack-helm-infra
+    reference: a367bacb4bd3af55dd11dbc5c9855749a123779d
+    subpath: openvswitch
+    type: git
+  upgrade:
+    no_hooks: false
+    pre:
+      delete:
+      - labels:
+          release_group: airship-openvswitch
+        type: job
+  values:
+    images:
+      tags: {}
+    labels:
+      ovs:
+        node_selector_key: openvswitch
+        node_selector_value: enabled
+  wait:
+    labels:
+      release_group: airship-openvswitch
+    timeout: 900

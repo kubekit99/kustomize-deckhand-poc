@@ -1,0 +1,408 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: nova
+  labels:
+    name: nova
+    component: nova
+  layeringDefinition:
+    abstract: true
+    layer: global
+  substitutions:
+    # Chart source
+    - src:
+        kind: PeglegSoftwareVersions
+        name: software-versions
+        path: .charts.osh.nova
+      dest:
+        path: .source
+
+    # Images
+    - src:
+        kind: PeglegSoftwareVersions
+        name: software-versions
+        path: .images.osh.nova
+      dest:
+        path: .values.images.tags
+
+    # Endpoints
+    - src:
+        kind: PeglegEndpointCatalogue
+        name: osh_endpoints
+        path: .osh.identity
+      dest:
+        path: .values.endpoints.identity
+    - src:
+        kind: PeglegEndpointCatalogue
+        name: osh_endpoints
+        path: .osh.oslo_db
+      dest:
+        path: .values.endpoints.oslo_db
+    - src:
+        kind: PeglegEndpointCatalogue
+        name: osh_endpoints
+        path: .osh.oslo_db
+      dest:
+        path: .values.endpoints.oslo_db_api
+    - src:
+        kind: PeglegEndpointCatalogue
+        name: osh_endpoints
+        path: .osh.oslo_db
+      dest:
+        path: .values.endpoints.oslo_db_cell0
+    - src:
+        kind: PeglegEndpointCatalogue
+        name: osh_endpoints
+        path: .osh.nova_oslo_messaging
+      dest:
+        path: .values.endpoints.oslo_messaging
+    - src:
+        kind: PeglegEndpointCatalogue
+        name: osh_endpoints
+        path: .osh.oslo_cache
+      dest:
+        path: .values.endpoints.oslo_cache
+    - src:
+        kind: PeglegEndpointCatalogue
+        name: osh_endpoints
+        path: .osh.image
+      dest:
+        path: .values.endpoints.image
+    - src:
+        kind: PeglegEndpointCatalogue
+        name: osh_endpoints
+        path: .osh.compute
+      dest:
+        path: .values.endpoints.compute
+    - src:
+        kind: PeglegEndpointCatalogue
+        name: osh_endpoints
+        path: .osh.compute_metadata
+      dest:
+        path: .values.endpoints.compute_metadata
+    - src:
+        kind: PeglegEndpointCatalogue
+        name: osh_endpoints
+        path: .osh.compute_novnc_proxy
+      dest:
+        path: .values.endpoints.compute_novnc_proxy
+    - src:
+        kind: PeglegEndpointCatalogue
+        name: osh_endpoints
+        path: .osh.compute_spice_proxy
+      dest:
+        path: .values.endpoints.compute_spice_proxy
+    - src:
+        kind: PeglegEndpointCatalogue
+        name: osh_endpoints
+        path: .osh.placement
+      dest:
+        path: .values.endpoints.placement
+    - src:
+        kind: PeglegEndpointCatalogue
+        name: osh_endpoints
+        path: .osh.network
+      dest:
+        path: .values.endpoints.network
+    - src:
+        kind: PeglegEndpointCatalogue
+        name: osh_infra_endpoints
+        path: .osh_infra.fluentd
+      dest:
+        path: .values.endpoints.fluentd
+
+    # Service Accounts
+    - src:
+        kind: PeglegAccountCatalogue
+        name: osh_service_accounts
+        path: .osh.keystone.admin
+      dest:
+        path: .values.endpoints.identity.auth.admin
+    - src:
+        kind: PeglegAccountCatalogue
+        name: osh_service_accounts
+        path: .osh.nova.nova
+      dest:
+        path: .values.endpoints.identity.auth.nova
+    - src:
+        kind: PeglegAccountCatalogue
+        name: osh_service_accounts
+        path: .osh.neutron.neutron
+      dest:
+        path: .values.endpoints.identity.auth.neutron
+    - src:
+        kind: PeglegAccountCatalogue
+        name: osh_service_accounts
+        path: .osh.nova.placement
+      dest:
+        path: .values.endpoints.identity.auth.placement
+    - src:
+        kind: PeglegAccountCatalogue
+        name: osh_service_accounts
+        path: .osh.nova.oslo_messaging.admin
+      dest:
+        path: .values.endpoints.oslo_messaging.auth.admin
+    - src:
+        kind: PeglegAccountCatalogue
+        name: osh_service_accounts
+        path: .osh.nova.oslo_messaging.nova
+      dest:
+        path: .values.endpoints.oslo_messaging.auth.nova
+    - src:
+        kind: PeglegAccountCatalogue
+        name: osh_service_accounts
+        path: .osh.nova.oslo_db.username
+      dest:
+        path: .values.endpoints.oslo_db.auth.nova.username
+    - src:
+        kind: PeglegAccountCatalogue
+        name: osh_service_accounts
+        path: .osh.nova.oslo_db.database
+      dest:
+        path: .values.endpoints.oslo_db.path
+        pattern: DB_NAME
+    - src:
+        kind: PeglegAccountCatalogue
+        name: osh_service_accounts
+        path: .osh.nova.oslo_db_api
+      dest:
+        path: .values.endpoints.oslo_db_api.auth.nova
+    - src:
+        kind: PeglegAccountCatalogue
+        name: osh_service_accounts
+        path: .osh.nova.oslo_db_api.database
+      dest:
+        path: .values.endpoints.oslo_db_api.path
+        pattern: DB_NAME
+    - src:
+        kind: PeglegAccountCatalogue
+        name: osh_service_accounts
+        path: .osh.nova.oslo_db_cell0
+      dest:
+        path: .values.endpoints.oslo_db_cell0.auth.nova
+    - src:
+        kind: PeglegAccountCatalogue
+        name: osh_service_accounts
+        path: .osh.nova.oslo_db_cell0.database
+      dest:
+        path: .values.endpoints.oslo_db_cell0.path
+        pattern: DB_NAME
+
+    # Secrets
+    - dest:
+        path: .values.endpoints.identity.auth.admin.password
+      src:
+        kind: DeckhandPassphrase
+        name: osh_keystone_admin_password
+        path: .
+    - dest:
+        path: .values.endpoints.identity.auth.nova.password
+      src:
+        kind: DeckhandPassphrase
+        name: osh_nova_password
+        path: .
+    - dest:
+        path: .values.endpoints.identity.auth.neutron.password
+      src:
+        kind: DeckhandPassphrase
+        name: osh_neutron_password
+        path: .
+    - dest:
+        path: .values.endpoints.identity.auth.placement.password
+      src:
+        kind: DeckhandPassphrase
+        name: osh_placement_password
+        path: .
+    - dest:
+        path: .values.endpoints.oslo_messaging.auth.admin.password
+      src:
+        kind: DeckhandPassphrase
+        name: osh_nova_oslo_messaging_admin_password
+        path: .
+    - dest:
+        path: .values.endpoints.oslo_messaging.auth.nova.password
+      src:
+        kind: DeckhandPassphrase
+        name: osh_nova_oslo_messaging_password
+        path: .
+    - dest:
+        path: .values.endpoints.oslo_db.auth.nova.password
+      src:
+        kind: DeckhandPassphrase
+        name: osh_nova_oslo_db_password
+        path: .
+    - dest:
+        path: .values.endpoints.oslo_db_api.auth.nova.password
+      src:
+        kind: DeckhandPassphrase
+        name: osh_nova_oslo_db_password
+        path: .
+    - dest:
+        path: .values.endpoints.oslo_db_cell0.auth.nova.password
+      src:
+        kind: DeckhandPassphrase
+        name: osh_nova_oslo_db_password
+        path: .
+    - dest:
+        path: .values.endpoints.oslo_db.auth.admin.password
+      src:
+        kind: DeckhandPassphrase
+        name: osh_oslo_db_admin_password
+        path: .
+    - dest:
+        path: .values.endpoints.oslo_db_api.auth.admin.password
+      src:
+        kind: DeckhandPassphrase
+        name: osh_oslo_db_admin_password
+        path: .
+    - dest:
+        path: .values.endpoints.oslo_db_cell0.auth.admin.password
+      src:
+        kind: DeckhandPassphrase
+        name: osh_oslo_db_admin_password
+        path: .
+    - dest:
+        path: .values.endpoints.oslo_cache.auth.memcache_secret_key
+      src:
+        kind: DeckhandPassphrase
+        name: osh_oslo_cache_secret_key
+        path: .
+spec:
+  chart_name: nova
+  release: nova
+  namespace: openstack
+  install:
+    no_hooks: false
+  upgrade:
+    no_hooks: false
+    pre:
+      delete:
+        - type: job
+          labels:
+            release_group: airship-nova
+    post:
+      create: []
+  wait:
+    timeout: 2700
+    labels:
+      release_group: airship-nova
+  values:
+    labels:
+      agent:
+        compute:
+          node_selector_key: openstack-nova-compute
+          node_selector_value: enabled
+      api_metadata:
+        node_selector_key: openstack-control-plane
+        node_selector_value: enabled
+      conductor:
+        node_selector_key: openstack-control-plane
+        node_selector_value: enabled
+      consoleauth:
+        node_selector_key: openstack-control-plane
+        node_selector_value: enabled
+      job:
+        node_selector_key: openstack-control-plane
+        node_selector_value: enabled
+      novncproxy:
+        node_selector_key: openstack-control-plane
+        node_selector_value: enabled
+      osapi:
+        node_selector_key: openstack-control-plane
+        node_selector_value: enabled
+      placement:
+        node_selector_key: openstack-control-plane
+        node_selector_value: enabled
+      scheduler:
+        node_selector_key: openstack-control-plane
+        node_selector_value: enabled
+      spiceproxy:
+        node_selector_key: openstack-control-plane
+        node_selector_value: enabled
+      test:
+        node_selector_key: openstack-control-plane
+        node_selector_value: enabled
+    pod:
+      replicas:
+        api_metadata: 4
+        placement: 2
+        osapi: 4
+        conductor: 4
+        consoleauth: 2
+        scheduler: 2
+        novncproxy: 2
+    ceph_client:
+      configmap: tenant-ceph-etc
+      user_secret_name: pvc-tceph-client-key
+    conf:
+      logging:
+        loggers:
+          keys:
+            - root
+            - nova
+        handlers:
+          keys:
+            - stdout
+            - stderr
+            - 'null'
+            - fluent
+        formatters:
+          keys:
+            - context
+            - default
+            - fluent
+        logger_root:
+          level: WARNING
+          handlers: 'null'
+        logger_nova:
+          level: INFO
+          handlers:
+            - stdout
+            - fluent
+          qualname: nova
+        logger_amqp:
+          level: WARNING
+          handlers: stderr
+          qualname: amqp
+        logger_amqplib:
+          level: WARNING
+          handlers: stderr
+          qualname: amqplib
+        logger_eventletwsgi:
+          level: WARNING
+          handlers: stderr
+          qualname: eventlet.wsgi.server
+        logger_sqlalchemy:
+          level: WARNING
+          handlers: stderr
+          qualname: sqlalchemy
+        logger_boto:
+          level: WARNING
+          handlers: stderr
+          qualname: boto
+        handler_null:
+          class: logging.NullHandler
+          formatter: default
+          args: ()
+        handler_stdout:
+          class: StreamHandler
+          args: (sys.stdout,)
+          formatter: context
+        handler_stderr:
+          class: StreamHandler
+          args: (sys.stderr,)
+          formatter: context
+        handler_fluent:
+          class: fluent.handler.FluentHandler
+          args: ('openstack.nova', 'fluentd-logging.osh-infra', 24224)
+          formatter: fluent
+        formatter_fluent:
+          class: oslo_log.formatters.FluentFormatter
+        formatter_context:
+          class: oslo_log.formatters.ContextFormatter
+        formatter_default:
+          format: "%(message)s"
+  dependencies:
+    - osh-helm-toolkit
+...

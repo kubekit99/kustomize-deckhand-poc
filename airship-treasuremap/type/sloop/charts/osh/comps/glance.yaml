@@ -1,0 +1,21 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: glance
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: glance-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        api: 1
+        registry: 1
+...

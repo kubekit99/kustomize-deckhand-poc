@@ -1,0 +1,72 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  layeringDefinition:
+    abstract: false
+    layer: global
+  name: tenant-ceph-config
+  namespace: openstack
+spec:
+  chart_name: tenant-ceph-config
+  dependencies:
+  - tenant-ceph-htk
+  install:
+    no_hooks: false
+  release: tenant-ceph-config
+  source:
+    location: https://git.openstack.org/openstack/openstack-helm-infra
+    reference: a367bacb4bd3af55dd11dbc5c9855749a123779d
+    subpath: ceph-provisioners
+    type: git
+  upgrade:
+    no_hooks: false
+    pre:
+      delete:
+      - labels:
+          release_group: airship-tenant-ceph-config
+        type: job
+  values:
+    bootstrap:
+      enabled: false
+    deployment:
+      ceph: false
+      cephfs_provisioner: false
+      client_secrets: true
+      rbd_provisioner: false
+      rgw_keystone_user_and_endpoints: false
+    endpoints:
+      ceph_mon:
+        host_fqdn_override:
+          default: todojeb
+        hosts:
+          default: ceph-mon
+          discovery: ceph-mon-discovery
+        namespace: tenant-ceph
+        port:
+          mon:
+            default: 6790
+    images:
+      tags: {}
+    labels:
+      job:
+        node_selector_key: tenant-ceph-control-plane
+        node_selector_value: enabled
+      mds:
+        node_selector_key: tenant-ceph-mds
+        node_selector_value: enabled
+      mgr:
+        node_selector_key: tenant-ceph-mgr
+        node_selector_value: enabled
+    network:
+      cluster: 10.22.73.0/24
+      public: 10.22.73.0/24
+    storageclass:
+      rbd:
+        admin_secret_namespace: tenant-ceph
+        ceph_configmap_name: tenant-ceph-etc
+        user_secret_name: pvc-tceph-client-key
+  wait:
+    labels:
+      release_group: airship-tenant-ceph-config
+    timeout: 900

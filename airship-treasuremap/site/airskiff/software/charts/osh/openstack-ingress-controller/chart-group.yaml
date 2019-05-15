@@ -1,0 +1,18 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChartGroup
+metadata:
+  name: openstack-ingress-controller
+  layeringDefinition:
+    abstract: false
+    layer: site
+    parentSelector:
+      name: openstack-ingress-controller-chart-group-global
+      component: ingress
+    actions:
+      - method: replace
+        path: .chart_group
+spec:
+  chart_group:
+    - openstack-ingress-controller
+...

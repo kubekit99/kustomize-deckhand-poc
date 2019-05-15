@@ -1,0 +1,26 @@
+---
+# NOTE: This file is ignored by Airskiff and is copied from the seaworthy site.
+
+# The purpose of this file is to define envrionment-specific parameters for the
+# ceph client
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: ucp-ceph-client
+  layeringDefinition:
+    abstract: false
+    layer: site
+    parentSelector:
+      name: ucp-ceph-client-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    conf:
+      pool:
+        target:
+          # NEWSITE-CHANGEME: The number of OSDs per ceph node. Does not need to
+          # change if your deployment HW matches this site's HW.
+          osd: 8
+...

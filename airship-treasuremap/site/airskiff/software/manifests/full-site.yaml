@@ -1,0 +1,25 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaManifest
+metadata:
+  name: full-site
+  replacement: true
+  layeringDefinition:
+    abstract: false
+    layer: site
+    parentSelector:
+      name: full-site-global
+    actions:
+      - method: replace
+        path: .chart_groups
+spec:
+  release_prefix: airship
+  chart_groups:
+    - openstack-ingress-controller-airskiff
+    - openstack-mariadb-airskiff
+    - openstack-memcached
+    - openstack-keystone-airskiff
+    - openstack-glance-airskiff
+    - openstack-compute-kit-airskiff
+    - openstack-heat-airskiff
+...

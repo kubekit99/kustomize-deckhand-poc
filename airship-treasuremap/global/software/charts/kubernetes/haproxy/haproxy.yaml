@@ -1,0 +1,109 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: haproxy
+  labels:
+    name: haproxy
+  layeringDefinition:
+    abstract: false
+    layer: global
+  substitutions:
+
+    # Chart source
+    - src:
+        kind: PeglegSoftwareVersions
+        name: software-versions
+        path: .charts.kubernetes.haproxy
+      dest:
+        path: .source
+
+    # Images
+    - src:
+        kind: PeglegSoftwareVersions
+        name: software-versions
+        path: .images.kubernetes.haproxy
+      dest:
+        path: .values.images.tags
+
+    # Kubernetes configuration
+    - src:
+        kind: PeglegCommonAddresses
+        name: common-addresses
+        path: .kubernetes.api_service_ip
+      dest:
+        path: .values.conf.anchor.kubernetes_url
+        pattern: KUBERNETES_IP
+
+spec:
+  chart_name: haproxy
+  release: haproxy
+  namespace: kube-system
+  protected:
+    continue_processing: true
+  wait:
+    timeout: 600
+    labels:
+      release_group: airship-haproxy
+  upgrade:
+    no_hooks: false
+    pre:
+      delete:
+        - type: job
+          labels:
+            release_group: airship-haproxy
+  values:
+    conf:
+      anchor:
+        kubernetes_url: https://KUBERNETES_IP:443
+        services:
+          default:
+            kubernetes:
+              server_opts: "check port 6443"
+              conf_parts:
+                frontend:
+                  - mode tcp
+                  - option tcpka
+                  - bind *:6553
+                backend:
+                  - mode tcp
+                  - option tcpka
+                  - option tcp-check
+                  - option redispatch
+          kube-system:
+            kubernetes-etcd:
+              server_opts: "check port 2379"
+              conf_parts:
+                frontend:
+                  - mode tcp
+                  - option tcpka
+                  - bind *:2378
+                backend:
+                  - mode tcp
+                  - option tcpka
+                  - option tcp-check
+                  - option redispatch
+  dependencies:
+    - haproxy-htk
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: haproxy-htk
+  layeringDefinition:
+    abstract: false
+    layer: global
+  substitutions:
+    - src:
+        kind: PeglegSoftwareVersions
+        name: software-versions
+        path: .charts.kubernetes.haproxy-htk
+      dest:
+        path: .source
+spec:
+  chart_name: haproxy-htk
+  release: haproxy-htk
+  namespace: haproxy-htk
+  values: {}
+  dependencies: []
+...

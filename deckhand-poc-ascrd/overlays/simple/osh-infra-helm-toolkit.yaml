@@ -1,0 +1,25 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  layeringDefinition:
+    abstract: false
+    layer: global
+  name: osh-infra-helm-toolkit
+  namespace: pegleg
+spec:
+  chart_name: helm-toolkit
+  dependencies: []
+  release: osh-infra-helm-toolkit
+  source:
+    location: https://git.openstack.org/openstack/openstack-helm-infra
+    reference: a367bacb4bd3af55dd11dbc5c9855749a123779d
+    subpath: helm-toolkit
+    type: git
+  upgrade:
+    no_hooks: true
+  values: {}
+  wait:
+    labels:
+      release_group: airship-osh-infra-helm-toolkit
+    timeout: 600

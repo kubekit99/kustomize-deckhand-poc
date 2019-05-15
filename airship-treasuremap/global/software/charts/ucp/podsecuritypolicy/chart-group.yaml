@@ -1,0 +1,12 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChartGroup
+metadata:
+  name: podsecuritypolicy
+  layeringDefinition:
+    abstract: false
+    layer: global
+spec:
+  description: Cluster Pod Security Policy definitions
+  chart_group:
+    - podsecuritypolicy

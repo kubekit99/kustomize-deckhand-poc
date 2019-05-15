@@ -1,0 +1,27 @@
+varReference:
+- kind: PromenadeKubernetesNetwork
+  path: spec/dns/cluster_domain
+- kind: PromenadeKubernetesNetwork
+  path: spec/dns/service_ip
+- kind: PromenadeKubernetesNetwork
+  path: spec/etcd/container_port
+- kind: PromenadeKubernetesNetwork
+  path: spec/etcd/haproxy_port
+- kind: PromenadeKubernetesNetwork
+  path: spec/kubernetes/apiserver_port
+- kind: PromenadeKubernetesNetwork
+  path: spec/kubernetes/haproxy_port
+- kind: PromenadeKubernetesNetwork
+  path: spec/kubernetes/pod_cidr
+- kind: PromenadeKubernetesNetwork
+  path: spec/kubernetes/service_cidr
+- kind: PromenadeKubernetesNetwork
+  path: spec/kubernetes/service_ip
+- kind: PromenadeKubernetesNetwork
+  path: spec/proxy/url
+
+inlineReference:
+- kind: PromenadeKubernetesNetwork
+  path: spec/dns/upstream_servers
+- kind: PromenadeKubernetesNetwork
+  path: spec/proxy/additional_no_proxy

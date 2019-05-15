@@ -1,0 +1,21 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChartGroup
+metadata:
+  name: openstack-glance
+  layeringDefinition:
+    abstract: false
+    layer: site
+    parentSelector:
+      name: openstack-glance-chart-group-global
+      component: glance
+    actions:
+      - method: merge
+        path: .sequenced
+      - method: replace
+        path: .chart_group
+spec:
+  sequenced: true
+  chart_group:
+    - glance-rabbitmq
+    - glance

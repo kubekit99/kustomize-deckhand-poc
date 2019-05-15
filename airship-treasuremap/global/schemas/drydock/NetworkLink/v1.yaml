@@ -1,0 +1,47 @@
+---
+apiVersion: deckhand.airshipit.org/v1alpha1
+kind: DeckhandDataSchema
+metadata:
+  name: drydock/NetworkLink
+  labels:
+    application: drydock
+spec:
+  $schema: 'http://json-schema.org/schema#'
+  type: 'object'
+  properties:
+    bonding:
+      type: 'object'
+      properties:
+        mode:
+          type: 'string'
+        hash:
+          type: 'string'
+        peer_rate:
+          type: 'string'
+        mon_rate:
+          type: 'number'
+        up_delay:
+          type: 'number'
+        down_delay:
+          type: 'number'
+      additionalProperties: false
+    mtu:
+      type: 'number'
+    linkspeed:
+      type: 'string'
+    trunking:
+      type: 'object'
+      properties:
+        mode:
+          type: 'string'
+        default_network:
+          type: 'string'
+      additionalProperties: false
+    allowed_networks:
+      type: 'array'
+      items:
+        type: 'string'
+    labels:
+      type: 'object'
+      additionalProperties: true
+  additionalProperties: false

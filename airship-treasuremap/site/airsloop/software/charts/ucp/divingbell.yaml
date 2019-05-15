@@ -1,0 +1,47 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: ucp-divingbell
+  layeringDefinition:
+    abstract: false
+    layer: site
+    parentSelector:
+      name: ucp-divingbell-global
+    actions:
+      - method: merge
+        path: .
+  labels:
+    name: ucp-divingbell-site
+  substitutions:
+    - dest:
+        path: .values.conf.uamlite.users[0].user_sshkeys[0]
+      src:
+        kind: DeckhandPublicKey
+        name: airsloop_ssh_public_key
+        path: .
+    - dest:
+        path: .values.conf.uamlite.users[0].user_crypt_passwd
+      src:
+        kind: DeckhandPassphrase
+        name: airsloop_crypt_password
+        path: .
+spec:
+  values:
+    manifests:
+      daemonset_ethtool: false
+      daemonset_mounts: false
+      daemonset_uamlite: true
+      daemonset_sysctl: false
+      daemonset_limits: false
+      daemonset_apt: true
+      daemonset_perm: false
+      daemonset_exec: true
+      daemonset_apparmor: false
+    conf:
+      uamlite:
+        users:
+          - user_name: ubuntu
+            user_sudo: true
+            user_sshkeys: []
+...

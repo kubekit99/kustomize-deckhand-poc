@@ -1,0 +1,73 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  labels:
+    name: ucp-ceph-osd
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: type
+    parentSelector:
+      name: ucp-ceph-osd
+  name: ucp-ceph-osd
+  namespace: ucp
+spec:
+  chart_name: ucp-ceph-osd
+  dependencies:
+  - ceph-htk
+  install:
+    no_hooks: false
+  protected:
+    continue_processing: true
+  release: ucp-ceph-osd
+  source:
+    location: https://git.openstack.org/openstack/openstack-helm-infra
+    reference: a367bacb4bd3af55dd11dbc5c9855749a123779d
+    subpath: ceph-osd
+    type: git
+  upgrade:
+    no_hooks: false
+  values:
+    bootstrap:
+      enabled: true
+    conf:
+      ceph:
+        global:
+          fsid: d52a9d00-64b9-45f0-b564-08dffe95f847
+      osd:
+        osd_crush_chooseleaf_type: 0
+      storage:
+        osd:
+        - data:
+            location: /var/lib/openstack-helm/ceph/osd/osd-one
+            type: directory
+          journal:
+            location: /var/lib/openstack-helm/ceph/osd/journal-one
+            type: directory
+    endpoints:
+      ceph_mon:
+        host_fqdn_override:
+          default: todojeb
+        hosts:
+          default: ceph-mon
+          discovery: ceph-mon-discovery
+        namespace: ceph
+        port:
+          mon:
+            default: 6789
+    images:
+      tags: {}
+    labels:
+      osd:
+        node_selector_key: ceph-osd
+        node_selector_value: enabled
+    network:
+      cluster: 10.22.73.0/24
+      public: 10.22.73.0/24
+  wait:
+    labels:
+      release_group: airship-ucp-ceph-osd
+    timeout: 900

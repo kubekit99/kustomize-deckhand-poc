@@ -1,0 +1,29 @@
+---
+apiVersion: deckhand.airshipit.org/v1alpha1
+kind: DeckhandDataSchema
+metadata:
+  name: pegleg/SiteDefinition
+spec:
+  $schema: http://json-schema.org/schema#
+
+  type: object
+  properties:
+    repositories:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          revision:
+            type: string
+          url:
+            type: string
+        required:
+          - revision
+          - url
+
+    site_type:
+      type: string
+  required:
+    - site_type
+  additionalProperties: false
+...

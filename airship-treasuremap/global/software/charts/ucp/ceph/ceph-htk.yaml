@@ -1,0 +1,22 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: ceph-htk
+  layeringDefinition:
+    abstract: false
+    layer: global
+  substitutions:
+    - src:
+        kind: PeglegSoftwareVersions
+        name: software-versions
+        path: .charts.ucp.ceph-htk
+      dest:
+        path: .source
+spec:
+  chart_name: ceph-htk
+  release: ceph-htk
+  namespace: ceph-htk
+  values: {}
+  dependencies: []
+...

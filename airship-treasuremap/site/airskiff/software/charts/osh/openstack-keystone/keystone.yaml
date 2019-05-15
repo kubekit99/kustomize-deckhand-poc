@@ -1,0 +1,20 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: keystone
+  layeringDefinition:
+    abstract: false
+    layer: site
+    parentSelector:
+      name: keystone-global
+      component: keystone
+    actions:
+      - method: replace
+        path: .values.pod
+spec:
+  values:
+    pod:
+      replicas:
+        api: 1
+...

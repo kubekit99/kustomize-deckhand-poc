@@ -1,0 +1,131 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  labels:
+    name: ucp-drydock
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: type
+    parentSelector:
+      name: ucp-drydock
+  name: ucp-drydock
+  namespace: ucp
+  replacement: true
+spec:
+  chart_name: drydock
+  dependencies:
+  - drydock-htk
+  install:
+    no_hooks: false
+  release: drydock
+  source:
+    location: https://git.openstack.org/openstack/airship-drydock
+    reference: 3470f89519d018c572905566891bafc8a3c51c3b
+    subpath: charts/drydock
+    type: git
+  upgrade:
+    no_hooks: false
+    pre:
+      delete:
+      - labels:
+          release_group: airship-drydock
+        type: job
+  values:
+    conf:
+      drydock:
+        database:
+          pool_size: 200
+        maasdriver:
+          maas_api_url: http://10.22.72.21:30001/MAAS/api/2.0/
+        plugins:
+          ingester: drydock_provisioner.ingester.plugins.deckhand.DeckhandIngester
+    endpoints:
+      identity:
+        auth:
+          admin:
+            password: airsloop123
+            project_domain_name: default
+            project_name: admin
+            region_name: RegionOne
+            user_domain_name: default
+            username: admin
+          drydock:
+            password: airsloop123
+            project_domain_name: default
+            project_name: service
+            region_name: RegionOne
+            role: admin
+            user_domain_name: default
+            username: drydock
+        host_fqdn_override:
+          default: todojeb
+        name: keystone
+        namespace: ucp
+        path:
+          default: /v3
+        port:
+          api:
+            default: 80
+            internal: 5000
+        scheme:
+          default: http
+          internal: http
+      physicalprovisioner:
+        host_fqdn_override:
+          default: todojeb
+        hosts:
+          default: drydock-api
+          public: drydock-api
+        name: drydock
+        path:
+          default: /api/v1.0
+        port:
+          api:
+            default: 9000
+            nodeport: 30000
+        scheme:
+          default: http
+      postgresql:
+        auth:
+          admin:
+            password: airsloop123
+            username: postgres
+          user:
+            database: drydock
+            password: airsloop123
+            username: drydock
+        host_fqdn_override:
+          default: todojeb
+        hosts:
+          default: postgresql
+        name: postgresql
+        path: /drydock
+        port:
+          postgresql:
+            default: 5432
+        scheme: postgresql+psycopg2
+    images:
+      tags:
+        drydock: quay.io/airshipit/drydock:3470f89519d018c572905566891bafc8a3c51c3b
+        drydock_db_sync: quay.io/airshipit/drydock:3470f89519d018c572905566891bafc8a3c51c3b
+    labels:
+      todojeb:
+        node_selector_key: ucp-control-plane
+        node_selector_value: enabled
+    network:
+      api:
+        nodeport:
+          enabled: true
+      drydock:
+        node_port:
+          port: 30000
+    replicas:
+      drydock: 1
+  wait:
+    labels:
+      release_group: airship-drydock
+    timeout: 600

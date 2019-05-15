@@ -1,0 +1,15 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: tenant-ceph-osd
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: tenant-ceph-osd-global
+    actions:
+      - method: merge
+        path: .
+spec: {}
+...

@@ -1,0 +1,16 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChartGroup
+metadata:
+  name: openstack-glance
+  labels:
+    name: openstack-glance-chart-group
+    component: glance
+  layeringDefinition:
+    abstract: false
+    layer: global
+spec:
+  description: Deploy Glance
+  chart_group:
+    - glance-rabbitmq
+    - glance

@@ -1,0 +1,23 @@
+varReference:
+- kind: PromenadeGenesis
+  path: spec/hostname
+- kind: PromenadeGenesis
+  path: spec/images/armada
+- kind: PromenadeGenesis
+  path: spec/images/helm/tiller
+- kind: PromenadeGenesis
+  path: spec/images/kubernetes/apiserver
+- kind: PromenadeGenesis
+  path: spec/images/kubernetes/controller-manager
+- kind: PromenadeGenesis
+  path: spec/images/kubernetes/etcd
+- kind: PromenadeGenesis
+  path: spec/images/kubernetes/scheduler
+- kind: PromenadeGenesis
+  path: spec/ip
+- kind: PromenadeGenesis
+  path: spec/apiserver/command_prefix/_1_
+- kind: PromenadeGenesis
+  path: spec/apiserver/command_prefix/_2_
+
+inlineReference:

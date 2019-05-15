@@ -1,0 +1,20 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: ucp-deckhand
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: ucp-deckhand-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        deckhand: 1
+...

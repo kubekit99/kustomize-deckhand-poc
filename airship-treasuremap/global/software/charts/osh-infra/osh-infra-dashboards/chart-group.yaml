@@ -1,0 +1,13 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChartGroup
+metadata:
+  name: osh-infra-dashboards
+  layeringDefinition:
+    abstract: false
+    layer: global
+spec:
+  description: OSH Infra Dashboards
+  chart_group:
+    - kibana
+    - grafana

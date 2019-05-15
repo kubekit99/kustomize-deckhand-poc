@@ -1,0 +1,12 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChartGroup
+metadata:
+  name: kubernetes-etcd
+  layeringDefinition:
+    abstract: false
+    layer: global
+spec:
+  description: Kubernetes etcd
+  chart_group:
+    - kubernetes-etcd

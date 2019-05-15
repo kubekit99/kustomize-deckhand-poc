@@ -1,0 +1,21 @@
+varReference:
+- kind: PromenadeHostSystem
+  path: spec/files/_0_/tar_url
+- kind: PromenadeHostSystem
+  path: spec/files/_2_/content
+- kind: PromenadeHostSystem
+  path: spec/images/coredns
+- kind: PromenadeHostSystem
+  path: spec/images/haproxy
+- kind: PromenadeHostSystem
+  path: spec/images/helm/helm
+- kind: PromenadeHostSystem
+  path: spec/images/kubernetes/kubectl
+- kind: PromenadeHostSystem
+  path: spec/packages/required/docker
+- kind: PromenadeHostSystem
+  path: spec/packages/required/socat
+
+inlineReference:
+- kind: PromenadeHostSystem
+  path: spec/packages/additional

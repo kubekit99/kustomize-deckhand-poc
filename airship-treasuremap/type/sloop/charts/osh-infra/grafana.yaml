@@ -1,0 +1,20 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: grafana
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: grafana-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        grafana: 1
+...

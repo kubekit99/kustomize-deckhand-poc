@@ -1,0 +1,17 @@
+---
+# NOTE: This file is ignored by Airskiff and is copied from the seaworthy site.
+
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: elasticsearch
+  layeringDefinition:
+    abstract: false
+    layer: site
+    parentSelector:
+      hosttype: elasticsearch-global
+    actions:
+      - method: merge
+        path: .
+spec: {}
+...

@@ -1,0 +1,102 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  labels:
+    name: ucp-armada
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: type
+    parentSelector:
+      name: ucp-armada
+  name: ucp-armada
+  namespace: ucp
+  replacement: true
+spec:
+  chart_name: armada
+  dependencies:
+  - armada-htk
+  install:
+    no_hooks: false
+  release: ucp-armada
+  source:
+    location: https://git.openstack.org/openstack/airship-armada
+    reference: c7d9e21b1e3c144eee54d7d2a5da3eb562255894
+    subpath: charts/armada
+    type: git
+  upgrade:
+    no_hooks: false
+    pre:
+      delete:
+      - labels:
+          release_group: airship-ucp-armada
+        type: job
+  values:
+    conf:
+      armada:
+        DEFAULT:
+          debug: true
+          tiller_namespace: kube-system
+    endpoints:
+      armada:
+        host_fqdn_override:
+          default: todojeb
+        hosts:
+          default: armada-api
+          public: armada
+        name: armada
+        path:
+          default: /api/v1.0
+        port:
+          api:
+            default: 8000
+        scheme:
+          default: http
+      identity:
+        auth:
+          admin:
+            password: airsloop123
+            project_domain_name: default
+            project_name: admin
+            region_name: RegionOne
+            user_domain_name: default
+            username: admin
+          user:
+            password: airsloop123
+            project_domain_name: default
+            project_name: service
+            region_name: RegionOne
+            role: admin
+            user_domain_name: default
+            username: armada
+        host_fqdn_override:
+          default: todojeb
+        name: keystone
+        namespace: ucp
+        path:
+          default: /v3
+        port:
+          api:
+            default: 80
+            internal: 5000
+        scheme:
+          default: http
+          internal: http
+    images:
+      tags:
+        api: quay.io/airshipit/armada:c7d9e21b1e3c144eee54d7d2a5da3eb562255894
+        helm: docker.io/lachlanevenson/k8s-helm:v2.12.1
+        tiller: gcr.io/kubernetes-helm/tiller:v2.12.1
+    manifests:
+      deployment_tiller: false
+      service_tiller_deploy: false
+    pod:
+      replicas:
+        api: 1
+  wait:
+    labels:
+      release_group: airship-ucp-armada
+    timeout: 100

@@ -1,0 +1,76 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: prometheus-kube-state-metrics
+  layeringDefinition:
+    abstract: false
+    layer: global
+  substitutions:
+    # Chart source
+    - src:
+        kind: PeglegSoftwareVersions
+        name: software-versions
+        path: .charts.osh_infra.prometheus_kube_state_metrics
+      dest:
+        path: .source
+
+    # Images
+    - src:
+        kind: PeglegSoftwareVersions
+        name: software-versions
+        path: .images.osh_infra.prometheus_kube_state_metrics
+      dest:
+        path: .values.images.tags
+
+    # Endpoints
+    - src:
+        kind: PeglegEndpointCatalogue
+        name: osh_infra_endpoints
+        path: .osh_infra.kube_state_metrics
+      dest:
+        path: .values.endpoints.kube_state_metrics
+    - src:
+        kind: PeglegEndpointCatalogue
+        name: osh_infra_endpoints
+        path: .osh_infra.kube_scheduler
+      dest:
+        path: .values.endpoints.kube_scheduler
+    - src:
+        kind: PeglegEndpointCatalogue
+        name: osh_infra_endpoints
+        path: .osh_infra.kube_controller_manager
+      dest:
+        path: .values.endpoints.kube_controller_manager
+
+spec:
+  chart_name: prometheus-kube-state-metrics
+  release: prometheus-kube-state-metrics
+  namespace: kube-system
+  wait:
+    timeout: 900
+    labels:
+      release_group: airship-prometheus-kube-state-metrics
+  install:
+    no_hooks: false
+  upgrade:
+    no_hooks: false
+    pre:
+      delete:
+        - type: job
+          labels:
+            release_group: airship-prometheus-kube-state-metrics
+      create: []
+    post:
+      create: []
+  values:
+    labels:
+      kube_state_metrics:
+        node_selector_key: openstack-control-plane
+        node_selector_value: enabled
+      job:
+        node_selector_key: openstack-control-plane
+        node_selector_value: enabled
+  dependencies:
+    - osh-infra-helm-toolkit
+...

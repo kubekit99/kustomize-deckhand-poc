@@ -1,0 +1,115 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+- ../../type/foundry
+
+patchesStrategicMerge:
+- ./software/charts/kubernetes/container-networking/etcd.yaml
+- ./software/charts/kubernetes/etcd/etcd.yaml
+- ./software/charts/osh/ceph/ceph-client.yaml
+- ./software/charts/ucp/divingbell.yaml
+
+resources:
+- ./baremetal/bootactions/promjoin.yaml
+- ./baremetal/nodes.yaml
+- ./deployment/deployment-configuration.yaml
+- ./networks/common-addresses.yaml
+- ./networks/physical/networks.yaml
+- ./pki/pki-catalog.yaml
+- ./profiles/genesis.yaml
+- ./profiles/hardware/dell_r720xd.yaml
+- ./profiles/host/compute.yaml
+- ./profiles/region.yaml
+- ./secrets/certificates/certificates.yaml
+- ./secrets/passphrases/airsloop_crypt_password.yaml
+- ./secrets/passphrases/ceph_fsid.yaml
+- ./secrets/passphrases/ceph_swift_keystone_password.yaml
+- ./secrets/passphrases/ipmi_admin_password.yaml
+- ./secrets/passphrases/maas-region-key.yaml
+- ./secrets/passphrases/osh_barbican_oslo_db_password.yaml
+- ./secrets/passphrases/osh_barbican_oslo_messaging_admin_password.yaml
+- ./secrets/passphrases/osh_barbican_oslo_messaging_password.yaml
+- ./secrets/passphrases/osh_barbican_password.yaml
+- ./secrets/passphrases/osh_barbican_rabbitmq_erlang_cookie.yaml
+- ./secrets/passphrases/osh_cinder_oslo_db_password.yaml
+- ./secrets/passphrases/osh_cinder_oslo_messaging_admin_password.yaml
+- ./secrets/passphrases/osh_cinder_oslo_messaging_password.yaml
+- ./secrets/passphrases/osh_cinder_password.yaml
+- ./secrets/passphrases/osh_cinder_rabbitmq_erlang_cookie.yaml
+- ./secrets/passphrases/osh_glance_oslo_db_password.yaml
+- ./secrets/passphrases/osh_glance_oslo_messaging_admin_password.yaml
+- ./secrets/passphrases/osh_glance_oslo_messaging_password.yaml
+- ./secrets/passphrases/osh_glance_password.yaml
+- ./secrets/passphrases/osh_glance_rabbitmq_erlang_cookie.yaml
+- ./secrets/passphrases/osh_heat_oslo_db_password.yaml
+- ./secrets/passphrases/osh_heat_oslo_messaging_admin_password.yaml
+- ./secrets/passphrases/osh_heat_oslo_messaging_password.yaml
+- ./secrets/passphrases/osh_heat_password.yaml
+- ./secrets/passphrases/osh_heat_rabbitmq_erlang_cookie.yaml
+- ./secrets/passphrases/osh_heat_stack_user_password.yaml
+- ./secrets/passphrases/osh_heat_trustee_password.yaml
+- ./secrets/passphrases/osh_horizon_oslo_db_password.yaml
+- ./secrets/passphrases/osh_infra_elasticsearch_admin_password.yaml
+- ./secrets/passphrases/osh_infra_grafana_admin_password.yaml
+- ./secrets/passphrases/osh_infra_grafana_oslo_db_password.yaml
+- ./secrets/passphrases/osh_infra_grafana_oslo_db_session_password.yaml
+- ./secrets/passphrases/osh_infra_nagios_admin_password.yaml
+- ./secrets/passphrases/osh_infra_openstack_exporter_password.yaml
+- ./secrets/passphrases/osh_infra_oslo_db_admin_password.yaml
+- ./secrets/passphrases/osh_infra_oslo_db_exporter_password.yaml
+- ./secrets/passphrases/osh_infra_prometheus_admin_password.yaml
+- ./secrets/passphrases/osh_infra_rgw_s3_admin_access_key.yaml
+- ./secrets/passphrases/osh_infra_rgw_s3_admin_secret_key.yaml
+- ./secrets/passphrases/osh_infra_rgw_s3_elasticsearch_access_key.yaml
+- ./secrets/passphrases/osh_infra_rgw_s3_elasticsearch_secret_key.yaml
+- ./secrets/passphrases/osh_keystone_admin_password.yaml
+- ./secrets/passphrases/osh_keystone_ldap_password.yaml
+- ./secrets/passphrases/osh_keystone_oslo_db_password.yaml
+- ./secrets/passphrases/osh_keystone_oslo_messaging_admin_password.yaml
+- ./secrets/passphrases/osh_keystone_oslo_messaging_password.yaml
+- ./secrets/passphrases/osh_keystone_rabbitmq_erlang_cookie.yaml
+- ./secrets/passphrases/osh_neutron_oslo_db_password.yaml
+- ./secrets/passphrases/osh_neutron_oslo_messaging_admin_password.yaml
+- ./secrets/passphrases/osh_neutron_oslo_messaging_password.yaml
+- ./secrets/passphrases/osh_neutron_password.yaml
+- ./secrets/passphrases/osh_neutron_rabbitmq_erlang_cookie.yaml
+- ./secrets/passphrases/osh_nova_oslo_db_password.yaml
+- ./secrets/passphrases/osh_nova_oslo_messaging_admin_password.yaml
+- ./secrets/passphrases/osh_nova_oslo_messaging_password.yaml
+- ./secrets/passphrases/osh_nova_password.yaml
+- ./secrets/passphrases/osh_nova_rabbitmq_erlang_cookie.yaml
+- ./secrets/passphrases/osh_oslo_cache_secret_key.yaml
+- ./secrets/passphrases/osh_oslo_db_admin_password.yaml
+- ./secrets/passphrases/osh_oslo_db_exporter_password.yaml
+- ./secrets/passphrases/osh_placement_password.yaml
+- ./secrets/passphrases/tenant_ceph_fsid.yaml
+- ./secrets/passphrases/ucp_airflow_oslo_messaging_password.yaml
+- ./secrets/passphrases/ucp_airflow_postgres_password.yaml
+- ./secrets/passphrases/ucp_armada_keystone_password.yaml
+- ./secrets/passphrases/ucp_barbican_keystone_password.yaml
+- ./secrets/passphrases/ucp_barbican_oslo_db_password.yaml
+- ./secrets/passphrases/ucp_deckhand_keystone_password.yaml
+- ./secrets/passphrases/ucp_deckhand_postgres_password.yaml
+- ./secrets/passphrases/ucp_drydock_keystone_password.yaml
+- ./secrets/passphrases/ucp_drydock_postgres_password.yaml
+- ./secrets/passphrases/ucp_keystone_admin_password.yaml
+- ./secrets/passphrases/ucp_keystone_oslo_db_password.yaml
+- ./secrets/passphrases/ucp_maas_admin_password.yaml
+- ./secrets/passphrases/ucp_maas_postgres_password.yaml
+- ./secrets/passphrases/ucp_openstack_exporter_keystone_password.yaml
+- ./secrets/passphrases/ucp_oslo_db_admin_password.yaml
+- ./secrets/passphrases/ucp_oslo_messaging_password.yaml
+- ./secrets/passphrases/ucp_postgres_admin_password.yaml
+- ./secrets/passphrases/ucp_promenade_keystone_password.yaml
+- ./secrets/passphrases/ucp_rabbitmq_erlang_cookie.yaml
+- ./secrets/passphrases/ucp_shipyard_keystone_password.yaml
+- ./secrets/passphrases/ucp_shipyard_postgres_password.yaml
+- ./secrets/publickey/airsloop_ssh_public_key.yaml
+- ./site-definition.yaml
+
+vars:
+
+inlines:
+

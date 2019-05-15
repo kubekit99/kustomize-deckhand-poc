@@ -1,0 +1,22 @@
+---
+# The purpose of this file is to define envrionment-specific parameters for the
+# ceph client
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: tenant-ceph-client
+  layeringDefinition:
+    abstract: false
+    layer: site
+    parentSelector:
+      name: tenant-ceph-client-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    conf:
+      pool:
+        target:
+          osd: 12
+...

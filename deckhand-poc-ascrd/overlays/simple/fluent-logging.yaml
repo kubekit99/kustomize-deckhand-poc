@@ -1,0 +1,423 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  labels:
+    hosttype: fluent-logging
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: type
+    parentSelector:
+      hosttype: fluent-logging
+  name: fluent-logging
+  namespace: openstack
+spec:
+  chart_name: fluent-logging
+  dependencies:
+  - osh-infra-helm-toolkit
+  install:
+    no_hooks: false
+  release: fluent-logging
+  source:
+    location: https://git.openstack.org/openstack/openstack-helm-infra
+    reference: a367bacb4bd3af55dd11dbc5c9855749a123779d
+    subpath: fluent-logging
+    type: git
+  upgrade:
+    no_hooks: false
+    post:
+      create: []
+    pre:
+      create: []
+      delete:
+      - labels:
+          release_group: airship-fluent-logging
+        type: job
+  values:
+    conf:
+      fluentbit:
+      - service:
+          Daemon: false
+          Flush: 5
+          Log_Level: info
+          Parsers_File: parsers.conf
+          header: service
+      - kernel_messages:
+          Buffer_Chunk_Size: 1M
+          Buffer_Max_Size: 1M
+          Mem_Buf_Limit: 5MB
+          Name: tail
+          Path: /var/log/kern.log
+          Tag: kernel
+          header: input
+      - kubelet:
+          Buffer_Chunk_Size: 1M
+          Buffer_Max_Size: 1M
+          Mem_Buf_Limit: 5MB
+          Name: systemd
+          Path: ${JOURNAL_PATH}
+          Systemd_Filter: _SYSTEMD_UNIT=kubelet.service
+          Tag: journal.*
+          header: input
+      - docker_daemon:
+          Buffer_Chunk_Size: 1M
+          Buffer_Max_Size: 1M
+          Mem_Buf_Limit: 5MB
+          Name: systemd
+          Path: ${JOURNAL_PATH}
+          Systemd_Filter: _SYSTEMD_UNIT=docker.service
+          Tag: journal.*
+          header: input
+      - libvirt:
+          Buffer_Chunk_Size: 1M
+          Buffer_Max_Size: 1M
+          Mem_Buf_Limit: 5MB
+          Name: tail
+          Path: /var/log/libvirt/libvirtd.log
+          Tag: libvirt
+          header: input
+      - qemu:
+          Buffer_Chunk_Size: 1M
+          Buffer_Max_Size: 1M
+          Mem_Buf_Limit: 5MB
+          Name: tail
+          Path: /var/log/libvirt/qemu/*.log
+          Tag: qemu
+          header: input
+      - libvirt_record_modifier:
+          Match: libvirt
+          Name: record_modifier
+          Record: hostname ${HOSTNAME}
+          header: filter
+      - qemu_record_modifier:
+          Match: qemu
+          Name: record_modifier
+          Record: hostname ${HOSTNAME}
+          header: filter
+      - kernel_record_modifier:
+          Match: kernel
+          Name: record_modifier
+          Record: hostname ${HOSTNAME}
+          header: filter
+      - systemd_modify_fields:
+          Match: journal.**
+          Name: modify
+          Rename:
+            _BOOT_ID: BOOT_ID
+            _CAP_EFFECTIVE: CAP_EFFECTIVE
+            _CMDLINE: CMDLINE
+            _COMM: COMM
+            _EXE: EXE
+            _GID: GID
+            _HOSTNAME: HOSTNAME
+            _MACHINE_ID: MACHINE_ID
+            _PID: PID
+            _SYSTEMD_CGROUP: SYSTEMD_CGROUP
+            _SYSTEMD_SLICE: SYSTEMD_SLICE
+            _SYSTEMD_UNIT: SYSTEMD_UNIT
+            _TRANSPORT: TRANSPORT
+            _UID: UID
+          header: filter
+      - ceph_cluster_logs:
+          Buffer_Chunk_Size: 1M
+          Buffer_Max_Size: 1M
+          Mem_Buf_Limit: 5MB
+          Name: tail
+          Parsers: syslog
+          Path: /var/log/ceph/airship-ucp-ceph-mon/ceph.log
+          Tag: ceph.cluster.*
+          header: input
+      - ceph_audit_logs:
+          Buffer_Chunk_Size: 1M
+          Buffer_Max_Size: 1M
+          Mem_Buf_Limit: 5MB
+          Name: tail
+          Parsers: syslog
+          Path: /var/log/ceph/airship-ucp-ceph-mon/ceph.audit.log
+          Tag: ceph.audit.*
+          header: input
+      - ceph_mon_logs:
+          Buffer_Chunk_Size: 1M
+          Buffer_Max_Size: 1M
+          Mem_Buf_Limit: 5MB
+          Name: tail
+          Parsers: syslog
+          Path: /var/log/ceph/airship-ucp-ceph-mon/ceph-mon**.log
+          Tag: ceph.mon.*
+          header: input
+      - ceph_osd_logs:
+          Buffer_Chunk_Size: 1M
+          Buffer_Max_Size: 1M
+          Mem_Buf_Limit: 5MB
+          Name: tail
+          Parsers: syslog
+          Path: /var/log/ceph/airship-ucp-ceph-osd/ceph-osd**.log
+          Tag: ceph.osd.*
+          header: input
+      - containers_tail:
+          Buffer_Chunk_Size: 1M
+          Buffer_Max_Size: 1M
+          Mem_Buf_Limit: 5MB
+          Name: tail
+          Parser: docker
+          Path: /var/log/containers/*.log
+          Tag: kube.*
+          header: input
+      - drop_fluentd_logs:
+          Match: '**.fluentd**'
+          Name: "null"
+          header: output
+      - kube_filter:
+          Match: kube.*
+          Merge_JSON_Log: true
+          Name: kubernetes
+          header: filter
+      - throttle_filter:
+          Interval: 1s
+          Match: '**'
+          Name: throttle
+          Rate: 1000
+          Window: 300
+          header: filter
+      - fluentd_output:
+          Host: ${FLUENTD_HOST}
+          Match: '*'
+          Name: forward
+          Port: ${FLUENTD_PORT}
+          header: output
+      fluentd:
+      - metrics_agent:
+          bind: 0.0.0.0
+          header: source
+          port: 24220
+          type: monitor_agent
+      - fluentbit_forward:
+          bind: 0.0.0.0
+          header: source
+          port: '#{ENV[''FLUENTD_PORT'']}'
+          type: forward
+      - filter_fluentd_logs:
+          expression: fluent.**
+          header: match
+          type: "null"
+      - journal_elasticsearch:
+          buffer:
+          - - chunk_limit_size: 8MB
+              flush_interval: "15"
+              flush_thread_count: 8
+              header: buffer
+              queue_limit_length: 256
+              retry_forever: false
+              retry_max_interval: 30
+          expression: journal.**
+          header: match
+          host: '#{ENV[''ELASTICSEARCH_HOST'']}'
+          include_tag_key: true
+          logstash_format: true
+          logstash_prefix: journal
+          password: '#{ENV[''ELASTICSEARCH_PASSWORD'']}'
+          port: '#{ENV[''ELASTICSEARCH_PORT'']}'
+          type: elasticsearch
+          user: '#{ENV[''ELASTICSEARCH_USERNAME'']}'
+      - kernel_elasticsearch:
+          buffer:
+          - - chunk_limit_size: 8MB
+              flush_interval: "15"
+              flush_thread_count: 8
+              header: buffer
+              queue_limit_length: 256
+              retry_forever: false
+              retry_max_interval: 30
+          expression: kernel
+          header: match
+          host: '#{ENV[''ELASTICSEARCH_HOST'']}'
+          include_tag_key: true
+          logstash_format: true
+          logstash_prefix: kernel
+          password: '#{ENV[''ELASTICSEARCH_PASSWORD'']}'
+          port: '#{ENV[''ELASTICSEARCH_PORT'']}'
+          type: elasticsearch
+          user: '#{ENV[''ELASTICSEARCH_USERNAME'']}'
+      - ceph_elasticsearch:
+          buffer:
+          - - chunk_limit_size: 8MB
+              flush_interval: "15"
+              flush_thread_count: 8
+              header: buffer
+              queue_limit_length: 256
+              retry_forever: false
+              retry_max_interval: 30
+          expression: '**ceph-**.log'
+          header: match
+          host: '#{ENV[''ELASTICSEARCH_HOST'']}'
+          include_tag_key: true
+          logstash_format: true
+          logstash_prefix: ceph
+          password: '#{ENV[''ELASTICSEARCH_PASSWORD'']}'
+          port: '#{ENV[''ELASTICSEARCH_PORT'']}'
+          type: elasticsearch
+          user: '#{ENV[''ELASTICSEARCH_USERNAME'']}'
+      - oslo_fluentd_elasticsearch:
+          buffer:
+          - - chunk_limit_size: 8MB
+              flush_interval: "15"
+              flush_thread_count: 8
+              header: buffer
+              queue_limit_length: 256
+              retry_forever: false
+              retry_max_interval: 30
+          expression: '**.openstack.*'
+          header: match
+          host: '#{ENV[''ELASTICSEARCH_HOST'']}'
+          include_tag_key: true
+          logstash_format: true
+          logstash_prefix: openstack
+          password: '#{ENV[''ELASTICSEARCH_PASSWORD'']}'
+          port: '#{ENV[''ELASTICSEARCH_PORT'']}'
+          type: elasticsearch
+          type_name: oslo_openstack_fluentd
+          user: '#{ENV[''ELASTICSEARCH_USERNAME'']}'
+      - elasticsearch:
+          buffer:
+          - - chunk_limit_size: 8MB
+              flush_interval: "15"
+              flush_thread_count: 8
+              header: buffer
+              queue_limit_length: 256
+              retry_forever: false
+              retry_max_interval: 30
+          expression: '**'
+          flush_interval: "10"
+          header: match
+          host: '#{ENV[''ELASTICSEARCH_HOST'']}'
+          include_tag_key: true
+          logstash_format: true
+          password: '#{ENV[''ELASTICSEARCH_PASSWORD'']}'
+          port: '#{ENV[''ELASTICSEARCH_PORT'']}'
+          type: elasticsearch
+          user: '#{ENV[''ELASTICSEARCH_USERNAME'']}'
+      parsers:
+      - syslog:
+          Format: regex
+          Name: syslog
+          Regex: ^(?<time>.*[0-9]{2}:[0-9]{2}:[0-9]{2}) (?<host>[^ ]*) (?<app>[a-zA-Z0-9_\/\.\-]*)(?:\[(?<pid>[0-9]+)\])?(?:[^\:]*\:)?
+            (?<log>.+)$
+          Time_Format: '%Y-%m-%dT%H:%M:%S.%L'
+          Time_Keep: true
+          Time_Key: time
+          Types: pid:integer
+          header: parser
+    endpoints:
+      elasticsearch:
+        auth:
+          admin:
+            password: airsloop123
+            username: elasticsearch
+        host_fqdn_override:
+          default: todojeb
+        hosts:
+          data: elasticsearch-data
+          default: elasticsearch-logging
+          discovery: elasticsearch-discovery
+          public: elasticsearch
+        name: elasticsearch
+        namespace: osh-infra
+        path:
+          default: todojeb
+        scheme:
+          default: http
+      fluentd:
+        host_fqdn_override:
+          default: todojeb
+        hosts:
+          default: fluentd-logging
+        name: fluentd
+        namespace: osh-infra
+        path:
+          default: todojeb
+        port:
+          metrics:
+            default: 24220
+          service:
+            default: 24224
+        scheme:
+          default: http
+      prometheus_fluentd_exporter:
+        host_fqdn_override:
+          default: todojeb
+        hosts:
+          default: fluentd-exporter
+        namespace: osh-infra
+        path:
+          default: /metrics
+        port:
+          metrics:
+            default: 9309
+        scheme:
+          default: http
+    images:
+      tags: {}
+    labels:
+      fluentbit:
+        node_selector_key: fluentbit
+        node_selector_value: enabled
+      fluentd:
+        node_selector_key: fluentd
+        node_selector_value: enabled
+      job:
+        node_selector_key: openstack-control-plane
+        node_selector_value: enabled
+      prometheus_fluentd_exporter:
+        node_selector_key: openstack-control-plane
+        node_selector_value: enabled
+    monitoring:
+      prometheus:
+        enabled: true
+    pod:
+      replicas:
+        fluentd: 1
+      resources:
+        enabled: true
+        fluentbit:
+          limits:
+            cpu: 2000m
+            memory: 4Gi
+          requests:
+            cpu: 1000m
+            memory: 2Gi
+        fluentd:
+          limits:
+            cpu: 2000m
+            memory: 4Gi
+          requests:
+            cpu: 1000m
+            memory: 2Gi
+        jobs:
+          image_repo_sync:
+            limits:
+              cpu: 2000m
+              memory: 1024Mi
+            requests:
+              cpu: "0"
+              memory: "0"
+          tests:
+            limits:
+              cpu: 2000m
+              memory: 1024Mi
+            requests:
+              cpu: "0"
+              memory: "0"
+        prometheus_fluentd_exporter:
+          limits:
+            cpu: 2000m
+            memory: 1024Mi
+          requests:
+            cpu: "0"
+            memory: "0"
+  wait:
+    labels:
+      release_group: airship-fluent-logging
+    timeout: 900

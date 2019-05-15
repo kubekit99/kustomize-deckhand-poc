@@ -1,0 +1,71 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  labels:
+    component: ceph
+    name: openstack-ceph-config
+  layeringDefinition:
+    abstract: false
+    layer: global
+  name: openstack-ceph-config
+  namespace: openstack
+spec:
+  chart_name: openstack-ceph-config
+  dependencies:
+  - ceph-htk
+  install:
+    no_hooks: false
+  release: openstack-ceph-config
+  source:
+    location: https://git.openstack.org/openstack/openstack-helm-infra
+    reference: a367bacb4bd3af55dd11dbc5c9855749a123779d
+    subpath: ceph-provisioners
+    type: git
+  upgrade:
+    no_hooks: false
+    pre:
+      delete:
+      - labels:
+          release_group: airship-openstack-ceph-config
+        type: job
+  values:
+    bootstrap:
+      enabled: false
+    deployment:
+      ceph: false
+      cephfs_provisioner: false
+      client_secrets: true
+      rbd_provisioner: false
+      rgw_keystone_user_and_endpoints: false
+    endpoints:
+      ceph_mon:
+        host_fqdn_override:
+          default: todojeb
+        hosts:
+          default: ceph-mon
+          discovery: ceph-mon-discovery
+        namespace: ceph
+        port:
+          mon:
+            default: 6789
+    images:
+      tags: {}
+    labels:
+      job:
+        node_selector_key: openstack-control-plane
+        node_selector_value: enabled
+      provisioner:
+        node_selector_key: openstack-control-plane
+        node_selector_value: enabled
+    network:
+      cluster: 10.22.73.0/24
+      public: 10.22.73.0/24
+    storageclass:
+      rbd:
+        ceph_configmap_name: ceph-etc
+        user_secret_name: pvc-ceph-client-key
+  wait:
+    labels:
+      release_group: airship-openstack-ceph-config
+    timeout: 900

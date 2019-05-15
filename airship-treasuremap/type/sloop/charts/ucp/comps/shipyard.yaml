@@ -1,0 +1,24 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: ucp-shipyard
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: ucp-shipyard-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        shipyard:
+          api: 1
+        airflow:
+          worker: 1
+          scheduler: 1
+...

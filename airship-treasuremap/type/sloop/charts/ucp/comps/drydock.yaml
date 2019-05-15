@@ -1,0 +1,19 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: ucp-drydock
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: ucp-drydock-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    replicas:
+      drydock: 1
+...

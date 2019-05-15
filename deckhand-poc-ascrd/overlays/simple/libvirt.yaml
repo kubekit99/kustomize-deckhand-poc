@@ -1,0 +1,42 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  labels:
+    component: libvirt
+    name: libvirt
+  layeringDefinition:
+    abstract: false
+    layer: global
+  name: libvirt
+  namespace: openstack
+spec:
+  chart_name: libvirt
+  dependencies:
+  - osh-helm-toolkit
+  install:
+    no_hooks: false
+  release: libvirt
+  source:
+    location: https://git.openstack.org/openstack/openstack-helm-infra
+    reference: a367bacb4bd3af55dd11dbc5c9855749a123779d
+    subpath: libvirt
+    type: git
+  upgrade:
+    no_hooks: false
+    pre:
+      delete:
+      - labels:
+          release_group: airship-libvirt
+        type: job
+  values:
+    ceph_client:
+      configmap: tenant-ceph-etc
+      user_secret_name: pvc-tceph-client-key
+    images:
+      tags: {}
+    #TODO(jeb) labels:
+    #TODO(jeb)   agent:
+    #TODO(jeb)     libvirt:
+    #TODO(jeb)       node_selector_key: openstack-libvirt
+    #TODO(jeb)       node_selector_value: kernel

@@ -1,0 +1,161 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: kubernetes-apiserver
+  labels:
+    name: kubernetes-apiserver
+  layeringDefinition:
+    abstract: false
+    layer: global
+  substitutions:
+    # Chart source
+    - src:
+        kind: PeglegSoftwareVersions
+        name: software-versions
+        path: .charts.kubernetes.apiserver
+      dest:
+        path: .source
+
+    # Images
+    - src:
+        kind: PeglegSoftwareVersions
+        name: software-versions
+        path: .images.kubernetes.apiserver
+      dest:
+        path: .values.images.tags
+
+    # IP addresses
+    - src:
+        kind: PeglegCommonAddresses
+        name: common-addresses
+        path: .kubernetes.api_service_ip
+      dest:
+        path: .values.network.kubernetes_service_ip
+    - src:
+        kind: PeglegCommonAddresses
+        name: common-addresses
+        path: .kubernetes.pod_cidr
+      dest:
+        path: .values.network.pod_cidr
+    - src:
+        kind: PeglegCommonAddresses
+        name: common-addresses
+        path: .kubernetes.service_cidr
+      dest:
+        path: .values.command_prefix[1]
+        pattern: SERVICE_CIDR
+
+    # Kubernetes Port Range
+    - src:
+        kind: PeglegCommonAddresses
+        name: common-addresses
+        path: .kubernetes.service_node_port_range
+      dest:
+        path: .values.command_prefix[2]
+        pattern: SERVICE_NODE_PORT_RANGE
+
+    # CA
+    - src:
+        kind: DeckhandCertificateAuthority
+        name: kubernetes
+        path: .
+      dest:
+        path: .values.secrets.tls.ca
+
+    # Certificates
+    - src:
+        kind: DeckhandCertificate
+        name: apiserver
+        path: .
+      dest:
+        path: .values.secrets.tls.cert
+    - src:
+        kind: DeckhandCertificateKey
+        name: apiserver
+        path: .
+      dest:
+        path: .values.secrets.tls.key
+    - src:
+        kind: DeckhandCertificateAuthority
+        name: kubernetes-etcd
+        path: .
+      dest:
+        path: .values.secrets.etcd.tls.ca
+    - src:
+        kind: DeckhandCertificate
+        name: apiserver-etcd
+        path: .
+      dest:
+        path: .values.secrets.etcd.tls.cert
+    - src:
+        kind: DeckhandCertificateKey
+        name: apiserver-etcd
+        path: .
+      dest:
+        path: .values.secrets.etcd.tls.key
+    - src:
+        kind: DeckhandPublicKey
+        name: service-account
+        path: .
+      dest:
+        path: .values.secrets.service_account.public_key
+
+spec:
+  chart_name: apiserver
+  release: kubernetes-apiserver
+  namespace: kube-system
+  protected:
+    continue_processing: true
+  wait:
+    timeout: 600
+    labels:
+      release_group: airship-kubernetes-apiserver
+  upgrade:
+    no_hooks: false
+    pre:
+      delete:
+        - type: job
+          labels:
+            release_group: airship-kubernetes-apiserver
+  values:
+    apiserver:
+      etcd:
+        endpoints: https://127.0.0.1:2378
+      tls:
+        tls-cipher-suites: "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA"
+        # https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+        # Possible values: VersionTLS10, VersionTLS11, VersionTLS12
+        tls-min-version: 'VersionTLS12'
+    command_prefix:
+      - /apiserver
+      - --service-cluster-ip-range=SERVICE_CIDR
+      - --service-node-port-range=SERVICE_NODE_PORT_RANGE
+      - --authorization-mode=Node,RBAC
+      - --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds
+      - --endpoint-reconciler-type=lease
+      - --feature-gates=PodShareProcessNamespace=true
+  dependencies:
+    - kubernetes-apiserver-htk
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: kubernetes-apiserver-htk
+  layeringDefinition:
+    abstract: false
+    layer: global
+  substitutions:
+    - src:
+        kind: PeglegSoftwareVersions
+        name: software-versions
+        path: .charts.kubernetes.apiserver-htk
+      dest:
+        path: .source
+spec:
+  chart_name: kubernetes-apiserver-htk
+  release: kubernetes-apiserver-htk
+  namespace: kubernetes-apiserver-htk
+  values: {}
+  dependencies: []
+...

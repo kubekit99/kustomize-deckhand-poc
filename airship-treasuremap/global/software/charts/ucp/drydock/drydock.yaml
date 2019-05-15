@@ -1,0 +1,197 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: ucp-drydock
+  labels:
+    name: ucp-drydock
+  layeringDefinition:
+    abstract: false
+    layer: global
+  substitutions:
+
+    # Chart source
+    - src:
+        kind: PeglegSoftwareVersions
+        name: software-versions
+        path: .charts.ucp.drydock
+      dest:
+        path: .source
+
+    # Images
+    - src:
+        kind: PeglegSoftwareVersions
+        name: software-versions
+        path: .images.ucp.drydock
+      dest:
+        path: .values.images.tags
+
+    # Endpoints
+
+    - src:
+        kind: PeglegEndpointCatalogue
+        name: ucp_endpoints
+        path: .ucp.identity
+      dest:
+        path: .values.endpoints.identity
+    - src:
+        kind: PeglegEndpointCatalogue
+        name: ucp_endpoints
+        path: .ucp.postgresql
+      dest:
+        path: .values.endpoints.postgresql
+    - src:
+        kind: PeglegEndpointCatalogue
+        name: ucp_endpoints
+        path: .ucp.physicalprovisioner
+      dest:
+        path: .values.endpoints.physicalprovisioner
+
+    # Drydock IPs
+    - src:
+        kind: PeglegCommonAddresses
+        name: common-addresses
+        path: .node_ports.drydock_api
+      dest:
+        path: .values.network.drydock.node_port.port
+    - src:
+        kind: PeglegCommonAddresses
+        name: common-addresses
+        path: .node_ports.drydock_api
+      dest:
+        path: .values.endpoints.physicalprovisioner.port.api.nodeport
+
+    # MaaS IPs
+    - src:
+        kind: PeglegCommonAddresses
+        name: common-addresses
+        path: .genesis.ip
+      dest:
+        path: .values.conf.drydock.maasdriver.maas_api_url
+        pattern: 'MAAS_IP'
+    - src:
+        kind: PeglegCommonAddresses
+        name: common-addresses
+        path: .node_ports.maas_api
+      dest:
+        path: .values.conf.drydock.maasdriver.maas_api_url
+        pattern: 'MAAS_PORT'
+
+    # Credentials
+
+    - src:
+        kind: PeglegAccountCatalogue
+        name: ucp_service_accounts
+        path: .ucp.postgres.admin
+      dest:
+        path: .values.endpoints.postgresql.auth.admin
+    - src:
+        kind: PeglegAccountCatalogue
+        name: ucp_service_accounts
+        path: .ucp.drydock.postgres
+      dest:
+        path: .values.endpoints.postgresql.auth.user
+    - src:
+        kind: PeglegAccountCatalogue
+        name: ucp_service_accounts
+        path: .ucp.drydock.postgres.database
+      dest:
+        path: .values.endpoints.postgresql.path
+        pattern: DB_NAME
+    - src:
+        kind: PeglegAccountCatalogue
+        name: ucp_service_accounts
+        path: .ucp.keystone.admin
+      dest:
+        path: .values.endpoints.identity.auth.admin
+    - src:
+        kind: PeglegAccountCatalogue
+        name: ucp_service_accounts
+        path: .ucp.drydock.keystone
+      dest:
+        path: .values.endpoints.identity.auth.drydock
+
+    # Secrets
+    - dest:
+        path: .values.endpoints.identity.auth.admin.password
+      src:
+        kind: DeckhandPassphrase
+        name: ucp_keystone_admin_password
+        path: .
+    - dest:
+        path: .values.endpoints.postgresql.auth.admin.password
+      src:
+        kind: DeckhandPassphrase
+        name: ucp_postgres_admin_password
+        path: .
+    - dest:
+        path: .values.endpoints.identity.auth.drydock.password
+      src:
+        kind: DeckhandPassphrase
+        name: ucp_drydock_keystone_password
+        path: .
+    - dest:
+        path: .values.endpoints.postgresql.auth.user.password
+      src:
+        kind: DeckhandPassphrase
+        name: ucp_drydock_postgres_password
+        path: .
+
+spec:
+  chart_name: drydock
+  release: drydock
+  namespace: ucp
+  wait:
+    timeout: 600
+    labels:
+      release_group: airship-drydock
+  install:
+    no_hooks: false
+  upgrade:
+    no_hooks: false
+    pre:
+      delete:
+        - type: job
+          labels:
+            release_group: airship-drydock
+  values:
+    labels:
+      node_selector_key: ucp-control-plane
+      node_selector_value: enabled
+    network:
+      api:
+        nodeport:
+          enabled: true
+    conf:
+      drydock:
+        database:
+          pool_size: 200
+        maasdriver:
+          maas_api_url: http://MAAS_IP:MAAS_PORT/MAAS/api/2.0/
+        plugins:
+          ingester: drydock_provisioner.ingester.plugins.deckhand.DeckhandIngester
+  dependencies:
+    - drydock-htk
+...
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: drydock-htk
+  layeringDefinition:
+    abstract: false
+    layer: global
+  substitutions:
+    - src:
+        kind: PeglegSoftwareVersions
+        name: software-versions
+        path: .charts.ucp.drydock-htk
+      dest:
+        path: .source
+spec:
+  chart_name: drydock-htk
+  release: drydock-htk
+  namespace: drydock-htk
+  values: {}
+  dependencies: []
+...

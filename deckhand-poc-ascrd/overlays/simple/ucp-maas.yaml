@@ -1,0 +1,135 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  labels:
+    name: ucp-maas
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: type
+    parentSelector:
+      name: ucp-maas
+  name: ucp-maas
+  namespace: ucp
+spec:
+  chart_name: maas
+  dependencies:
+  - maas-htk
+  install:
+    no_hooks: false
+  release: maas
+  source:
+    location: https://git.openstack.org/openstack/airship-maas
+    reference: 2e003450cceb16b9bda71aa69a939a8466516582
+    subpath: charts/maas
+    type: git
+  upgrade:
+    no_hooks: false
+    pre:
+      delete:
+      - labels:
+          release_group: airship-maas
+        type: job
+  values:
+    conf:
+      cache:
+        enabled: true
+      drydock:
+        bootaction_url: http://10.22.70.21:30000/api/v1.0/bootactions/nodes/
+      maas:
+        credentials:
+          secret:
+            namespace: ucp
+        dns:
+          dns_servers: 8.8.8.8,8.8.4.4,208.67.222.222
+          require_dnssec: "no"
+        images:
+          default_image: xenial
+          default_kernel: ga-16.04
+          default_os: ubuntu
+        ntp:
+          disable_ntpd_rack: true
+          disable_ntpd_region: true
+          ntp_servers: 0.ubuntu.pool.ntp.org,1.ubuntu.pool.ntp.org,2.ubuntu.pool.ntp.org,4.ubuntu.pool.ntp.org
+          use_external_only: "true"
+        proxy:
+          proxy_enabled: "true"
+        url:
+          maas_url: http://10.22.72.21:30001/MAAS
+    endpoints:
+      maas_db:
+        auth:
+          admin:
+            password: airsloop123
+            username: postgres
+          user:
+            database: maasdb
+            password: airsloop123
+            username: maas
+        host_fqdn_override:
+          default: todojeb
+        hosts:
+          default: postgresql
+        name: postgresql
+        path: /maasdb
+        port:
+          postgresql:
+            default: 5432
+        scheme: postgresql+psycopg2
+      maas_region_ui:
+        auth:
+          admin:
+            email: none@none
+            password: airsloop123
+            username: admin
+        host_fqdn_override:
+          default: todojeb
+        hosts:
+          default: maas-region-ui
+          public: maas
+        name: maas-region-ui
+        path:
+          default: /MAAS
+        port:
+          region_ui:
+            default: 80
+            public: 80
+        scheme:
+          default: http
+    images:
+      tags:
+        bootstrap: quay.io/airshipit/maas-region-controller:2e003450cceb16b9bda71aa69a939a8466516582
+        db_sync: quay.io/airshipit/maas-region-controller:2e003450cceb16b9bda71aa69a939a8466516582
+        export_api_key: quay.io/airshipit/maas-region-controller:2e003450cceb16b9bda71aa69a939a8466516582
+        maas_cache: quay.io/airshipit/sstream-cache:361b13342ef60b6aa0e3ad523fb2084c95881a31
+        maas_rack: quay.io/airshipit/maas-rack-controller:2e003450cceb16b9bda71aa69a939a8466516582
+        maas_region: quay.io/airshipit/maas-region-controller:2e003450cceb16b9bda71aa69a939a8466516582
+    jobs:
+      import_boot_resources:
+        timeout: 1800
+    labels:
+      rack:
+        node_selector_key: maas-control-plane
+        node_selector_value: enabled
+      region:
+        node_selector_key: maas-control-plane
+        node_selector_value: enabled
+    network:
+      gui:
+        node_port:
+          port: 30001
+      port:
+        service_proxy: "31800"
+      proxy:
+        node_port:
+          enabled: true
+    secrets:
+      maas_region:
+        value: e12330cfe038735aee32
+  wait:
+    labels:
+      release_group: airship-maas
+    timeout: 1800

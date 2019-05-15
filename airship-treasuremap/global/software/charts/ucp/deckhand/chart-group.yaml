@@ -1,0 +1,17 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChartGroup
+metadata:
+  name: ucp-deckhand
+  labels:
+    name: ucp-deckhand-chart-group
+  layeringDefinition:
+    abstract: false
+    layer: global
+spec:
+  description: Deckhand
+  chart_group:
+    # NOTE: Find and add the dogtag chart
+    # - ucp-dogtag
+    - ucp-barbican
+    - ucp-deckhand

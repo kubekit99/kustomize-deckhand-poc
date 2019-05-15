@@ -1,0 +1,57 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: openstack-ingress-controller
+  labels:
+    name: openstack-ingress-controller
+    component: ingress
+  layeringDefinition:
+    abstract: false
+    layer: global
+  substitutions:
+    # Chart source
+    - src:
+        kind: PeglegSoftwareVersions
+        name: software-versions
+        path: .charts.osh.ingress
+      dest:
+        path: .source
+    # Images
+    - src:
+        kind: PeglegSoftwareVersions
+        name: software-versions
+        path: .images.osh.ingress
+      dest:
+        path: .values.images.tags
+spec:
+  chart_name: openstack-ingress-controller
+  release: openstack-ingress-controller
+  namespace: openstack
+  wait:
+    timeout: 900
+    labels:
+      release_group: airship-openstack-ingress-controller
+  install:
+    no_hooks: false
+  upgrade:
+    no_hooks: false
+    pre:
+      delete:
+        - type: job
+          labels:
+            release_group: airship-openstack-ingress-controller
+  values:
+    labels:
+      server:
+        node_selector_key: openstack-control-plane
+        node_selector_value: enabled
+      error_server:
+        node_selector_key: openstack-control-plane
+        node_selector_value: enabled
+    pod:
+      replicas:
+        ingress: 2
+        error_page: 2
+  dependencies:
+    - osh-helm-toolkit

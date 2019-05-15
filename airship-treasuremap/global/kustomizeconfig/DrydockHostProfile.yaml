@@ -1,0 +1,5 @@
+varReference:
+- kind: DrydockHostProfile
+  path: spec/oob/credential
+
+inlineReference:

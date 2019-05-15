@@ -1,0 +1,15 @@
+---
+apiVersion: promenade.airshipit.org/v1alpha1
+kind: PromenadeDocker
+metadata:
+  name: docker
+  labels:
+    promenade: enabled
+  layeringDefinition:
+    abstract: false
+    layer: global
+spec:
+  config:
+    live-restore: true
+    storage-driver: overlay2
+...

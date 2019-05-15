@@ -1,0 +1,25 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: libvirt
+  layeringDefinition:
+    abstract: false
+    layer: site
+    parentSelector:
+      name: libvirt-global
+      component: libvirt
+    actions:
+      - method: replace
+        path: .values
+spec:
+  values:
+    labels:
+      agent:
+        libvirt:
+          node_selector_key: openstack-compute-node
+          node_selector_value: enabled
+    conf:
+      ceph:
+        enabled: false
+...

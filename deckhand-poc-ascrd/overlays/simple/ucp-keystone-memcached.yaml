@@ -1,0 +1,50 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  labels:
+    name: ucp-keystone-memcached
+  layeringDefinition:
+    abstract: false
+    layer: global
+  name: ucp-keystone-memcached
+  namespace: ucp
+spec:
+  chart_name: ucp-keystone-memcached
+  dependencies:
+  - ucp-memcached-htk
+  install:
+    no_hooks: false
+  release: ucp-keystone-memcached
+  source:
+    location: https://git.openstack.org/openstack/openstack-helm-infra
+    reference: a367bacb4bd3af55dd11dbc5c9855749a123779d
+    subpath: memcached
+    type: git
+  upgrade:
+    no_hooks: false
+    pre:
+      delete:
+      - labels:
+          release_group: airship-ucp-keystone-memcached
+        type: job
+  values:
+    endpoints:
+      oslo_cache:
+        host_fqdn_override:
+          default: todojeb
+        hosts:
+          default: memcached
+        port:
+          memcache:
+            default: 11211
+    images:
+      tags: {}
+    labels:
+      server:
+        node_selector_key: ucp-control-plane
+        node_selector_value: enabled
+  wait:
+    labels:
+      release_group: airship-ucp-keystone-memcached
+    timeout: 600

@@ -1,0 +1,23 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: cinder
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: cinder-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        api: 1
+        volume: 1
+        scheduler: 1
+        backup: 1
+...

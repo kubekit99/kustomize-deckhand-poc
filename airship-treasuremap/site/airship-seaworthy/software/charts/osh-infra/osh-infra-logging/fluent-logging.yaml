@@ -1,0 +1,15 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  name: fluent-logging
+  layeringDefinition:
+    abstract: false
+    layer: site
+    parentSelector:
+      hosttype: fluent-logging-global
+    actions:
+      - method: merge
+        path: .
+spec: {}
+...

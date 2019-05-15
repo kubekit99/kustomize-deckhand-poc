@@ -1,0 +1,86 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  labels:
+    name: ucp-ceph-provisioners
+  layeringDefinition:
+    abstract: false
+    actions:
+    - method: merge
+      path: .
+    layer: type
+    parentSelector:
+      name: ucp-ceph-provisioners
+  name: ucp-ceph-provisioners
+  namespace: ucp
+  replacement: true
+spec:
+  chart_name: ucp-ceph-provisioners
+  dependencies:
+  - ceph-htk
+  install:
+    no_hooks: false
+  protected:
+    continue_processing: true
+  release: ucp-ceph-provisioners
+  source:
+    location: https://git.openstack.org/openstack/openstack-helm-infra
+    reference: a367bacb4bd3af55dd11dbc5c9855749a123779d
+    subpath: ceph-provisioners
+    type: git
+  upgrade:
+    no_hooks: false
+    pre:
+      delete:
+      - labels:
+          release_group: airship-ucp-ceph-provisioners
+        type: job
+  values:
+    bootstrap:
+      enabled: true
+    conf:
+      ceph:
+        global:
+          fsid: d52a9d00-64b9-45f0-b564-08dffe95f847
+          osd_mkfs_type: xfs
+    deployment:
+      ceph: true
+      cephfs_provisioner: true
+      client_secrets: true
+      rbd_provisioner: true
+    endpoints:
+      ceph_mon:
+        host_fqdn_override:
+          default: todojeb
+        hosts:
+          default: ceph-mon
+          discovery: ceph-mon-discovery
+        namespace: ceph
+        port:
+          mon:
+            default: 6789
+    images:
+      tags: {}
+    labels:
+      job:
+        node_selector_key: ucp-control-plane
+        node_selector_value: enabled
+      provisioner:
+        node_selector_key: ucp-control-plane
+        node_selector_value: enabled
+    network:
+      cluster: 10.22.73.0/24
+      public: 10.22.73.0/24
+    pod:
+      replicas:
+        cephfs_provisioner: 1
+        rbd_provisioner: 1
+    storageclass:
+      rbd:
+        ceph_configmap_name: ceph-client-keys-etc
+        user_secret_name: pvc-ceph-client-key
+  wait:
+    labels:
+      release_group: airship-ucp-ceph-provisioners
+    timeout: 900

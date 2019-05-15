@@ -1,0 +1,21 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChart
+metadata:
+  replacement: true
+  name: ucp-ceph-ingress
+  layeringDefinition:
+    abstract: false
+    layer: type
+    parentSelector:
+      name: ucp-ceph-ingress-global
+    actions:
+      - method: merge
+        path: .
+spec:
+  values:
+    pod:
+      replicas:
+        ingress: 1
+        error_page: 1
+...

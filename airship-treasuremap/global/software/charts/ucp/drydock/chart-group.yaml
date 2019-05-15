@@ -1,0 +1,13 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChartGroup
+metadata:
+  name: ucp-drydock
+  layeringDefinition:
+    abstract: false
+    layer: global
+spec:
+  description: Drydock
+  chart_group:
+    - ucp-maas
+    - ucp-drydock

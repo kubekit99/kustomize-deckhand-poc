@@ -1,0 +1,16 @@
+---
+apiVersion: armada.airshipit.org/v1alpha1
+kind: ArmadaChartGroup
+metadata:
+  name: openstack-cinder
+  labels:
+    name: openstack-cinder-chart-group
+    component: cinder
+  layeringDefinition:
+    abstract: false
+    layer: global
+spec:
+  description: Deploy Cinder
+  chart_group:
+    - cinder-rabbitmq
+    - cinder
