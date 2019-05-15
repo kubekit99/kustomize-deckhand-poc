@@ -17,7 +17,7 @@
   and each site/xxx folder
 - run `sed -i -f pegleg2crd.sed xxx.yaml` on all the files
 - for i in `cat foo`; do sed -e '/^  name:/ s/_/-/g' $i > $i.tmp; mv $i.tmp $i; done
-- remove all the "-global" and "-airskiff" in the files to allow proper override
+- for i in `cat foo`; do sed -e "/name: / s;-global$;;g" $i > $i.tmp; mv $i.tmp $i; done
 - TODO: run the ../tools/readasit.py to transfer substitutions from metadata to spec
 
 ##  Testing

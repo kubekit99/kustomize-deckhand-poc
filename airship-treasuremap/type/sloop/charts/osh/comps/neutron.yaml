@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: neutron-global
+      name: neutron
   name: neutron
 spec:
   values:

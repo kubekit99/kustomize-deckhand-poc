@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: openstack-mariadb-global
+      name: openstack-mariadb
   name: openstack-mariadb
   replacement: true
 spec:

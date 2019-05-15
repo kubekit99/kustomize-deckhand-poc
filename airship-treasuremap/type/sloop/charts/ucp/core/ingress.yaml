@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-ingress-global
+      name: ucp-ingress
   name: ucp-ingress
   replacement: true
 spec:

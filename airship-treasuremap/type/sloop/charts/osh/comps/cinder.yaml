@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: cinder-global
+      name: cinder
   name: cinder
   replacement: true
 spec:

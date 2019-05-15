@@ -7,7 +7,7 @@ metadata:
     abstract: false
     layer: site
     parentSelector:
-      name: openstack-ingress-controller-chart-group-global
+      name: openstack-ingress-controller-chart-group
       component: ingress
     actions:
       - method: replace

@@ -11,7 +11,7 @@ metadata:
     abstract: false
     layer: site
     parentSelector:
-      name: ucp-ceph-osd-global
+      name: ucp-ceph-osd
     actions:
       - method: replace
         path: .values.conf.storage.osd

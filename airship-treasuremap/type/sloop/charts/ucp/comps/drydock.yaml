@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-drydock-global
+      name: ucp-drydock
   name: ucp-drydock
   replacement: true
 spec:

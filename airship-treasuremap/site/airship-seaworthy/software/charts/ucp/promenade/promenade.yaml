@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: site
     parentSelector:
-      name: ucp-promenade-global
+      name: ucp-promenade
   name: ucp-promenade
 spec:
   values:

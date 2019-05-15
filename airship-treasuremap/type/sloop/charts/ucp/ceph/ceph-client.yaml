@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-ceph-client-global
+      name: ucp-ceph-client
   name: ucp-ceph-client
 spec:
   values:

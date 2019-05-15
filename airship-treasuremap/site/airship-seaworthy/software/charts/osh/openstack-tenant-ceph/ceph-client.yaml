@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: site
     parentSelector:
-      name: tenant-ceph-client-global
+      name: tenant-ceph-client
   name: tenant-ceph-client
 spec:
   values:

@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: site
     parentSelector:
-      name: genesis-global
+      name: genesis
   name: genesis-site
 spec:
   labels:

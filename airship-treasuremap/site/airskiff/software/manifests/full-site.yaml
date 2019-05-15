@@ -8,7 +8,7 @@ metadata:
     abstract: false
     layer: site
     parentSelector:
-      name: full-site-global
+      name: full-site
     actions:
       - method: replace
         path: .chart_groups

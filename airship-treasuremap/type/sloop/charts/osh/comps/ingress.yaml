@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: openstack-ingress-controller-global
+      name: openstack-ingress-controller
   name: openstack-ingress-controller
   replacement: true
 spec:

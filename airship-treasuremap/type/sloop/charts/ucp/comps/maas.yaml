@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-maas-global
+      name: ucp-maas
   name: ucp-maas
 spec:
   values:

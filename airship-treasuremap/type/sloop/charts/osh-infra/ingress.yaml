@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: osh-infra-ingress-controller-global
+      name: osh-infra-ingress-controller
   name: osh-infra-ingress-controller
   replacement: true
 spec:

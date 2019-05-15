@@ -7,7 +7,7 @@ metadata:
     abstract: false
     layer: site
     parentSelector:
-      name: openstack-mariadb-global
+      name: openstack-mariadb
       component: mariadb
     actions:
       - method: merge

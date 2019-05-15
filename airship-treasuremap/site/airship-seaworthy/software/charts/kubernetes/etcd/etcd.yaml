@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: site
     parentSelector:
-      name: kubernetes-etcd-global
+      name: kubernetes-etcd
   name: kubernetes-etcd
 spec:
   values:

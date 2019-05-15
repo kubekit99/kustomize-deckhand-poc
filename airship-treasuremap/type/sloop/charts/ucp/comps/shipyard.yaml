@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-shipyard-global
+      name: ucp-shipyard
   name: ucp-shipyard
   replacement: true
 spec:

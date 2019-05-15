@@ -11,7 +11,7 @@ metadata:
       path: .
     layer: site
     parentSelector:
-      name: tenant-ceph-osd-global
+      name: tenant-ceph-osd
   name: tenant-ceph-osd
 spec:
   values:

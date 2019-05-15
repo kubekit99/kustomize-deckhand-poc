@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: prometheus-global
+      name: prometheus
   name: prometheus
   replacement: true
 spec:

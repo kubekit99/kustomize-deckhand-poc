@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: full-site-global
+      name: full-site
   name: full-site
   replacement: true
 spec:

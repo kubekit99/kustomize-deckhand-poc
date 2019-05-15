@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: neutron-rabbitmq-global
+      name: neutron-rabbitmq
   name: neutron-rabbitmq
   replacement: true
 spec:

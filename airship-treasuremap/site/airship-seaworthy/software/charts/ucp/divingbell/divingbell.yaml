@@ -11,7 +11,7 @@ metadata:
       path: .
     layer: site
     parentSelector:
-      name: ucp-divingbell-global
+      name: ucp-divingbell
   name: ucp-divingbell
 spec:
   values:

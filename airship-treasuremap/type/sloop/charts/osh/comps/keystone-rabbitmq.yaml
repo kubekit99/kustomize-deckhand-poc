@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: keystone-rabbitmq-global
+      name: keystone-rabbitmq
   name: keystone-rabbitmq
   replacement: true
 spec:

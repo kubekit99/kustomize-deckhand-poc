@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-keystone-global
+      name: ucp-keystone
   name: ucp-keystone
   replacement: true
 spec:

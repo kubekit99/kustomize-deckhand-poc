@@ -7,7 +7,7 @@ metadata:
     abstract: false
     layer: site
     parentSelector:
-      name: openstack-heat-chart-group-global
+      name: openstack-heat-chart-group
       component: heat
     actions:
       - method: merge

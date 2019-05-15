@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: keystone-global
+      name: keystone
   name: keystone
   replacement: true
 spec:

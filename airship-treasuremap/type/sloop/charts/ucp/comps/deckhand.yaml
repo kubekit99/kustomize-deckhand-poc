@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-deckhand-global
+      name: ucp-deckhand
   name: ucp-deckhand
   replacement: true
 spec:

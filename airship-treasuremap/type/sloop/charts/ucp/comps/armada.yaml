@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-armada-global
+      name: ucp-armada
   name: ucp-armada
   replacement: true
 spec:

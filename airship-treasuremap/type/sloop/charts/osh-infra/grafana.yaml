@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: grafana-global
+      name: grafana
   name: grafana
   replacement: true
 spec:

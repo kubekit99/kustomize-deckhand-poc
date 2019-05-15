@@ -9,6 +9,6 @@ metadata:
       path: .
     layer: site
     parentSelector:
-      name: neutron-global
+      name: neutron
   name: neutron
 spec: {}

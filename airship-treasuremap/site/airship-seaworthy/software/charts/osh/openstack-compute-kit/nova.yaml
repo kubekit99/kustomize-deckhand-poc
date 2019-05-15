@@ -9,6 +9,6 @@ metadata:
       path: .
     layer: site
     parentSelector:
-      name: nova-global
+      name: nova
   name: nova
 spec: {}

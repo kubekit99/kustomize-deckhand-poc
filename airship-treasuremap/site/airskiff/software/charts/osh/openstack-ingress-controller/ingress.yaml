@@ -7,7 +7,7 @@ metadata:
     abstract: false
     layer: site
     parentSelector:
-      name: openstack-ingress-controller-global
+      name: openstack-ingress-controller
       component: ingress
     actions:
       - method: replace

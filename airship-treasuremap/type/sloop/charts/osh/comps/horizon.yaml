@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: horizon-global
+      name: horizon
   name: horizon
   replacement: true
 spec:

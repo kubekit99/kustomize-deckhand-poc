@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: cinder-rabbitmq-global
+      name: cinder-rabbitmq
   name: cinder-rabbitmq
   replacement: true
 spec:

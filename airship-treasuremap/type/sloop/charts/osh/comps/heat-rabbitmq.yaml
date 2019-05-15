@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: heat-rabbitmq-global
+      name: heat-rabbitmq
   name: heat-rabbitmq
   replacement: true
 spec:

@@ -8,7 +8,7 @@ metadata:
       path: .
     layer: site
     parentSelector:
-      name: kubernetes-calico-etcd-global
+      name: kubernetes-calico-etcd
   name: kubernetes-calico-etcd
 spec:
   values:

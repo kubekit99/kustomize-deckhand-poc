@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: glance-global
+      name: glance
   name: glance
   replacement: true
 spec:

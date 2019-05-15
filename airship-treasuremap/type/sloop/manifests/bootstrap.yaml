@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: cluster-bootstrap-global
+      name: cluster-bootstrap
   name: cluster-bootstrap
   replacement: true
 spec:

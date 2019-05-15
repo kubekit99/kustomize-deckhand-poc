@@ -11,7 +11,7 @@ metadata:
     abstract: false
     layer: site
     parentSelector:
-      name: ucp-promenade-global
+      name: ucp-promenade
     actions:
       - method: merge
         path: .

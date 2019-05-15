@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: ucp-mariadb-global
+      name: ucp-mariadb
   name: ucp-mariadb
   replacement: true
 spec:

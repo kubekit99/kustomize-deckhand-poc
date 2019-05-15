@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: nova-rabbitmq-global
+      name: nova-rabbitmq
   name: nova-rabbitmq
   replacement: true
 spec:

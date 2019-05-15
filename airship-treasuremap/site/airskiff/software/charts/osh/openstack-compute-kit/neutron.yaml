@@ -7,7 +7,7 @@ metadata:
     abstract: false
     layer: site
     parentSelector:
-      name: neutron-global
+      name: neutron
       component: neutron
     actions:
       - method: merge

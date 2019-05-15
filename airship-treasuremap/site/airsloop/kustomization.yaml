@@ -110,6 +110,195 @@ resources:
 - ./site-definition.yaml
 
 vars:
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.calico-etcd-airsloop-control-1-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: calico-etcd-airsloop-control-1-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.calico-etcd-airsloop-control-1.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: calico-etcd-airsloop-control-1
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.calico-etcd-airsloop-control-2-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: calico-etcd-airsloop-control-2-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.calico-etcd-airsloop-control-2.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: calico-etcd-airsloop-control-2
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.calico-etcd-airsloop-control-3-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: calico-etcd-airsloop-control-3-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.calico-etcd-airsloop-control-3.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: calico-etcd-airsloop-control-3
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.kubernetes-etcd-airsloop-control-2-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: kubernetes-etcd-airsloop-control-2-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.kubernetes-etcd-airsloop-control-2.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: kubernetes-etcd-airsloop-control-2
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.kubernetes-etcd-airsloop-control-3-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: kubernetes-etcd-airsloop-control-3-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.kubernetes-etcd-airsloop-control-3.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: kubernetes-etcd-airsloop-control-3
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.kubernetes-etcd-genesis-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: kubernetes-etcd-genesis-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.kubernetes-etcd-genesis.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: kubernetes-etcd-genesis
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.calico-etcd-airsloop-control-1-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: calico-etcd-airsloop-control-1-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.calico-etcd-airsloop-control-1.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: calico-etcd-airsloop-control-1
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.calico-etcd-airsloop-control-2-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: calico-etcd-airsloop-control-2-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.calico-etcd-airsloop-control-2.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: calico-etcd-airsloop-control-2
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.calico-etcd-airsloop-control-3-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: calico-etcd-airsloop-control-3-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.calico-etcd-airsloop-control-3.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: calico-etcd-airsloop-control-3
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.kubernetes-etcd-airsloop-control-2-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: kubernetes-etcd-airsloop-control-2-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.kubernetes-etcd-airsloop-control-2.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: kubernetes-etcd-airsloop-control-2
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.kubernetes-etcd-airsloop-control-3-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: kubernetes-etcd-airsloop-control-3-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.kubernetes-etcd-airsloop-control-3.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: kubernetes-etcd-airsloop-control-3
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.kubernetes-etcd-genesis-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: kubernetes-etcd-genesis-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.kubernetes-etcd-genesis.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: kubernetes-etcd-genesis
+- fieldref:
+    fieldpath: spec
+  name: DeckhandPassphrase.airsloop-crypt-password.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandPassphrase
+    name: airsloop-crypt-password
 
 inlines:
+# - fieldref:
+#     fieldpath: spec.masters._0_.hostname
+#   name: PeglegCommonAddresses.common-addresses.spec.masters._0_.hostname
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec.masters._1_.hostname
+#   name: PeglegCommonAddresses.common-addresses.spec.masters._1_.hostname
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
 

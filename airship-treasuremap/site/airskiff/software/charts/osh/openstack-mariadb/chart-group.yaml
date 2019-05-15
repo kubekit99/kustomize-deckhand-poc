@@ -7,7 +7,7 @@ metadata:
     abstract: false
     layer: site
     parentSelector:
-      name: openstack-mariadb-chart-group-global
+      name: openstack-mariadb-chart-group
       component: mariadb
     actions:
       - method: replace

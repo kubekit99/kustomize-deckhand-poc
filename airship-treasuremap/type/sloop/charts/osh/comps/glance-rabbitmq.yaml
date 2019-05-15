@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      name: glance-rabbitmq-global
+      name: glance-rabbitmq
   name: glance-rabbitmq
   replacement: true
 spec:

@@ -7,7 +7,7 @@ metadata:
     abstract: false
     layer: site
     parentSelector:
-      name: neutron-rabbitmq-global
+      name: neutron-rabbitmq
       component: neutron
     actions:
       - method: delete

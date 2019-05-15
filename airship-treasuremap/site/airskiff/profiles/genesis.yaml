@@ -13,7 +13,7 @@ metadata:
     abstract: false
     layer: site
     parentSelector:
-      name: genesis-global
+      name: genesis
     actions:
       - method: merge
         path: .

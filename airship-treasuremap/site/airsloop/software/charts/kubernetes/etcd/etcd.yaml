@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: site
     parentSelector:
-      name: kubernetes-etcd-global
+      name: kubernetes-etcd
   name: kubernetes-etcd
 spec:
   values:
@@ -37,4 +37,4 @@ spec:
           key: $(DeckhandCertificateKey.kubernetes-etcd-airsloop-control-3.spec)
         peer:
           cert: $(DeckhandCertificate.kubernetes-etcd-airsloop-control-3-peer.spec)
-          key: $(DeckhandCertificateKey.kubernetes-etcd-airsloop-control-3-peer.spec$)
+          key: $(DeckhandCertificateKey.kubernetes-etcd-airsloop-control-3-peer.spec)

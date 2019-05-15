@@ -11,7 +11,7 @@ metadata:
     abstract: false
     layer: site
     parentSelector:
-      name: ucp-ceph-client-global
+      name: ucp-ceph-client
     actions:
       - method: merge
         path: .
