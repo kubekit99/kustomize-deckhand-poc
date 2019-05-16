@@ -9,7 +9,7 @@ metadata:
     abstract: false
     layer: site
     parentSelector:
-      hosttype: fluent-logging-global
+      hosttype: fluent-logging
     actions:
       - method: merge
         path: .

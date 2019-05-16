@@ -9,7 +9,7 @@ metadata:
     abstract: false
     layer: site
     parentSelector:
-      hosttype: elasticsearch-global
+      hosttype: elasticsearch
     actions:
       - method: merge
         path: .

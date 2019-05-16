@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      hosttype: elasticsearch-global
+      hosttype: elasticsearch
   name: elasticsearch
 spec:
   values:

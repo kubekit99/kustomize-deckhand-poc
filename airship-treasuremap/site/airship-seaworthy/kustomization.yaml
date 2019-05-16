@@ -6,6 +6,7 @@ bases:
 - ../../type/foundry
 
 patchesStrategicMerge:
+- ./profiles/genesis.yaml
 - ./software/charts/kubernetes/container-networking/etcd.yaml
 - ./software/charts/kubernetes/etcd/etcd.yaml
 - ./software/charts/kubernetes/ingress/ingress.yaml
@@ -29,7 +30,6 @@ resources:
 - ./networks/common-addresses.yaml
 - ./networks/physical/networks.yaml
 - ./pki/pki-catalog.yaml
-- ./profiles/genesis.yaml
 - ./profiles/hardware/dell_r720.yaml
 - ./profiles/host/cp_r720.yaml
 - ./profiles/host/dp_r720.yaml
@@ -126,6 +126,13 @@ resources:
 
 vars:
 - fieldref:
+    fieldpath: spec.ldap.base_url
+  name: PeglegCommonAddresses.common-addresses.spec.ldap.base_url
+  objref:
+    apiVersion: pegleg.airshipit.org/v1alpha1
+    kind: PeglegCommonAddresses
+    name: common-addresses
+- fieldref:
     fieldpath: spec.dns.ingress_domain
   name: PeglegCommonAddresses.common-addresses.spec.dns.ingress_domain
   objref:
@@ -181,6 +188,216 @@ vars:
     apiVersion: deckhand.airshipit.org/v1alpha1
     kind: DeckhandCertificateKey
     name: ingress-key
+- fieldref:
+    fieldpath: spec
+  name: DeckhandPassphrase.ubuntu-crypt-password.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandPassphrase
+    name: ubuntu-crypt-password
+- fieldref:
+    fieldpath: spec
+  name: DeckhandPublicKey.airship-ssh-public-key.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandPublicKey
+    name: airship-ssh-public-key
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.calico-etcd-cab23-r720-11-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: calico-etcd-cab23-r720-11-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.calico-etcd-cab23-r720-11-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: calico-etcd-cab23-r720-11-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.calico-etcd-cab23-r720-11.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: calico-etcd-cab23-r720-11
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.calico-etcd-cab23-r720-11.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: calico-etcd-cab23-r720-11
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.calico-etcd-cab23-r720-12-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: calico-etcd-cab23-r720-12-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.calico-etcd-cab23-r720-12-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: calico-etcd-cab23-r720-12-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.calico-etcd-cab23-r720-12.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: calico-etcd-cab23-r720-12
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.calico-etcd-cab23-r720-12.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: calico-etcd-cab23-r720-12
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.calico-etcd-cab23-r720-13-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: calico-etcd-cab23-r720-13-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.calico-etcd-cab23-r720-13-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: calico-etcd-cab23-r720-13-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.calico-etcd-cab23-r720-13.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: calico-etcd-cab23-r720-13
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.calico-etcd-cab23-r720-13.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: calico-etcd-cab23-r720-13
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.calico-etcd-cab23-r720-14-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: calico-etcd-cab23-r720-14-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.calico-etcd-cab23-r720-14-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: calico-etcd-cab23-r720-14-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.calico-etcd-cab23-r720-14.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: calico-etcd-cab23-r720-14
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.calico-etcd-cab23-r720-14.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: calico-etcd-cab23-r720-14
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.kubernetes-etcd-cab23-r720-12-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: kubernetes-etcd-cab23-r720-12-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.kubernetes-etcd-cab23-r720-12-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: kubernetes-etcd-cab23-r720-12-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.kubernetes-etcd-cab23-r720-12.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: kubernetes-etcd-cab23-r720-12
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.kubernetes-etcd-cab23-r720-12.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: kubernetes-etcd-cab23-r720-12
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.kubernetes-etcd-cab23-r720-13-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: kubernetes-etcd-cab23-r720-13-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.kubernetes-etcd-cab23-r720-13-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: kubernetes-etcd-cab23-r720-13-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.kubernetes-etcd-cab23-r720-13.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: kubernetes-etcd-cab23-r720-13
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.kubernetes-etcd-cab23-r720-13.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: kubernetes-etcd-cab23-r720-13
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.kubernetes-etcd-cab23-r720-14-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: kubernetes-etcd-cab23-r720-14-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.kubernetes-etcd-cab23-r720-14-peer.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: kubernetes-etcd-cab23-r720-14-peer
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificate.kubernetes-etcd-cab23-r720-14.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificate
+    name: kubernetes-etcd-cab23-r720-14
+- fieldref:
+    fieldpath: spec
+  name: DeckhandCertificateKey.kubernetes-etcd-cab23-r720-14.spec
+  objref:
+    apiVersion: deckhand.airshipit.org/v1alpha1
+    kind: DeckhandCertificateKey
+    name: kubernetes-etcd-cab23-r720-14
 
 inlines:
 # - fieldref:

@@ -8,7 +8,7 @@
 apiVersion: promenade.airshipit.org/v1alpha1
 kind: PromenadeGenesis
 metadata:
-  name: genesis-site
+  name: genesis
   layeringDefinition:
     abstract: false
     layer: site

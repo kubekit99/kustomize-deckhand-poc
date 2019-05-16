@@ -4,7 +4,7 @@ metadata:
   layeringDefinition:
     abstract: false
     layer: site
-  name: airship-seaworthy
+  name: airskiff
   schema: metadata/Document/v1
 spec:
   authorized_keys:

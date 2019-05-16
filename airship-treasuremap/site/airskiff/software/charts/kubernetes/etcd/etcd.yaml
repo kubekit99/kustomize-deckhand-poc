@@ -36,7 +36,7 @@ spec:
           key: $(DeckhandCertificateKey.kubernetes-etcd-cab23-r720-13.spec)
         peer:
           cert: $(DeckhandCertificate.kubernetes-etcd-cab23-r720-13-peer.spec)
-          key: $(DeckhandCertificateKey.kubernetes-etcd-cab23-r720-13-peer.spec$)
+          key: $(DeckhandCertificateKey.kubernetes-etcd-cab23-r720-13-peer.spec)
     - name: $(PeglegCommonAddresses.common-addresses.spec.masters._2_.hostname)
       tls:
         client:
@@ -44,4 +44,4 @@ spec:
           key: $(DeckhandCertificateKey.kubernetes-etcd-cab23-r720-14.spec)
         peer:
           cert: $(DeckhandCertificate.kubernetes-etcd-cab23-r720-14-peer.spec)
-          key: $(DeckhandCertificateKey.kubernetes-etcd-cab23-r720-14-peer.spec$)
+          key: $(DeckhandCertificateKey.kubernetes-etcd-cab23-r720-14-peer.spec)

@@ -15,11 +15,11 @@ metadata:
 spec:
   release_prefix: airship
   chart_groups:
-    - openstack-ingress-controller-airskiff
-    - openstack-mariadb-airskiff
+    - openstack-ingress-controller
+    - openstack-mariadb
     - openstack-memcached
-    - openstack-keystone-airskiff
-    - openstack-glance-airskiff
-    - openstack-compute-kit-airskiff
-    - openstack-heat-airskiff
+    - openstack-keystone
+    - openstack-glance
+    - openstack-compute-kit
+    - openstack-heat
 ...

@@ -36,6 +36,10 @@ varReference:
 - kind: ArmadaChart
   path: spec/values/conf/uamlite/users/_0_/user_sshkeys/_0_
 - kind: ArmadaChart
+  path: spec/values/conf/uamlite/users/_1_/user_crypt_passwd
+- kind: ArmadaChart
+  path: spec/values/conf/uamlite/users/_1_/user_sshkeys/_0_
+- kind: ArmadaChart
   path: spec/values/network/auto_bridge_add/br-ex
 - kind: ArmadaChart
   path: spec/values/network/cluster
@@ -87,6 +91,16 @@ varReference:
   path: spec/values/nodes/_2_/tls/peer/cert
 - kind: ArmadaChart
   path: spec/values/nodes/_2_/tls/peer/key
+- kind: ArmadaChart
+  path: spec/values/nodes/_3_/name
+- kind: ArmadaChart
+  path: spec/values/nodes/_3_/tls/client/cert
+- kind: ArmadaChart
+  path: spec/values/nodes/_3_/tls/client/key
+- kind: ArmadaChart
+  path: spec/values/nodes/_3_/tls/peer/cert
+- kind: ArmadaChart
+  path: spec/values/nodes/_3_/tls/peer/key
 - kind: ArmadaChart
   path: spec/values/secrets/anchor/tls/cert
 - kind: ArmadaChart
@@ -293,6 +307,8 @@ varReference:
   path: spec/values/endpoints/ldap/auth/admin/bind_dn
 - kind: ArmadaChart
   path: spec/values/endpoints/ldap/path
+- kind: ArmadaChart
+  path: spec/values/endpoints/ldap/host_fqdn_override/public/host
 - kind: ArmadaChart
   path: spec/values/endpoints/oslo_db/path
 - kind: ArmadaChart

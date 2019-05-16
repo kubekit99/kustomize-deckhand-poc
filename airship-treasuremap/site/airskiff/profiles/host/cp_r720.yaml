@@ -13,7 +13,7 @@ metadata:
     abstract: false
     layer: site
     parentSelector:
-      hosttype: cp-global
+      hosttype: cp
     actions:
       - method: replace
         path: .interfaces
@@ -96,7 +96,7 @@ metadata:
     abstract: false
     layer: site
     parentSelector:
-      hosttype: cp-global
+      hosttype: cp
     actions:
       - method: replace
         path: .interfaces

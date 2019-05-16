@@ -9,7 +9,7 @@ metadata:
       path: .
     layer: type
     parentSelector:
-      hosttype: fluent-logging-global
+      hosttype: fluent-logging
   name: fluent-logging
 spec:
   values:

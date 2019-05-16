@@ -12,7 +12,7 @@ metadata:
     abstract: false
     layer: site
     parentSelector:
-      hosttype: dp-global
+      hosttype: dp
     actions:
       - method: replace
         path: .interfaces

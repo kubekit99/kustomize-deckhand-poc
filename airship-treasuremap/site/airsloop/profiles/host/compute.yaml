@@ -13,7 +13,7 @@ metadata:
       path: .
     layer: site
     parentSelector:
-      hosttype: dp-global
+      hosttype: dp
   name: compute-r720xd
 spec:
   hardware_profile: dell_r720xd

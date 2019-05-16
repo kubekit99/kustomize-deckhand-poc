@@ -45,4 +45,4 @@ spec:
           key: $(DeckhandCertificateKey.calico-etcd-cab23-r720-14.spec)
         peer:
           cert: $(DeckhandCertificate.calico-etcd-cab23-r720-14-peer.spec)
-          key: $(DeckhandCertificateKey.calico-etcd-cab23-r720-14-peer.spec$)
+          key: $(DeckhandCertificateKey.calico-etcd-cab23-r720-14-peer.spec)

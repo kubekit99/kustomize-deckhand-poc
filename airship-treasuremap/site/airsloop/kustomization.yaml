@@ -10,6 +10,7 @@ patchesStrategicMerge:
 - ./software/charts/kubernetes/etcd/etcd.yaml
 - ./software/charts/osh/ceph/ceph-client.yaml
 - ./software/charts/ucp/divingbell.yaml
+- ./profiles/genesis.yaml
 
 resources:
 - ./baremetal/bootactions/promjoin.yaml
@@ -18,7 +19,6 @@ resources:
 - ./networks/common-addresses.yaml
 - ./networks/physical/networks.yaml
 - ./pki/pki-catalog.yaml
-- ./profiles/genesis.yaml
 - ./profiles/hardware/dell_r720xd.yaml
 - ./profiles/host/compute.yaml
 - ./profiles/region.yaml

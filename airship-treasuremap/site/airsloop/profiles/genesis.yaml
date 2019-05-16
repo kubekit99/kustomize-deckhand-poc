@@ -10,7 +10,7 @@ metadata:
     layer: site
     parentSelector:
       name: genesis
-  name: genesis-site
+  name: genesis
 spec:
   labels:
     dynamic:

@@ -9,6 +9,6 @@ metadata:
       path: .
     layer: site
     parentSelector:
-      hosttype: elasticsearch-global
+      hosttype: elasticsearch
   name: elasticsearch
 spec: {}

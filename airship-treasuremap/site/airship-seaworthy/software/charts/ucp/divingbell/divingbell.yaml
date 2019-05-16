@@ -3,7 +3,7 @@ apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
   labels:
-    name: ucp-divingbell-site
+    name: ucp-divingbell
   layeringDefinition:
     abstract: false
     actions:

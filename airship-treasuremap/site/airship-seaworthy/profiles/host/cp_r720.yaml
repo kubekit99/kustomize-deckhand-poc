@@ -13,7 +13,7 @@ metadata:
       path: .
     layer: site
     parentSelector:
-      hosttype: cp-global
+      hosttype: cp
   name: cp-r720-primary
 spec:
   hardware_profile: dell_r720
@@ -92,7 +92,7 @@ metadata:
       path: .
     layer: site
     parentSelector:
-      hosttype: cp-global
+      hosttype: cp
   name: cp-r740-secondary
 spec:
   hardware_profile: dell_r720
