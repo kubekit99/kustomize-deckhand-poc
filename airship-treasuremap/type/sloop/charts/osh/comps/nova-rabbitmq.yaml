@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       name: nova-rabbitmq
   name: nova-rabbitmq
-  namespace: osh
+  namespace: openstack
   replacement: true
 spec:
   values:

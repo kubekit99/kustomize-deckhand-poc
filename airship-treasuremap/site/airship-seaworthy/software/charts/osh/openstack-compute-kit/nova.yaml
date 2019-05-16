@@ -11,5 +11,5 @@ metadata:
     parentSelector:
       name: nova
   name: nova
-  namespace: osh
+  namespace: openstack
 spec: {}

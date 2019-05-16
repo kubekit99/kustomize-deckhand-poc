@@ -12,7 +12,7 @@ metadata:
       component: keystone
       name: keystone
   name: keystone
-  namespace: osh
+  namespace: openstack
 spec:
   values:
     pod:

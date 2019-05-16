@@ -14,7 +14,7 @@ metadata:
       component: glance
       name: glance-rabbitmq
   name: glance-rabbitmq
-  namespace: osh
+  namespace: openstack
 spec:
   test:
     enabled: false

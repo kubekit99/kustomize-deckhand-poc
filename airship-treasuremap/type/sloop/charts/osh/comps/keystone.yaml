@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       name: keystone
   name: keystone
-  namespace: osh
+  namespace: openstack
   replacement: true
 spec:
   values:

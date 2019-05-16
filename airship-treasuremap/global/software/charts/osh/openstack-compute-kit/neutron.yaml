@@ -157,16 +157,16 @@ spec:
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh.neutron)
     labels:
-      agent:
-        dhcp:
-          node_selector_key: openstack-control-plane
-          node_selector_value: enabled
-        l3:
-          node_selector_key: openstack-l3-agent
-          node_selector_value: enabled
-        metadata:
-          node_selector_key: openstack-control-plane
-          node_selector_value: enabled
+      #TODO(jeb) agent:
+      #TODO(jeb)   dhcp:
+      #TODO(jeb)     node_selector_key: openstack-control-plane
+      #TODO(jeb)     node_selector_value: enabled
+      #TODO(jeb)   l3:
+      #TODO(jeb)     node_selector_key: openstack-l3-agent
+      #TODO(jeb)     node_selector_value: enabled
+      #TODO(jeb)   metadata:
+      #TODO(jeb)     node_selector_key: openstack-control-plane
+      #TODO(jeb)     node_selector_value: enabled
       job:
         node_selector_key: openstack-control-plane
         node_selector_value: enabled

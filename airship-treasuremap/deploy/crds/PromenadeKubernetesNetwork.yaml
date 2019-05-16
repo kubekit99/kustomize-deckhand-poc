@@ -160,7 +160,7 @@ spec:
                 url:
                   # $ref: '#/definitions/url'
                   type: string
-                  format: uri
+                  #TODO(jeb) format: uri
               required:
                 - url
               # additionalProperties: false

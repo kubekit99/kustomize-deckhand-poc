@@ -20,7 +20,7 @@ metadata:
       component: neutron
       name: neutron
   name: neutron
-  namespace: osh
+  namespace: openstack
 spec:
   values:
     conf:

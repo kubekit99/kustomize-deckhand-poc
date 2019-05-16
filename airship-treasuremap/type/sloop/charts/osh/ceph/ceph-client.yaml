@@ -13,7 +13,7 @@ metadata:
     parentSelector:
       name: tenant-ceph-client
   name: tenant-ceph-client
-  namespace: osh
+  namespace: openstack
 spec:
   values:
     conf:

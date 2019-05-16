@@ -14,7 +14,7 @@ metadata:
       component: nova
       name: nova-rabbitmq
   name: nova-rabbitmq
-  namespace: osh
+  namespace: openstack
 spec:
   test:
     enabled: false

@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       name: neutron
   name: neutron
-  namespace: osh
+  namespace: openstack
 spec:
   values:
     pod:

@@ -31,8 +31,8 @@ spec:
       user_secret_name: pvc-tceph-client-key
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh.libvirt)
-    labels:
-      agent:
-        libvirt:
-          node_selector_key: openstack-libvirt
-          node_selector_value: kernel
+    #TODO(jeb) labels:
+    #TODO(jeb)   agent:
+    #TODO(jeb)     libvirt:
+    #TODO(jeb)       node_selector_key: openstack-libvirt
+    #TODO(jeb)       node_selector_value: kernel

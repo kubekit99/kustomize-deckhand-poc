@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       name: keystone-rabbitmq
   name: keystone-rabbitmq
-  namespace: osh
+  namespace: openstack
   replacement: true
 spec:
   values:

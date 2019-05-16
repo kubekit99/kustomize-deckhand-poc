@@ -12,7 +12,7 @@ metadata:
       component: libvirt
       name: libvirt
   name: libvirt
-  namespace: osh
+  namespace: openstack
 spec:
   values:
     conf:

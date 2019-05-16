@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       name: openstack-ingress-controller
   name: openstack-ingress-controller
-  namespace: osh
+  namespace: openstack
   replacement: true
 spec:
   values:

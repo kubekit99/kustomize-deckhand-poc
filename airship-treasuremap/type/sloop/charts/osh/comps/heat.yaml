@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       name: heat
   name: heat
-  namespace: osh
+  namespace: openstack
   replacement: true
 spec:
   values:

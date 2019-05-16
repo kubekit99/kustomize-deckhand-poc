@@ -61,8 +61,9 @@ spec:
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.ucp.drydock)
     labels:
-      node_selector_key: ucp-control-plane
-      node_selector_value: enabled
+      todojeb:
+        node_selector_key: ucp-control-plane
+        node_selector_value: enabled
     network:
       api:
         nodeport:

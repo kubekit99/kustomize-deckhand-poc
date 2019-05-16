@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       name: glance
   name: glance
-  namespace: osh
+  namespace: openstack
   replacement: true
 spec:
   values:

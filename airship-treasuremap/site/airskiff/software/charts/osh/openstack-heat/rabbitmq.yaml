@@ -14,7 +14,7 @@ metadata:
       component: heat
       name: heat-rabbitmq
   name: heat-rabbitmq
-  namespace: osh
+  namespace: openstack
 spec:
   test:
     enabled: false

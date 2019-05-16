@@ -29,7 +29,7 @@ spec:
     endpoints:
       oslo_messaging:
         auth:
-          erlang_cookie: $(DeckhandPassphrase.osh-neutron-rabbitmq-erlang-cookie.spec)
+          #TODO(jeb) erlang_cookie: $(DeckhandPassphrase.osh-neutron-rabbitmq-erlang-cookie.spec)
           user:
             parent-inline: $(PeglegAccountCatalogue.osh-service-accounts.spec.osh.neutron.oslo_messaging.admin)
             password: $(DeckhandPassphrase.osh-neutron-oslo-messaging-admin-password.spec)

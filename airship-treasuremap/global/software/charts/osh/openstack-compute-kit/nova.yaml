@@ -166,10 +166,10 @@ spec:
     images:
       tags: $(PeglegSoftwareVersions.software-versions.spec.images.osh.nova)
     labels:
-      agent:
-        compute:
-          node_selector_key: openstack-nova-compute
-          node_selector_value: enabled
+      #TODO(jeb) agent:
+      #TODO(jeb)   compute:
+      #TODO(jeb)     node_selector_key: openstack-nova-compute
+      #TODO(jeb)     node_selector_value: enabled
       api_metadata:
         node_selector_key: openstack-control-plane
         node_selector_value: enabled

@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       name: cinder
   name: cinder
-  namespace: osh
+  namespace: openstack
   replacement: true
 spec:
   values:

@@ -14,7 +14,7 @@ metadata:
       component: mariadb
       name: openstack-mariadb
   name: openstack-mariadb
-  namespace: osh
+  namespace: openstack
 spec:
   values:
     pod:

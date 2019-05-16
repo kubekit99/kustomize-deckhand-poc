@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       name: openstack-mariadb
   name: openstack-mariadb
-  namespace: osh
+  namespace: openstack
   replacement: true
 spec:
   values:

@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       name: glance-rabbitmq
   name: glance-rabbitmq
-  namespace: osh
+  namespace: openstack
   replacement: true
 spec:
   values:

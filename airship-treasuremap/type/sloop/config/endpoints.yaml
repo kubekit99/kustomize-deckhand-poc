@@ -369,7 +369,7 @@ spec:
           public: 80
       scheme:
         default: http
-      type: null
+      #TODO(jeb) type: null
     compute:
       host_fqdn_override:
         default: ""

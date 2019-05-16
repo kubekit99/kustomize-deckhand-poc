@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       name: cinder-rabbitmq
   name: cinder-rabbitmq
-  namespace: osh
+  namespace: openstack
   replacement: true
 spec:
   values:

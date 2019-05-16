@@ -56,9 +56,9 @@ spec:
             repositories:
               # top level is class (e.g. apt, rpm)
               type: 'object'
-              # properties:
-              #   remove_unlisted:
-              #     type: 'boolean'
+              # TODO(jeb) properties:
+              # TODO(jeb)   remove_unlisted:
+              # TODO(jeb)     type: 'boolean'
               additionalProperties:
                 type: 'object'
                 properties:

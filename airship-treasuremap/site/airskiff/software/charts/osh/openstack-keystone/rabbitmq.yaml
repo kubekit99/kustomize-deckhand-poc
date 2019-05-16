@@ -14,7 +14,7 @@ metadata:
       component: keystone
       name: keystone-rabbitmq
   name: keystone-rabbitmq
-  namespace: osh
+  namespace: openstack
 spec:
   test:
     enabled: false
