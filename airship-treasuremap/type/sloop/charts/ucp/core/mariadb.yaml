@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       name: ucp-mariadb
   name: ucp-mariadb
-  namespace: boggus
+  namespace: ucp
   replacement: true
 spec:
   values:

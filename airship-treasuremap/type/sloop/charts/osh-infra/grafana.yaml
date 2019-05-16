@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       name: grafana
   name: grafana
-  namespace: boggus
+  namespace: osh-infra
   replacement: true
 spec:
   values:

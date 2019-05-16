@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       name: ucp-barbican
   name: ucp-barbican
-  namespace: boggus
+  namespace: ucp
   replacement: true
 spec:
   values:

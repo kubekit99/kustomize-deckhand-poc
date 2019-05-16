@@ -16,7 +16,7 @@ metadata:
       component: glance
       name: glance
   name: glance
-  namespace: boggus
+  namespace: osh
 spec:
   test:
     enabled: false

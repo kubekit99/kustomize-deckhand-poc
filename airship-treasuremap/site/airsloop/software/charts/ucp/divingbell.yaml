@@ -13,7 +13,7 @@ metadata:
     parentSelector:
       name: ucp-divingbell
   name: ucp-divingbell
-  namespace: boggus
+  namespace: ucp
 spec:
   values:
     conf:

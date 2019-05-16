@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       name: kubernetes-calico-etcd
   name: kubernetes-calico-etcd
-  namespace: boggus
+  namespace: kube-system
 spec:
   values:
     nodes:

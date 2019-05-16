@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       name: ucp-ingress
   name: ucp-ingress
-  namespace: boggus
+  namespace: ucp
   replacement: true
 spec:
   values:

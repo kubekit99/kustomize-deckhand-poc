@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       name: ucp-ceph-client
   name: ucp-ceph-client
-  namespace: boggus
+  namespace: ucp
 spec:
   values:
     conf:

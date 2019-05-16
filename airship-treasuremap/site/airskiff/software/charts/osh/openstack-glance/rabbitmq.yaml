@@ -14,7 +14,7 @@ metadata:
       component: glance
       name: glance-rabbitmq
   name: glance-rabbitmq
-  namespace: boggus
+  namespace: osh
 spec:
   test:
     enabled: false

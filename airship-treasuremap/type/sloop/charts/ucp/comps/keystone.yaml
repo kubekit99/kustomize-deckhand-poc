@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       name: ucp-keystone
   name: ucp-keystone
-  namespace: boggus
+  namespace: ucp
   replacement: true
 spec:
   values:

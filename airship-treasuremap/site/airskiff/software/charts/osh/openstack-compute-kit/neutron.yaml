@@ -20,7 +20,7 @@ metadata:
       component: neutron
       name: neutron
   name: neutron
-  namespace: boggus
+  namespace: osh
 spec:
   values:
     conf:

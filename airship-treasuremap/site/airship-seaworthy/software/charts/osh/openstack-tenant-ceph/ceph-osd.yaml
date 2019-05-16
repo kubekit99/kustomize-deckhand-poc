@@ -13,7 +13,7 @@ metadata:
     parentSelector:
       name: tenant-ceph-osd
   name: tenant-ceph-osd
-  namespace: boggus
+  namespace: osh
 spec:
   values:
     conf:

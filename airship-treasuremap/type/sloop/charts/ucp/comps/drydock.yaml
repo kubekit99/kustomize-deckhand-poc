@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       name: ucp-drydock
   name: ucp-drydock
-  namespace: boggus
+  namespace: ucp
   replacement: true
 spec:
   values:

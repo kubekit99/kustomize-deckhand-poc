@@ -14,7 +14,7 @@ metadata:
       component: nova
       name: nova-rabbitmq
   name: nova-rabbitmq
-  namespace: boggus
+  namespace: osh
 spec:
   test:
     enabled: false

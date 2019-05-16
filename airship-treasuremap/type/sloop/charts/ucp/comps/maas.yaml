@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       name: ucp-maas
   name: ucp-maas
-  namespace: boggus
+  namespace: ucp
 spec:
   values:
     conf:

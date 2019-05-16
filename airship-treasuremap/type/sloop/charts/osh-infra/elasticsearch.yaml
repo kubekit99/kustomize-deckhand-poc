@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       hosttype: elasticsearch
   name: elasticsearch
-  namespace: boggus
+  namespace: osh-infra
 spec:
   values:
     conf:

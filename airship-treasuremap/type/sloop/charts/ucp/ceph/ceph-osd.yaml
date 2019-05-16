@@ -11,5 +11,5 @@ metadata:
     parentSelector:
       name: ucp-ceph-osd
   name: ucp-ceph-osd
-  namespace: boggus
+  namespace: ucp
 spec: {}

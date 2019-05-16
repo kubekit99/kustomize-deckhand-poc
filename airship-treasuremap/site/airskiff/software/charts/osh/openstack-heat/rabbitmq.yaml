@@ -14,7 +14,7 @@ metadata:
       component: heat
       name: heat-rabbitmq
   name: heat-rabbitmq
-  namespace: boggus
+  namespace: osh
 spec:
   test:
     enabled: false

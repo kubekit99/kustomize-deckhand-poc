@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       name: glance
   name: glance
-  namespace: boggus
+  namespace: osh
   replacement: true
 spec:
   values:

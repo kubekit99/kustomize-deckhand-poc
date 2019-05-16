@@ -11,7 +11,7 @@ metadata:
     parentSelector:
       name: prometheus
   name: prometheus
-  namespace: boggus
+  namespace: osh-infra
   replacement: true
 spec:
   values:

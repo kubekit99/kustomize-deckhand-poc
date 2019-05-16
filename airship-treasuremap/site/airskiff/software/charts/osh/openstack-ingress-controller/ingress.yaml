@@ -12,7 +12,7 @@ metadata:
       component: ingress
       name: openstack-ingress-controller
   name: openstack-ingress-controller
-  namespace: boggus
+  namespace: osh
 spec:
   values:
     pod:
