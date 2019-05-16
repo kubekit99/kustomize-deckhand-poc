@@ -35,12 +35,10 @@ spec:
         spec:
           properties:
             certificate_authorities:
-              type: array
-              items:
+              type: object
+              additionalProperties:
                 type: object
                 properties:
-                  looks_like_a_bug:
-                    type: string
                   description:
                     type: string
                   certificates:
