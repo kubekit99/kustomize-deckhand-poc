@@ -6,13 +6,13 @@ metadata:
     abstract: false
     layer: global
   name: prometheus-kube-state-metrics
+  namespace: kube-system
 spec:
   chart_name: prometheus-kube-state-metrics
   dependencies:
   - osh-infra-helm-toolkit
   install:
     no_hooks: false
-  namespace: kube-system
   release: prometheus-kube-state-metrics
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.prometheus_kube_state_metrics)
   upgrade:

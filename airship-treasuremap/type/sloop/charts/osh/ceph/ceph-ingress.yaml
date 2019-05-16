@@ -11,6 +11,7 @@ metadata:
     parentSelector:
       name: tenant-ceph-ingress
   name: tenant-ceph-ingress
+  namespace: boggus
   replacement: true
 spec:
   values:

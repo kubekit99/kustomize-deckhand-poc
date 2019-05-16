@@ -11,6 +11,7 @@ metadata:
     parentSelector:
       name: ucp-promenade
   name: ucp-promenade
+  namespace: boggus
 spec:
   values:
     pod:

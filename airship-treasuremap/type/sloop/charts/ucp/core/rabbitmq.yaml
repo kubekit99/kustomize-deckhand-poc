@@ -11,6 +11,7 @@ metadata:
     parentSelector:
       name: ucp-rabbitmq
   name: ucp-rabbitmq
+  namespace: boggus
   replacement: true
 spec:
   values:

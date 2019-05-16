@@ -11,6 +11,7 @@ metadata:
     parentSelector:
       name: cluster-bootstrap
   name: cluster-bootstrap
+  namespace: shipyard
   replacement: true
 spec:
   chart_groups:

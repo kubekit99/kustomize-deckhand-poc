@@ -8,13 +8,13 @@ metadata:
     abstract: false
     layer: global
   name: ucp-mariadb
+  namespace: ucp
 spec:
   chart_name: ucp-mariadb
   dependencies:
   - mariadb-htk
   install:
     no_hooks: false
-  namespace: ucp
   release: ucp-mariadb
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.mariadb)
   upgrade:
@@ -59,10 +59,10 @@ metadata:
     abstract: false
     layer: global
   name: mariadb-htk
+  namespace: pegleg
 spec:
   chart_name: mariadb-htk
   dependencies: []
-  namespace: mariadb-htk
   release: mariadb-htk
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.mariadb-htk)
   values: {}

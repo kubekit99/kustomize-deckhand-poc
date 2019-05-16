@@ -2,20 +2,21 @@
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  name: openstack-keystone
   layeringDefinition:
     abstract: false
+    actions:
+    - method: merge
+      path: .sequenced
+    - method: replace
+      path: .chart_group
     layer: site
     parentSelector:
-      name: openstack-keystone-chart-group
       component: keystone
-    actions:
-      - method: merge
-        path: .sequenced
-      - method: replace
-        path: .chart_group
+      name: openstack-keystone-chart-group
+  name: openstack-keystone
+  namespace: shipyard
 spec:
-  sequenced: true
   chart_group:
-    - keystone-rabbitmq
-    - keystone
+  - keystone-rabbitmq
+  - keystone
+  sequenced: true

@@ -8,13 +8,13 @@ metadata:
     abstract: true
     layer: global
   name: ucp-maas
+  namespace: ucp
 spec:
   chart_name: maas
   dependencies:
   - maas-htk
   install:
     no_hooks: false
-  namespace: ucp
   release: maas
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.maas)
   upgrade:
@@ -99,10 +99,10 @@ metadata:
     abstract: false
     layer: global
   name: maas-htk
+  namespace: pegleg
 spec:
   chart_name: maas-htk
   dependencies: []
-  namespace: maas-htk
   release: maas-htk
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.maas-htk)
   values: {}

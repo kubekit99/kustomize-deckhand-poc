@@ -6,7 +6,7 @@ metadata:
     abstract: false
     layer: global
   name: apparmor-profiles
-  schema: metadata/Document/v1
+  namespace: drydock
 spec:
   assets:
   - data: $(PeglegAppArmorProfile.airship-default.spec.content)

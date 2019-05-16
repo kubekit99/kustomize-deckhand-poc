@@ -8,11 +8,11 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-controller-manager
+  namespace: kube-system
 spec:
   chart_name: controller-manager
   dependencies:
   - kubernetes-controller-manager-htk
-  namespace: kube-system
   protected:
     continue_processing: true
   release: kubernetes-controller-manager
@@ -57,10 +57,10 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-controller-manager-htk
+  namespace: pegleg
 spec:
   chart_name: kubernetes-controller-manager-htk
   dependencies: []
-  namespace: kubernetes-controller-manager-htk
   release: kubernetes-controller-manager-htk
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.controller-manager-htk)
   values: {}

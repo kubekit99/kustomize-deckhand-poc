@@ -6,13 +6,13 @@ metadata:
     abstract: false
     layer: global
   name: nagios
+  namespace: osh-infra
 spec:
   chart_name: nagios
   dependencies:
   - osh-infra-helm-toolkit
   install:
     no_hooks: false
-  namespace: osh-infra
   release: nagios
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.nagios)
   upgrade:

@@ -6,7 +6,7 @@ metadata:
     abstract: false
     layer: site
   name: oob
-  schema: metadata/Document/v1
+  namespace: drydock
 spec:
   allowed_networks:
   - oob
@@ -27,7 +27,7 @@ metadata:
     abstract: false
     layer: site
   name: oob
-  schema: metadata/Document/v1
+  namespace: drydock
 spec:
   cidr: 10.23.104.0/24
   ranges:
@@ -46,7 +46,7 @@ metadata:
     abstract: false
     layer: site
   name: pxe
-  schema: metadata/Document/v1
+  namespace: drydock
 spec:
   allowed_networks:
   - pxe
@@ -65,7 +65,7 @@ metadata:
     abstract: false
     layer: site
   name: pxe
-  schema: metadata/Document/v1
+  namespace: drydock
 spec:
   cidr: 10.23.20.0/24
   dns:
@@ -93,7 +93,7 @@ metadata:
     abstract: false
     layer: site
   name: data
-  schema: metadata/Document/v1
+  namespace: drydock
 spec:
   allowed_networks:
   - oam
@@ -119,7 +119,7 @@ metadata:
     abstract: false
     layer: site
   name: oam
-  schema: metadata/Document/v1
+  namespace: drydock
 spec:
   cidr: 10.23.21.0/24
   dns:
@@ -146,7 +146,7 @@ metadata:
     abstract: false
     layer: site
   name: storage
-  schema: metadata/Document/v1
+  namespace: drydock
 spec:
   cidr: 10.23.23.0/24
   mtu: 9100
@@ -166,7 +166,7 @@ metadata:
     abstract: false
     layer: site
   name: overlay
-  schema: metadata/Document/v1
+  namespace: drydock
 spec:
   cidr: 10.23.24.0/24
   mtu: 9100
@@ -186,7 +186,7 @@ metadata:
     abstract: false
     layer: site
   name: calico
-  schema: metadata/Document/v1
+  namespace: drydock
 spec:
   cidr: 10.23.22.0/24
   mtu: 9100

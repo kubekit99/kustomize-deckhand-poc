@@ -1,3 +1,4 @@
+---
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
@@ -10,6 +11,7 @@ metadata:
     parentSelector:
       name: kubernetes-etcd
   name: kubernetes-etcd
+  namespace: boggus
 spec:
   values:
     nodes:

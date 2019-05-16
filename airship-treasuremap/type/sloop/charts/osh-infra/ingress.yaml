@@ -11,6 +11,7 @@ metadata:
     parentSelector:
       name: osh-infra-ingress-controller
   name: osh-infra-ingress-controller
+  namespace: boggus
   replacement: true
 spec:
   values:

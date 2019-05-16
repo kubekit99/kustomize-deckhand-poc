@@ -2,26 +2,26 @@
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  name: nova-rabbitmq
   layeringDefinition:
     abstract: false
+    actions:
+    - method: delete
+      path: .values.labels.prometheus_rabbitmq_exporter
+    - method: merge
+      path: .
     layer: site
     parentSelector:
-      name: nova-rabbitmq
       component: nova
-    actions:
-      - method: delete
-        path: .values.labels.prometheus_rabbitmq_exporter
-      - method: merge
-        path: .
+      name: nova-rabbitmq
+  name: nova-rabbitmq
+  namespace: boggus
 spec:
   test:
     enabled: false
   values:
-    pod:
-      replicas:
-        server: 1
     monitoring:
       prometheus:
         enabled: false
-...
+    pod:
+      replicas:
+        server: 1

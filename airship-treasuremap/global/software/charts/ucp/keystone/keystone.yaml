@@ -9,13 +9,13 @@ metadata:
     abstract: false
     layer: global
   name: ucp-keystone
+  namespace: ucp
 spec:
   chart_name: ucp-keystone
   dependencies:
   - ucp-keystone-htk
   install:
     no_hooks: false
-  namespace: ucp
   release: ucp-keystone
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.keystone)
   upgrade:
@@ -146,10 +146,10 @@ metadata:
     abstract: false
     layer: global
   name: ucp-keystone-htk
+  namespace: pegleg
 spec:
   chart_name: ucp-keystone-htk
   dependencies: []
-  namespace: ucp-keystone-htk
   release: ucp-keystone-htk
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.keystone-htk)
   values: {}

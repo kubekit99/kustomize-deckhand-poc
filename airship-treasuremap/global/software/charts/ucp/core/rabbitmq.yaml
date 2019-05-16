@@ -8,13 +8,13 @@ metadata:
     abstract: false
     layer: global
   name: ucp-rabbitmq
+  namespace: ucp
 spec:
   chart_name: ucp-rabbitmq
   dependencies:
   - ucp-rabbitmq-htk
   install:
     no_hooks: false
-  namespace: ucp
   release: ucp-rabbitmq
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.rabbitmq)
   upgrade:
@@ -56,10 +56,10 @@ metadata:
     abstract: false
     layer: global
   name: ucp-rabbitmq-htk
+  namespace: pegleg
 spec:
   chart_name: ucp-rabbitmq-htk
   dependencies: []
-  namespace: ucp-rabbitmq-htk
   release: ucp-rabbitmq-htk
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.rabbitmq-htk)
   values: {}

@@ -9,13 +9,13 @@ metadata:
     abstract: false
     layer: global
   name: horizon
+  namespace: openstack
 spec:
   chart_name: horizon
   dependencies:
   - osh-helm-toolkit
   install:
     no_hooks: false
-  namespace: openstack
   release: horizon
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.horizon)
   upgrade:

@@ -9,6 +9,7 @@ metadata:
     abstract: false
     layer: global
   name: openstack-mariadb
+  namespace: shipyard
 spec:
   chart_group:
   - openstack-mariadb

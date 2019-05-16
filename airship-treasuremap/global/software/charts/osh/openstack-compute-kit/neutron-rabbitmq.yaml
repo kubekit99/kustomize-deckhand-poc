@@ -9,13 +9,13 @@ metadata:
     abstract: false
     layer: global
   name: neutron-rabbitmq
+  namespace: openstack
 spec:
   chart_name: neutron-rabbitmq
   dependencies:
   - osh-helm-toolkit
   install:
     no_hooks: false
-  namespace: openstack
   release: neutron-rabbitmq
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.rabbitmq)
   upgrade:

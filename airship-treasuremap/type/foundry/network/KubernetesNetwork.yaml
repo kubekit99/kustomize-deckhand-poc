@@ -1,3 +1,4 @@
+---
 apiVersion: promenade.airshipit.org/v1alpha1
 kind: PromenadeKubernetesNetwork
 metadata:
@@ -5,6 +6,7 @@ metadata:
     abstract: false
     layer: type
   name: kubernetes-network
+  namespace: drydock
 spec:
   dns:
     bootstrap_validation_checks:

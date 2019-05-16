@@ -8,11 +8,11 @@ metadata:
     abstract: true
     layer: global
   name: kubernetes-etcd
+  namespace: kube-system
 spec:
   chart_name: etcd
   dependencies:
   - kubernetes-etcd-htk
-  namespace: kube-system
   protected:
     continue_processing: true
   release: kubernetes-etcd
@@ -70,10 +70,10 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-etcd-htk
+  namespace: pegleg
 spec:
   chart_name: kubernetes-etcd-htk
   dependencies: []
-  namespace: kubernetes-etcd-htk
   release: kubernetes-etcd-htk
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.etcd-htk)
   values: {}

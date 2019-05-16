@@ -6,13 +6,13 @@ metadata:
     abstract: false
     layer: global
   name: tenant-ceph-config
+  namespace: openstack
 spec:
   chart_name: tenant-ceph-config
   dependencies:
   - tenant-ceph-htk
   install:
     no_hooks: false
-  namespace: openstack
   release: tenant-ceph-config
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.tenant-ceph-provisioners)
   upgrade:

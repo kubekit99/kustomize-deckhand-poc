@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "---\n" > toto/sepfile
+echo "---" > toto/sepfile
 rm -f globalfiles
 for i in baremetal deployment profiles scripts secrets software
 do

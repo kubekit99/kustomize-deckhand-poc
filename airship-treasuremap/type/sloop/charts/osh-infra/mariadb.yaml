@@ -11,6 +11,7 @@ metadata:
     parentSelector:
       name: osh-infra-mariadb
   name: osh-infra-mariadb
+  namespace: boggus
   replacement: true
 spec:
   values:

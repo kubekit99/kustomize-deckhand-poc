@@ -8,11 +8,11 @@ metadata:
     abstract: true
     layer: global
   name: kubernetes-calico-etcd
+  namespace: kube-system
 spec:
   chart_name: etcd
   dependencies:
   - kubernetes-calico-etcd-htk
-  namespace: kube-system
   protected:
     continue_processing: true
   release: kubernetes-calico-etcd
@@ -74,10 +74,10 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-calico-etcd-htk
+  namespace: pegleg
 spec:
   chart_name: kubernetes-calico-etcd-htk
   dependencies: []
-  namespace: kubernetes-calico-etcd-htk
   release: kubernetes-calico-etcd-htk
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.calico.etcd-htk)
   values: {}

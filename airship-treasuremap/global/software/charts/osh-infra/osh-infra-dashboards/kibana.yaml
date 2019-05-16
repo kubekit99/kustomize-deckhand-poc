@@ -6,13 +6,13 @@ metadata:
     abstract: false
     layer: global
   name: kibana
+  namespace: osh-infra
 spec:
   chart_name: kibana
   dependencies:
   - osh-infra-helm-toolkit
   install:
     no_hooks: false
-  namespace: osh-infra
   release: kibana
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.kibana)
   upgrade:

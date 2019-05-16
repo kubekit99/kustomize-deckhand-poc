@@ -11,4 +11,5 @@ metadata:
     parentSelector:
       ingress: kube-system
   name: ingress-kube-system
+  namespace: boggus
 spec: {}

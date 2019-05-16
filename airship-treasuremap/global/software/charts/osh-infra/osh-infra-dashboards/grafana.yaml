@@ -8,13 +8,13 @@ metadata:
     abstract: false
     layer: global
   name: grafana
+  namespace: osh-infra
 spec:
   chart_name: grafana
   dependencies:
   - osh-infra-helm-toolkit
   install:
     no_hooks: false
-  namespace: osh-infra
   release: grafana
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.grafana)
   upgrade:

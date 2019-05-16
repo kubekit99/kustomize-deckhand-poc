@@ -1,0 +1,428 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+
+resources:
+- ./software/charts/kubernetes/container-networking/etcd.yaml
+- ./software/charts/kubernetes/etcd/etcd.yaml
+- ./software/charts/kubernetes/ingress/ingress.yaml
+- ./software/charts/osh-infra/osh-infra-logging/elasticsearch.yaml
+- ./software/charts/osh-infra/osh-infra-logging/fluent-logging.yaml
+- ./software/charts/osh/openstack-compute-kit/chart-group.yaml
+- ./software/charts/osh/openstack-compute-kit/libvirt.yaml
+- ./software/charts/osh/openstack-compute-kit/neutron-rabbitmq.yaml
+- ./software/charts/osh/openstack-compute-kit/neutron.yaml
+- ./software/charts/osh/openstack-compute-kit/nova-rabbitmq.yaml
+- ./software/charts/osh/openstack-compute-kit/nova.yaml
+- ./software/charts/osh/openstack-glance/chart-group.yaml
+- ./software/charts/osh/openstack-glance/glance.yaml
+- ./software/charts/osh/openstack-glance/rabbitmq.yaml
+- ./software/charts/osh/openstack-heat/chart-group.yaml
+- ./software/charts/osh/openstack-heat/rabbitmq.yaml
+- ./software/charts/osh/openstack-ingress-controller/chart-group.yaml
+- ./software/charts/osh/openstack-ingress-controller/ingress.yaml
+- ./software/charts/osh/openstack-keystone/chart-group.yaml
+- ./software/charts/osh/openstack-keystone/keystone.yaml
+- ./software/charts/osh/openstack-keystone/rabbitmq.yaml
+- ./software/charts/osh/openstack-mariadb/chart-group.yaml
+- ./software/charts/osh/openstack-mariadb/mariadb.yaml
+- ./software/charts/ucp/ceph/ceph-client-update.yaml
+- ./software/charts/ucp/ceph/ceph-client.yaml
+- ./software/charts/ucp/ceph/ceph-osd.yaml
+- ./software/charts/ucp/divingbell/divingbell.yaml
+- ./software/charts/ucp/drydock/maas.yaml
+- ./software/charts/ucp/promenade/promenade.yaml
+- ./software/manifests/full-site.yaml
+- ./profiles/genesis.yaml
+- ./baremetal/bootactions/promjoin.yaml
+- ./baremetal/nodes.yaml
+- ./deployment/deployment-configuration.yaml
+- ./networks/common-addresses.yaml
+- ./networks/physical/networks.yaml
+- ./profiles/hardware/dell_r720.yaml
+- ./profiles/host/cp_r720.yaml
+- ./profiles/host/dp_r720.yaml
+- ./profiles/region.yaml
+- ./secrets/certificates/certificates.yaml
+- ./secrets/certificates/ingress.yaml
+- ./secrets/passphrases/ceph_fsid.yaml
+- ./secrets/passphrases/ceph_swift_keystone_password.yaml
+- ./secrets/passphrases/ipmi_admin_password.yaml
+- ./secrets/passphrases/maas-region-key.yaml
+- ./secrets/passphrases/osh_barbican_oslo_db_password.yaml
+- ./secrets/passphrases/osh_barbican_oslo_messaging_admin_password.yaml
+- ./secrets/passphrases/osh_barbican_oslo_messaging_password.yaml
+- ./secrets/passphrases/osh_barbican_password.yaml
+- ./secrets/passphrases/osh_barbican_rabbitmq_erlang_cookie.yaml
+- ./secrets/passphrases/osh_cinder_oslo_db_password.yaml
+- ./secrets/passphrases/osh_cinder_oslo_messaging_admin_password.yaml
+- ./secrets/passphrases/osh_cinder_oslo_messaging_password.yaml
+- ./secrets/passphrases/osh_cinder_password.yaml
+- ./secrets/passphrases/osh_cinder_rabbitmq_erlang_cookie.yaml
+- ./secrets/passphrases/osh_glance_oslo_db_password.yaml
+- ./secrets/passphrases/osh_glance_oslo_messaging_admin_password.yaml
+- ./secrets/passphrases/osh_glance_oslo_messaging_password.yaml
+- ./secrets/passphrases/osh_glance_password.yaml
+- ./secrets/passphrases/osh_glance_rabbitmq_erlang_cookie.yaml
+- ./secrets/passphrases/osh_heat_oslo_db_password.yaml
+- ./secrets/passphrases/osh_heat_oslo_messaging_admin_password.yaml
+- ./secrets/passphrases/osh_heat_oslo_messaging_password.yaml
+- ./secrets/passphrases/osh_heat_password.yaml
+- ./secrets/passphrases/osh_heat_rabbitmq_erlang_cookie.yaml
+- ./secrets/passphrases/osh_heat_stack_user_password.yaml
+- ./secrets/passphrases/osh_heat_trustee_password.yaml
+- ./secrets/passphrases/osh_horizon_oslo_db_password.yaml
+- ./secrets/passphrases/osh_infra_elasticsearch_admin_password.yaml
+- ./secrets/passphrases/osh_infra_grafana_admin_password.yaml
+- ./secrets/passphrases/osh_infra_grafana_oslo_db_password.yaml
+- ./secrets/passphrases/osh_infra_grafana_oslo_db_session_password.yaml
+- ./secrets/passphrases/osh_infra_nagios_admin_password.yaml
+- ./secrets/passphrases/osh_infra_openstack_exporter_password.yaml
+- ./secrets/passphrases/osh_infra_oslo_db_admin_password.yaml
+- ./secrets/passphrases/osh_infra_oslo_db_exporter_password.yaml
+- ./secrets/passphrases/osh_infra_prometheus_admin_password.yaml
+- ./secrets/passphrases/osh_infra_rgw_s3_admin_access_key.yaml
+- ./secrets/passphrases/osh_infra_rgw_s3_admin_secret_key.yaml
+- ./secrets/passphrases/osh_infra_rgw_s3_elasticsearch_access_key.yaml
+- ./secrets/passphrases/osh_infra_rgw_s3_elasticsearch_secret_key.yaml
+- ./secrets/passphrases/osh_keystone_admin_password.yaml
+- ./secrets/passphrases/osh_keystone_ldap_password.yaml
+- ./secrets/passphrases/osh_keystone_oslo_db_password.yaml
+- ./secrets/passphrases/osh_keystone_oslo_messaging_admin_password.yaml
+- ./secrets/passphrases/osh_keystone_oslo_messaging_password.yaml
+- ./secrets/passphrases/osh_keystone_rabbitmq_erlang_cookie.yaml
+- ./secrets/passphrases/osh_neutron_oslo_db_password.yaml
+- ./secrets/passphrases/osh_neutron_oslo_messaging_admin_password.yaml
+- ./secrets/passphrases/osh_neutron_oslo_messaging_password.yaml
+- ./secrets/passphrases/osh_neutron_password.yaml
+- ./secrets/passphrases/osh_neutron_rabbitmq_erlang_cookie.yaml
+- ./secrets/passphrases/osh_nova_oslo_db_password.yaml
+- ./secrets/passphrases/osh_nova_oslo_messaging_admin_password.yaml
+- ./secrets/passphrases/osh_nova_oslo_messaging_password.yaml
+- ./secrets/passphrases/osh_nova_password.yaml
+- ./secrets/passphrases/osh_nova_rabbitmq_erlang_cookie.yaml
+- ./secrets/passphrases/osh_oslo_cache_secret_key.yaml
+- ./secrets/passphrases/osh_oslo_db_admin_password.yaml
+- ./secrets/passphrases/osh_oslo_db_exporter_password.yaml
+- ./secrets/passphrases/osh_placement_password.yaml
+- ./secrets/passphrases/tenant_ceph_fsid.yaml
+- ./secrets/passphrases/ubuntu_crypt_password.yaml
+- ./secrets/passphrases/ucp_airflow_oslo_messaging_password.yaml
+- ./secrets/passphrases/ucp_airflow_postgres_password.yaml
+- ./secrets/passphrases/ucp_armada_keystone_password.yaml
+- ./secrets/passphrases/ucp_barbican_keystone_password.yaml
+- ./secrets/passphrases/ucp_barbican_oslo_db_password.yaml
+- ./secrets/passphrases/ucp_deckhand_keystone_password.yaml
+- ./secrets/passphrases/ucp_deckhand_postgres_password.yaml
+- ./secrets/passphrases/ucp_drydock_keystone_password.yaml
+- ./secrets/passphrases/ucp_drydock_postgres_password.yaml
+- ./secrets/passphrases/ucp_keystone_admin_password.yaml
+- ./secrets/passphrases/ucp_keystone_oslo_db_password.yaml
+- ./secrets/passphrases/ucp_maas_admin_password.yaml
+- ./secrets/passphrases/ucp_maas_postgres_password.yaml
+- ./secrets/passphrases/ucp_openstack_exporter_keystone_password.yaml
+- ./secrets/passphrases/ucp_oslo_db_admin_password.yaml
+- ./secrets/passphrases/ucp_oslo_messaging_password.yaml
+- ./secrets/passphrases/ucp_postgres_admin_password.yaml
+- ./secrets/passphrases/ucp_promenade_keystone_password.yaml
+- ./secrets/passphrases/ucp_rabbitmq_erlang_cookie.yaml
+- ./secrets/passphrases/ucp_shipyard_keystone_password.yaml
+- ./secrets/passphrases/ucp_shipyard_postgres_password.yaml
+- ./site-definition.yaml
+- ./software/config/common-software-config.yaml
+- ./software/config/endpoints.yaml
+- ./software/config/service_accounts.yaml
+
+# vars:
+# - fieldref:
+#     fieldpath: spec.ldap.base_url
+#   name: PeglegCommonAddresses.common-addresses.spec.ldap.base_url
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec.dns.ingress_domain
+#   name: PeglegCommonAddresses.common-addresses.spec.dns.ingress_domain
+#   objref:
+#     apiVersion: pegleg.airshipit.org/v1alpha1
+#     kind: PeglegCommonAddresses
+#     name: common-addresses
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.kubernetes-etcd-genesis-peer.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: kubernetes-etcd-genesis-peer
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.kubernetes-etcd-genesis.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: kubernetes-etcd-genesis
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.kubernetes-etcd-genesis-peer.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: kubernetes-etcd-genesis-peer
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.kubernetes-etcd-genesis.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: kubernetes-etcd-genesis
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.ingress-crt.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: ingress-crt
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateAuthority.ingress-ca.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateAuthority
+#     name: ingress-ca
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.ingress-key.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: ingress-key
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPassphrase.ubuntu-crypt-password.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPassphrase
+#     name: ubuntu-crypt-password
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandPublicKey.airship-ssh-public-key.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandPublicKey
+#     name: airship-ssh-public-key
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.calico-etcd-cab23-r720-11-peer.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: calico-etcd-cab23-r720-11-peer
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.calico-etcd-cab23-r720-11-peer.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: calico-etcd-cab23-r720-11-peer
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.calico-etcd-cab23-r720-11.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: calico-etcd-cab23-r720-11
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.calico-etcd-cab23-r720-11.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: calico-etcd-cab23-r720-11
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.calico-etcd-cab23-r720-12-peer.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: calico-etcd-cab23-r720-12-peer
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.calico-etcd-cab23-r720-12-peer.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: calico-etcd-cab23-r720-12-peer
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.calico-etcd-cab23-r720-12.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: calico-etcd-cab23-r720-12
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.calico-etcd-cab23-r720-12.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: calico-etcd-cab23-r720-12
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.calico-etcd-cab23-r720-13-peer.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: calico-etcd-cab23-r720-13-peer
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.calico-etcd-cab23-r720-13-peer.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: calico-etcd-cab23-r720-13-peer
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.calico-etcd-cab23-r720-13.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: calico-etcd-cab23-r720-13
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.calico-etcd-cab23-r720-13.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: calico-etcd-cab23-r720-13
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.calico-etcd-cab23-r720-14-peer.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: calico-etcd-cab23-r720-14-peer
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.calico-etcd-cab23-r720-14-peer.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: calico-etcd-cab23-r720-14-peer
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.calico-etcd-cab23-r720-14.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: calico-etcd-cab23-r720-14
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.calico-etcd-cab23-r720-14.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: calico-etcd-cab23-r720-14
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.kubernetes-etcd-cab23-r720-12-peer.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: kubernetes-etcd-cab23-r720-12-peer
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.kubernetes-etcd-cab23-r720-12-peer.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: kubernetes-etcd-cab23-r720-12-peer
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.kubernetes-etcd-cab23-r720-12.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: kubernetes-etcd-cab23-r720-12
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.kubernetes-etcd-cab23-r720-12.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: kubernetes-etcd-cab23-r720-12
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.kubernetes-etcd-cab23-r720-13-peer.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: kubernetes-etcd-cab23-r720-13-peer
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.kubernetes-etcd-cab23-r720-13-peer.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: kubernetes-etcd-cab23-r720-13-peer
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.kubernetes-etcd-cab23-r720-13.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: kubernetes-etcd-cab23-r720-13
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.kubernetes-etcd-cab23-r720-13.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: kubernetes-etcd-cab23-r720-13
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.kubernetes-etcd-cab23-r720-14-peer.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: kubernetes-etcd-cab23-r720-14-peer
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.kubernetes-etcd-cab23-r720-14-peer.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: kubernetes-etcd-cab23-r720-14-peer
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificate.kubernetes-etcd-cab23-r720-14.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificate
+#     name: kubernetes-etcd-cab23-r720-14
+# - fieldref:
+#     fieldpath: spec
+#   name: DeckhandCertificateKey.kubernetes-etcd-cab23-r720-14.spec
+#   objref:
+#     apiVersion: deckhand.airshipit.org/v1alpha1
+#     kind: DeckhandCertificateKey
+#     name: kubernetes-etcd-cab23-r720-14
+# 
+# 
+# inlines:
+# # - fieldref:
+# #     fieldpath: spec.masters._0_.hostname
+# #   name: PeglegCommonAddresses.common-addresses.spec.masters._0_.hostname
+# #   objref:
+# #     apiVersion: pegleg.airshipit.org/v1alpha1
+# #     kind: PeglegCommonAddresses
+# #     name: common-addresses
+# # - fieldref:
+# #     fieldpath: spec.masters._1_.hostname
+# #   name: PeglegCommonAddresses.common-addresses.spec.masters._1_.hostname
+# #   objref:
+# #     apiVersion: pegleg.airshipit.org/v1alpha1
+# #     kind: PeglegCommonAddresses
+# #     name: common-addresses

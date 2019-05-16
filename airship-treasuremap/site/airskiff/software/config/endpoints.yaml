@@ -1,3 +1,4 @@
+---
 apiVersion: pegleg.airshipit.org/v1alpha1
 kind: PeglegEndpointCatalogue
 metadata:
@@ -5,11 +6,12 @@ metadata:
     abstract: false
     layer: site
   name: ucp-endpoints
+  namespace: pegleg
 spec:
   ceph:
     ceph_mgr:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: ceph-mgr
       namespace: ceph
@@ -20,7 +22,7 @@ spec:
         default: http
     ceph_mon:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: ceph-mon
         discovery: ceph-mon-discovery
@@ -30,7 +32,7 @@ spec:
           default: 6789
     ceph_object_store:
       host_fqdn_override:
-        default: null
+        default: ""
         public:
           host: object-store.$(PeglegCommonAddresses.common-addresses.spec.dns.ingress_domain)
           tls:
@@ -53,7 +55,7 @@ spec:
         public: https
     object_store:
       host_fqdn_override:
-        default: null
+        default: ""
         public:
           host: object-store.$(PeglegCommonAddresses.common-addresses.spec.dns.ingress_domain)
           tls:
@@ -76,7 +78,7 @@ spec:
         public: https
     tenant_ceph_mgr:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: ceph-mgr
       namespace: tenant-ceph
@@ -89,7 +91,7 @@ spec:
         default: http
     tenant_ceph_mon:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: ceph-mon
         discovery: ceph-mon-discovery
@@ -100,7 +102,7 @@ spec:
   ucp:
     airflow_oslo_messaging:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: rabbitmq
       namespace: null
@@ -113,7 +115,7 @@ spec:
       scheme: amqp
     armada:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: armada-api
         public: armada
@@ -127,7 +129,7 @@ spec:
         default: http
     deckhand:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: deckhand-int
         public: deckhand-api
@@ -143,7 +145,7 @@ spec:
       host_fqdn_override:
         admin:
           host: iam.$(PeglegCommonAddresses.common-addresses.spec.dns.ingress_domain)
-        default: null
+        default: ""
         public:
           host: iam.$(PeglegCommonAddresses.common-addresses.spec.dns.ingress_domain)
           tls:
@@ -166,13 +168,13 @@ spec:
         internal: http
     key_manager:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: barbican-api
         public: barbican
       name: barbican
       path:
-        default: null
+        default: ""
       port:
         api:
           default: 9311
@@ -181,7 +183,7 @@ spec:
         default: http
     kubernetesprovisioner:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: promenade-api
       name: promenade
@@ -194,7 +196,7 @@ spec:
         default: http
     maas_region_ui:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: maas-region-ui
         public: maas
@@ -209,7 +211,7 @@ spec:
         default: http
     oslo_cache:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: memcached
       port:
@@ -217,7 +219,7 @@ spec:
           default: 11211
     oslo_db:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: mariadb
         discovery: mariadb-discovery
@@ -230,7 +232,7 @@ spec:
       scheme: mysql+pymysql
     oslo_messaging:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: rabbitmq
       namespace: null
@@ -241,7 +243,7 @@ spec:
       scheme: rabbit
     physicalprovisioner:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: drydock-api
       name: drydock
@@ -255,7 +257,7 @@ spec:
         default: http
     postgresql:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: postgresql
       name: postgresql
@@ -266,7 +268,7 @@ spec:
       scheme: postgresql+psycopg2
     postgresql_airflow_celery:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: postgresql
       name: postgresql_airflow_celery_db
@@ -277,12 +279,12 @@ spec:
       scheme: db+postgresql
     prometheus_openstack_exporter:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: openstack-metrics
       namespace: ucp
       path:
-        default: null
+        default: ""
       port:
         exporter:
           default: 9103
@@ -290,7 +292,7 @@ spec:
         default: http
     shipyard:
       host_fqdn_override:
-        default: null
+        default: ""
         public:
           host: shipyard.$(PeglegCommonAddresses.common-addresses.spec.dns.ingress_domain)
           tls:
@@ -318,11 +320,12 @@ metadata:
     abstract: false
     layer: site
   name: osh-endpoints
+  namespace: pegleg
 spec:
   osh:
     ceph_object_store:
       host_fqdn_override:
-        default: null
+        default: ""
         public:
           host: object-store.$(PeglegCommonAddresses.common-addresses.spec.dns.ingress_domain)
           tls:
@@ -345,7 +348,7 @@ spec:
         public: https
     cinder_oslo_messaging:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: cinder-rabbitmq
       namespace: openstack
@@ -358,7 +361,7 @@ spec:
       scheme: rabbit
     cinder_rabbitmq_exporter:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: cinder-rabbitmq-exporter
       namespace: openstack
@@ -371,7 +374,7 @@ spec:
         default: http
     cloudformation:
       host_fqdn_override:
-        default: null
+        default: ""
         public:
           tls:
             ca: $(DeckhandCertificateAuthority.ingress-ca.spec)
@@ -382,7 +385,7 @@ spec:
         public: cloudformation
       name: heat-cfn
       path:
-        default: null
+        default: ""
       port:
         api:
           default: 8000
@@ -392,13 +395,13 @@ spec:
         public: https
     cloudwatch:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: heat-cloudwatch
         public: cloudwatch
       name: heat-cloudwatch
       path:
-        default: null
+        default: ""
       port:
         api:
           default: 8003
@@ -408,7 +411,7 @@ spec:
       type: null
     compute:
       host_fqdn_override:
-        default: null
+        default: ""
         public:
           tls:
             ca: $(DeckhandCertificateAuthority.ingress-ca.spec)
@@ -430,7 +433,7 @@ spec:
         default: http
     compute_metadata:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: nova-metadata
         public: metadata
@@ -445,7 +448,7 @@ spec:
         default: http
     compute_novnc_proxy:
       host_fqdn_override:
-        default: null
+        default: ""
         public:
           tls:
             ca: $(DeckhandCertificateAuthority.ingress-ca.spec)
@@ -465,7 +468,7 @@ spec:
         default: http
     compute_spice_proxy:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: nova-spiceproxy
         public: placement
@@ -479,7 +482,7 @@ spec:
         default: http
     dashboard:
       host_fqdn_override:
-        default: null
+        default: ""
         public:
           host: dashboard.$(PeglegCommonAddresses.common-addresses.spec.dns.ingress_domain)
           tls:
@@ -491,7 +494,7 @@ spec:
         public: horizon
       name: horizon
       path:
-        default: null
+        default: ""
       port:
         web:
           default: 80
@@ -501,7 +504,7 @@ spec:
         public: https
     glance_oslo_messaging:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: glance-rabbitmq
       namespace: openstack
@@ -514,7 +517,7 @@ spec:
       scheme: rabbit
     glance_rabbitmq_exporter:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: glance-rabbitmq-exporter
       namespace: openstack
@@ -527,7 +530,7 @@ spec:
         default: http
     heat_oslo_messaging:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: heat-rabbitmq
       namespace: openstack
@@ -540,7 +543,7 @@ spec:
       scheme: rabbit
     heat_rabbitmq_exporter:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: heat-rabbitmq-exporter
       namespace: openstack
@@ -553,7 +556,7 @@ spec:
         default: http
     identity:
       host_fqdn_override:
-        default: null
+        default: ""
         public:
           tls:
             ca: $(DeckhandCertificateAuthority.ingress-ca.spec)
@@ -574,7 +577,7 @@ spec:
         default: http
     image:
       host_fqdn_override:
-        default: null
+        default: ""
         public:
           tls:
             ca: $(DeckhandCertificateAuthority.ingress-ca.spec)
@@ -585,7 +588,7 @@ spec:
         public: glance
       name: glance
       path:
-        default: null
+        default: ""
       port:
         api:
           default: 9292
@@ -594,13 +597,13 @@ spec:
         default: http
     image_registry:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: glance-registry
         public: glance-reg
       name: glance-registry
       path:
-        default: null
+        default: ""
       port:
         api:
           default: 9191
@@ -609,7 +612,7 @@ spec:
         default: http
     keystone_oslo_messaging:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: keystone-rabbitmq
       namespace: openstack
@@ -622,7 +625,7 @@ spec:
       scheme: rabbit
     keystone_rabbitmq_exporter:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: keystone-rabbitmq-exporter
       namespace: openstack
@@ -635,7 +638,7 @@ spec:
         default: http
     network:
       host_fqdn_override:
-        default: null
+        default: ""
         public:
           tls:
             ca: $(DeckhandCertificateAuthority.ingress-ca.spec)
@@ -646,7 +649,7 @@ spec:
         public: neutron
       name: neutron
       path:
-        default: null
+        default: ""
       port:
         api:
           default: 9696
@@ -655,7 +658,7 @@ spec:
         default: http
     neutron_oslo_messaging:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: neutron-rabbitmq
       namespace: openstack
@@ -668,7 +671,7 @@ spec:
       scheme: rabbit
     neutron_rabbitmq_exporter:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: neutron-rabbitmq-exporter
       namespace: openstack
@@ -681,7 +684,7 @@ spec:
         default: http
     nova_oslo_messaging:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: nova-rabbitmq
       namespace: openstack
@@ -694,7 +697,7 @@ spec:
       scheme: rabbit
     nova_rabbitmq_exporter:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: nova-rabbitmq-exporter
       namespace: openstack
@@ -707,7 +710,7 @@ spec:
         default: http
     object_store:
       host_fqdn_override:
-        default: null
+        default: ""
         public:
           host: object-store.$(PeglegCommonAddresses.common-addresses.spec.dns.ingress_domain)
           tls:
@@ -730,7 +733,7 @@ spec:
         public: https
     orchestration:
       host_fqdn_override:
-        default: null
+        default: ""
         public:
           tls:
             ca: $(DeckhandCertificateAuthority.ingress-ca.spec)
@@ -750,7 +753,7 @@ spec:
         default: http
     oslo_cache:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: memcached
       namespace: openstack
@@ -759,7 +762,7 @@ spec:
           default: 11211
     oslo_db:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: mariadb
         discovery: mariadb-discovery
@@ -772,7 +775,7 @@ spec:
       scheme: mysql+pymysql
     placement:
       host_fqdn_override:
-        default: null
+        default: ""
         public:
           tls:
             ca: $(DeckhandCertificateAuthority.ingress-ca.spec)
@@ -792,7 +795,7 @@ spec:
         default: http
     prometheus_mysql_exporter:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: mysql-exporter
       namespace: openstack
@@ -805,7 +808,7 @@ spec:
         default: http
     volume:
       host_fqdn_override:
-        default: null
+        default: ""
         public:
           host: volume.$(PeglegCommonAddresses.common-addresses.spec.dns.ingress_domain)
           tls:
@@ -827,7 +830,7 @@ spec:
         public: https
     volumev2:
       host_fqdn_override:
-        default: null
+        default: ""
         public:
           host: volume.$(PeglegCommonAddresses.common-addresses.spec.dns.ingress_domain)
           tls:
@@ -849,7 +852,7 @@ spec:
         public: https
     volumev3:
       host_fqdn_override:
-        default: null
+        default: ""
         public:
           host: volume.$(PeglegCommonAddresses.common-addresses.spec.dns.ingress_domain)
           tls:
@@ -877,11 +880,12 @@ metadata:
     abstract: false
     layer: site
   name: osh-infra-endpoints
+  namespace: pegleg
 spec:
   osh_infra:
     alerts:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: alerts-engine
         discovery: alertmanager-discovery
@@ -889,7 +893,7 @@ spec:
       name: alertmanager
       namespace: osh-infra
       path:
-        default: null
+        default: ""
       port:
         api:
           default: 9093
@@ -900,14 +904,14 @@ spec:
         default: http
     ceph_object_store:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: ceph-rgw
         public: radosgw
       name: radosgw
       namespace: osh-infra
       path:
-        default: null
+        default: ""
       port:
         api:
           default: 8088
@@ -916,7 +920,7 @@ spec:
         default: http
     elasticsearch:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         data: elasticsearch-data
         default: elasticsearch-logging
@@ -925,7 +929,7 @@ spec:
       name: elasticsearch
       namespace: osh-infra
       path:
-        default: null
+        default: ""
       port:
         client:
           default: 9200
@@ -937,13 +941,13 @@ spec:
         default: http
     fluentd:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: fluentd-logging
       name: fluentd
       namespace: osh-infra
       path:
-        default: null
+        default: ""
       port:
         metrics:
           default: 24220
@@ -953,7 +957,7 @@ spec:
         default: http
     grafana:
       host_fqdn_override:
-        default: null
+        default: ""
         public:
           host: grafana.$(PeglegCommonAddresses.common-addresses.spec.dns.ingress_domain)
           tls:
@@ -966,7 +970,7 @@ spec:
       name: grafana
       namespace: osh-infra
       path:
-        default: null
+        default: ""
       port:
         grafana:
           default: 3000
@@ -976,7 +980,7 @@ spec:
         public: https
     kibana:
       host_fqdn_override:
-        default: null
+        default: ""
         public:
           host: kibana.$(PeglegCommonAddresses.common-addresses.spec.dns.ingress_domain)
           tls:
@@ -989,7 +993,7 @@ spec:
       name: kibana
       namespace: osh-infra
       path:
-        default: null
+        default: ""
       port:
         kibana:
           default: 5601
@@ -1009,12 +1013,12 @@ spec:
         default: http
     kube_state_metrics:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: kube-state-metrics
       namespace: kube-system
       path:
-        default: null
+        default: ""
       port:
         http:
           default: 8080
@@ -1022,7 +1026,7 @@ spec:
         default: http
     ldap:
       host_fqdn_override:
-        default: null
+        default: ""
         public:
           host: $(PeglegCommonAddresses.common-addresses.spec.ldap.base_url)
       hosts:
@@ -1036,14 +1040,14 @@ spec:
         default: ldap
     monitoring:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: prom-metrics
         public: prometheus
       name: prometheus
       namespace: osh-infra
       path:
-        default: null
+        default: ""
       port:
         api:
           default: 9090
@@ -1053,7 +1057,7 @@ spec:
         default: http
     nagios:
       host_fqdn_override:
-        default: null
+        default: ""
         public:
           host: nagios.$(PeglegCommonAddresses.common-addresses.spec.dns.ingress_domain)
           tls:
@@ -1066,7 +1070,7 @@ spec:
       name: nagios
       namespace: osh-infra
       path:
-        default: null
+        default: ""
       port:
         http:
           default: 80
@@ -1076,12 +1080,12 @@ spec:
         public: https
     node_metrics:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: node-exporter
       namespace: kube-system
       path:
-        default: null
+        default: ""
       port:
         metrics:
           default: 9100
@@ -1091,7 +1095,7 @@ spec:
         default: http
     oslo_db:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: mariadb
       namespace: osh-infra
@@ -1102,12 +1106,12 @@ spec:
       scheme: mysql+pymysql
     process_exporter_metrics:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: process-exporter
       namespace: kube-system
       path:
-        default: null
+        default: ""
       port:
         metrics:
           default: 9256
@@ -1115,7 +1119,7 @@ spec:
         default: http
     prometheus_elasticsearch_exporter:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: elasticsearch-exporter
       namespace: null
@@ -1128,7 +1132,7 @@ spec:
         default: http
     prometheus_fluentd_exporter:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: fluentd-exporter
       namespace: osh-infra
@@ -1141,7 +1145,7 @@ spec:
         default: http
     prometheus_mysql_exporter:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: mysql-exporter
       namespace: osh-infra
@@ -1154,12 +1158,12 @@ spec:
         default: http
     prometheus_openstack_exporter:
       host_fqdn_override:
-        default: null
+        default: ""
       hosts:
         default: openstack-metrics
       namespace: openstack
       path:
-        default: null
+        default: ""
       port:
         exporter:
           default: 9103

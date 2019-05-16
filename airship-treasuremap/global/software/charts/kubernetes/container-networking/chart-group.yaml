@@ -6,6 +6,7 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-container-networking
+  namespace: shipyard
 spec:
   chart_group:
   - kubernetes-calico-etcd

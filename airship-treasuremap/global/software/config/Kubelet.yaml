@@ -6,6 +6,7 @@ metadata:
     abstract: false
     layer: global
   name: kubelet
+  namespace: drydock
 spec:
   arguments:
   - --cni-bin-dir=/opt/cni/bin

@@ -8,6 +8,7 @@ metadata:
     abstract: false
     layer: global
   name: ucp-core
+  namespace: shipyard
 spec:
   chart_group:
   - ucp-ingress

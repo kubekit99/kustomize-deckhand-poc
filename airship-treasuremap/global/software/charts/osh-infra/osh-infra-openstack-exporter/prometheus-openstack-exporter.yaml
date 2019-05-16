@@ -6,13 +6,13 @@ metadata:
     abstract: false
     layer: global
   name: prometheus-openstack-exporter
+  namespace: openstack
 spec:
   chart_name: prometheus-openstack-exporter
   dependencies:
   - osh-infra-helm-toolkit
   install:
     no_hooks: false
-  namespace: openstack
   release: prometheus-openstack-exporter
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.prometheus_openstack_exporter)
   upgrade:

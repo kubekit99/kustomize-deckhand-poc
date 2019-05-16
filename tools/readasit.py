@@ -230,12 +230,31 @@ def move_namespace(filename):
 
         docs2 = list(docs)
         for doc in docs2:
+            name = doc["metadata"]["name"]
+            kind = doc["kind"]
             if ("namespace" in doc["spec"]):
                 if ("-htk" in doc["spec"]["namespace"]) or ("helm-toolkit" in doc["spec"]["namespace"]):
-                    doc["metadata"]["namespace"] = "deckhand"
+                    doc["metadata"]["namespace"] = "pegleg"
                 else:
                     doc["metadata"]["namespace"] = doc["spec"]["namespace"]
                 doc["spec"].pop("namespace")
+            if ("namespace" not in doc["metadata"]):
+                if ("Pegleg" in kind):
+                    doc["metadata"]["namespace"] = "pegleg"
+                elif ("Deckhand" in kind):
+                    doc["metadata"]["namespace"] = "pegleg"
+                elif ("Drydock" in kind):
+                    doc["metadata"]["namespace"] = "drydock"
+                elif ("Promenade" in kind):
+                    doc["metadata"]["namespace"] = "drydock"
+                elif ("Shipyard" in kind):
+                    doc["metadata"]["namespace"] = "shipyard"
+                elif ("ArmadaManifest" in kind):
+                    doc["metadata"]["namespace"] = "shipyard"
+                elif ("ArmadaChartGroup" in kind):
+                    doc["metadata"]["namespace"] = "shipyard"
+                else:
+                    doc["metadata"]["namespace"] = "boggus"
 
     return docs2
 

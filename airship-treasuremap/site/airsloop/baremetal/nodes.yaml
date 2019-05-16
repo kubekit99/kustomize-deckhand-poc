@@ -6,7 +6,7 @@ metadata:
     abstract: false
     layer: site
   name: airsloop-compute-1
-  schema: metadata/Document/v1
+  namespace: drydock
 spec:
   addressing:
   - address: 10.22.104.22

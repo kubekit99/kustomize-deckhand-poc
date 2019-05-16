@@ -1,0 +1,12 @@
+#!/bin/bash
+echo "---" > toto/sepfile
+rm -f site/airsloopfiles
+for i in baremetal  deployment  networks  pki  profiles  secrets  software
+do
+find site/airsloop/$i -name "*.yaml" -print >> site/airsloopfiles
+done
+for i in `cat site/airsloopfiles`
+do
+../tools/buildname.py -f $i -d toto
+done
+rm -f site/airsloopfiles

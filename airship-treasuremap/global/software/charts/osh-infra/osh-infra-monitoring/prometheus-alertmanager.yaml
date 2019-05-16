@@ -6,13 +6,13 @@ metadata:
     abstract: false
     layer: global
   name: prometheus-alertmanager
+  namespace: osh-infra
 spec:
   chart_name: prometheus-alertmanager
   dependencies:
   - osh-infra-helm-toolkit
   install:
     no_hooks: false
-  namespace: osh-infra
   release: prometheus-alertmanager
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.prometheus_alertmanager)
   upgrade:

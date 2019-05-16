@@ -9,13 +9,13 @@ metadata:
     abstract: false
     layer: global
   name: ucp-ceph-config
+  namespace: ucp
 spec:
   chart_name: ucp-ceph-config
   dependencies:
   - ceph-htk
   install:
     no_hooks: false
-  namespace: ucp
   release: ucp-ceph-config
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.ceph-provisioners)
   upgrade:

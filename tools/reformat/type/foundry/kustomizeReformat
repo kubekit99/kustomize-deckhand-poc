@@ -1,0 +1,12 @@
+#!/bin/bash
+echo "---" > toto/sepfile
+rm -f type/foundryfiles
+for i in network
+do
+find type/foundry/$i -name "*.yaml" -print >> type/foundryfiles
+done
+for i in `cat type/foundryfiles`
+do
+../tools/buildname.py -f $i -d toto
+done
+rm -f type/foundryfiles

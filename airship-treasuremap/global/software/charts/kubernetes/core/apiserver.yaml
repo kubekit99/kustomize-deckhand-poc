@@ -8,11 +8,11 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-apiserver
+  namespace: kube-system
 spec:
   chart_name: apiserver
   dependencies:
   - kubernetes-apiserver-htk
-  namespace: kube-system
   protected:
     continue_processing: true
   release: kubernetes-apiserver
@@ -68,10 +68,10 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-apiserver-htk
+  namespace: pegleg
 spec:
   chart_name: kubernetes-apiserver-htk
   dependencies: []
-  namespace: kubernetes-apiserver-htk
   release: kubernetes-apiserver-htk
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.apiserver-htk)
   values: {}

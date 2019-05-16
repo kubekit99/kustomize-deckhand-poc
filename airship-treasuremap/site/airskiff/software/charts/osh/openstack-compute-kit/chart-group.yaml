@@ -2,23 +2,24 @@
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  name: openstack-compute-kit
   layeringDefinition:
     abstract: false
+    actions:
+    - method: merge
+      path: .sequenced
+    - method: replace
+      path: .chart_group
     layer: site
     parentSelector:
       name: openstack-compute-kit-chart-group
-    actions:
-      - method: merge
-        path: .sequenced
-      - method: replace
-        path: .chart_group
+  name: openstack-compute-kit
+  namespace: shipyard
 spec:
-  sequenced: false
   chart_group:
-    - libvirt
-    - openvswitch
-    - neutron-rabbitmq
-    - nova-rabbitmq
-    - neutron
-    - nova
+  - libvirt
+  - openvswitch
+  - neutron-rabbitmq
+  - nova-rabbitmq
+  - neutron
+  - nova
+  sequenced: false

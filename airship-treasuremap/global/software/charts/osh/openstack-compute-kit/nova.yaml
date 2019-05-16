@@ -9,13 +9,13 @@ metadata:
     abstract: true
     layer: global
   name: nova
+  namespace: openstack
 spec:
   chart_name: nova
   dependencies:
   - osh-helm-toolkit
   install:
     no_hooks: false
-  namespace: openstack
   release: nova
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.nova)
   upgrade:

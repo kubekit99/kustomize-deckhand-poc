@@ -8,13 +8,13 @@ metadata:
     abstract: true
     layer: global
   name: ucp-divingbell
+  namespace: ucp
 spec:
   chart_name: ucp-divingbell
   dependencies:
   - ucp-divingbell-htk
   install:
     no_hooks: false
-  namespace: ucp
   release: ucp-divingbell
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.divingbell)
   upgrade:
@@ -57,10 +57,10 @@ metadata:
     abstract: false
     layer: global
   name: ucp-divingbell-htk
+  namespace: pegleg
 spec:
   chart_name: ucp-divingbell-htk
   dependencies: []
-  namespace: ucp-divingbell-htk
   release: ucp-divingbell-htk
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.divingbell-htk)
   values: {}

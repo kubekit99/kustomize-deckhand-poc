@@ -11,6 +11,7 @@ metadata:
     parentSelector:
       name: heat
   name: heat
+  namespace: boggus
   replacement: true
 spec:
   values:

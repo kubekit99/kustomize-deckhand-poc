@@ -6,11 +6,11 @@ metadata:
     abstract: false
     layer: global
   name: nfs-provisioner
+  namespace: nfs
 spec:
   chart_name: nfs-provisioner
   dependencies:
   - osh-infra-helm-toolkit
-  namespace: nfs
   release: nfs-provisioner
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.nfs_provisioner)
   values:

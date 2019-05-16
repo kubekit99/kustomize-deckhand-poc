@@ -1,0 +1,15 @@
+#!/bin/bash
+TOREFORMAT="site/airsloop"
+cp ../tools/reformat/${TOREFORMAT}/kustomizeReformat kustomizeReformat
+cp ../tools/reformat/${TOREFORMAT}/kustomization.yaml ${TOREFORMAT}/
+rm -fr toto
+mkdir toto
+kustomize build ${TOREFORMAT} -o toto
+./kustomizeReformat  > doIt
+chmod u+x doIt
+./doIt
+find . -name "*.new" -print > foo
+for i in `cat foo`; do NEWNAME=`echo $i | sed -e "s/.new//g"`; mv $i $NEWNAME; done
+rm -fr toto
+git checkout ${TOREFORMAT}/kustomization.yaml
+rm kustomizeReformat

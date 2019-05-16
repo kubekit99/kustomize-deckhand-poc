@@ -6,6 +6,7 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-proxy
+  namespace: shipyard
 spec:
   chart_group:
   - kubernetes-proxy

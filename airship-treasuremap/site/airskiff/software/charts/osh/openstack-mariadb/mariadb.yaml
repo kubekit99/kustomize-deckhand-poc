@@ -2,21 +2,21 @@
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  name: openstack-mariadb
   layeringDefinition:
     abstract: false
+    actions:
+    - method: merge
+      path: .values.pod
+    - method: delete
+      path: .values.labels.prometheus_mysql_exporter
     layer: site
     parentSelector:
-      name: openstack-mariadb
       component: mariadb
-    actions:
-      - method: merge
-        path: .values.pod
-      - method: delete
-        path: .values.labels.prometheus_mysql_exporter
+      name: openstack-mariadb
+  name: openstack-mariadb
+  namespace: boggus
 spec:
   values:
     pod:
       replicas:
         server: 1
-...

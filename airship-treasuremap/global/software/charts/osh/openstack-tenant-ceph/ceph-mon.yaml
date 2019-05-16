@@ -8,13 +8,13 @@ metadata:
     abstract: false
     layer: global
   name: tenant-ceph-mon
+  namespace: tenant-ceph
 spec:
   chart_name: tenant-ceph-mon
   dependencies:
   - tenant-ceph-htk
   install:
     no_hooks: false
-  namespace: tenant-ceph
   protected:
     continue_processing: true
   release: tenant-ceph-mon

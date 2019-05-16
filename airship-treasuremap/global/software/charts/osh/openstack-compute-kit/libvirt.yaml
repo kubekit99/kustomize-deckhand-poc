@@ -9,13 +9,13 @@ metadata:
     abstract: false
     layer: global
   name: libvirt
+  namespace: openstack
 spec:
   chart_name: libvirt
   dependencies:
   - osh-helm-toolkit
   install:
     no_hooks: false
-  namespace: openstack
   release: libvirt
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.libvirt)
   upgrade:

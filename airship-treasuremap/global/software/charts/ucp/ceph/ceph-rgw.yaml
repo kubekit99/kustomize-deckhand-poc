@@ -6,13 +6,13 @@ metadata:
     abstract: false
     layer: global
   name: ucp-ceph-rgw
+  namespace: ceph
 spec:
   chart_name: ucp-ceph-rgw
   dependencies:
   - ceph-htk
   install:
     no_hooks: false
-  namespace: ceph
   release: ucp-ceph-rgw
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.ceph-rgw)
   upgrade:

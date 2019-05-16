@@ -1,0 +1,12 @@
+#!/bin/bash
+echo "---" > toto/sepfile
+rm -f type/sloopfiles
+for i in charts config manifests  network
+do
+find type/sloop/$i -name "*.yaml" -print >> type/sloopfiles
+done
+for i in `cat type/sloopfiles`
+do
+../tools/buildname.py -f $i -d toto
+done
+rm -f type/sloopfiles

@@ -11,6 +11,7 @@ metadata:
     parentSelector:
       name: ucp-ceph-provisioners
   name: ucp-ceph-provisioners
+  namespace: boggus
   replacement: true
 spec:
   values:

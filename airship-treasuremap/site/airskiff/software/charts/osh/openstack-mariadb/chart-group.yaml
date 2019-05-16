@@ -2,17 +2,17 @@
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChartGroup
 metadata:
-  name: openstack-mariadb
   layeringDefinition:
     abstract: false
+    actions:
+    - method: replace
+      path: .chart_group
     layer: site
     parentSelector:
-      name: openstack-mariadb-chart-group
       component: mariadb
-    actions:
-      - method: replace
-        path: .chart_group
+      name: openstack-mariadb-chart-group
+  name: openstack-mariadb
+  namespace: shipyard
 spec:
   chart_group:
-    - openstack-mariadb
-...
+  - openstack-mariadb

@@ -11,6 +11,7 @@ metadata:
     parentSelector:
       name: prometheus
   name: prometheus
+  namespace: boggus
   replacement: true
 spec:
   values:

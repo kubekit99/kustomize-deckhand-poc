@@ -8,6 +8,7 @@ metadata:
     abstract: true
     layer: global
   name: genesis
+  namespace: drydock
 spec:
   apiserver:
     command_prefix:

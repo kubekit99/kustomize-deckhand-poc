@@ -9,6 +9,7 @@ metadata:
     abstract: false
     layer: global
   name: openstack-ingress-controller
+  namespace: shipyard
 spec:
   chart_group:
   - openstack-ingress-controller

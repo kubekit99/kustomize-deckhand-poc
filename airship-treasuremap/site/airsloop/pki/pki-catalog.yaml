@@ -6,6 +6,7 @@ metadata:
     abstract: false
     layer: site
   name: cluster-certificates
+  namespace: drydock
 spec:
   certificate_authorities:
     calico-etcd:

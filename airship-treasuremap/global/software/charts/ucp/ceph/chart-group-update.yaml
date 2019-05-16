@@ -6,6 +6,7 @@ metadata:
     abstract: false
     layer: global
   name: ucp-ceph-update
+  namespace: shipyard
 spec:
   chart_group:
   - ucp-ceph-ingress

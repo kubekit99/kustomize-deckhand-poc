@@ -6,13 +6,13 @@ metadata:
     abstract: false
     layer: global
   name: prometheus-node-exporter
+  namespace: kube-system
 spec:
   chart_name: prometheus-node-exporter
   dependencies:
   - osh-infra-helm-toolkit
   install:
     no_hooks: false
-  namespace: kube-system
   release: prometheus-node-exporter
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.prometheus_node_exporter)
   upgrade:

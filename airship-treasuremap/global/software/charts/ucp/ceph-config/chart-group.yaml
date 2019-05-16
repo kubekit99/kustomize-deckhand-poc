@@ -9,6 +9,7 @@ metadata:
     abstract: false
     layer: global
   name: ucp-ceph-config
+  namespace: shipyard
 spec:
   chart_group:
   - ucp-ceph-config

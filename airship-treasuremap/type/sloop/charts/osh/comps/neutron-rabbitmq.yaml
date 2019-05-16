@@ -11,6 +11,7 @@ metadata:
     parentSelector:
       name: neutron-rabbitmq
   name: neutron-rabbitmq
+  namespace: boggus
   replacement: true
 spec:
   values:

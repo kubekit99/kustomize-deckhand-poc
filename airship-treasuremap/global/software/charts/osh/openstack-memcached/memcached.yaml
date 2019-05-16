@@ -9,13 +9,13 @@ metadata:
     abstract: false
     layer: global
   name: openstack-memcached
+  namespace: openstack
 spec:
   chart_name: openstack-memcached
   dependencies:
   - osh-helm-toolkit
   install:
     no_hooks: false
-  namespace: openstack
   release: openstack-memcached
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.memcached)
   upgrade:

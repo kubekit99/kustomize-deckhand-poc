@@ -6,6 +6,7 @@ metadata:
     abstract: false
     layer: global
   name: host-system
+  namespace: drydock
 spec:
   files:
   - mode: 365

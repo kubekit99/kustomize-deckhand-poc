@@ -6,7 +6,7 @@ metadata:
     abstract: false
     layer: global
   name: seccomp-profiles
-  schema: metadata/Document/v1
+  namespace: drydock
 spec:
   assets:
   - data: $(PeglegSeccompProfile.seccomp-default.spec.content)

@@ -8,11 +8,11 @@ metadata:
     abstract: false
     layer: global
   name: coredns
+  namespace: kube-system
 spec:
   chart_name: coredns
   dependencies:
   - coredns-htk
-  namespace: kube-system
   release: coredns
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.coredns)
   upgrade:
@@ -61,10 +61,10 @@ metadata:
     abstract: false
     layer: global
   name: coredns-htk
+  namespace: pegleg
 spec:
   chart_name: coredns-htk
   dependencies: []
-  namespace: coredns-htk
   release: coredns-htk
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.coredns-htk)
   values: {}

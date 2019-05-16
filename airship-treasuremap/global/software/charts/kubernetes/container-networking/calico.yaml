@@ -8,11 +8,11 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-calico
+  namespace: kube-system
 spec:
   chart_name: calico
   dependencies:
   - calico-htk
-  namespace: kube-system
   protected:
     continue_processing: true
   release: kubernetes-calico
@@ -99,10 +99,10 @@ metadata:
     abstract: false
     layer: global
   name: calico-htk
+  namespace: pegleg
 spec:
   chart_name: calico-htk
   dependencies: []
-  namespace: calico-htk
   release: calico-htk
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.calico.calico-htk)
   values: {}

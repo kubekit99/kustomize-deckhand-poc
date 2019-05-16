@@ -11,4 +11,5 @@ metadata:
     parentSelector:
       name: neutron
   name: neutron
+  namespace: boggus
 spec: {}

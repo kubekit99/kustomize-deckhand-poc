@@ -9,6 +9,7 @@ metadata:
     abstract: false
     layer: global
   name: openstack-keystone
+  namespace: shipyard
 spec:
   chart_group:
   - keystone-rabbitmq

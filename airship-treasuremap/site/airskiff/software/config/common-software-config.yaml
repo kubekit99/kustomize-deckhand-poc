@@ -2,11 +2,11 @@
 apiVersion: pegleg.airshipit.org/v1alpha1
 kind: PeglegCommonSoftwareConfig
 metadata:
-  name: common-software-config
   layeringDefinition:
     abstract: false
     layer: site
+  name: common-software-config
+  namespace: pegleg
 spec:
   osh:
     region_name: RegionOne
-...

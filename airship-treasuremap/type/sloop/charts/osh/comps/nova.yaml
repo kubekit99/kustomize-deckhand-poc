@@ -11,6 +11,7 @@ metadata:
     parentSelector:
       name: nova
   name: nova
+  namespace: boggus
 spec:
   values:
     pod:

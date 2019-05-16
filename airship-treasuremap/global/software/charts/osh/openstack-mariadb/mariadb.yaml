@@ -9,13 +9,13 @@ metadata:
     abstract: false
     layer: global
   name: openstack-mariadb
+  namespace: openstack
 spec:
   chart_name: openstack-mariadb
   dependencies:
   - osh-helm-toolkit
   install:
     no_hooks: false
-  namespace: openstack
   release: openstack-mariadb
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.mariadb)
   upgrade:

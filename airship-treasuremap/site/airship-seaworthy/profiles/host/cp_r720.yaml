@@ -15,6 +15,7 @@ metadata:
     parentSelector:
       hosttype: cp
   name: cp-r720-primary
+  namespace: drydock
 spec:
   hardware_profile: dell_r720
   interfaces:
@@ -94,6 +95,7 @@ metadata:
     parentSelector:
       hosttype: cp
   name: cp-r740-secondary
+  namespace: drydock
 spec:
   hardware_profile: dell_r720
   interfaces:

@@ -8,13 +8,13 @@ metadata:
     abstract: true
     layer: global
   name: elasticsearch
+  namespace: osh-infra
 spec:
   chart_name: elasticsearch
   dependencies:
   - osh-infra-helm-toolkit
   install:
     no_hooks: false
-  namespace: osh-infra
   release: elasticsearch
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.elasticsearch)
   upgrade:

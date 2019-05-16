@@ -9,13 +9,13 @@ metadata:
     abstract: false
     layer: global
   name: openstack-ceph-config
+  namespace: openstack
 spec:
   chart_name: openstack-ceph-config
   dependencies:
   - ceph-htk
   install:
     no_hooks: false
-  namespace: openstack
   release: openstack-ceph-config
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.ceph-provisioners)
   upgrade:

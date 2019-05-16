@@ -6,6 +6,7 @@ metadata:
     abstract: false
     layer: global
   name: configure-ip-rules
+  namespace: pegleg
 spec: |-
   #!/bin/bash
   set -ex

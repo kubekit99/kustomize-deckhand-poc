@@ -6,6 +6,7 @@ metadata:
     abstract: false
     layer: global
   name: ucp-prometheus-openstack-exporter
+  namespace: shipyard
 spec:
   chart_group:
   - ucp-prometheus-openstack-exporter

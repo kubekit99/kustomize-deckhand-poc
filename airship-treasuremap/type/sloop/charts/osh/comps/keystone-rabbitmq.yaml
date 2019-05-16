@@ -11,6 +11,7 @@ metadata:
     parentSelector:
       name: keystone-rabbitmq
   name: keystone-rabbitmq
+  namespace: boggus
   replacement: true
 spec:
   values:

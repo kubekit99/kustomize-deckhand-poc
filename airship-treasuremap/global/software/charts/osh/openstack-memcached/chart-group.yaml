@@ -9,6 +9,7 @@ metadata:
     abstract: false
     layer: global
   name: openstack-memcached
+  namespace: shipyard
 spec:
   chart_group:
   - openstack-memcached

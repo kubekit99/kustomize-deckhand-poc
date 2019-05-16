@@ -8,13 +8,13 @@ metadata:
     abstract: false
     layer: global
   name: ucp-armada
+  namespace: ucp
 spec:
   chart_name: armada
   dependencies:
   - armada-htk
   install:
     no_hooks: false
-  namespace: ucp
   release: ucp-armada
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.armada)
   upgrade:
@@ -61,10 +61,10 @@ metadata:
     abstract: false
     layer: global
   name: armada-htk
+  namespace: pegleg
 spec:
   chart_name: armada-htk
   dependencies: []
-  namespace: armada-htk
   release: armada-htk
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.armada-htk)
   values: {}

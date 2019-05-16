@@ -11,6 +11,7 @@ metadata:
     parentSelector:
       name: kubernetes-etcd
   name: kubernetes-etcd
+  namespace: boggus
 spec:
   values:
     nodes:

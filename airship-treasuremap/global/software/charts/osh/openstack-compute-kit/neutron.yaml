@@ -9,13 +9,13 @@ metadata:
     abstract: false
     layer: global
   name: neutron
+  namespace: openstack
 spec:
   chart_name: neutron
   dependencies:
   - osh-helm-toolkit
   install:
     no_hooks: false
-  namespace: openstack
   release: neutron
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.neutron)
   test:

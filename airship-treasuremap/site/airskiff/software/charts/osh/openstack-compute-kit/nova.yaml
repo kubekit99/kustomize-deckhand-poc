@@ -2,24 +2,31 @@
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  name: nova
   layeringDefinition:
     abstract: false
+    actions:
+    - method: replace
+      path: .values.labels.agent
+    - method: delete
+      path: .values.ceph_client
+    - method: merge
+      path: .values.conf
+    - method: replace
+      path: .values.pod
     layer: site
     parentSelector:
-      name: nova
       component: nova
-    actions:
-      - method: replace
-        path: .values.labels.agent
-      - method: delete
-        path: .values.ceph_client
-      - method: merge
-        path: .values.conf
-      - method: replace
-        path: .values.pod
+      name: nova
+  name: nova
+  namespace: boggus
 spec:
   values:
+    conf:
+      ceph:
+        enabled: false
+      nova:
+        libvirt:
+          virt_type: qemu
     labels:
       agent:
         compute:
@@ -28,19 +35,12 @@ spec:
         compute_ironic:
           node_selector_key: openstack-compute-node
           node_selector_value: enabled
-    conf:
-      ceph:
-        enabled: false
-      nova:
-        libvirt:
-          virt_type: qemu
     pod:
       replicas:
         api_metadata: 1
-        placement: 1
-        osapi: 1
         conductor: 1
         consoleauth: 1
-        scheduler: 1
         novncproxy: 1
-...
+        osapi: 1
+        placement: 1
+        scheduler: 1

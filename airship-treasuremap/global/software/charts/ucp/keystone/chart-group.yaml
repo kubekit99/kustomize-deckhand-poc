@@ -8,6 +8,7 @@ metadata:
     abstract: false
     layer: global
   name: ucp-keystone
+  namespace: shipyard
 spec:
   chart_group:
   - ucp-keystone-memcached

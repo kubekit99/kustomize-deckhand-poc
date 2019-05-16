@@ -8,13 +8,13 @@ metadata:
     abstract: false
     layer: global
   name: ucp-ceph-mon
+  namespace: ceph
 spec:
   chart_name: ucp-ceph-mon
   dependencies:
   - ceph-htk
   install:
     no_hooks: false
-  namespace: ceph
   protected:
     continue_processing: true
   release: ucp-ceph-mon

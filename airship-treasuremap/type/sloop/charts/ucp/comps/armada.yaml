@@ -11,6 +11,7 @@ metadata:
     parentSelector:
       name: ucp-armada
   name: ucp-armada
+  namespace: boggus
   replacement: true
 spec:
   values:

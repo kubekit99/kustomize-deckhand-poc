@@ -9,13 +9,13 @@ metadata:
     abstract: true
     layer: global
   name: ingress-kube-system
+  namespace: kube-system
 spec:
   chart_name: ingress-kube-system
   dependencies:
   - ingress-kube-system-htk
   install:
     no_hooks: false
-  namespace: kube-system
   release: ingress-kube-system
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.ingress)
   upgrade:
@@ -58,10 +58,10 @@ metadata:
     abstract: false
     layer: global
   name: ingress-kube-system-htk
+  namespace: pegleg
 spec:
   chart_name: ingress-kube-system-htk
   dependencies: []
-  namespace: ingress-kube-system-htk
   release: ingress-kube-system-htk
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.ingress-htk)
   values: {}

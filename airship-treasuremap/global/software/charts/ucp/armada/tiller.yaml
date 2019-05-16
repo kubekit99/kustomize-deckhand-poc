@@ -8,13 +8,13 @@ metadata:
     abstract: false
     layer: global
   name: ucp-tiller
+  namespace: kube-system
 spec:
   chart_name: tiller
   dependencies:
   - tiller-htk
   install:
     no_hooks: false
-  namespace: kube-system
   release: ucp-tiller
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.tiller)
   upgrade:
@@ -41,10 +41,10 @@ metadata:
     abstract: false
     layer: global
   name: tiller-htk
+  namespace: pegleg
 spec:
   chart_name: tiller-htk
   dependencies: []
-  namespace: tiller-htk
   release: tiller-htk
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.tiller-htk)
   values: {}

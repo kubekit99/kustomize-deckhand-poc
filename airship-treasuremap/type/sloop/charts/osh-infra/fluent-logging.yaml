@@ -11,6 +11,7 @@ metadata:
     parentSelector:
       hosttype: fluent-logging
   name: fluent-logging
+  namespace: boggus
 spec:
   values:
     pod:

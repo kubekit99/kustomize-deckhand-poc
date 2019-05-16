@@ -6,10 +6,10 @@ metadata:
     abstract: false
     layer: global
   name: ceph-htk
+  namespace: pegleg
 spec:
   chart_name: ceph-htk
   dependencies: []
-  namespace: ceph-htk
   release: ceph-htk
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.ceph-htk)
   values: {}

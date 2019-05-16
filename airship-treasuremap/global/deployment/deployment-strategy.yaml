@@ -8,6 +8,7 @@ metadata:
     abstract: false
     layer: global
   name: deployment-strategy
+  namespace: shipyard
 spec:
   groups:
   - critical: true

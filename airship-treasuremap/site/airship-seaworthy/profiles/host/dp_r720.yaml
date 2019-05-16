@@ -15,6 +15,7 @@ metadata:
     parentSelector:
       hosttype: dp
   name: dp-r720
+  namespace: drydock
 spec:
   hardware_profile: dell_r720
   interfaces:

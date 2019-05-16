@@ -8,11 +8,11 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-proxy
+  namespace: kube-system
 spec:
   chart_name: proxy
   dependencies:
   - kubernetes-proxy-htk
-  namespace: kube-system
   release: kubernetes-proxy
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.proxy)
   upgrade:
@@ -50,9 +50,9 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-proxy-htk
+  namespace: pegleg
 spec:
   chart_name: kubernetes-proxy-htk
   dependencies: []
-  namespace: kubernetes-proxy-htk
   release: kubernetes-proxy-htk
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.proxy-htk)

@@ -6,6 +6,7 @@ metadata:
     abstract: false
     layer: type
   name: kubernetes-network
+  namespace: drydock
 spec:
   dns:
     bootstrap_validation_checks:

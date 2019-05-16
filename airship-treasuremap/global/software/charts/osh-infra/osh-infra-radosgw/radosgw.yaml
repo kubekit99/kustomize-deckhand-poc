@@ -6,13 +6,13 @@ metadata:
     abstract: false
     layer: global
   name: osh-infra-radosgw
+  namespace: osh-infra
 spec:
   chart_name: osh-infra-radosgw
   dependencies:
   - osh-infra-helm-toolkit
   install:
     no_hooks: false
-  namespace: osh-infra
   release: osh-infra-radosgw
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.ceph-rgw)
   upgrade:

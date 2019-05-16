@@ -6,6 +6,7 @@ metadata:
     abstract: false
     layer: global
   name: ingress-kube-system
+  namespace: shipyard
 spec:
   chart_group:
   - ingress-kube-system

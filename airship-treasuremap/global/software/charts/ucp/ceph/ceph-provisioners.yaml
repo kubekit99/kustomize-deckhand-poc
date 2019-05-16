@@ -8,13 +8,13 @@ metadata:
     abstract: false
     layer: global
   name: ucp-ceph-provisioners
+  namespace: ceph
 spec:
   chart_name: ucp-ceph-provisioners
   dependencies:
   - ceph-htk
   install:
     no_hooks: false
-  namespace: ceph
   protected:
     continue_processing: true
   release: ucp-ceph-provisioners

@@ -1,19 +1,15 @@
 ---
-# NOTE: This file is ignored by Airskiff and is copied from the seaworthy site.
-
-# The purpose of this file is to define the environment-specific public-facing
-# VIP for the ingress controller
 apiVersion: armada.airshipit.org/v1alpha1
 kind: ArmadaChart
 metadata:
-  name: ingress-kube-system
   layeringDefinition:
     abstract: false
+    actions:
+    - method: merge
+      path: .
     layer: site
     parentSelector:
       ingress: kube-system
-    actions:
-      - method: merge
-        path: .
+  name: ingress-kube-system
+  namespace: boggus
 spec: {}
-...

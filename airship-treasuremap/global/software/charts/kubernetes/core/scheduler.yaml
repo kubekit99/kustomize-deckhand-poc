@@ -8,11 +8,11 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-scheduler
+  namespace: kube-system
 spec:
   chart_name: scheduler
   dependencies:
   - kubernetes-scheduler-htk
-  namespace: kube-system
   protected:
     continue_processing: true
   release: kubernetes-scheduler
@@ -46,10 +46,10 @@ metadata:
     abstract: false
     layer: global
   name: kubernetes-scheduler-htk
+  namespace: pegleg
 spec:
   chart_name: kubernetes-scheduler-htk
   dependencies: []
-  namespace: kubernetes-scheduler-htk
   release: kubernetes-scheduler-htk
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.kubernetes.scheduler-htk)
   values: {}

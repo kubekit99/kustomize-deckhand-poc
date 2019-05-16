@@ -9,13 +9,13 @@ metadata:
     abstract: false
     layer: global
   name: glance-rabbitmq
+  namespace: openstack
 spec:
   chart_name: glance-rabbitmq
   dependencies:
   - osh-helm-toolkit
   install:
     no_hooks: false
-  namespace: openstack
   release: glance-rabbitmq
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.rabbitmq)
   upgrade:

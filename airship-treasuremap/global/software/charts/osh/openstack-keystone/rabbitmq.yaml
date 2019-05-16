@@ -9,13 +9,13 @@ metadata:
     abstract: false
     layer: global
   name: keystone-rabbitmq
+  namespace: openstack
 spec:
   chart_name: keystone-rabbitmq
   dependencies:
   - osh-helm-toolkit
   install:
     no_hooks: false
-  namespace: openstack
   release: keystone-rabbitmq
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.rabbitmq)
   upgrade:

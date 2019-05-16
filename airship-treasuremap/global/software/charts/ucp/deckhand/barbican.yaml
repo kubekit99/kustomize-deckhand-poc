@@ -8,13 +8,13 @@ metadata:
     abstract: false
     layer: global
   name: ucp-barbican
+  namespace: ucp
 spec:
   chart_name: ucp-barbican
   dependencies:
   - ucp-barbican-htk
   install:
     no_hooks: false
-  namespace: ucp
   release: ucp-barbican
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.barbican)
   upgrade:
@@ -152,10 +152,10 @@ metadata:
     abstract: false
     layer: global
   name: ucp-barbican-htk
+  namespace: pegleg
 spec:
   chart_name: ucp-barbican-htk
   dependencies: []
-  namespace: ucp-barbican-htk
   release: ucp-barbican-htk
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.barbican-htk)
   values: {}

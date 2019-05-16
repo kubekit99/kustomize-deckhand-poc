@@ -9,13 +9,13 @@ metadata:
     abstract: false
     layer: global
   name: glance
+  namespace: openstack
 spec:
   chart_name: glance
   dependencies:
   - osh-helm-toolkit
   install:
     no_hooks: false
-  namespace: openstack
   release: glance
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.glance)
   upgrade:

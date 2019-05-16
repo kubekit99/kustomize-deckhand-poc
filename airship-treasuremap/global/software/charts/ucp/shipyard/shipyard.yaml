@@ -8,13 +8,13 @@ metadata:
     abstract: false
     layer: global
   name: ucp-shipyard
+  namespace: ucp
 spec:
   chart_name: shipyard
   dependencies:
   - shipyard-htk
   install:
     no_hooks: false
-  namespace: ucp
   release: ucp-shipyard
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.shipyard)
   upgrade:
@@ -106,10 +106,10 @@ metadata:
     abstract: false
     layer: global
   name: shipyard-htk
+  namespace: pegleg
 spec:
   chart_name: shipyard-htk
   dependencies: []
-  namespace: shipyard-htk
   release: shipyard-htk
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.shipyard-htk)
   values: {}

@@ -9,13 +9,13 @@ metadata:
     abstract: false
     layer: global
   name: openstack-ingress-controller
+  namespace: openstack
 spec:
   chart_name: openstack-ingress-controller
   dependencies:
   - osh-helm-toolkit
   install:
     no_hooks: false
-  namespace: openstack
   release: openstack-ingress-controller
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.ingress)
   upgrade:

@@ -11,6 +11,7 @@ metadata:
     parentSelector:
       name: keystone
   name: keystone
+  namespace: boggus
   replacement: true
 spec:
   values:

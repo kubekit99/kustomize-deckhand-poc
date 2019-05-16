@@ -8,13 +8,13 @@ metadata:
     abstract: false
     layer: global
   name: osh-infra-mariadb
+  namespace: osh-infra
 spec:
   chart_name: osh-infra-mariadb
   dependencies:
   - osh-helm-toolkit
   install:
     no_hooks: false
-  namespace: osh-infra
   release: osh-infra-mariadb
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh.mariadb)
   upgrade:

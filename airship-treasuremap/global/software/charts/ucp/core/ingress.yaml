@@ -8,13 +8,13 @@ metadata:
     abstract: false
     layer: global
   name: ucp-ingress
+  namespace: ucp
 spec:
   chart_name: ingress
   dependencies:
   - ucp-ingress-htk
   install:
     no_hooks: false
-  namespace: ucp
   release: ingress
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.ingress)
   upgrade:
@@ -58,10 +58,10 @@ metadata:
     abstract: false
     layer: global
   name: ucp-ingress-htk
+  namespace: pegleg
 spec:
   chart_name: ucp-ingress-htk
   dependencies: []
-  namespace: ucp-ingress-htk
   release: ucp-ingress-htk
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.ingress-htk)
   values: {}

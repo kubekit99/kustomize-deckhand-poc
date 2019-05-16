@@ -8,6 +8,7 @@ metadata:
     abstract: false
     layer: global
   name: docker
+  namespace: drydock
 spec:
   config:
     live-restore: true

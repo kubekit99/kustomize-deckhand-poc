@@ -11,6 +11,7 @@ metadata:
     parentSelector:
       name: openstack-ingress-controller
   name: openstack-ingress-controller
+  namespace: boggus
   replacement: true
 spec:
   values:

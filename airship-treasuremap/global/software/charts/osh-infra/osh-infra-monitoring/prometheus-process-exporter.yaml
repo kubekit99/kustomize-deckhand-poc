@@ -6,13 +6,13 @@ metadata:
     abstract: false
     layer: global
   name: prometheus-process-exporter
+  namespace: kube-system
 spec:
   chart_name: prometheus-process-exporter
   dependencies:
   - osh-infra-helm-toolkit
   install:
     no_hooks: false
-  namespace: kube-system
   release: prometheus-process-exporter
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.prometheus_process_exporter)
   upgrade:

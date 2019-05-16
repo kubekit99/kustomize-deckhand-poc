@@ -6,7 +6,7 @@ metadata:
     abstract: false
     layer: site
   name: airsloop
-  schema: metadata/Document/v1
+  namespace: drydock
 spec:
   authorized_keys:
   - $(DeckhandPublicKey.airsloop-ssh-public-key.spec)

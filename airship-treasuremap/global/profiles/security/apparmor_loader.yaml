@@ -6,7 +6,7 @@ metadata:
     abstract: false
     layer: global
   name: airship-apparmor-loader
-  schema: metadata/Document/v1
+  namespace: pegleg
 spec:
   content: |
     #include <tunables/global>

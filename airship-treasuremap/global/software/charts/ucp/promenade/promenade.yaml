@@ -8,13 +8,13 @@ metadata:
     abstract: true
     layer: global
   name: ucp-promenade
+  namespace: ucp
 spec:
   chart_name: promenade
   dependencies:
   - promenade-htk
   install:
     no_hooks: false
-  namespace: ucp
   release: ucp-promenade
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.promenade)
   upgrade:
@@ -66,10 +66,10 @@ metadata:
     abstract: false
     layer: global
   name: promenade-htk
+  namespace: pegleg
 spec:
   chart_name: promenade-htk
   dependencies: []
-  namespace: promenade-htk
   release: promenade-htk
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.promenade-htk)
   values: {}

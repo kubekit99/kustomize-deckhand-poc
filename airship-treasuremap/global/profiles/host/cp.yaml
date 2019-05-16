@@ -8,6 +8,7 @@ metadata:
     abstract: true
     layer: global
   name: cp
+  namespace: drydock
 spec:
   metadata:
     owner_data:

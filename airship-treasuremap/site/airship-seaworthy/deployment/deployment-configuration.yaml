@@ -6,6 +6,7 @@ metadata:
     abstract: false
     layer: site
   name: deployment-configuration
+  namespace: shipyard
 spec:
   armada:
     get_releases_timeout: 300

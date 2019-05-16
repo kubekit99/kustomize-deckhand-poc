@@ -11,6 +11,7 @@ metadata:
     parentSelector:
       name: full-site
   name: full-site
+  namespace: shipyard
   replacement: true
 spec:
   chart_groups:

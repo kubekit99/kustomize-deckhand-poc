@@ -8,13 +8,13 @@ metadata:
     abstract: false
     layer: global
   name: tenant-ceph-ingress
+  namespace: tenant-ceph
 spec:
   chart_name: tenant-ceph-ingress
   dependencies:
   - ucp-ingress-htk
   install:
     no_hooks: false
-  namespace: tenant-ceph
   release: tenant-ceph-ingress
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.ucp.ingress)
   upgrade:

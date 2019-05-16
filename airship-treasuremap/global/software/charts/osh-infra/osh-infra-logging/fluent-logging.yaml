@@ -8,13 +8,13 @@ metadata:
     abstract: true
     layer: global
   name: fluent-logging
+  namespace: osh-infra
 spec:
   chart_name: fluent-logging
   dependencies:
   - osh-infra-helm-toolkit
   install:
     no_hooks: false
-  namespace: osh-infra
   release: fluent-logging
   source: $(PeglegSoftwareVersions.software-versions.spec.charts.osh_infra.fluent_logging)
   upgrade:

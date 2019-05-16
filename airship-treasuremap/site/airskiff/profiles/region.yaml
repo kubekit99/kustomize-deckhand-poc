@@ -1,3 +1,4 @@
+---
 apiVersion: drydock.airshipit.org/v1alpha1
 kind: DrydockRegion
 metadata:
@@ -5,7 +6,7 @@ metadata:
     abstract: false
     layer: site
   name: airskiff
-  schema: metadata/Document/v1
+  namespace: drydock
 spec:
   authorized_keys:
   - $(DeckhandPublicKey.airship-ssh-public-key.spec)
