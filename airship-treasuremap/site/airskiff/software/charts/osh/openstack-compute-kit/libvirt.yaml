@@ -18,8 +18,8 @@ spec:
     conf:
       ceph:
         enabled: false
-    labels:
-      agent:
-        libvirt:
-          node_selector_key: openstack-compute-node
-          node_selector_value: enabled
+    #TODO(jeb) labels:
+    #TODO(jeb)   agent:
+    #TODO(jeb)     libvirt:
+    #TODO(jeb)       node_selector_key: openstack-compute-node
+    #TODO(jeb)       node_selector_value: enabled

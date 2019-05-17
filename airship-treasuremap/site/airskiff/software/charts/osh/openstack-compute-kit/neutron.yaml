@@ -42,11 +42,11 @@ spec:
             tunnel_types: vxlan
           ovs:
             bridge_mappings: public:br-ex
-    labels:
-      agent:
-        l3:
-          node_selector_key: openstack-control-plane
-          node_selector_value: enabled
+    #TODO(jeb) labels:
+    #TODO(jeb)   agent:
+    #TODO(jeb)     l3:
+    #TODO(jeb)       node_selector_key: openstack-control-plane
+    #TODO(jeb)       node_selector_value: enabled
     network:
       interface:
         tunnel: docker0

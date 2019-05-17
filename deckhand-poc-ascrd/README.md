@@ -1,3 +1,5 @@
+# THIS REPOSITORY IS OBSOLETE. CONTENT HAS BEEN MIGRATED ONTO [Keleustes](https://github.com/keleustes/)
+
 # Deckhand-Kustomize POC where objects are K8s CRDs (spec, status)
 
 ## Simple patch merge and name reference 

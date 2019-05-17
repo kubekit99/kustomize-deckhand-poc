@@ -1,3 +1,5 @@
+# THIS REPOSITORY IS OBSOLETE. CONTENT HAS BEEN MIGRATED ONTO [Keleustes](https://github.com/keleustes/)
+
 # Deckhand-Kustomize POC where objects are K8s CRDs (spec, status)
 
 ##  Introduction
@@ -56,4 +58,12 @@ kustomize build site/airskiff
 
 ```bash
 kustomize build site/airsloop
+```
+
+## Accessing the logs
+
+```bash
+kubectl get pods --all-namespaces | grep operator | awk '{print "kubectl logs -n "$1" "$2"> "$1".log"}'  > doIt
+chmod u+x doIt
+./doIt
 ```

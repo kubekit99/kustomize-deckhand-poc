@@ -29,8 +29,17 @@ purge:
 	kubectl delete -f ./deploy/namespaces --ignore-not-found=true
 	kubectl delete -f ./deploy/crds/ --ignore-not-found=true
 
-build:
+build-airsloop:
 	rm -fr simple
 	mkdir simple
 	kustomize build site/airsloop -o simple
 	sed -i -e '/port: "/ s;";;g' simple/*
+
+
+build-airskiff:
+	rm -fr simple
+	mkdir simple
+	kustomize build site/airskiff -o simple
+	sed -i -e '/port: "/ s;";;g' simple/*
+
+

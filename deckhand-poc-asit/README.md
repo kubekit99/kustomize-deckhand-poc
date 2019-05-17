@@ -1,3 +1,5 @@
+# THIS REPOSITORY IS OBSOLETE. CONTENT HAS BEEN MIGRATED ONTO [Keleustes](https://github.com/keleustes/)
+
 # Deckhand-Kustomize POC with minimal changes to deckhand documents
 
 ## json possible patch

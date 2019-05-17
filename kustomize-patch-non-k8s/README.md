@@ -1,3 +1,5 @@
+# THIS REPOSITORY IS OBSOLETE. CONTENT HAS BEEN MIGRATED ONTO [Keleustes](https://github.com/keleustes/)
+
 # kustomize-patch-non-k8s
 # original code:
 https://github.com/johnhny/kustomize-patch-non-k8s

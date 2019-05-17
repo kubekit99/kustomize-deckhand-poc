@@ -1,3 +1,5 @@
+# THIS REPOSITORY IS OBSOLETE. CONTENT HAS BEEN MIGRATED ONTO [Keleustes](https://github.com/keleustes/)
+
 # kustomize-deckhand-poc
 Validate the utilization of kustomize to emulate airship-deckhand feature
 
